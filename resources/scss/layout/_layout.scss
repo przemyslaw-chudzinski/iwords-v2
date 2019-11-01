@@ -1,0 +1,17 @@
+@import "learning";
+@import "aside";
+@import "toolbar";
+
+.body {
+  display: flex;
+}
+
+.main {
+  flex-grow: 1;
+  background-color: get-color(primaryGrey);
+}
+
+.content {
+  height: 100%;
+  overflow: auto;
+}

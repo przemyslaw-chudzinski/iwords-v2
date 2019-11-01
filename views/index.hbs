@@ -1,0 +1,54 @@
+<!-- Main page -->
+<div class="app-index-page" ng-cloak>
+
+    <div class="learning card card--white card--with-shadow" ng-controller="LearningCtrl">
+
+        <!-- Data -->
+        <div class="learning__data">
+            <!-- Repeat information -->
+            <div ng-if="currentExpr.repeat && currentExpr.repeat.state" class="learning__repeat-info">
+                <span>Do zaliczenia powtórki pozostało: </span>
+                <strong>\{{ 10 - (currentExpr.repeat.correctAnswers || 0) }}</strong>
+                <span>wyrażeń</span>
+            </div>
+            <!-- Translations -->
+            <div class="learning__translations">
+                <!-- If it's marked for repeating -->
+                <md-button ng-if="currentExpr.repeat && currentExpr.repeat.state" class="md-icon-button md-warn" aria-label="More" ng-disabled="skipping">
+                    <md-tooltip md-direction="top">Ta ikona oznacza, że aktualne wyrażenie jest w powtórkach</md-tooltip>
+                    <span class="fa fa-repeat"></span>
+                </md-button>
+                \{{ currentExpr.translations.join(', ') }} <span class="learning__correct-answer" ng-if="answerWrong"> - \{{ currentExpr.expression }}</span>
+            </div>
+            <!-- Description -->
+            <div class="learning__description" ng-if="currentExpr.description">
+                <span class="learning__description-text">\{{ currentExpr.description }}</span>
+            </div>
+
+<!--            &lt;!&ndash; Repeat information &ndash;&gt;-->
+<!--            <div ng-if="currentExpr.repeat && currentExpr.repeat.state" class="learning__repeat-info">-->
+<!--                <span>Do zaliczenia powtórki pozostało: </span>-->
+<!--                <strong>\{{ 10 - (currentExpr.repeat.correctAnswers || 0) }}</strong>-->
+<!--                <span>wyrażeń</span>-->
+<!--            </div>-->
+        </div>
+
+        <!-- Input container -->
+        <div class="learning__input-container">
+            <input class="learning__input input"
+                   ng-class="{'input--success': answerSuccess, 'input--danger': answerWrong}"
+                   type="text"
+                   ng-model="answer"
+                   ng-keypress="handleKeyPress($event)"
+                   autocomplete="off">
+        </div>
+        <!-- Small menu -->
+        <div class="learning__controls">
+            <md-button ng-click="skipExpression()" class="md-icon-button" aria-label="More" ng-disabled="skipping">
+                <md-tooltip md-direction="top">Następne wyrażenie. Obecne wyrażenie zostanie oznaczone jako niezaliczone</md-tooltip>
+                <span class="fa fa-angle-right"></span>
+            </md-button>
+        </div>
+    </div>
+
+</div>

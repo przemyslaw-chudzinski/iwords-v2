@@ -1,0 +1,20 @@
+$color-palette: (
+    success: #00E676,
+    danger: #ff1744,
+    primaryBlue: #03A9F4,
+    darkBlue: #0D47A1,
+    primaryWhite: #fff,
+    primaryGrey: #FAFAFA,
+    secondaryGrey: #9E9E9E,
+    primaryOrange: #ff6600
+);
+
+@function get-color($color, $opacity: 1) {
+  @if (map_has_key($color-palette, $color)) {
+    @return rgba(map_get($color-palette, $color), $opacity);
+  }
+  @else {
+    @return transparent;
+  }
+
+}

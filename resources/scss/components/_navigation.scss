@@ -1,0 +1,28 @@
+.navigation {
+
+  &__item {
+
+  }
+
+  &__item:not(:last-child) &__link {
+    border-bottom: 1px solid get-color(primaryBlue, .4);
+  }
+
+  &__link {
+    color: get-color(darkBlue);
+    text-decoration: none;
+    padding: 1.5rem;
+    display: block;
+
+    &:hover {
+      color: get-color(primaryWhite);
+      background: get-color(primaryBlue);
+    }
+  }
+
+  &__link-icon {
+    margin-right: 1rem;
+  }
+
+
+}

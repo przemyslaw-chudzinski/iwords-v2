@@ -1,0 +1,12 @@
+.card {
+  padding: 2rem;
+
+  &--white {
+    background-color: get-color(primaryWhite);
+  }
+
+  &--with-shadow {
+    box-shadow: 0 0 28px -11px rgba(0, 0, 0, 0.16);
+  }
+
+}

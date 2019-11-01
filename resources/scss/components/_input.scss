@@ -1,0 +1,17 @@
+.input {
+  text-align: center;
+  font-size: 3rem;
+  padding: 1rem 0;
+  width: 100%;
+  outline: none;
+  border: 3px solid get-color(primaryBlue);
+
+  &--success {
+    border-color: get-color(success);
+  }
+
+  &--danger {
+    border-color: get-color(danger);
+  }
+
+}

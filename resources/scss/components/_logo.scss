@@ -1,0 +1,9 @@
+.logo {
+  background: get-color(darkBlue);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: get-color(primaryWhite);
+}
