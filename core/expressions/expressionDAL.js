@@ -108,12 +108,13 @@ function fetchStatisticsData() {
     });
 }
 
-async function randomExpression() {
+async function  randomExpression() {
 
     try {
         const expressions = await fetchAllExpressions({
             select: {
                 expression: 1,
+                translations: 1,
                 correctAnswers: 1,
                 incorrectAnswers: 1,
                 repeat: 1

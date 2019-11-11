@@ -87,9 +87,17 @@ router.post('/import', upload.single('csv'), (req, res) => {
     fs.createReadStream(path.resolve(__dirname, '..', '..', 'uploads', filename))
         .pipe(csvParser())
         .on('data', ({expression, translations, description}) => {
-            if (expression && translations) {
-                expression = expression.trim().toLowerCase();
-                translations = translations.split(',').map(t => t.trim().toLowerCase());
+            expression = expression.trim().toLowerCase();
+
+            translations = translations
+                .trim()
+                .split(',')
+                .map(t => t.trim().toLowerCase())
+                .filter(t => t && t.length && t !== '');
+
+            description = description.trim();
+
+            if (expression && expression.length && expression !== '' && translations && translations.length) {
                 results.push({expression, translations, description});
             }
         })
