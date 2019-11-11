@@ -1,24 +1,22 @@
 module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) {
-    // $scope.currentExpr = {expression: null, translations: []};
     $scope.currentExprs = [];
     $scope.currentExpr = null;
     $scope.answer = '';
     $scope.answerSuccess = false;
     $scope.answerWrong = false;
     $scope.skipping = false;
+    $scope.repeatCount = 0;
 
     const inputElem = document.querySelector('.input');
 
     inputElem && inputElem.focus();
 
-    // expressionSrv.fetchExpression()
-    //     .then(({data}) => ($scope.currentExpr = data));
-
     expressionSrv.fetchExpressions()
-        .then(({data}) => {
+        .then(({data: {data, repeatCount}}) => {
             $scope.currentExprs = data;
             if (data && data.length) {
                 $scope.currentExpr = data[0];
+                $scope.repeatCount = repeatCount;
             }
         });
 

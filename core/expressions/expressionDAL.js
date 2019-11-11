@@ -108,7 +108,7 @@ function fetchStatisticsData() {
     });
 }
 
-async function  randomExpression() {
+async function randomExpression() {
 
     try {
         const expressions = await fetchAllExpressions({
@@ -135,11 +135,19 @@ async function saveExpressions(expressions = null) {
     return null;
 }
 
+function countExpressionsInRepeat() {
+    return Expression
+        .find()
+        .where('repeat.state', 1)
+        .count()
+}
+
 module.exports = {
     fetchExpression,
     incrementExpressionCounters,
     saveExpressions,
     fetchRepeatExpression,
     fetchStatisticsData,
-    randomExpression
+    randomExpression,
+    countExpressionsInRepeat
 };

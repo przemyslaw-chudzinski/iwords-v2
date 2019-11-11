@@ -16,10 +16,10 @@
                     </div>
                 </div>
                 <!-- Right side -->
-                <div class="col">
+                <div class="col" ng-if="repeatCount > 0">
                     <!-- repeat counter -->
                     <div class="repeat-counter">
-                        <span class="repeat-counter__text">Wyrażenia w powtórkach: 31</span>
+                        <span class="repeat-counter__text">Wyrażenia w powtórkach: \{{ repeatCount }}</span>
                         <md-switch ng-model="data.cb2" class="md-warn repeat-counter__switch">
                             Tryb powtórek
                         </md-switch>

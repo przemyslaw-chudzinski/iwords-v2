@@ -3,7 +3,15 @@ const multer = require('multer');
 const csvParser = require('csv-parser');
 const fs = require('fs');
 const path = require('path');
-const {fetchExpression, incrementExpressionCounters, saveExpressions, fetchRepeatExpression, fetchStatisticsData, randomExpression} = require('./expressionDAL');
+const {
+    fetchExpression,
+    incrementExpressionCounters,
+    saveExpressions,
+    fetchRepeatExpression,
+    fetchStatisticsData,
+    randomExpression,
+    countExpressionsInRepeat
+} = require('./expressionDAL');
 
 const fileFilter = (req, file, next) => {
     if (file.mimetype.split('/').includes('csv')) {
@@ -49,10 +57,11 @@ router.get('/expressions', async (req, res) => {
         const expr1 = await fetchRepeatExpression();
         const expr2 = await fetchExpression();
         const expr3 = await randomExpression();
-        const exprArray = [expr1, expr2, expr3].filter(value => !!value);
+        const repeatCount = await countExpressionsInRepeat();
+        const data = [expr1, expr2, expr3].filter(value => !!value);
 
         res.status = 200;
-        await res.json(exprArray);
+        await res.json({data, repeatCount });
 
     } catch (e) {
         res.status = 400;
