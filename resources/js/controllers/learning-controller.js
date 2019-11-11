@@ -6,19 +6,43 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
     $scope.answerWrong = false;
     $scope.skipping = false;
     $scope.repeatCount = 0;
+    $scope.repeatState = {
+        state: false
+    };
 
     const inputElem = document.querySelector('.input');
 
     inputElem && inputElem.focus();
 
-    expressionSrv.fetchExpressions()
-        .then(({data: {data, repeatCount}}) => {
+    /* Init  */
+
+    if (!('localStorage' in window)) {
+        throw new Error('local storage is not supported');
+    }
+
+    const onlyRepeats = localStorage.getItem('onlyRepeats');
+
+    if (onlyRepeats) {
+        $scope.repeatState = {state: true};
+    }
+
+    expressionSrv.fetchExpressions(!!onlyRepeats)
+        .then(({data: {data}}) => {
             $scope.currentExprs = data;
             if (data && data.length) {
-                $scope.currentExpr = data[0];
-                $scope.repeatCount = repeatCount;
+                $scope.currentExpr = {
+                    ...data[0],
+                    refs: {
+                        diki: `https://www.diki.pl/slownik-angielskiego?q=${data[0].expression}`
+                    }
+                };
+
             }
         });
+
+    fetchRepeatCount();
+
+    /* ************************************************** */
 
     $scope.handleKeyPress = function ({keyCode}) {
         if (keyCode === 13) {
@@ -32,6 +56,15 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
     };
 
     $scope.skipExpression = function () {
+
+        /* Save to ls */
+        if ($scope.repeatState.state) {
+            localStorage.setItem('onlyRepeats', $scope.repeatState.state);
+        } else {
+            localStorage.removeItem('onlyRepeats');
+        }
+
+
         $scope.skipping = true;
         fetchNextWord(err => {
             if (err) {
@@ -45,14 +78,19 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
                 inputElem.disabled = false;
                 inputElem.focus();
             }
-        }, false);
+        }, false, $scope.repeatState.state);
     };
 
     function handleCorrectAnswer() {
         $scope.answerSuccess = true;
 
+        console.log($scope.currentExprs);
+
         /* Remove expression from stack */
         $scope.currentExprs = $scope.currentExprs.filter(expr => expr._id !== $scope.currentExpr._id);
+
+        /* Update repeat counter */
+        fetchRepeatCount();
 
         $timeout(() => {
 
@@ -63,6 +101,12 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
                         $scope.answer = '';
                         $scope.answerSuccess = false;
                         $scope.currentExpr = $scope.currentExprs[0];
+                        $scope.currentExpr = $scope.currentExpr = {
+                            ...$scope.currentExprs[0],
+                            refs: {
+                                diki: `https://www.diki.pl/slownik-angielskiego?q=${$scope.currentExprs[0].expression}`
+                            }
+                        };
                         if (inputElem) {
                             inputElem.disabled = false;
                             inputElem.focus();
@@ -84,7 +128,7 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
                         inputElem.disabled = false;
                         inputElem.focus();
                     }
-                });
+                }, false, $scope.repeatState.state);
             }
 
         }, 2000);
@@ -92,6 +136,9 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
 
     function handleIncorrectAnswer() {
         $scope.answerWrong = true;
+
+        /* Update repeat counter */
+        fetchRepeatCount();
 
         $timeout(function () {
 
@@ -110,16 +157,32 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
 
     }
 
-    function fetchNextWord(next = () => {}, correct = true) {
-        expressionSrv.incrementAnswersCounter($scope.currentExpr._id, correct)
-            .then(() => expressionSrv.fetchExpressions()
-                .then(({data}) => {
+    function fetchNextWord(next = () => {}, correct = true, onlyRepeats = false) {
+        expressionSrv.incrementAnswersCounter($scope.currentExpr._id, correct, onlyRepeats)
+            .then(() => expressionSrv.fetchExpressions(onlyRepeats)
+                .then(({data: {data}}) => {
                     $scope.currentExprs = data;
                     if (data && data.length) {
-                        $scope.currentExpr = data[0];
+                        $scope.currentExpr = {
+                            ...data[0],
+                            refs: {
+                                diki: `https://www.diki.pl/slownik-angielskiego?q=${data[0].expression}`
+                            }
+                        };
                     }
                     next(null);
                 }))
             .catch(err => console.log('something went wrong', err));
+    }
+
+    function fetchRepeatCount() {
+        expressionSrv.fetchRepeatCount()
+            .then(({data: {repeatCount}}) => {
+                $scope.repeatCount = repeatCount;
+            })
+            .catch(err => {
+                $scope.repeatCount = 0;
+                console.log('something went wrong', err);
+            });
     }
 };

@@ -20,7 +20,7 @@
                     <!-- repeat counter -->
                     <div class="repeat-counter">
                         <span class="repeat-counter__text">Wyrażenia w powtórkach: \{{ repeatCount }}</span>
-                        <md-switch ng-model="data.cb2" class="md-warn repeat-counter__switch">
+                        <md-switch ng-model="repeatState.state" class="md-warn repeat-counter__switch" ng-change="skipExpression($event)">
                             Tryb powtórek
                         </md-switch>
                     </div>
@@ -53,6 +53,14 @@
         </div>
         <!-- Small menu -->
         <div class="learning__controls">
+            <!-- Helper links -->
+            <div>
+                <md-button class="md-primary" ng-href="\{{currentExpr.refs.diki}}" target="_blank">
+                    <md-tooltip md-direction="top">Zobacz w diki</md-tooltip>
+                    <span>diki.pl</span>
+                </md-button>
+            </div>
+            <!-- Skip expression btn -->
             <md-button ng-click="skipExpression()" class="md-icon-button" aria-label="More" ng-disabled="skipping">
                 <md-tooltip md-direction="top">Następne wyrażenie. Obecne wyrażenie zostanie oznaczone jako niezaliczone</md-tooltip>
                 <span class="fa fa-angle-right"></span>

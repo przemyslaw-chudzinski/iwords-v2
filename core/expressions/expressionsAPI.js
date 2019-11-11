@@ -10,7 +10,8 @@ const {
     fetchRepeatExpression,
     fetchStatisticsData,
     randomExpression,
-    countExpressionsInRepeat
+    countExpressionsInRepeat,
+    fetchRepeatExpressions
 } = require('./expressionDAL');
 
 const fileFilter = (req, file, next) => {
@@ -53,15 +54,24 @@ router.get('/expression', (req, res) => {
 /* Returns a bunch of expressions to learn in one set */
 router.get('/expressions', async (req, res) => {
 
+    const onlyRepeats = req.query.onlyRepeats;
+
     try {
-        const expr1 = await fetchRepeatExpression();
-        const expr2 = await fetchExpression();
-        const expr3 = await randomExpression();
-        const repeatCount = await countExpressionsInRepeat();
-        const data = [expr1, expr2, expr3].filter(value => !!value);
+
+        let data = [];
+        // const repeatCount = await countExpressionsInRepeat();
+
+        if (onlyRepeats === 'false') {
+            const expr1 = await fetchRepeatExpression();
+            const expr2 = await fetchExpression();
+            const expr3 = await randomExpression();
+            data = [expr1, expr2, expr3].filter(value => !!value);
+        } else {
+            data = await fetchRepeatExpressions();
+        }
 
         res.status = 200;
-        await res.json({data, repeatCount });
+        await res.json({data});
 
     } catch (e) {
         res.status = 400;
@@ -136,6 +146,21 @@ router.get('/statistics', (req, res) => {
             res.status = 400;
             res.json({error: true});
         });
+});
+
+/* Repeat count */
+router.get('/repeat-count', (req, res) => {
+
+    countExpressionsInRepeat()
+        .then(repeatCount => {
+            res.status = 200;
+            res.json({repeatCount});
+        })
+        .catch(err => {
+            res.status = 400;
+            res.json({error: true});
+        });
+
 });
 
 module.exports = router;

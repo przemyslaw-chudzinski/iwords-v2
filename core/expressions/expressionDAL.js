@@ -139,7 +139,29 @@ function countExpressionsInRepeat() {
     return Expression
         .find()
         .where('repeat.state', 1)
-        .count()
+        .countDocuments()
+}
+
+function fetchRepeatExpressions(limit = 5) {
+    const sort = {
+        field: 'desc',
+        updatedAt : 1
+    };
+
+    const select = {
+        _id: 1,
+        expression: 1,
+        translations: 1,
+        repeat: 1,
+        description: 1
+    };
+
+    return Expression
+        .find()
+        .where('repeat.state', 1)
+        .sort(sort)
+        .limit(limit)
+        .select(select);
 }
 
 module.exports = {
@@ -149,5 +171,6 @@ module.exports = {
     fetchRepeatExpression,
     fetchStatisticsData,
     randomExpression,
-    countExpressionsInRepeat
+    countExpressionsInRepeat,
+    fetchRepeatExpressions
 };
