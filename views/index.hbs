@@ -5,11 +5,26 @@
 
         <!-- Data -->
         <div class="learning__data">
-            <!-- Repeat information -->
-            <div ng-if="currentExpr.repeat && currentExpr.repeat.state" class="learning__repeat-info">
-                <span>Do zaliczenia powtórki pozostało: </span>
-                <strong>\{{ 10 - (currentExpr.repeat.correctAnswers || 0) }}</strong>
-                <span>wyrażeń</span>
+            <div class="row learning__header-row">
+                <!-- Left side -->
+                <div class="col">
+                    <!-- Repeat information -->
+                    <div ng-if="currentExpr.repeat && currentExpr.repeat.state" class="learning__repeat-info">
+                        <span>Do zaliczenia powtórki pozostało: </span>
+                        <strong>\{{ 10 - (currentExpr.repeat.correctAnswers || 0) }}</strong>
+                        <span>wyrażeń</span>
+                    </div>
+                </div>
+                <!-- Right side -->
+                <div class="col">
+                    <!-- repeat counter -->
+                    <div class="repeat-counter">
+                        <span class="repeat-counter__text">Wyrażenia w powtórkach: 31</span>
+                        <md-switch ng-model="data.cb2" class="md-warn repeat-counter__switch">
+                            Tryb powtórek
+                        </md-switch>
+                    </div>
+                </div>
             </div>
             <!-- Translations -->
             <div class="learning__translations">
@@ -25,12 +40,6 @@
                 <span class="learning__description-text">\{{ currentExpr.description }}</span>
             </div>
 
-<!--            &lt;!&ndash; Repeat information &ndash;&gt;-->
-<!--            <div ng-if="currentExpr.repeat && currentExpr.repeat.state" class="learning__repeat-info">-->
-<!--                <span>Do zaliczenia powtórki pozostało: </span>-->
-<!--                <strong>\{{ 10 - (currentExpr.repeat.correctAnswers || 0) }}</strong>-->
-<!--                <span>wyrażeń</span>-->
-<!--            </div>-->
         </div>
 
         <!-- Input container -->
