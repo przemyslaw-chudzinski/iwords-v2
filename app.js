@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const cors = require('cors');
 
 /* Connect to database */
 mongoose.connect('mongodb://localhost:27017/iwords-db', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -17,12 +18,18 @@ app.use(express.static(path.resolve(__dirname,'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
 /* API Routes */
 app.use('/api/expressions', require('./core/expressions/expressionsAPI'));
 
+/* API Iwords Chrome Extension */
+const corsOptions = {
+    origin: 'chrome-extension://',
+    optionsSuccessStatus: 200
+};
+app.use('/api/chrome-ext', cors(corsOptions), require('./core/expressions/iwordsChromeExtAPI'));
+
 /* Web Routes */
-app.use('/', require('./routes/index'));
+app.use('/app', require('./routes/index'));
 
 /* Auth routes */
 app.use('/auth', require('./routes/auth'));

@@ -84,13 +84,10 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
     function handleCorrectAnswer() {
         $scope.answerSuccess = true;
 
-        console.log($scope.currentExprs);
+        console.log('correct');
 
         /* Remove expression from stack */
         $scope.currentExprs = $scope.currentExprs.filter(expr => expr._id !== $scope.currentExpr._id);
-
-        /* Update repeat counter */
-        fetchRepeatCount();
 
         $timeout(() => {
 
@@ -98,6 +95,10 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
 
                 expressionSrv.incrementAnswersCounter($scope.currentExpr._id, true)
                     .then(() => {
+
+                        /* Update repeat counter */
+                        fetchRepeatCount();
+
                         $scope.answer = '';
                         $scope.answerSuccess = false;
                         $scope.currentExpr = $scope.currentExprs[0];
@@ -128,7 +129,7 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
                         inputElem.disabled = false;
                         inputElem.focus();
                     }
-                }, false, $scope.repeatState.state);
+                }, true, $scope.repeatState.state);
             }
 
         }, 2000);
@@ -137,13 +138,14 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
     function handleIncorrectAnswer() {
         $scope.answerWrong = true;
 
-        /* Update repeat counter */
-        fetchRepeatCount();
-
         $timeout(function () {
 
             expressionSrv.incrementAnswersCounter($scope.currentExpr._id, false)
                 .then(() => {
+
+                    /* Update repeat counter */
+                    fetchRepeatCount();
+
                     $scope.answerWrong = false;
                     $scope.answer = '';
                     if (inputElem) {

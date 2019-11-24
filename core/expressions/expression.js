@@ -6,6 +6,8 @@ const expressionSchema = new mongoose.Schema({
     description: {type: String, required: false},
     correctAnswers: {type: Number, default: 0},
     incorrectAnswers: {type: Number, default: 0},
+    partOfSpeech: {type: String, required: false},
+    exampleSentences: {type: [{sentence: String, translation: String}], required: false},
     createdAt: {type: Date, default: new Date().toISOString()},
     updatedAt: {type: Date, default: new Date().toISOString()},
     repeat: {

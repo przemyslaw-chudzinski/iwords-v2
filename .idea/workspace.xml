@@ -2,12 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/expressions/iwordsChromeExtAPI.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/scss/pages/_learning.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/learning.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/expressions/expression.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expression.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/expressions/expressionDAL.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionDAL.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/controllers/learning-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/learning-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/services/expression-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/services/expression-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_login.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_pages.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_pages.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/index.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/aside.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/aside.hbs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +30,13 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -69,7 +87,18 @@
       <updated>1572642429272</updated>
       <workItem from="1572642430368" duration="303000" />
       <workItem from="1572903078016" duration="1556000" />
-      <workItem from="1573488284416" duration="7298000" />
+      <workItem from="1573488284416" duration="7507000" />
+      <workItem from="1573596644567" duration="282000" />
+      <workItem from="1573765855149" duration="134000" />
+      <workItem from="1573853065070" duration="1489000" />
+      <workItem from="1573892964937" duration="22000" />
+      <workItem from="1573932210203" duration="733000" />
+      <workItem from="1573987501744" duration="155000" />
+      <workItem from="1574016852805" duration="3723000" />
+      <workItem from="1574372244298" duration="1291000" />
+      <workItem from="1574410087064" duration="39000" />
+      <workItem from="1574410136169" duration="26000" />
+      <workItem from="1574597922305" duration="1216000" />
     </task>
     <task id="LOCAL-00002" summary="working on project">
       <created>1573488335464</created>
@@ -92,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573492776167</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="improved repeat counter logic, added repeat learning state">
+      <created>1573499018061</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573499018061</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +152,7 @@
     <MESSAGE value="working on project" />
     <MESSAGE value="added basic repeat counter" />
     <MESSAGE value="implemented repeat counter logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented repeat counter logic" />
+    <MESSAGE value="improved repeat counter logic, added repeat learning state" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved repeat counter logic, added repeat learning state" />
   </component>
 </project>

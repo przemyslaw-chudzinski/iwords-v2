@@ -55,12 +55,11 @@ function incrementExpressionCounters({id, correctAnswer}) {
             expression.updatedAt = new Date().toISOString();
 
             /* When expression has repeat state active/inactive */
+            // TODO: Check process
             if (expression.repeat.state && correctAnswer) {
-                expression.repeat.correctAnswers++;
-            } else if (expression.repeat.state && !correctAnswer) {
-                expression.repeat.incorrectAnswers++;
-                expression.repeat.correctAnswers = 0;
-                expression.repeat.incorrectAnswers = 0;
+                expression.repeat.correctAnswers++
+            } else {
+                expression.repeat.incorrectAnswers++
             }
 
             /* If a word has sufficient number of repeats, then it resets the repeat state  */
@@ -70,7 +69,7 @@ function incrementExpressionCounters({id, correctAnswer}) {
                 expression.repeat.incorrectAnswers = 0;
             }
 
-            /* Increments a answers of word */
+            /* Increments a answers of expression */
             if (correctAnswer) {
                 expression.correctAnswers++;
             } else {
@@ -145,7 +144,7 @@ function countExpressionsInRepeat() {
 function fetchRepeatExpressions(limit = 5) {
     const sort = {
         field: 'desc',
-        updatedAt : 1
+        // updatedAt : 1
     };
 
     const select = {

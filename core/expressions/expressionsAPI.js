@@ -114,7 +114,7 @@ router.post('/import', upload.single('csv'), (req, res) => {
                 .map(t => t.trim().toLowerCase())
                 .filter(t => t && t.length && t !== '');
 
-            description = description.trim();
+            description = description ? description.trim() : '';
 
             if (expression && expression.length && expression !== '' && translations && translations.length) {
                 results.push({expression, translations, description});
