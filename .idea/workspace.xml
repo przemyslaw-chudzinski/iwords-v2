@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_login.scss" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,30 +24,50 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/intergration-with-words-api" />
+        <entry key="$PROJECT_DIR$" value="feature/user-login" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1T1zXcOBIpityRomidlPtrd4G3u" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/partials" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/partials" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -83,7 +101,11 @@
       <workItem from="1574372244298" duration="1291000" />
       <workItem from="1574410087064" duration="39000" />
       <workItem from="1574410136169" duration="26000" />
-      <workItem from="1574597922305" duration="1405000" />
+      <workItem from="1574597922305" duration="5941000" />
+      <workItem from="1574621636919" duration="162000" />
+      <workItem from="1574680527891" duration="7536000" />
+      <workItem from="1575142545135" duration="3193000" />
+      <workItem from="1575146277852" duration="3127000" />
     </task>
     <task id="LOCAL-00002" summary="working on project">
       <created>1573488335464</created>
@@ -120,7 +142,21 @@
       <option name="project" value="LOCAL" />
       <updated>1574599285574</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="small improvements">
+      <created>1574599466314</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1574599466314</updated>
+    </task>
+    <task id="LOCAL-00008" summary="working on project">
+      <created>1575150064738</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1575150064738</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,11 +177,42 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated" />
-    <MESSAGE value="working on project" />
     <MESSAGE value="added basic repeat counter" />
     <MESSAGE value="implemented repeat counter logic" />
     <MESSAGE value="improved repeat counter logic, added repeat learning state" />
     <MESSAGE value="before starting work of auth system" />
-    <option name="LAST_COMMIT_MESSAGE" value="before starting work of auth system" />
+    <MESSAGE value="small improvements" />
+    <MESSAGE value="working on project" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on project" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575146264980">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
+    <state x="788" y="231" key="CommitChangelistDialog2" timestamp="1575150064593">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="788" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575150064593" />
+    <state x="988" y="434" key="MultipleFileMergeDialog" timestamp="1575150234391">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="988" y="434" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575150234391" />
+    <state x="796" y="369" key="SettingsEditor" timestamp="1575146341789">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="796" y="369" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1575146341789" />
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1575146278085">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146278085" />
+    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1575150227453">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575150227453" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1575148419441">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1575148419441" />
   </component>
 </project>
