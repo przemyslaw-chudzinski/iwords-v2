@@ -1,0 +1,23 @@
+.top-message {
+
+  text-align: center;
+  padding: 1rem;
+  color: get-color(primaryWhite);
+
+  &--warning {
+    background-color: get-color(primaryOrange);
+  }
+
+  &--info {
+    background-color: get-color(primaryBlue);
+  }
+
+  &--error {
+    background-color: get-color(danger);
+  }
+
+  &--success {
+    background-color: get-color(success);
+  }
+
+}
