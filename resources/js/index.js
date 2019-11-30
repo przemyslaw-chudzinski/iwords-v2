@@ -14,6 +14,7 @@ const StatisticsSrvFactory = require('./services/statistics-service');
 const LearningCtrlFactory = require('./controllers/learning-controller');
 const ImportCsvCrlFactory = require('./controllers/import-csv-controller');
 const StatisticsCtrlFactory = require('./controllers/statistics-controller');
+const ToolbarUserMenuFactory = require('./controllers/toolbar-user-menu-controller');
 
 /* Main Module */
 const app = angular.module('appModule', ['ngMaterial', 'ngMessages', 'chart.js']);
@@ -22,10 +23,12 @@ const app = angular.module('appModule', ['ngMaterial', 'ngMessages', 'chart.js']
 app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', LearningCtrlFactory]);
 app.controller('ImportCsvCrl', ['$scope', 'csvSrv', ImportCsvCrlFactory]);
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
+app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuFactory]);
 /* Services */
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 app.factory('csvSrv', ['$http', CsvSrvFactory]);
 app.factory('statisticsSrv', ['$http', StatisticsSrvFactory]);
+
 
 
 

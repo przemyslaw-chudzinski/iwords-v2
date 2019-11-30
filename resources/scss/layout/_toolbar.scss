@@ -1,4 +1,17 @@
 .toolbar {
   height: 60px;
   background: get-color(primaryBlue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+
+  &__content {
+
+  }
+
+  &__actions {
+
+  }
+
 }
