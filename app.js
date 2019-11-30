@@ -5,11 +5,17 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
+const passport = require('passport');
+const initializePassport = require('./core/users/passport-config');
+const expressSession = require('express-session');
+const flash = require('express-flash');
+const {ensureAuthenticated, ensureNotAuthenticated} = require('./core/users/auth');
 
 /* Connect to database */
 mongoose.connect('mongodb://localhost:27017/iwords-db', {useNewUrlParser: true, useUnifiedTopology: true})
     .catch(err => console.log('db conn err', err));
 
+/* Template engine */
 app.engine('.hbs', exphbs({defaultLayout: 'app-layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
@@ -17,6 +23,39 @@ app.set('view engine', '.hbs');
 app.use(express.static(path.resolve(__dirname,'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+/* Express session */
+app.use(expressSession({
+    secret: 'some-session-secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+/* Flash */
+app.use(flash());
+// app.use(connectSession());
+
+app.use((req, res, next) => {
+    /* When user put wrong credentials */
+    res.locals.login_credentials_error = req.flash('error');
+    /* Messages on the top of the page */
+    res.locals.error_top_msg = req.flash('error_top_msg');
+    res.locals.warning_top_msg = req.flash('warning_top_msg');
+    res.locals.success_top_msg = req.flash('success_top_msg');
+    res.locals.info_top_msg = req.flash('info_top_msg');
+    /* Content flash messages */
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.info_msg = req.flash('info_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.warning_msg = req.flash('warning_msg');
+
+    next();
+});
+
+/* Initializes passport */
+initializePassport(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 
 /* API Routes */
 app.use('/api/expressions', require('./core/expressions/expressionsAPI'));
@@ -28,11 +67,12 @@ const corsOptions = {
 };
 app.use('/api/chrome-ext', cors(corsOptions), require('./core/expressions/iwordsChromeExtAPI'));
 
-/* Web Routes */
-app.use('/app', require('./routes/index'));
-
-/* Auth routes */
-app.use('/auth', require('./routes/auth'));
+/* Web Views */
+app.use('/app', ensureAuthenticated, require('./routes/index'));
+/* Auth Views */
+app.use('/auth', ensureNotAuthenticated, require('./routes/auth'));
+/* Controllers - layer for all sync requests in the app */
+app.use('/controllers', require('./core/controllers'));
 
 /* Server start */
 const port = process.env.PORT || 3000;
