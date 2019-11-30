@@ -1,9 +1,19 @@
 <!-- Auth page -->
 <div class="app-login-page">
 
-    <form method="post" action="/auth/login">
+    <form method="post" action="/controllers/auth/login">
 
         <md-card md-theme-watch>
+
+            {{#if login_credentials_error}}
+
+                <md-card-title>
+
+                    <div class="message message--error">{{login_credentials_error}}</div>
+
+                </md-card-title>
+
+            {{/if}}
 
             <md-card-title>
 
@@ -21,7 +31,7 @@
 
                     <label>Email</label>
 
-                    <input type="email">
+                    <input name="email" type="email">
 
                 </md-input-container>
 
@@ -29,7 +39,7 @@
 
                     <label>Hasło</label>
 
-                    <input type="password">
+                    <input name="password" type="password">
 
                 </md-input-container>
 

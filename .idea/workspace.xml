@@ -2,7 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/controllers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/message/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/users/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/users/passport-config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/users/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/users/userControllers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/users/userDAL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/scss/components/_message.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/scss/components/_top-message.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/prestart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/users-db-seeder/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/partials/flash-messages.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/partials/top-flash-messages.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/przemyslawchudzinski.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/przemyslawchudzinski.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/components/_components.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_components.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/app-layout.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/app-layout.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/auth-layout.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/auth-layout.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/aside.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/aside.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +47,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/user-login" />
+        <entry key="$PROJECT_DIR$" value="feature/intergration-with-words-api" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -105,7 +128,7 @@
       <workItem from="1574621636919" duration="162000" />
       <workItem from="1574680527891" duration="7536000" />
       <workItem from="1575142545135" duration="3193000" />
-      <workItem from="1575146277852" duration="3127000" />
+      <workItem from="1575146277852" duration="2947000" />
     </task>
     <task id="LOCAL-00002" summary="working on project">
       <created>1573488335464</created>
@@ -149,14 +172,7 @@
       <option name="project" value="LOCAL" />
       <updated>1574599466314</updated>
     </task>
-    <task id="LOCAL-00008" summary="working on project">
-      <created>1575150064738</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1575150064738</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,27 +193,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated" />
+    <MESSAGE value="working on project" />
     <MESSAGE value="added basic repeat counter" />
     <MESSAGE value="implemented repeat counter logic" />
     <MESSAGE value="improved repeat counter logic, added repeat learning state" />
     <MESSAGE value="before starting work of auth system" />
     <MESSAGE value="small improvements" />
-    <MESSAGE value="working on project" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on project" />
+    <option name="LAST_COMMIT_MESSAGE" value="small improvements" />
   </component>
   <component name="WindowStateProjectService">
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575146264980">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="788" y="231" key="CommitChangelistDialog2" timestamp="1575150064593">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="788" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575150064593" />
-    <state x="988" y="434" key="MultipleFileMergeDialog" timestamp="1575150234391">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="988" y="434" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575150234391" />
     <state x="796" y="369" key="SettingsEditor" timestamp="1575146341789">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -206,10 +214,6 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146278085" />
-    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1575150227453">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575150227453" />
     <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1575148419441">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

@@ -1,7 +1,10 @@
 <component name="ProjectDictionaryState">
   <dictionary name="przemyslawchudzinski">
     <words>
+      <w>bcrypt</w>
+      <w>exphbs</w>
       <w>iwords</w>
+      <w>resave</w>
     </words>
   </dictionary>
 </component>
