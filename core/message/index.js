@@ -24,9 +24,19 @@ class InternalServerErrorMessage extends Message {
     }
 }
 
+class WrongApiKeyMessage extends Message {
+    constructor(message) {
+        if (!message) {
+            message = 'Api key jest nie poprawny, lub nie został wprowadzony poprawnie';
+        }
+        super(message, severity.error);
+    }
+}
+
 module.exports = {
     severity,
     Message,
     WrongLoginCredentialsMessage,
-    InternalServerErrorMessage
+    InternalServerErrorMessage,
+    WrongApiKeyMessage
 };

@@ -20,8 +20,17 @@ async function getUserById(id) {
     }
 }
 
+async function getUserByChromeExtApiKey(apiKey) {
+    try {
+        return await User.findOne().where('apiKeys.chromeExt.token', apiKey)
+    } catch (e) {
+        throw new Error('getUserByChromeExtApiKey - Internal Server Error');
+    }
+}
+
 module.exports = {
     getUserByEmail,
-    getUserById
+    getUserById,
+    getUserByChromeExtApiKey
 };
 
