@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('../../core/users/user');
 const bcrypt = require('bcryptjs');
+const uuid = require('uuid');
 
 init()
     .then(() => {
@@ -50,13 +51,23 @@ async function init() {
         const regularUser = new User({
             name: 'Przemek User',
             email: 'dev@iwords.pl',
-            password
+            password,
+            apiKeys: {
+                chromeExt: {
+                    token: uuid()
+                }
+            }
         });
 
         const adminUser = new User({
             name: 'Przemek Admin',
             email: 'admin@iwords.pl',
-            password
+            password,
+            apiKeys: {
+                chromeExt: {
+                    token: uuid()
+                }
+            }
         });
 
         await regularUser.save();

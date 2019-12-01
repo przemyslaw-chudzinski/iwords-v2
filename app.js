@@ -10,6 +10,7 @@ const initializePassport = require('./core/users/passport-config');
 const expressSession = require('express-session');
 const flash = require('express-flash');
 const {ensureAuthenticated, ensureNotAuthenticated} = require('./core/users/auth');
+const {ensureApiKeyIsValid} = require('./core/users/iwordsChromeExtAuth');
 
 /* Connect to database */
 mongoose.connect('mongodb://localhost:27017/iwords-db', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -68,7 +69,7 @@ const corsOptions = {
     origin: 'chrome-extension://',
     optionsSuccessStatus: 200
 };
-app.use('/api/chrome-ext', cors(corsOptions), require('./core/expressions/iwordsChromeExtAPI'));
+app.use('/api/chrome-ext', [cors(corsOptions), ensureApiKeyIsValid], require('./core/expressions/iwordsChromeExtAPI'));
 
 /* Web Views */
 app.use('/app', ensureAuthenticated, require('./routes/index'));
