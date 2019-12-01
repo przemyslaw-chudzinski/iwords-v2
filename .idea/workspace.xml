@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/users/iwordsChromeExtAuth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/expressions/expression.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expression.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/expressions/iwordsChromeExtAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/iwordsChromeExtAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/message/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/message/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/users/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/users/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/users/userDAL.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/users/userDAL.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/users-db-seeder/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/users-db-seeder/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/intergration-with-words-api" />
+        <entry key="$PROJECT_DIR$" value="feature/22-23-24-tasks" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -179,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575194435895</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="before">
+      <created>1575194648280</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1575194648280</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,32 +224,45 @@
     <MESSAGE value="before push" />
     <MESSAGE value="implemented logout process" />
     <MESSAGE value="working on project" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on project" />
+    <MESSAGE value="before" />
+    <option name="LAST_COMMIT_MESSAGE" value="before" />
   </component>
   <component name="WindowStateProjectService">
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575146264980">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1575194435811">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1575210033873">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575194435811" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575210033873" />
+    <state x="988" y="434" key="MultipleFileMergeDialog" timestamp="1575210094997">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="988" y="434" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575210094997" />
     <state x="796" y="369" key="SettingsEditor" timestamp="1575146341789">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="796" y="369" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1575146341789" />
+    <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1575196636978">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575196636978" />
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1575146278085">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146278085" />
+    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1575210090584">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575210090584" />
     <state x="1042" y="341" key="refactoring.ChangeSignatureDialog" timestamp="1575154926966">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1042" y="341" key="refactoring.ChangeSignatureDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575154926966" />
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1575148419441">
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1575208945437">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1575148419441" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1575208945437" />
   </component>
 </project>
