@@ -10,6 +10,7 @@ router.post('/expression/add', async (req, res) => {
     exprModel.translations = translations;
     exprModel.exampleSentences = exampleSentences;
     exprModel.partOfSpeech = partOfSpeech;
+    exprModel.userId = req.user._id;
 
     try {
         const newExpr = await exprModel.save();
