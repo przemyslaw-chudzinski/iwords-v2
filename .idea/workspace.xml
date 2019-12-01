@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575194086672</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="working on project">
+      <created>1575194435895</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1575194435895</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +200,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated" />
-    <MESSAGE value="working on project" />
     <MESSAGE value="added basic repeat counter" />
     <MESSAGE value="implemented repeat counter logic" />
     <MESSAGE value="improved repeat counter logic, added repeat learning state" />
@@ -202,17 +207,18 @@
     <MESSAGE value="small improvements" />
     <MESSAGE value="before push" />
     <MESSAGE value="implemented logout process" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented logout process" />
+    <MESSAGE value="working on project" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on project" />
   </component>
   <component name="WindowStateProjectService">
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575146264980">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1575193960161">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1575194435811">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575193960161" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575194435811" />
     <state x="796" y="369" key="SettingsEditor" timestamp="1575146341789">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
