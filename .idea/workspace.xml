@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/controllers/toolbar-user-menu-controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/components/_toolbar-user-menu.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/partials/toolbar-user-menu.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/users/userControllers.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/users/userControllers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/toolbar-user-menu-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/toolbar-user-menu-controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/components/_components.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_components.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/components/_message.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_message.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_toolbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_toolbar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/toolbar-user-menu.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/toolbar-user-menu.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/partials/toolbar.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/toolbar.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,6 +112,7 @@
       <workItem from="1574680527891" duration="7536000" />
       <workItem from="1575142545135" duration="3193000" />
       <workItem from="1575146277852" duration="2947000" />
+      <workItem from="1575190756960" duration="2671000" />
     </task>
     <task id="LOCAL-00002" summary="working on project">
       <created>1573488335464</created>
@@ -159,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574599466314</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="before push">
+      <created>1575155604107</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1575155604107</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,13 +190,18 @@
     <MESSAGE value="improved repeat counter logic, added repeat learning state" />
     <MESSAGE value="before starting work of auth system" />
     <MESSAGE value="small improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="small improvements" />
+    <MESSAGE value="before push" />
+    <option name="LAST_COMMIT_MESSAGE" value="before push" />
   </component>
   <component name="WindowStateProjectService">
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575146264980">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1575155604016">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575155604016" />
     <state x="796" y="369" key="SettingsEditor" timestamp="1575146341789">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

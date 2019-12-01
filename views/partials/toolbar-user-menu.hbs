@@ -1,6 +1,32 @@
 <div class="toolbar-user-menu" ng-controller="ToolbarUserMenuCtrl">
-    <button class="toolbar-user-menu__trigger">Menu</button>
-    <div class="toolbar-user-menu__menu">
-        user menu content
-    </div>
+    <md-menu>
+
+        <md-button class="md-icon-button" ng-click="openMenu($mdMenu, $event)">
+
+            <span class="fa fa-user" md-menu-origin></span>
+
+        </md-button>
+
+        <md-menu-content width="3">
+
+<!--            <md-menu-item>-->
+
+<!--                <md-button>-->
+<!--                    Redial-->
+<!--                </md-button>-->
+
+<!--            </md-menu-item>-->
+
+<!--            <md-menu-divider></md-menu-divider>-->
+
+            <md-menu-item>
+
+                <md-button ng-href="/controllers/auth/logout">Wyloguj</md-button>
+
+            </md-menu-item>
+
+        </md-menu-content>
+
+    </md-menu>
+
 </div>
