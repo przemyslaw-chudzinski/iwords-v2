@@ -1,9 +1,17 @@
 const router = require('express').Router();
 const Expression = require('./expression');
+const {validateContentProvider} = require('./content-providers');
+const {Message, severity} = require('../message');
 
 router.post('/expression/add', async (req, res) => {
 
-    const {expression, translations, exampleSentences, partOfSpeech} = req.body;
+    const {expression, translations, exampleSentences, partOfSpeech, provider} = req.body;
+
+    if (!validateContentProvider(provider)) {
+        res.status(500);
+        return res.json({error: true, message: new Message('Unknown content provider', severity.error)});
+    }
+
     const exprModel = new Expression();
 
     exprModel.expression = expression;
@@ -11,6 +19,7 @@ router.post('/expression/add', async (req, res) => {
     exprModel.exampleSentences = exampleSentences;
     exprModel.partOfSpeech = partOfSpeech;
     exprModel.userId = req.user._id;
+    exprModel.provider = provider;
 
     try {
         const newExpr = await exprModel.save();

@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/users/iwordsChromeExtAuth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/expressions/content-providers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/expressions/expression.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expression.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/expressions/iwordsChromeExtAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/iwordsChromeExtAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/message/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/message/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/users/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/users/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/users/userDAL.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/users/userDAL.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/users-db-seeder/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/users-db-seeder/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575194648280</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1575210136965</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1575210136965</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,10 +233,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1575211770388">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1575211836368">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575211770388" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575211836368" />
     <state x="796" y="369" key="SettingsEditor" timestamp="1575146341789">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
