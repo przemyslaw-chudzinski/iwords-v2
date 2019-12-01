@@ -28,7 +28,10 @@ app.use(bodyParser.json());
 app.use(expressSession({
     secret: 'some-session-secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 10 // 10min
+    }
 }));
 
 /* Flash */
