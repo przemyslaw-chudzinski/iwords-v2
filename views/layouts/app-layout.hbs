@@ -7,23 +7,29 @@
     <title>iWords Platform</title>
     {{> styles}}
 </head>
-<body class="body">
+<body>
 
-    {{>aside}}
+    {{>top-flash-messages}}
 
-    <main class="main">
+    <div class="body">
 
-        {{>toolbar}}
+        {{>aside}}
 
-        <div class="content">
+        <main class="main">
 
-            {{>flash-messages}}
+            {{>toolbar}}
 
-            {{{body}}}
+            <div class="content">
 
-        </div>
+                {{>flash-messages}}
 
-    </main>
+                {{{body}}}
+
+            </div>
+
+        </main>
+
+    </div>
 
 {{> scripts}}
 </body>

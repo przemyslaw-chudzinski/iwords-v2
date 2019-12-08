@@ -32,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/29-handling-when-user-has-no-expressions" />
+        <entry key="$PROJECT_DIR$" value="feature/34-save-info-about-provider-to-the-model" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -249,14 +249,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1575808433640">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1575211864000">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575808433640" />
-    <state x="988" y="434" key="MultipleFileMergeDialog" timestamp="1575808482885">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="988" y="434" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575808482885" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575211864000" />
     <state x="796" y="369" key="SettingsEditor" timestamp="1575146341789">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -269,10 +265,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146278085" />
-    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1575808478228">
+    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1575211819213">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575808478228" />
+    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575211819213" />
     <state x="1042" y="341" key="refactoring.ChangeSignatureDialog" timestamp="1575154926966">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

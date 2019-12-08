@@ -11,6 +11,7 @@ const expressSession = require('express-session');
 const flash = require('express-flash');
 const {ensureAuthenticated, ensureNotAuthenticated} = require('./core/users/auth');
 const {ensureApiKeyIsValid} = require('./core/users/iwordsChromeExtAuth');
+const connectFlash = require('connect-flash');
 
 /* Connect to database */
 mongoose.connect('mongodb://localhost:27017/iwords-db', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -27,13 +28,16 @@ app.use(bodyParser.json());
 
 /* Express session */
 app.use(expressSession({
-    secret: 'some-session-secret',
+    secret: 'some-session-secret', // TODO: Change it on production
     resave: true,
     saveUninitialized: true,
     cookie: {
         maxAge: 1000 * 60 * 10 // 10min
     }
 }));
+
+/* Connect flash */
+// app.use(connectFlash());
 
 /* Flash */
 app.use(flash());
