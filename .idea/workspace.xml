@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/services/service-base.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/setUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/expressions/expressionDAL.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionDAL.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/users/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/users/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/statistics-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/statistics-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/services/expression-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/services/expression-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/services/statistics-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/services/statistics-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_toolbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_toolbar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/app-layout.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/app-layout.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/toolbar.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/toolbar.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/35-taking-expressions-associated-with-current-logged-user" />
+        <entry key="$PROJECT_DIR$" value="feature/34-save-info-about-provider-to-the-model" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -201,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575211864078</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1575808544691</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1575808544691</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,18 +253,17 @@
     <MESSAGE value="added information about content provider" />
     <MESSAGE value="before pull" />
     <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
-    <MESSAGE value="implemented fetching data associated with logged user" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented fetching data associated with logged user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
   </component>
   <component name="WindowStateProjectService">
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575146264980">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1575846175120">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1575211864000">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575846175120" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1575211864000" />
     <state x="796" y="369" key="SettingsEditor" timestamp="1575146341789">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -258,10 +276,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146278085" />
-    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1575846355542">
+    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1575211819213">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575846355542" />
+    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575211819213" />
     <state x="1042" y="341" key="refactoring.ChangeSignatureDialog" timestamp="1575154926966">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

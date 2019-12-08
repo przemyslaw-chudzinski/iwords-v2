@@ -1,3 +1,4 @@
+require('./setUp');
 const angular = require('angular');
 require('angular-aria');
 require('angular-animate');
