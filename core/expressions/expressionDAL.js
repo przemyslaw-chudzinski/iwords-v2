@@ -141,6 +141,13 @@ function countExpressionsInRepeat() {
         .countDocuments()
 }
 
+function countAllUserExpressions(userId) {
+    return Expression
+        .find()
+        .where('userId', userId)
+        .countDocuments();
+}
+
 function fetchRepeatExpressions(limit = 5) {
     const sort = {
         field: 'desc',
@@ -171,5 +178,6 @@ module.exports = {
     fetchStatisticsData,
     randomExpression,
     countExpressionsInRepeat,
-    fetchRepeatExpressions
+    fetchRepeatExpressions,
+    countAllUserExpressions
 };

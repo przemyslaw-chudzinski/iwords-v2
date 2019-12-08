@@ -19,8 +19,8 @@ class WrongLoginCredentialsMessage extends Message {
 }
 
 class InternalServerErrorMessage extends Message {
-    constructor() {
-        super('Wystąpił nieoczekiwany błąd serwera', severity.error);
+    constructor(extraReason = '') {
+        super('Wystąpił nieoczekiwany błąd serwera' + ' ' + extraReason , severity.error);
     }
 }
 
