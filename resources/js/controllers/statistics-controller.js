@@ -7,9 +7,7 @@ module.exports = function StatisticsCtrlFactory($scope, statisticsSrv) {
 
             /* Render chart */
             $scope.series = ['Poprawne odpowiedzi', 'Błędne odpowiedzi'];
-
             $scope.labels = response.data.map(item => item.expression);
-
             $scope.data = [
                 response.data.map(item => item.correctAnswers),
                 response.data.map(item => item.incorrectAnswers),

@@ -1,12 +1,15 @@
+const ServiceBase = require('./service-base');
+
 /* Statistics service */
-class StatisticsService {
+class StatisticsService extends ServiceBase {
 
     constructor(http) {
+        super();
         this.http = http;
     }
 
     fetchExprStatistics() {
-        return this.http.get('/api/expressions/statistics');
+        return this.http.get('/api/expressions/statistics', {params: {userId: this.userId}});
     }
 }
 

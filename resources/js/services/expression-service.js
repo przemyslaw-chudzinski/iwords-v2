@@ -1,15 +1,18 @@
+const ServiceBase = require('./service-base');
+
 /* Expression service */
-class ExpressionService {
+class ExpressionService extends ServiceBase {
     constructor(http) {
+        super();
         this.http = http;
     }
 
     fetchExpression() {
-        return this.http.get('/api/expressions/expression');
+        return this.http.get('/api/expressions/expression', {userId: this.userId});
     }
 
     fetchExpressions(onlyRepeats = false) {
-        return this.http.get('/api/expressions/expressions', {params: {onlyRepeats}});
+        return this.http.get('/api/expressions/expressions', {params: {onlyRepeats, userId: this.userId}});
     }
 
     incrementAnswersCounter(expressionId, correct = true) {
@@ -17,7 +20,7 @@ class ExpressionService {
     }
 
     fetchRepeatCount() {
-        return this.http.get('/api/expressions/repeat-count');
+        return this.http.get('/api/expressions/repeat-count', {params: {userId: this.userId}});
     }
 }
 
