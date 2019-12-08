@@ -1,7 +1,7 @@
 const Expression = require('./expression');
 const _ = require('lodash');
 
-function fetchExpression(sortConfig = {}) {
+function fetchExpression(userId, sortConfig = {}) {
 
     const sort = {
         field: 'desc',
@@ -18,11 +18,12 @@ function fetchExpression(sortConfig = {}) {
 
     return Expression
         .findOne()
+        .where('userId', userId)
         .sort(sort)
         .select(select);
 }
 
-function fetchRepeatExpression(sortConfig = {}) {
+function fetchRepeatExpression(userId, sortConfig = {}) {
 
     const sort = {
         field: 'desc',
@@ -41,6 +42,7 @@ function fetchRepeatExpression(sortConfig = {}) {
     return Expression
         .findOne()
         .where('repeat.state', 1)
+        .where('userId', userId)
         .sort(sort)
         .select(select);
 
@@ -81,7 +83,7 @@ function incrementExpressionCounters({id, correctAnswer}) {
         });
 }
 
-function fetchAllExpressions(userConfig = {}) {
+function fetchAllExpressions(userId, userConfig = {}) {
 
     const config = {
         select: {
@@ -93,12 +95,15 @@ function fetchAllExpressions(userConfig = {}) {
         ...userConfig
     };
 
-    return Expression.find({}).select(config.select);
+    return Expression
+        .find({})
+        .where('userId', userId)
+        .select(config.select);
 
 }
 
-function fetchStatisticsData() {
-    return fetchAllExpressions({
+function fetchStatisticsData(userId) {
+    return fetchAllExpressions(userId,{
         select: {
             expression: 1,
             correctAnswers: 1,
@@ -107,10 +112,10 @@ function fetchStatisticsData() {
     });
 }
 
-async function randomExpression() {
+async function randomExpression(userId) {
 
     try {
-        const expressions = await fetchAllExpressions({
+        const expressions = await fetchAllExpressions(userId,{
             select: {
                 expression: 1,
                 translations: 1,
@@ -122,7 +127,7 @@ async function randomExpression() {
         const randomIndex = _.random(0, expressions.length - 1);
         return expressions[randomIndex];
     } catch (e) {
-        return fetchExpression();
+        return fetchExpression(userId);
     }
 }
 
@@ -134,9 +139,11 @@ async function saveExpressions(expressions = null) {
     return null;
 }
 
-function countExpressionsInRepeat() {
+function countExpressionsInRepeat(userId) {
+    console.log(userId);
     return Expression
         .find()
+        .where('userId', userId)
         .where('repeat.state', 1)
         .countDocuments()
 }
@@ -148,7 +155,7 @@ function countAllUserExpressions(userId) {
         .countDocuments();
 }
 
-function fetchRepeatExpressions(limit = 5) {
+function fetchRepeatExpressions(userId, limit = 5) {
     const sort = {
         field: 'desc',
         // updatedAt : 1
@@ -165,6 +172,7 @@ function fetchRepeatExpressions(limit = 5) {
     return Expression
         .find()
         .where('repeat.state', 1)
+        .where('userId', userId)
         .sort(sort)
         .limit(limit)
         .select(select);

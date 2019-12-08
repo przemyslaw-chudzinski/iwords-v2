@@ -39,7 +39,7 @@ router.get('/expression', (req, res) => {
 
     // const type = req.query.type || null; // new, repeat
 
-    fetchExpression()
+    fetchExpression(req.query.userId)
         .then(record => {
             res.status = 200;
             res.json(record);
@@ -55,6 +55,7 @@ router.get('/expression', (req, res) => {
 router.get('/expressions', async (req, res) => {
 
     const onlyRepeats = req.query.onlyRepeats;
+    const userId = req.query.userId;
 
     try {
 
@@ -62,12 +63,12 @@ router.get('/expressions', async (req, res) => {
         // const repeatCount = await countExpressionsInRepeat();
 
         if (onlyRepeats === 'false') {
-            const expr1 = await fetchRepeatExpression();
-            const expr2 = await fetchExpression();
-            const expr3 = await randomExpression();
+            const expr1 = await fetchRepeatExpression(userId);
+            const expr2 = await fetchExpression(userId);
+            const expr3 = await randomExpression(userId);
             data = [expr1, expr2, expr3].filter(value => !!value);
         } else {
-            data = await fetchRepeatExpressions();
+            data = await fetchRepeatExpressions(userId);
         }
 
         res.status = 200;
@@ -134,10 +135,9 @@ router.post('/import', upload.single('csv'), (req, res) => {
 });
 
 /* Statistics */
-
 router.get('/statistics', (req, res) => {
 
-    fetchStatisticsData()
+    fetchStatisticsData(req.query.userId)
         .then(data => {
             res.status = 200;
             res.json(data);
@@ -151,7 +151,7 @@ router.get('/statistics', (req, res) => {
 /* Repeat count */
 router.get('/repeat-count', (req, res) => {
 
-    countExpressionsInRepeat()
+    countExpressionsInRepeat(req.query.userId)
         .then(repeatCount => {
             res.status = 200;
             res.json({repeatCount});
