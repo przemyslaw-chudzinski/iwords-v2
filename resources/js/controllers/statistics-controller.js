@@ -1,9 +1,12 @@
 module.exports = function StatisticsCtrlFactory($scope, statisticsSrv) {
 
     $scope.data = null;
+    $scope.expressionsCount = 0;
 
     statisticsSrv.fetchExprStatistics()
         .then(response => {
+
+            $scope.expressionsCount = response.data.length;
 
             /* Render chart */
             $scope.series = ['Poprawne odpowiedzi', 'Błędne odpowiedzi'];

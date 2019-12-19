@@ -27,12 +27,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 /* Express session */
+// TODO: Set config object for properly options
 app.use(expressSession({
     secret: 'some-session-secret', // TODO: Change it on production
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 1000 * 60 * 10 // 10min
+        maxAge: 1000 * 60 * 10 * 60, // 60min,
+        expires: new Date('23-01-2030') // TODO: Change it later
     }
 }));
 
