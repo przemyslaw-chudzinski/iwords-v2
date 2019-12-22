@@ -2,7 +2,8 @@
 
   width: 60rem;
   max-width: 60rem;
-  margin: 0 auto;
+  //margin: 0 auto;
+  align-self: flex-start;
 
   &__data {
     margin-bottom: 5rem;

@@ -1,0 +1,43 @@
+.expression-sentences {
+
+  &__heading {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  &__list {
+    list-style-position: inside;
+  }
+
+  &__list-item {
+
+    margin-bottom: .5rem;
+
+    span {
+      font-weight: 700;
+      text-decoration: underline;
+      cursor: pointer;
+      color: get-color(darkBlue);
+    }
+
+    &.active {
+      .expression-sentences__sentence {
+        visibility: visible;
+        opacity: 1;
+        height: 100%;
+      }
+    }
+
+  }
+
+  &__sentence {
+    font-weight: 700;
+    color: get-color(darkBlue);
+    margin-left: 1.5rem;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transition: all .2s ease-in-out;
+  }
+
+}
