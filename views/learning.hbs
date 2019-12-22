@@ -1,6 +1,7 @@
 <!-- Main page -->
 <div class="app-learning-page" ng-cloak>
 
+    <!-- Learning widget -->
     {{# if expressionsCount }}
         <!-- When expressions are available -->
         <div class="learning card card--white card--with-shadow" ng-controller="LearningCtrl">
@@ -78,5 +79,10 @@
             W tym momencie nie masz żadnych przypisanych wyrażeń. Kiedy dodasz wyrażenia, tryb nauki zostanie odblokowany.
         </div>
     {{/if}}
+
+    <!-- Extra sentences widget -->
+    <div class="extra-sentences">
+        Dodatkow zdania
+    </div>
 
 </div>
