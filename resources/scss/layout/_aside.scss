@@ -1,5 +1,30 @@
 .aside {
-  width: 25rem;
-  height: 100vh;
+  /* When aside is closed */
+  width: 4rem;
   background-color: get-color(primaryWhite);
+  transition: width .4s ease-in-out;
+
+  .navigation__link-text {
+    display: none;
+  }
+
+  .logo__text {
+    display: none;
+  }
+
+  /* When aside is opened */
+  &.opened {
+    width: 20rem;
+    transition: width .4s ease-in-out;
+
+    .navigation__link-text {
+      display: block;
+    }
+
+    .logo__text {
+      display: flex;
+    }
+
+  }
+
 }
