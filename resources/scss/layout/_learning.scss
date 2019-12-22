@@ -59,4 +59,21 @@
     margin: 0 auto;
   }
 
+  &__extra {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+  }
+
+  &__extra-item {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  &__extra-partOfSpeech {
+    text-align: center;
+    color: get-color(darkBlue);
+    font-weight: 700;
+  }
+
 }
