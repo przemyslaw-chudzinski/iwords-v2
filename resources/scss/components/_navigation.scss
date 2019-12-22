@@ -12,7 +12,10 @@
     color: get-color(darkBlue);
     text-decoration: none;
     padding: 1.5rem;
-    display: block;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: all .2s ease-in-out;
 
     &:hover, &--active {
       color: get-color(primaryWhite);
