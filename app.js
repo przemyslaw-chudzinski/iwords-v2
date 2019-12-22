@@ -12,13 +12,18 @@ const flash = require('express-flash');
 const {ensureAuthenticated, ensureNotAuthenticated} = require('./core/users/auth');
 const {ensureApiKeyIsValid} = require('./core/users/iwordsChromeExtAuth');
 const connectFlash = require('connect-flash');
+const hbsHelpers = require('./helpers/handlebars');
 
 /* Connect to database */
 mongoose.connect('mongodb://localhost:27017/iwords-db', {useNewUrlParser: true, useUnifiedTopology: true})
     .catch(err => console.log('db conn err', err));
 
 /* Template engine */
-app.engine('.hbs', exphbs({defaultLayout: 'app-layout', extname: '.hbs'}));
+app.engine('.hbs', exphbs({
+    defaultLayout: 'app-layout',
+    extname: '.hbs',
+    helpers: hbsHelpers
+}));
 app.set('view engine', '.hbs');
 
 /* Global middleware */

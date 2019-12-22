@@ -14,7 +14,7 @@
     padding: 1.5rem;
     display: block;
 
-    &:hover {
+    &:hover, &--active {
       color: get-color(primaryWhite);
       background: get-color(primaryBlue);
     }

@@ -2,19 +2,24 @@ const router = require('express').Router();
 const {countAllUserExpressions} = require('../core/expressions/expressionDAL');
 
 /* Main page */
-router.get('/', (req, res) => res.render('index', {}));
+router.get('/', (req, res) => res.render('index', {name: 'app.dashboard'}));
 /* Learning page */
 router.get('/learning', async (req, res) => {
 
     // req.flash('error_top_msg', 'some info');
     // res.render('learning', {expressionsCount: 0});
 
+    const viewData = {
+        name: 'app.learning',
+        expressionsCount: 0
+    };
+
     try {
-        const expressionsCount = await countAllUserExpressions(req.user._id);
-        res.render('learning', {expressionsCount});
+        viewData.expressionsCount = await countAllUserExpressions(req.user._id);
+        res.render('learning', viewData);
     } catch (e) {
         req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych do nauki');
-        res.render('learning', {expressionsCount: 0});
+        res.render('learning', viewData);
     }
 
 });
