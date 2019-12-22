@@ -17,6 +17,9 @@ const ImportCsvCrlFactory = require('./controllers/import-csv-controller');
 const StatisticsCtrlFactory = require('./controllers/statistics-controller');
 const ToolbarUserMenuCtrlFactory = require('./controllers/toolbar-user-menu-controller');
 
+/* Directives */
+const ExpressionSentenceTogglerDirFactory = require('./directives/expression-sentence-toggler-directive');
+
 /* Main Module */
 const app = angular.module('appModule', ['ngMaterial', 'ngMessages', 'chart.js']);
 
@@ -29,6 +32,8 @@ app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 app.factory('csvSrv', ['$http', CsvSrvFactory]);
 app.factory('statisticsSrv', ['$http', StatisticsSrvFactory]);
+/* Directives */
+app.directive('expressionSentenceToggler', ExpressionSentenceTogglerDirFactory);
 
 
 

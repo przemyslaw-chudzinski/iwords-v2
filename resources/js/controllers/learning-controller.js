@@ -81,6 +81,10 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
         }, false, $scope.repeatState.state);
     };
 
+    $scope.hasExampleSentences = function () {
+        return $scope.currentExpr && $scope.currentExpr.exampleSentences && $scope.currentExpr.exampleSentences.length;
+    };
+
     function handleCorrectAnswer() {
         $scope.answerSuccess = true;
 
@@ -134,6 +138,10 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
 
         }, 2000);
     }
+
+    // $scope.toggleSentenceTranslationVisibility = function (sentenceId) {
+    //     console.log(sentenceId);
+    // };
 
     function handleIncorrectAnswer() {
         $scope.answerWrong = true;

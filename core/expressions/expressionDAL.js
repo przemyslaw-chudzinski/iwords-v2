@@ -14,7 +14,8 @@ function fetchExpression(userId, sortConfig = {}) {
         expression: 1,
         translations: 1,
         description: 1,
-        partOfSpeech: 1
+        partOfSpeech: 1,
+        exampleSentences: 1
     };
 
     return Expression
@@ -38,7 +39,8 @@ function fetchRepeatExpression(userId, sortConfig = {}) {
         translations: 1,
         repeat: 1,
         description: 1,
-        partOfSpeech: 1
+        partOfSpeech: 1,
+        exampleSentences: 1
     };
 
     return Expression
@@ -124,7 +126,8 @@ async function randomExpression(userId) {
                 correctAnswers: 1,
                 incorrectAnswers: 1,
                 repeat: 1,
-                partOfSpeech: 1
+                partOfSpeech: 1,
+                exampleSentences: 1
             }
         });
         const randomIndex = _.random(0, expressions.length - 1);
@@ -170,7 +173,8 @@ function fetchRepeatExpressions(userId, limit = 5) {
         translations: 1,
         repeat: 1,
         description: 1,
-        partOfSpeech: 1
+        partOfSpeech: 1,
+        exampleSentences: 1
     };
 
     return Expression

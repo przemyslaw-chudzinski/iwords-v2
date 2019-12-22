@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/directives/expression-sentence-toggler-directive.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/scss/layout/_expression-sentences.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/przemyslawchudzinski.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/przemyslawchudzinski.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/expressions/expressionDAL.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionDAL.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/learning-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/learning-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_layout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_learning.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_learning.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_learning.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_learning.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/learning.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/learning.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -235,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577014394282</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="before checkout">
+      <created>1577014667875</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1577014667875</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,17 +286,18 @@
     <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
     <MESSAGE value="some improvements" />
     <MESSAGE value="show up info about part of speech" />
-    <option name="LAST_COMMIT_MESSAGE" value="show up info about part of speech" />
+    <MESSAGE value="before checkout" />
+    <option name="LAST_COMMIT_MESSAGE" value="before checkout" />
   </component>
   <component name="WindowStateProjectService">
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575146264980">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577014394188">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577014667784">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577014394188" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577014667784" />
     <state x="796" y="369" key="SettingsEditor" timestamp="1575146341789">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
