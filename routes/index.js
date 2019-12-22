@@ -11,7 +11,8 @@ router.get('/learning', async (req, res) => {
 
     const viewData = {
         name: 'app.learning',
-        expressionsCount: 0
+        expressionsCount: 0,
+        pageTitle: 'Tryb nauki'
     };
 
     try {
