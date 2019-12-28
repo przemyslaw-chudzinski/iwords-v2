@@ -1,6 +1,57 @@
 <!-- Your expressions -->
-<div class="app-your-expressions-page">
+<div class="app-your-expressions-page" ng-controller="YourExpressionsCtrl" ng-cloak>
 
-   your expressions
+   <div class="inner-container">
+
+       <!-- List -->
+       <div class="expressions-list card card--white card--with-shadow">
+           <!-- Header -->
+           <div class="card__header">
+               <!-- Filter input -->
+               <div class="filter-input">
+                   <!-- Icon -->
+                   <div class="filter-input__icon">
+                       <span class="fa fa-search"></span>
+                   </div>
+                   <input class="filter-input__input" type="text" placeholder="Szukaj">
+               </div>
+           </div>
+
+           <!-- Card content -->
+           <div class="card__content">
+
+               <!-- Expressions list -->
+               <ul class="list list--primary-style">
+                   <li class="list__item">item</li>
+                   <li class="list__item">item</li>
+                   <li class="list__item">item</li>
+                   <li class="list__item">item</li>
+                   <li class="list__item">item</li>
+                   <li class="list__item">item</li>
+               </ul>
+
+               <!-- Content overlay -->
+               <div class="card__content-overlay"></div>
+
+           </div>
+
+           <!-- Footer -->
+           <div class="card__footer">
+               <!-- Pagination -->
+               <div class="pagination">
+                   <md-button class="md-icon-button md-primary" aria-label="Poprzednia strona">
+                       <md-tooltip md-direction="top">Poprzednia strona</md-tooltip>
+                       <span class="fa fa-angle-left"></span>
+                   </md-button>
+
+                   <md-button class="md-icon-button md-primary" aria-label="Następna strona">
+                       <md-tooltip md-direction="top">Następna strona</md-tooltip>
+                       <span class="fa fa-angle-right"></span>
+                   </md-button>
+               </div>
+           </div>
+       </div>
+
+   </div>
 
 </div>
