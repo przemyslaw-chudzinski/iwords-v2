@@ -30,5 +30,16 @@ router.get('/import', (req, res) => res.render('import', {}));
 router.get('/dictionary', (req, res) => res.render('dictionary', {}));
 /* Statistics */
 router.get('/statistics', (req, res) => res.render('statistics'));
+/* Your expressions */
+router.get('/your-expressions', (req, res) => {
+
+    const viewData = {
+        name: 'app.yourExpressions',
+        pageTitle: 'Twoje wyrażenia'
+    };
+
+    res.render('your-expressions', viewData);
+
+});
 
 module.exports = router;
