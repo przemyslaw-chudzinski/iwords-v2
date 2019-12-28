@@ -14,4 +14,9 @@
     padding: 0;
   }
 
+  .card__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
 }

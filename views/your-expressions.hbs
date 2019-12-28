@@ -15,6 +15,37 @@
                    </div>
                    <input class="filter-input__input" type="text" placeholder="Szukaj">
                </div>
+               <!-- List options -->
+               <md-menu>
+                   <!-- Menu trigger -->
+                   <md-button ng-click="openMenu($mdMenu, $event)" class="md-icon-button md-primary">
+                       <span md-menu-origin class="fa fa-ellipsis-v"></span>
+                   </md-button>
+
+                   <!-- Menu items -->
+                   <md-menu-content width="3">
+
+                       <md-menu-item>
+                           <md-button>
+                               Exportuj do pdf
+                           </md-button>
+                       </md-menu-item>
+
+                       <md-menu-item>
+                           <md-button>
+                               Exportuj do csv
+                           </md-button>
+                       </md-menu-item>
+
+                       <md-menu-item>
+                           <md-button>
+                               Exportuj do tsv
+                           </md-button>
+                       </md-menu-item>
+
+                   </md-menu-content>
+               </md-menu>
+
            </div>
 
            <!-- Card content -->
