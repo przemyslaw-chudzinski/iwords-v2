@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/controllers/body-controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/components/_navigation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_navigation.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_aside.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_aside.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_layout.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/app-layout.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/app-layout.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/partials/aside.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/aside.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/toolbar.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/toolbar.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/47-display-extra-sentences" />
+        <entry key="$PROJECT_DIR$" value="feature/49-toggle-aside-width" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,6 +43,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
@@ -122,6 +116,8 @@
       <workItem from="1576182953952" duration="580000" />
       <workItem from="1576785915852" duration="1266000" />
       <workItem from="1577006577130" duration="464000" />
+      <workItem from="1577182215563" duration="176000" />
+      <workItem from="1577380505884" duration="492000" />
     </task>
     <task id="LOCAL-00002" summary="working on project">
       <created>1573488335464</created>
@@ -319,10 +315,11 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575196636978" />
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1577006585612">
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1577380505308">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1577006585612" />
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1577380505308" />
+    <state x="954" y="541" key="com.intellij.ide.util.TipDialog/0.23.2560.1353@0.23.2560.1353" timestamp="1577182216554" />
     <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1575211819213">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
