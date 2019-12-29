@@ -169,7 +169,7 @@ router.get('/repeat-count', (req, res) => {
 router.get('/user-expressions', async (req, res) => {
 
     const page = +req.query.page || null;
-    const search = req.query.search || null;
+    const search = req.query.search || '';
     const userId = req.query.userId;
     const limit = +req.query.limit;
 
@@ -182,7 +182,7 @@ router.get('/user-expressions', async (req, res) => {
 
     try {
        const data = await fetchAllExpressions(config);
-       const total = await countAllUserExpressions(userId);
+       const total = await countAllUserExpressions(config);
        await res.json({data, total});
     } catch (e) {
         res.status = 400;

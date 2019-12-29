@@ -40,7 +40,7 @@ router.get('/your-expressions', async (req, res) => {
     };
 
     try {
-        const total = await countAllUserExpressions(req.user._id);
+        const total = await countAllUserExpressions({userId: req.user._id});
         viewData.hasExpressions = total > 0;
         res.render('your-expressions', viewData);
     } catch (e) {

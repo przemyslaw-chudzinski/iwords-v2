@@ -9,6 +9,8 @@ module.exports = function YourExpressionsCtrlFactory ($scope, expressionSrv) {
     $scope.nextPageDisable = false;
     /* Show card overlay */
     $scope.fetching = true;
+    /* Filter search */
+    $scope.filterSearch = '';
 
     expressionSrv.fetchUsersExpressions({params: {...$scope.pagination}})
         .then(res => {
@@ -64,6 +66,30 @@ module.exports = function YourExpressionsCtrlFactory ($scope, expressionSrv) {
                 console.log('something went wrong');
             });
 
+    };
+
+    /* Filter input change handler */
+    $scope.handleFilterInputChange = function () {
+        // console.log($scope.filterSearch);
+        $scope.fetching = true;
+        /* Reset pagination */
+        $scope.pagination = {
+            page: 1,
+            limit: 30
+        };
+        expressionSrv.fetchUsersExpressions({params: {...$scope.pagination, search: $scope.filterSearch}})
+            .then(res => {
+                $scope.expressions = res.data.data;
+                /* Hide card overlay */
+                $scope.fetching = false;
+                /* Update pagination controls */
+                const maxPageNumber = Math.ceil(res.data.total / $scope.pagination.limit);
+                $scope.prevPageDisable = $scope.pagination.page === 1 || $scope.fetching;
+                $scope.nextPageDisable = $scope.pagination.page === maxPageNumber || $scope.fetching;
+            })
+            .catch(err => {
+                console.log('something went wrong');
+            });
     };
 
 };

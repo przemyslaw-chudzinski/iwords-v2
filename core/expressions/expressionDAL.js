@@ -102,8 +102,12 @@ function fetchAllExpressions(config = {}) {
         ...config
     };
 
+    const expression = new RegExp( _config.search, 'ig');
+
     return Expression
-        .find({})
+        .find({
+            expression
+        })
         .where('userId', _config.userId)
         .limit(_config.limit)
         .skip(_config.skip)
@@ -158,10 +162,19 @@ function countExpressionsInRepeat(userId) {
         .countDocuments();
 }
 
-function countAllUserExpressions(userId) {
+function countAllUserExpressions(config = {}) {
+
+    const _config = {
+        userId: null,
+        search: '',
+        ...config
+    };
+
+    const expression = new RegExp( _config.search, 'ig');
+
     return Expression
-        .find()
-        .where('userId', userId)
+        .find({expression})
+        .where('userId', _config.userId)
         .countDocuments();
 }
 
