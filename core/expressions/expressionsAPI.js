@@ -43,11 +43,11 @@ router.get('/expression', (req, res) => {
 
     fetchExpression(req.query.userId)
         .then(record => {
-            res.status = 200;
+            res.status(200);
             res.json(record);
         })
         .catch(err =>  {
-            res.status = 400;
+            res.status(400);
             res.json({error: true});
         });
 });
@@ -66,18 +66,18 @@ router.get('/expressions', async (req, res) => {
 
         if (onlyRepeats === 'false') {
             const expr1 = await fetchRepeatExpression({userId});
-            const expr2 = await fetchExpression(userId);
+            const expr2 = await fetchExpression({userId});
             const expr3 = await randomExpression(userId);
             data = [expr1, expr2, expr3].filter(value => !!value);
         } else {
-            data = await fetchRepeatExpressions(userId);
+            data = await fetchRepeatExpressions({userId});
         }
 
-        res.status = 200;
+        res.status(200);
         await res.json({data});
 
     } catch (e) {
-        res.status = 400;
+        res.status(400);
         await res.json({error: true});
     }
 
@@ -91,11 +91,11 @@ router.post('/expression/:id/increment-counter', (req, res) => {
 
     incrementExpressionCounters({id, correctAnswer})
         .then(() => {
-            res.status = 200;
+            res.status(200);
             res.json({});
         })
         .catch(err => {
-            res.status = 400;
+            res.status(400);
             res.json({error: true});
         });
 
@@ -126,10 +126,10 @@ router.post('/import', upload.single('csv'), (req, res) => {
         .on('end', async () => {
             try {
                 await saveExpressions(results);
-                res.status = 200;
+                res.status(200);
                 await res.json({});
             } catch (e) {
-                res.status = 500;
+                res.status(400);
                 await res.json({error: true});
             }
         });
@@ -141,11 +141,11 @@ router.get('/statistics', (req, res) => {
 
     fetchStatisticsData(req.query.userId)
         .then(data => {
-            res.status = 200;
+            res.status(200);
             res.json(data);
         })
         .catch(err =>  {
-            res.status = 400;
+            res.status(400);
             res.json({error: true});
         });
 });
@@ -155,11 +155,11 @@ router.get('/repeat-count', (req, res) => {
 
     countExpressionsInRepeat(req.query.userId)
         .then(repeatCount => {
-            res.status = 200;
+            res.status(200);
             res.json({repeatCount});
         })
         .catch(err => {
-            res.status = 400;
+            res.status(400);
             res.json({error: true});
         });
 
@@ -185,7 +185,7 @@ router.get('/user-expressions', async (req, res) => {
        const total = await countAllUserExpressions(config);
        await res.json({data, total});
     } catch (e) {
-        res.status = 400;
+        res.status(400);
         await res.json({error: true});
     }
 

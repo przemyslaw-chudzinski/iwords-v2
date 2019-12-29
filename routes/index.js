@@ -6,9 +6,6 @@ router.get('/', (req, res) => res.render('index', {name: 'app.dashboard'}));
 /* Learning page */
 router.get('/learning', async (req, res) => {
 
-    // req.flash('error_top_msg', 'some info');
-    // res.render('learning', {expressionsCount: 0});
-
     const viewData = {
         name: 'app.learning',
         expressionsCount: 0,
@@ -16,7 +13,7 @@ router.get('/learning', async (req, res) => {
     };
 
     try {
-        viewData.expressionsCount = await countAllUserExpressions(req.user._id);
+        viewData.expressionsCount = await countAllUserExpressions({userId: req.user._id});
         res.render('learning', viewData);
     } catch (e) {
         req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych do nauki');
