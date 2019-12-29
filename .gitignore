@@ -2,8 +2,6 @@ node_modules
 package-lock.json
 yarn-lock.json
 uploads
-public/css
-public/js
 .idea
 .idea/workspace.xml
 
