@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const exphbs  = require('express-handlebars');
 const path = require('path');
@@ -11,7 +12,6 @@ const expressSession = require('express-session');
 const flash = require('express-flash');
 const {ensureAuthenticated, ensureNotAuthenticated} = require('./core/users/auth');
 const {ensureApiKeyIsValid} = require('./core/users/iwordsChromeExtAuth');
-const connectFlash = require('connect-flash');
 const hbsHelpers = require('./helpers/handlebars');
 
 /* Connect to database */
@@ -43,12 +43,8 @@ app.use(expressSession({
     }
 }));
 
-/* Connect flash */
-// app.use(connectFlash());
-
 /* Flash */
 app.use(flash());
-// app.use(connectSession());
 
 app.use((req, res, next) => {
     /* When user put wrong credentials */
