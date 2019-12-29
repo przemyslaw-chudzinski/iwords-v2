@@ -32,6 +32,10 @@ class ExpressionService extends ServiceBase {
         };
         return this.http.get(this.prefix + '/user-expressions', {params: {userId: this.userId, ...queryParams}});
     }
+
+    exportToCsv() {
+        return this.http.get(this.prefix + '/data-export/csv', {params: {userId: this.userId}});
+    }
 }
 
 module.exports = function ExpressionSrvFactory($http) {

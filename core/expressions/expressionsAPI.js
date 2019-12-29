@@ -15,6 +15,7 @@ const {
     fetchAllExpressions,
     countAllUserExpressions
 } = require('./expressionDAL');
+const exporter = require('../exporter');
 
 const fileFilter = (req, file, next) => {
     if (file.mimetype.split('/').includes('csv')) {
@@ -43,11 +44,11 @@ router.get('/expression', (req, res) => {
 
     fetchExpression(req.query.userId)
         .then(record => {
-            res.status = 200;
+            res.status(200);
             res.json(record);
         })
         .catch(err =>  {
-            res.status = 400;
+            res.status(400);
             res.json({error: true});
         });
 });
@@ -73,11 +74,11 @@ router.get('/expressions', async (req, res) => {
             data = await fetchRepeatExpressions(userId);
         }
 
-        res.status = 200;
+        res.status(200);
         await res.json({data});
 
     } catch (e) {
-        res.status = 400;
+        res.status(400);
         await res.json({error: true});
     }
 
@@ -91,11 +92,11 @@ router.post('/expression/:id/increment-counter', (req, res) => {
 
     incrementExpressionCounters({id, correctAnswer})
         .then(() => {
-            res.status = 200;
+            res.status(200);
             res.json({});
         })
         .catch(err => {
-            res.status = 400;
+            res.status(400);
             res.json({error: true});
         });
 
@@ -126,10 +127,10 @@ router.post('/import', upload.single('csv'), (req, res) => {
         .on('end', async () => {
             try {
                 await saveExpressions(results);
-                res.status = 200;
+                res.status(200);
                 await res.json({});
             } catch (e) {
-                res.status = 500;
+                res.status(400);
                 await res.json({error: true});
             }
         });
@@ -141,11 +142,11 @@ router.get('/statistics', (req, res) => {
 
     fetchStatisticsData(req.query.userId)
         .then(data => {
-            res.status = 200;
+            res.status(200);
             res.json(data);
         })
         .catch(err =>  {
-            res.status = 400;
+            res.status(400);
             res.json({error: true});
         });
 });
@@ -155,11 +156,11 @@ router.get('/repeat-count', (req, res) => {
 
     countExpressionsInRepeat(req.query.userId)
         .then(repeatCount => {
-            res.status = 200;
+            res.status(200);
             res.json({repeatCount});
         })
         .catch(err => {
-            res.status = 400;
+            res.status(400);
             res.json({error: true});
         });
 
@@ -185,10 +186,27 @@ router.get('/user-expressions', async (req, res) => {
        const total = await countAllUserExpressions(config);
        await res.json({data, total});
     } catch (e) {
-        res.status = 400;
+        res.status(400);
         await res.json({error: true});
     }
 
+});
+
+/* Export user's expressions to csv */
+router.get('/data-export/csv', async (req, res) => {
+
+    const userId = req.query.userId;
+
+    try {
+        const userExpressions = fetchAllExpressions({userId});
+        // const data = await exporter.jsonToCsv(userExpressions);
+        console.log(userExpressions);
+        res.status(200);
+        await res.json({});
+    } catch (e) {
+        res.status(400);
+        await res.json({error: true});
+    }
 });
 
 module.exports = router;

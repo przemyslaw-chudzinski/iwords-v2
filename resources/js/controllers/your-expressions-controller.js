@@ -92,4 +92,13 @@ module.exports = function YourExpressionsCtrlFactory ($scope, expressionSrv) {
             });
     };
 
+    /* Export user's expressions to csv */
+    $scope.exportToCsv = function () {
+        expressionSrv.exportToCsv()
+            .then(res => {
+                console.log(res);
+            })
+            .catch();
+    }
+
 };
