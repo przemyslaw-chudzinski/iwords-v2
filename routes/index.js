@@ -31,14 +31,22 @@ router.get('/dictionary', (req, res) => res.render('dictionary', {}));
 /* Statistics */
 router.get('/statistics', (req, res) => res.render('statistics'));
 /* Your expressions */
-router.get('/your-expressions', (req, res) => {
+router.get('/your-expressions', async (req, res) => {
 
     const viewData = {
         name: 'app.yourExpressions',
-        pageTitle: 'Twoje wyrażenia'
+        pageTitle: 'Twoje wyrażenia',
+        hasExpressions: false
     };
 
-    res.render('your-expressions', viewData);
+    try {
+        const total = await countAllUserExpressions(req.user._id);
+        viewData.hasExpressions = total > 0;
+        res.render('your-expressions', viewData);
+    } catch (e) {
+        req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych');
+        res.render('your-expressions', viewData);
+    }
 
 });
 

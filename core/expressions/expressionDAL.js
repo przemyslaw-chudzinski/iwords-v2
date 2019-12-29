@@ -87,21 +87,26 @@ function incrementExpressionCounters({id, correctAnswer}) {
         });
 }
 
-function fetchAllExpressions(userId, userConfig = {}) {
+function fetchAllExpressions(config = {}) {
 
-    const config = {
+    const _config = {
         select: {
             _id: 1,
             expression: 1,
-            translations: 1,
-            description: 1
+            translations: 1
         },
-        ...userConfig
+        userId: null,
+        limit: null,
+        skip: 0,
+        search: '',
+        ...config
     };
 
     return Expression
         .find({})
-        .where('userId', userId)
+        .where('userId', _config.userId)
+        .limit(_config.limit)
+        .skip(_config.skip)
         .select(config.select);
 
 }
@@ -146,12 +151,11 @@ async function saveExpressions(expressions = null) {
 }
 
 function countExpressionsInRepeat(userId) {
-    console.log(userId);
     return Expression
         .find()
         .where('userId', userId)
         .where('repeat.state', 1)
-        .countDocuments()
+        .countDocuments();
 }
 
 function countAllUserExpressions(userId) {
@@ -195,5 +199,6 @@ module.exports = {
     randomExpression,
     countExpressionsInRepeat,
     fetchRepeatExpressions,
-    countAllUserExpressions
+    countAllUserExpressions,
+    fetchAllExpressions
 };

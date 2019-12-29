@@ -12,11 +12,19 @@
 
   .card__content {
     padding: 0;
+    max-height: 40rem;
+    overflow: auto;
   }
 
   .card__header {
     display: flex;
     justify-content: space-between;
+  }
+
+  .no-expressions-info {
+    .card__content {
+      padding: 2rem;
+    }
   }
 
 }

@@ -31,7 +31,7 @@ app.controller('ImportCsvCrl', ['$scope', 'csvSrv', ImportCsvCrlFactory]);
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
 app.controller('BodyCrl', ['$scope', BodyCrlFactory]);
-app.controller('YourExpressionsCtrl', ['$scope', YourExpressionsCtrlFactory]);
+app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', YourExpressionsCtrlFactory]);
 /* Services */
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 app.factory('csvSrv', ['$http', CsvSrvFactory]);
