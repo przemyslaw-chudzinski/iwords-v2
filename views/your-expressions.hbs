@@ -14,7 +14,7 @@
                        <div class="filter-input__icon">
                            <span class="fa fa-search"></span>
                        </div>
-                       <input class="filter-input__input" type="text" placeholder="Szukaj">
+                       <input class="filter-input__input" type="text" placeholder="Szukaj" ng-model="filterSearch" ng-change="handleFilterInputChange()">
                    </div>
                    <!-- List options -->
                    <md-menu>
@@ -53,12 +53,15 @@
                <div class="card__content">
 
                    <!-- Expressions list -->
-                   <ul class="list list--primary-style">
+                   <ul ng-if="expressions && expressions.length" class="list list--primary-style">
                        <li ng-repeat="expr in expressions" class="list__item">
                            <div><strong>\{{expr.expression}}</strong></div>
                            <div>\{{expr.translations.join(', ')}}</div>
                        </li>
                    </ul>
+
+                   <!-- No filter results -->
+                   <div ng-if="!expressions || !expressions.length" class="no-filter-results">Brak wyników wyszukiwania</div>
 
                    <!-- Content overlay -->
                    <div class="card__content-overlay" ng-class="{active: fetching}"></div>

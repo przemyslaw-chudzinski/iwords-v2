@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/scss/components/_paginator.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/expressions/expressionDAL.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionDAL.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/services/expression-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/services/expression-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/components/_components.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_components.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/scss/pages/_your-expressions.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_your-expressions.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/your-expressions.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/your-expressions.hbs" afterDir="false" />
@@ -34,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/49-toggle-aside-width" />
+        <entry key="$PROJECT_DIR$" value="feature/69-user-expressions-list" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -387,9 +383,9 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1042" y="341" key="refactoring.ChangeSignatureDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575154926966" />
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1575208945437">
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1577627913734">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1575208945437" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1577627913734" />
   </component>
 </project>
