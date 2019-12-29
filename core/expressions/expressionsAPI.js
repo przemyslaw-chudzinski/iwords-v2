@@ -65,7 +65,7 @@ router.get('/expressions', async (req, res) => {
         // const repeatCount = await countExpressionsInRepeat();
 
         if (onlyRepeats === 'false') {
-            const expr1 = await fetchRepeatExpression(userId);
+            const expr1 = await fetchRepeatExpression({userId});
             const expr2 = await fetchExpression(userId);
             const expr3 = await randomExpression(userId);
             data = [expr1, expr2, expr3].filter(value => !!value);

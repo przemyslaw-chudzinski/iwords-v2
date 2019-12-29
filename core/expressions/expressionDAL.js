@@ -116,7 +116,7 @@ function fetchAllExpressions(config = {}) {
 }
 
 function fetchStatisticsData(userId) {
-    return fetchAllExpressions(userId,{
+    return fetchAllExpressions({userId},{
         select: {
             expression: 1,
             correctAnswers: 1,
@@ -128,7 +128,7 @@ function fetchStatisticsData(userId) {
 async function randomExpression(userId) {
 
     try {
-        const expressions = await fetchAllExpressions(userId,{
+        const expressions = await fetchAllExpressions({
             select: {
                 expression: 1,
                 translations: 1,
@@ -137,12 +137,13 @@ async function randomExpression(userId) {
                 repeat: 1,
                 partOfSpeech: 1,
                 exampleSentences: 1
-            }
+            },
+            userId
         });
         const randomIndex = _.random(0, expressions.length - 1);
         return expressions[randomIndex];
     } catch (e) {
-        return fetchExpression(userId);
+        return fetchExpression({userId});
     }
 }
 
