@@ -4,7 +4,7 @@
   "description": "Iwords Platform",
   "main": "index.js",
   "scripts": {
-    "prestart": "node ./scripts/prestart.js",
+    "prestart": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "start": "node app.js",
     "start:dev": "nodemon --experimental-worker app.js",
     "db:seed": "node ./scripts/users-db-seeder",
