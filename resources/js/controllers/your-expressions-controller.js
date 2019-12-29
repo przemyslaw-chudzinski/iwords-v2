@@ -34,13 +34,14 @@ module.exports = function YourExpressionsCtrlFactory ($scope, expressionSrv) {
     /* Next page */
     $scope.nextPage = function () {
         $scope.pagination.page++;
-        expressionSrv.fetchUsersExpressions({params: {...$scope.pagination}})
+        expressionSrv.fetchUsersExpressions({params: {...$scope.pagination, search: $scope.filterSearch}})
             .then(res => {
                 $scope.expressions = res.data.data;
+                const total = res.data.total;
                 /* Update pagination controls */
                 const maxPageNumber = Math.ceil(res.data.total / $scope.pagination.limit);
-                $scope.prevPageDisable = $scope.pagination.page === 1 || $scope.fetching;
-                $scope.nextPageDisable = $scope.pagination.page === maxPageNumber || $scope.fetching;
+                $scope.prevPageDisable = $scope.pagination.page === 1 || $scope.fetching || total === 0;
+                $scope.nextPageDisable = $scope.pagination.page === maxPageNumber || $scope.fetching || total === 0;
                 /* Hide card overlay */
                 $scope.fetching = false;
             })
@@ -52,13 +53,14 @@ module.exports = function YourExpressionsCtrlFactory ($scope, expressionSrv) {
     /* Prev page */
     $scope.prevPage = function () {
         $scope.pagination.page--;
-        expressionSrv.fetchUsersExpressions({params: {...$scope.pagination}})
+        expressionSrv.fetchUsersExpressions({params: {...$scope.pagination, search: $scope.filterSearch}})
             .then(res => {
                 $scope.expressions = res.data.data;
+                const total = res.data.total;
                 /* Update pagination controls */
                 const maxPageNumber = Math.ceil(res.data.total / $scope.pagination.limit);
-                $scope.prevPageDisable = $scope.pagination.page === 1 || $scope.fetching;
-                $scope.nextPageDisable = $scope.pagination.page === maxPageNumber || $scope.fetching;
+                $scope.prevPageDisable = $scope.pagination.page === 1 || $scope.fetching || total === 0;
+                $scope.nextPageDisable = $scope.pagination.page === maxPageNumber || $scope.fetching || total === 0;
                 /* Hide card overlay */
                 $scope.fetching = false;
             })

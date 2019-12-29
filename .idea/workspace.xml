@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/styles.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/styles.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
