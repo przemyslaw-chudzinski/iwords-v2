@@ -17,6 +17,7 @@ const ImportCsvCrlFactory = require('./controllers/import-csv-controller');
 const StatisticsCtrlFactory = require('./controllers/statistics-controller');
 const ToolbarUserMenuCtrlFactory = require('./controllers/toolbar-user-menu-controller');
 const BodyCrlFactory = require('./controllers/body-controller');
+const YourExpressionsCtrlFactory = require('./controllers/your-expressions-controller');
 
 /* Directives */
 const ExpressionSentenceTogglerDirFactory = require('./directives/expression-sentence-toggler-directive');
@@ -30,6 +31,7 @@ app.controller('ImportCsvCrl', ['$scope', 'csvSrv', ImportCsvCrlFactory]);
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
 app.controller('BodyCrl', ['$scope', BodyCrlFactory]);
+app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', YourExpressionsCtrlFactory]);
 /* Services */
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 app.factory('csvSrv', ['$http', CsvSrvFactory]);

@@ -1,0 +1,25 @@
+.list {
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    padding: 1rem;
+  }
+
+  &--primary-style {
+
+    .list__item {
+      &:not(:last-child) {
+        border-bottom: 1px solid get-color(primaryBlack, .1);
+      }
+
+      &:hover {
+        background-color: get-color(primaryGrey);
+      }
+    }
+
+  }
+
+}

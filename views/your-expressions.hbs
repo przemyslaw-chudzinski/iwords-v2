@@ -1,6 +1,102 @@
 <!-- Your expressions -->
-<div class="app-your-expressions-page">
+<div class="app-your-expressions-page" ng-cloak>
 
-   your expressions
+   <div class="inner-container">
+
+       {{#if hasExpressions}}
+           <!-- List -->
+           <div class="expressions-list card card--white card--with-shadow" ng-controller="YourExpressionsCtrl">
+               <!-- Header -->
+               <div class="card__header">
+                   <!-- Filter input -->
+                   <div class="filter-input">
+                       <!-- Icon -->
+                       <div class="filter-input__icon">
+                           <span class="fa fa-search"></span>
+                       </div>
+                       <input class="filter-input__input" type="text" placeholder="Szukaj">
+                   </div>
+                   <!-- List options -->
+                   <md-menu>
+                       <!-- Menu trigger -->
+                       <md-button ng-click="openMenu($mdMenu, $event)" class="md-icon-button md-primary">
+                           <span md-menu-origin class="fa fa-ellipsis-v"></span>
+                       </md-button>
+
+                       <!-- Menu items -->
+                       <md-menu-content width="3">
+
+                           <md-menu-item>
+                               <md-button>
+                                   Exportuj do pdf
+                               </md-button>
+                           </md-menu-item>
+
+                           <md-menu-item>
+                               <md-button>
+                                   Exportuj do csv
+                               </md-button>
+                           </md-menu-item>
+
+                           <md-menu-item>
+                               <md-button>
+                                   Exportuj do tsv
+                               </md-button>
+                           </md-menu-item>
+
+                       </md-menu-content>
+                   </md-menu>
+
+               </div>
+
+               <!-- Card content -->
+               <div class="card__content">
+
+                   <!-- Expressions list -->
+                   <ul class="list list--primary-style">
+                       <li ng-repeat="expr in expressions" class="list__item">
+                           <div><strong>\{{expr.expression}}</strong></div>
+                           <div>\{{expr.translations.join(', ')}}</div>
+                       </li>
+                   </ul>
+
+                   <!-- Content overlay -->
+                   <div class="card__content-overlay" ng-class="{active: fetching}"></div>
+
+               </div>
+
+               <!-- Footer -->
+               <div class="card__footer">
+                   <!-- Pagination -->
+                   <div class="paginator">
+                       <!-- Controls -->
+                       <div class="paginator__controls">
+                           <md-button ng-click="prevPage()" class="md-icon-button md-primary" aria-label="Poprzednia strona" ng-disabled="prevPageDisable">
+                               <md-tooltip md-direction="top">Poprzednia strona</md-tooltip>
+                               <span class="fa fa-angle-left"></span>
+                           </md-button>
+
+                           <md-button ng-click="nextPage()" class="md-icon-button md-primary" aria-label="Następna strona" ng-disabled="nextPageDisable">
+                               <md-tooltip md-direction="top">Następna strona</md-tooltip>
+                               <span class="fa fa-angle-right"></span>
+                           </md-button>
+                       </div>
+                       <!-- Pagination meta -->
+                       <div class="paginator__meta">
+                           <span>Strona \{{pagination.page}}</span>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       {{else}}
+           <div class="no-expressions-info expressions-list card card--white card--with-shadow">
+               <div class="card__content">
+                   Nie posiadasz jeszcze żadnych wyrażeń. Kiedy dodasz jakieś wyrażenie będzie ono widoczne na liście
+               </div>
+           </div>
+       {{/if}}
+
+
+   </div>
 
 </div>

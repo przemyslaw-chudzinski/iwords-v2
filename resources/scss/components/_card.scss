@@ -1,5 +1,5 @@
 .card {
-  padding: 2rem;
+  //padding: 2rem;
 
   &--white {
     background-color: get-color(primaryWhite);
@@ -7,6 +7,42 @@
 
   &--with-shadow {
     box-shadow: 0 0 28px -11px rgba(0, 0, 0, 0.16);
+  }
+
+  &__header {
+    padding: 1rem;
+    background-color: get-color(secondaryGrey, .3);
+    //border-top-left-radius: 5px;
+    //border-top-right-radius: 5px;
+  }
+
+  &__footer {
+    padding: 1rem;
+    background-color: get-color(secondaryGrey, .3);
+    //border-bottom-left-radius: 5px;
+    //border-bottom-right-radius: 5px;
+  }
+
+  &__content {
+    padding: 2rem;
+    position: relative;
+  }
+
+  &__content-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: get-color(primaryWhite);
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+      opacity: .8;
+      visibility: visible;
+    }
+
   }
 
 }

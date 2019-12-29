@@ -11,7 +11,9 @@ const {
     fetchStatisticsData,
     randomExpression,
     countExpressionsInRepeat,
-    fetchRepeatExpressions
+    fetchRepeatExpressions,
+    fetchAllExpressions,
+    countAllUserExpressions
 } = require('./expressionDAL');
 
 const fileFilter = (req, file, next) => {
@@ -160,6 +162,32 @@ router.get('/repeat-count', (req, res) => {
             res.status = 400;
             res.json({error: true});
         });
+
+});
+
+/* Get logged user expressions */
+router.get('/user-expressions', async (req, res) => {
+
+    const page = +req.query.page || null;
+    const search = req.query.search || null;
+    const userId = req.query.userId;
+    const limit = +req.query.limit;
+
+    const config = {
+        userId,
+        search,
+        limit,
+        skip: (page - 1) * limit
+    };
+
+    try {
+       const data = await fetchAllExpressions(config);
+       const total = await countAllUserExpressions(userId);
+       await res.json({data, total});
+    } catch (e) {
+        res.status = 400;
+        await res.json({error: true});
+    }
 
 });
 

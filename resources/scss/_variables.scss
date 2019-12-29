@@ -6,7 +6,8 @@ $color-palette: (
     primaryWhite: #fff,
     primaryGrey: #FAFAFA,
     secondaryGrey: #9E9E9E,
-    primaryOrange: #ff6600
+    primaryOrange: #ff6600,
+    primaryBlack: #000
 );
 
 @function get-color($color, $opacity: 1) {

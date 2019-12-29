@@ -1,0 +1,18 @@
+.filter-input {
+  display: flex;
+
+  &__icon {
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    background-color: transparent;
+    border: none;
+    display: block;
+    width: 100%;
+    outline: none;
+  }
+
+}

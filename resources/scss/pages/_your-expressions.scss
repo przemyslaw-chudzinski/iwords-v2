@@ -1,0 +1,30 @@
+.app-your-expressions-page {
+
+  .inner-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 10rem;
+  }
+
+  .expressions-list {
+    width: 50rem;
+  }
+
+  .card__content {
+    padding: 0;
+    max-height: 40rem;
+    overflow: auto;
+  }
+
+  .card__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .no-expressions-info {
+    .card__content {
+      padding: 2rem;
+    }
+  }
+
+}

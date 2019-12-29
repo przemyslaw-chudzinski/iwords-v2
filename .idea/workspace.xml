@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/views/your-expressions.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/scss/components/_paginator.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/expressions/expressionDAL.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionDAL.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/services/expression-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/services/expression-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/components/_components.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_components.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_your-expressions.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_your-expressions.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/aside.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/aside.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/your-expressions.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/your-expressions.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/controllers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -60,6 +67,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/js/controllers" />
       <recent name="$PROJECT_DIR$/views" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/views/partials" />
@@ -269,7 +277,42 @@
       <option name="project" value="LOCAL" />
       <updated>1577524643584</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="before checkout">
+      <created>1577525170803</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1577525170803</updated>
+    </task>
+    <task id="LOCAL-00024" summary="before checkout">
+      <created>1577525283609</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1577525283609</updated>
+    </task>
+    <task id="LOCAL-00025" summary="before checkout">
+      <created>1577526043103</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1577526043103</updated>
+    </task>
+    <task id="LOCAL-00026" summary="before push">
+      <created>1577534364351</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1577534364351</updated>
+    </task>
+    <task id="LOCAL-00027" summary="implemented basic ui list">
+      <created>1577538614937</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1577538614937</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +338,6 @@
     <MESSAGE value="improved repeat counter logic, added repeat learning state" />
     <MESSAGE value="before starting work of auth system" />
     <MESSAGE value="small improvements" />
-    <MESSAGE value="before push" />
     <MESSAGE value="implemented logout process" />
     <MESSAGE value="working on project" />
     <MESSAGE value="before" />
@@ -303,34 +345,40 @@
     <MESSAGE value="some improvements" />
     <MESSAGE value="show up info about part of speech" />
     <MESSAGE value="added page title for templates" />
-    <MESSAGE value="before checkout" />
     <MESSAGE value="fixed" />
     <MESSAGE value="before pull" />
     <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
+    <MESSAGE value="before checkout" />
+    <MESSAGE value="before push" />
+    <MESSAGE value="implemented basic ui list" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented basic ui list" />
   </component>
   <component name="WindowStateProjectService">
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575146264980">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577525170719">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577538614846">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577525170719" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577538614846" />
     <state x="796" y="369" key="SettingsEditor" timestamp="1575146341789">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="796" y="369" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1575146341789" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1577621467751">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.0.2560.1440@0.0.2560.1440" timestamp="1577621467751" />
     <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1575196636978">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575196636978" />
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1577380505308">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1577531754388">
+      <screen x="0" y="23" width="2560" height="1353" />
     </state>
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1577380505308" />
-    <state x="954" y="541" key="com.intellij.ide.util.TipDialog/0.23.2560.1353@0.23.2560.1353" timestamp="1577182216554" />
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.23.2560.1353@0.23.2560.1353" timestamp="1577531754388" />
     <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1575211819213">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
