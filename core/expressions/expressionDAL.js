@@ -1,7 +1,12 @@
 const Expression = require('./expression');
 const _ = require('lodash');
 
-function fetchExpression(userId, sortConfig = {}) {
+function fetchExpression(config = {}, sortConfig = {}) {
+
+    const _config = {
+        userId: null,
+        ...config
+    };
 
     const sort = {
         field: 'desc',
@@ -20,12 +25,17 @@ function fetchExpression(userId, sortConfig = {}) {
 
     return Expression
         .findOne()
-        .where('userId', userId)
+        .where('userId', _config.userId)
         .sort(sort)
         .select(select);
 }
 
-function fetchRepeatExpression(userId, sortConfig = {}) {
+function fetchRepeatExpression(config = {}, sortConfig = {}) {
+
+    const _config = {
+        userId: null,
+        ...config
+    };
 
     const sort = {
         field: 'desc',
@@ -46,7 +56,7 @@ function fetchRepeatExpression(userId, sortConfig = {}) {
     return Expression
         .findOne()
         .where('repeat.state', 1)
-        .where('userId', userId)
+        .where('userId', _config.userId)
         .sort(sort)
         .select(select);
 

@@ -78,30 +78,33 @@
                     </div>
                 </div>
             </div>
+            <!-- Extra data widget -->
+            <div class="app-learning-page__extra-data">
+                <!-- Sentences -->
+                <div class="expression-sentences">
+                    <h3 class="expression-sentences__heading">Przykładowe zdania</h3>
+                    <!-- sentences of expression -->
+                    <ul class="expression-sentences__list">
+                        <li ng-repeat="sentence in currentExpr.exampleSentences" class="expression-sentences__list-item" expression-sentence-toggler>
+                            \{{sentence.translation}} <span>zobacz</span>
+                            <!-- Original sentence -->
+                            <p class="expression-sentences__sentence">\{{sentence.sentence}}</p>
+                        </li>
+                    </ul>
+                    <!-- when there is not any expression -->
+                    <p ng-if="!hasExampleSentences()">Brak przykładowych zdań do wyświetlenia</p>
+                </div>
+            </div>
         {{else}}
             <!-- Expressions dont exist -->
             <div class="learning__no-expressions card card--white card--with-shadow">
-                W tym momencie nie masz żadnych przypisanych wyrażeń. Kiedy dodasz wyrażenia, tryb nauki zostanie odblokowany.
+                <div class="card__content">
+                    W tym momencie nie masz żadnych przypisanych wyrażeń. Kiedy dodasz wyrażenia, tryb nauki zostanie odblokowany.
+                </div>
             </div>
         {{/if}}
 
-        <!-- Extra data widget -->
-        <div class="app-learning-page__extra-data">
-            <!-- Sentences -->
-            <div class="expression-sentences">
-                <h3 class="expression-sentences__heading">Przykładowe zdania</h3>
-                <!-- sentences of expression -->
-                <ul class="expression-sentences__list">
-                    <li ng-repeat="sentence in currentExpr.exampleSentences" class="expression-sentences__list-item" expression-sentence-toggler>
-                        \{{sentence.translation}} <span>zobacz</span>
-                        <!-- Original sentence -->
-                        <p class="expression-sentences__sentence">\{{sentence.sentence}}</p>
-                    </li>
-                </ul>
-                <!-- when there is not any expression -->
-                <p ng-if="!hasExampleSentences()">Brak przykładowych zdań do wyświetlenia</p>
-            </div>
-        </div>
+
     </div>
 
 </div>
