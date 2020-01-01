@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +123,7 @@
       <workItem from="1577006577130" duration="464000" />
       <workItem from="1577182215563" duration="176000" />
       <workItem from="1577380505884" duration="492000" />
+      <workItem from="1577879683263" duration="435000" />
     </task>
     <task id="LOCAL-00002" summary="working on project">
       <created>1573488335464</created>
@@ -382,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577638801653</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="working on project">
+      <created>1577639795001</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1577639795001</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,7 +418,6 @@
     <MESSAGE value="before starting work of auth system" />
     <MESSAGE value="small improvements" />
     <MESSAGE value="implemented logout process" />
-    <MESSAGE value="working on project" />
     <MESSAGE value="before" />
     <MESSAGE value="added information about content provider" />
     <MESSAGE value="some improvements" />
@@ -427,17 +435,18 @@
     <MESSAGE value="fixed pagination errors" />
     <MESSAGE value="before deploy" />
     <MESSAGE value="preparing for deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="preparing for deploy" />
+    <MESSAGE value="working on project" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on project" />
   </component>
   <component name="WindowStateProjectService">
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575146264980">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577638807774">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577639794916">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577638807774" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577639794916" />
     <state x="938" y="353" key="RollbackChangesDialog" timestamp="1577633277504">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -454,10 +463,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575196636978" />
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1577531754388">
-      <screen x="0" y="23" width="2560" height="1353" />
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1577879683448">
+      <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1577380505308" />
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1577879683448" />
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.23.2560.1353@0.23.2560.1353" timestamp="1577531754388" />
     <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1577638696071">
       <screen x="0" y="0" width="2560" height="1440" />
