@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env-example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/users/userControllers.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/users/userControllers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/register.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +47,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -58,9 +59,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/resources/js/controllers" />
-      <recent name="$PROJECT_DIR$/views" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/views/partials" />
     </key>
@@ -410,7 +411,21 @@
       <option name="project" value="LOCAL" />
       <updated>1577882645185</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="before checkout">
+      <created>1577883923878</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1577883923878</updated>
+    </task>
+    <task id="LOCAL-00044" summary="basic registering process">
+      <created>1577915991499</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1577915991499</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -430,7 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added basic repeat counter" />
     <MESSAGE value="implemented repeat counter logic" />
     <MESSAGE value="improved repeat counter logic, added repeat learning state" />
     <MESSAGE value="before starting work of auth system" />
@@ -447,7 +461,6 @@
     <MESSAGE value="implemented basic ui list" />
     <MESSAGE value="implemented filtering logic" />
     <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
-    <MESSAGE value="before checkout" />
     <MESSAGE value="working on" />
     <MESSAGE value="improved package.json file" />
     <MESSAGE value="fixed pagination errors" />
@@ -455,7 +468,9 @@
     <MESSAGE value="preparing for deploy" />
     <MESSAGE value="working on project" />
     <MESSAGE value="finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish" />
+    <MESSAGE value="before checkout" />
+    <MESSAGE value="basic registering process" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic registering process" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577882680500">
@@ -466,10 +481,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577882645095">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577915991384">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577882645095" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577915991384" />
     <state x="938" y="353" key="RollbackChangesDialog" timestamp="1577633277504">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
