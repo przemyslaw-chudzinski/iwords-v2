@@ -8,7 +8,7 @@ async function getUserByEmail(email) {
     try {
         return await User.findOne({email});
     } catch (e) {
-        return null;
+        throw new Error('getUserByEmail - Internal Server Error');
     }
 }
 
@@ -28,9 +28,19 @@ async function getUserByChromeExtApiKey(apiKey) {
     }
 }
 
+async function emailExists(email) {
+    try {
+        const user = await getUserByEmail(email);
+        return !!user;
+    } catch (e) {
+        throw new Error('emailExists - Internal Server Error');
+    }
+}
+
 module.exports = {
     getUserByEmail,
     getUserById,
-    getUserByChromeExtApiKey
+    getUserByChromeExtApiKey,
+    emailExists
 };
 
