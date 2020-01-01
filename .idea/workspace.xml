@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/learning.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/learning.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_your-expressions.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_your-expressions.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -438,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577918425340</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="added ng-cloak directive into learning page">
+      <created>1577918794741</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1577918794741</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -458,7 +465,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="before starting work of auth system" />
     <MESSAGE value="small improvements" />
     <MESSAGE value="implemented logout process" />
     <MESSAGE value="before" />
@@ -483,7 +489,8 @@
     <MESSAGE value="assets build" />
     <MESSAGE value="before checkout" />
     <MESSAGE value="added ng-cloak directive into auth pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="added ng-cloak directive into auth pages" />
+    <MESSAGE value="added ng-cloak directive into learning page" />
+    <option name="LAST_COMMIT_MESSAGE" value="added ng-cloak directive into learning page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577882680500">
@@ -494,10 +501,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577918425254">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577918794661">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577918425254" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577918794661" />
     <state x="938" y="353" key="RollbackChangesDialog" timestamp="1577633277504">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

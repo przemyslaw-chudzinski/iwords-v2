@@ -15961,7 +15961,7 @@ body {
   display: flex;
   -webkit-box-pack: center;
           justify-content: center;
-  padding-top: 10rem;
+  padding-top: 4rem;
 }
 
 .app-your-expressions-page .expressions-list {
