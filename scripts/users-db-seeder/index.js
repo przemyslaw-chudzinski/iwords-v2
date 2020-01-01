@@ -21,7 +21,7 @@ async function init() {
     /* Connect to database */
     try {
         log('Connecting to database...');
-        await mongoose.connect('mongodb://localhost:27017/iwords-db', {useNewUrlParser: true, useUnifiedTopology: true});
+        await mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
     } catch (e) {
         log('Database connection error');
         throw new Error('Database connection error')
@@ -49,8 +49,8 @@ async function init() {
         log('Preparing users...');
 
         const regularUser = new User({
-            name: 'Przemek User',
-            email: 'dev@iwords.pl',
+            name: 'Przemysław Chudziński',
+            email: 'przemyslaw-chudzinski@wp.pl',
             password,
             apiKeys: {
                 chromeExt: {
@@ -60,8 +60,8 @@ async function init() {
         });
 
         const adminUser = new User({
-            name: 'Przemek Admin',
-            email: 'admin@iwords.pl',
+            name: 'Adam Chudziński',
+            email: 'adam-chudzinski@wp.pl',
             password,
             apiKeys: {
                 chromeExt: {

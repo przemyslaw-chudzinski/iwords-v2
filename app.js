@@ -15,7 +15,7 @@ const {ensureApiKeyIsValid} = require('./core/users/iwordsChromeExtAuth');
 const hbsHelpers = require('./helpers/handlebars');
 
 /* Connect to database */
-mongoose.connect(process.env.DB_HOST, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
     .catch(err => console.log('db conn err', err));
 
 /* Template engine */
