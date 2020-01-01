@@ -24,6 +24,7 @@ router.post('/register', ensureNotAuthenticated, async (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const userPassword = req.body.password;
+    const repeatedPassword = req.body.repeatedPassword;
 
     /* Verify if name exists */
     if (!name) {
@@ -35,6 +36,13 @@ router.post('/register', ensureNotAuthenticated, async (req, res) => {
     /* Verify if password exists */
     if (!userPassword || userPassword === '') {
         req.flash('error_top_msg', 'Hasło jest wymagane');
+        res.redirect('/auth/register');
+        return;
+    }
+
+    /* Verify if passwords are the same */
+    if (userPassword !== repeatedPassword) {
+        req.flash('error_top_msg', 'Podane hasła muszą być takie same');
         res.redirect('/auth/register');
         return;
     }
