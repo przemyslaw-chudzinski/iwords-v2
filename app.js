@@ -15,7 +15,7 @@ const {ensureApiKeyIsValid} = require('./core/users/iwordsChromeExtAuth');
 const hbsHelpers = require('./helpers/handlebars');
 
 /* Connect to database */
-mongoose.connect('mongodb://localhost:27017/iwords-db', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.DB_HOST, {useNewUrlParser: true, useUnifiedTopology: true})
     .catch(err => console.log('db conn err', err));
 
 /* Template engine */
@@ -32,9 +32,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 /* Express session */
-// TODO: Set config object for properly options
 app.use(expressSession({
-    secret: 'some-session-secret', // TODO: Change it on production
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
