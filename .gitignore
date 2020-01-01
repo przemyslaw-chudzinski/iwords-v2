@@ -4,4 +4,4 @@ yarn-lock.json
 uploads
 .idea
 .idea/workspace.xml
-
+.env

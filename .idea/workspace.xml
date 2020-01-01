@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env-example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -61,6 +58,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/resources/js/controllers" />
       <recent name="$PROJECT_DIR$/views" />
       <recent name="$PROJECT_DIR$/public" />
@@ -391,7 +389,28 @@
       <option name="project" value="LOCAL" />
       <updated>1577639795001</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="working on project">
+      <created>1577881786633</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1577881786633</updated>
+    </task>
+    <task id="LOCAL-00041" summary="finish">
+      <created>1577882595554</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1577882595554</updated>
+    </task>
+    <task id="LOCAL-00042" summary="finish">
+      <created>1577882645185</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1577882645185</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,7 +430,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated" />
     <MESSAGE value="added basic repeat counter" />
     <MESSAGE value="implemented repeat counter logic" />
     <MESSAGE value="improved repeat counter logic, added repeat learning state" />
@@ -436,17 +454,22 @@
     <MESSAGE value="before deploy" />
     <MESSAGE value="preparing for deploy" />
     <MESSAGE value="working on project" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on project" />
+    <MESSAGE value="finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577882680500">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1577882680500" />
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575146264980">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577639794916">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1577882645095">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577639794916" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1577882645095" />
     <state x="938" y="353" key="RollbackChangesDialog" timestamp="1577633277504">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
