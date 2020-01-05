@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e1238c75-ff6b-4df7-9848-6a232e1af5b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/aside.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/aside.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/expressions/expressionDAL.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionDAL.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/79-add-ng-cloack-to-the-auth-pages" />
+        <entry key="$PROJECT_DIR$" value="feature/92-remove-import-menu-item" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -537,10 +535,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.0.2560.1440@0.0.2560.1440" timestamp="1577621467751" />
-    <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1575196636978">
+    <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578224666180">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575196636978" />
+    <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1578224666180" />
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1578221383889">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

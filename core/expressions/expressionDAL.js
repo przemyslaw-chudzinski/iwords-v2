@@ -189,7 +189,14 @@ function countAllUserExpressions(config = {}) {
         .countDocuments();
 }
 
-function fetchRepeatExpressions(userId, limit = 5) {
+function fetchRepeatExpressions(config = {}) {
+
+    const _config = {
+        userId: null,
+        limit: 5,
+        ...config
+    };
+
     const sort = {
         field: 'desc',
         // updatedAt : 1
@@ -208,9 +215,9 @@ function fetchRepeatExpressions(userId, limit = 5) {
     return Expression
         .find()
         .where('repeat.state', 1)
-        .where('userId', userId)
+        .where('userId', _config.userId)
         .sort(sort)
-        .limit(limit)
+        .limit(_config.limit)
         .select(select);
 }
 
