@@ -1,4 +1,4 @@
-module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) {
+module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout, $mdDialog) {
     $scope.currentExprs = [];
     $scope.currentExpr = null;
     $scope.answer = '';
@@ -83,6 +83,38 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout) 
 
     $scope.hasExampleSentences = function () {
         return $scope.currentExpr && $scope.currentExpr.exampleSentences && $scope.currentExpr.exampleSentences.length;
+    };
+
+    /* Open menu */
+    $scope.openMenu = function ($mdMenu, event) {
+        $mdMenu.open(event);
+    };
+
+    /* Reset repeat mode */
+    $scope.resetRepeatMode = function () {
+        console.log('resetRepeatMode');
+        $scope.confirmResetRepeatMode()
+            .then(function () {
+                console.log('confirm');
+            }, function () {
+                console.log('reject');
+            });
+    };
+
+    /* Show expressions in repeat mode */
+    $scope.showExpressionsInRepeatMode = function (event) {
+        console.log('showExpressionsInRepeatMode');
+    };
+
+    $scope.confirmResetRepeatMode = function () {
+        const confirm = $mdDialog.confirm()
+            .title('Czy na pewno chcesz zresetować tryb powtórek?')
+            .textContent('Jeśli zresetujesz tryb powtórek, wszystkie wyrażenia z powtórek zostaną usunięte')
+            .targetEvent(event)
+            .ok('Tak, chcę zrestować powtórki')
+            .cancel('Anuluj');
+
+        return $mdDialog.show(confirm);
     };
 
     function handleCorrectAnswer() {

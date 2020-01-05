@@ -26,7 +26,7 @@ const ExpressionSentenceTogglerDirFactory = require('./directives/expression-sen
 const app = angular.module('appModule', ['ngMaterial', 'ngMessages', 'chart.js']);
 
 /* Controllers */
-app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', LearningCtrlFactory]);
+app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialog', LearningCtrlFactory]);
 // app.controller('ImportCsvCrl', ['$scope', 'csvSrv', ImportCsvCrlFactory]);
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
