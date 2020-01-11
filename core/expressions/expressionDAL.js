@@ -221,6 +221,21 @@ function fetchRepeatExpressions(config = {}) {
         .select(select);
 }
 
+function resetRepeatMode(config = {}) {
+
+    const _config = {
+        userId: null,
+        ...config
+    };
+
+    return Expression.updateMany(
+        {userId: _config.userId},
+        {'repeat.state': false, 'repeat.correctAnswers': 0, 'repeat.incorrectAnswers': 0},
+        {runValidators: true}
+    );
+
+}
+
 module.exports = {
     fetchExpression,
     incrementExpressionCounters,
@@ -231,5 +246,6 @@ module.exports = {
     countExpressionsInRepeat,
     fetchRepeatExpressions,
     countAllUserExpressions,
-    fetchAllExpressions
+    fetchAllExpressions,
+    resetRepeatMode
 };

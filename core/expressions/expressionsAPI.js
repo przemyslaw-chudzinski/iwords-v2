@@ -13,7 +13,8 @@ const {
     countExpressionsInRepeat,
     fetchRepeatExpressions,
     fetchAllExpressions,
-    countAllUserExpressions
+    countAllUserExpressions,
+    resetRepeatMode
 } = require('./expressionDAL');
 
 // const fileFilter = (req, file, next) => {
@@ -184,6 +185,26 @@ router.get('/user-expressions', async (req, res) => {
        const data = await fetchAllExpressions(config);
        const total = await countAllUserExpressions(config);
        await res.json({data, total});
+    } catch (e) {
+        res.status(400);
+        await res.json({error: true});
+    }
+
+});
+
+/* Rests all expressions in repeat mode */
+router.post('/reset-repeat-mode', async (req, res) => {
+
+    const userId = req.body.userId;
+
+    const config = {
+        userId
+    };
+
+    try {
+        await resetRepeatMode(config);
+        res.status(200);
+        await res.json({});
     } catch (e) {
         res.status(400);
         await res.json({error: true});
