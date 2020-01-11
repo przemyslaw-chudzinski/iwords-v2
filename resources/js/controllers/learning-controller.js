@@ -71,6 +71,7 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout, 
                 /* Handle error */
                 return;
             }
+            fetchRepeatCount();
             $scope.answer = '';
             $scope.answerSuccess = false;
             $scope.skipping = false;

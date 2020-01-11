@@ -110322,6 +110322,7 @@ module.exports = function LearningCtrlFactory($scope, expressionSrv, $timeout, $
         return;
       }
 
+      fetchRepeatCount();
       $scope.answer = '';
       $scope.answerSuccess = false;
       $scope.skipping = false;
