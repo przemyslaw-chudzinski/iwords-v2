@@ -91,14 +91,38 @@ module.exports = function LearningCtrlFactory ($scope, expressionSrv, $timeout, 
     };
 
     /* Reset repeat mode */
-    $scope.resetRepeatMode = function () {
-        console.log('resetRepeatMode');
+    $scope.handleResetRepeatMode = function () {
         $scope.confirmResetRepeatMode()
             .then(function () {
-                console.log('confirm');
+                $scope.resetRepeatMode();
             }, function () {
-                console.log('reject');
+                // DO NOTHING;
             });
+    };
+
+    $scope.resetRepeatMode = function () {
+        expressionSrv.resetRepeatMode()
+            .then(() => {
+                $scope.repeatState = {
+                    state: false
+                };
+                localStorage.removeItem('onlyRepeats');
+                fetchRepeatCount();
+                fetchNextWord(err => {
+                    if (err) {
+                        /* Handle error */
+                        return;
+                    }
+                    $scope.answer = '';
+                    $scope.answerSuccess = false;
+                    $scope.skipping = false;
+                    if (inputElem) {
+                        inputElem.disabled = false;
+                        inputElem.focus();
+                    }
+                });
+            })
+            .catch(err => console.log('resetRepeatMode error', err));
     };
 
     /* Show expressions in repeat mode */

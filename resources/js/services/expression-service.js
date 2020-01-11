@@ -32,6 +32,10 @@ class ExpressionService extends ServiceBase {
         };
         return this.http.get(this.prefix + '/user-expressions', {params: {userId: this.userId, ...queryParams}});
     }
+
+    resetRepeatMode() {
+        return this.http.post(this.prefix + '/reset-repeat-mode', {userId: this.userId});
+    }
 }
 
 module.exports = function ExpressionSrvFactory($http) {

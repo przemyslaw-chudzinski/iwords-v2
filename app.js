@@ -72,7 +72,7 @@ app.use('/api/expressions', require('./core/expressions/expressionsAPI'));
 
 /* API Iwords Chrome Extension */
 const corsOptions = {
-    origin: 'chrome-extension://',
+    origin: 'https://www.diki.pl',
     optionsSuccessStatus: 200
 };
 app.use('/api/chrome-ext', [cors(corsOptions), ensureApiKeyIsValid], require('./core/expressions/iwordsChromeExtAPI'));

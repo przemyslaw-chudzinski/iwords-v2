@@ -43,15 +43,15 @@
                                             <md-menu-content>
                                                 <!-- Menu items -->
                                                 <md-menu-item>
-                                                    <md-button ng-click="resetRepeatMode()">
+                                                    <md-button ng-click="handleResetRepeatMode()" ng-disabled="repeatCount === 0">
                                                         Zresetuj powtórki
                                                     </md-button>
                                                 </md-menu-item>
-                                                <md-menu-item>
-                                                    <md-button ng-click="showExpressionsInRepeatMode()">
-                                                        Lista wyrażeń w powtórkach
-                                                    </md-button>
-                                                </md-menu-item>
+<!--                                                <md-menu-item>-->
+<!--                                                    <md-button ng-click="showExpressionsInRepeatMode()">-->
+<!--                                                        Lista wyrażeń w powtórkach-->
+<!--                                                    </md-button>-->
+<!--                                                </md-menu-item>-->
                                             </md-menu-content>
                                         </md-menu>
                                     </div>
