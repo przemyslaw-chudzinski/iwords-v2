@@ -23,13 +23,38 @@
                                 </div>
                             </div>
                             <!-- Right side -->
-                            <div class="col" ng-if="repeatCount > 0">
-                                <!-- repeat counter -->
-                                <div class="repeat-counter">
-                                    <span class="repeat-counter__text">Wyrażenia w powtórkach: \{{ repeatCount }}</span>
-                                    <md-switch ng-model="repeatState.state" class="md-warn repeat-counter__switch" ng-change="skipExpression($event)">
-                                        Tryb powtórek
-                                    </md-switch>
+                            <div class="col">
+                                <div layout="row" layout-align="space-between center">
+                                    <!-- repeat counter -->
+                                    <div layou="row">
+                                        <div class="repeat-counter" ng-if="repeatCount > 0">
+                                            <span class="repeat-counter__text">Wyrażenia w powtórkach: \{{ repeatCount }}</span>
+                                            <md-switch ng-model="repeatState.state" class="md-warn repeat-counter__switch" ng-change="skipExpression($event)">
+                                                Tryb powtórek
+                                            </md-switch>
+                                        </div>
+                                    </div>
+                                    <!-- Menu -->
+                                    <div layout="row" layout-align="end center">
+                                        <md-menu>
+                                            <md-button ng-click="openMenu($mdMenu, $event)" class="md-icon-button">
+                                                <span class="fa fa-ellipsis-v" md-menu-origin></span>
+                                            </md-button>
+                                            <md-menu-content>
+                                                <!-- Menu items -->
+                                                <md-menu-item>
+                                                    <md-button ng-click="handleResetRepeatMode()" ng-disabled="repeatCount === 0">
+                                                        Zresetuj powtórki
+                                                    </md-button>
+                                                </md-menu-item>
+<!--                                                <md-menu-item>-->
+<!--                                                    <md-button ng-click="showExpressionsInRepeatMode()">-->
+<!--                                                        Lista wyrażeń w powtórkach-->
+<!--                                                    </md-button>-->
+<!--                                                </md-menu-item>-->
+                                            </md-menu-content>
+                                        </md-menu>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -108,3 +133,4 @@
     </div>
 
 </div>
+
