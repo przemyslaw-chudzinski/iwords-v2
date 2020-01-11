@@ -100,11 +100,7 @@ function incrementExpressionCounters({id, correctAnswer}) {
 function fetchAllExpressions(config = {}) {
 
     const _config = {
-        select: {
-            _id: 1,
-            expression: 1,
-            translations: 1
-        },
+        select: {},
         userId: null,
         limit: null,
         skip: 0,
@@ -121,7 +117,7 @@ function fetchAllExpressions(config = {}) {
         .where('userId', _config.userId)
         .limit(_config.limit)
         .skip(_config.skip)
-        .select(config.select);
+        .select(_config.select);
 
 }
 

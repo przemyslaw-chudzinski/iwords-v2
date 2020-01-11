@@ -16177,6 +16177,19 @@ body {
 
 .list__item {
   padding: 1rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.list__item-right {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .list--primary-style .list__item:not(:last-child) {
