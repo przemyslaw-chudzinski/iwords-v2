@@ -54,10 +54,24 @@
 
                    <!-- Expressions list -->
                    <ul ng-if="expressions && expressions.length" class="list list--primary-style">
+                       <!-- Single expression -->
                        <li ng-repeat="expr in expressions" class="list__item">
-                           <div><strong>\{{expr.expression}}</strong></div>
-                           <div>\{{expr.translations.join(', ')}}</div>
+                           <div class="list__item-left">
+                               <div><strong>\{{expr.expression}}</strong></div>
+                               <div>\{{expr.translations.join(', ')}}</div>
+                               <div><span class="md-caption">Powtórzono: \{{expr.repeatCount || 0}} razy</span></div>
+                           </div>
+                           <div class="list__item-right">
+                               <!-- Information about is expression in repeat mode -->
+                               <md-button ng-if="expr.inRepeatState" class="md-icon-button md-warn">
+                                   <md-tooltip md-direction="top">Ta ikona oznacza, że wyrażenie jest w powtórkach</md-tooltip>
+                                   <span class="fa fa-repeat"></span>
+                               </md-button>
+                               <!-- Progress -->
+                               <md-progress-circular md-mode="determinate"  md-diameter="15px" value="\{{expr.effectivity}}"></md-progress-circular>
+                           </div>
                        </li>
+
                    </ul>
 
                    <!-- No filter results -->

@@ -182,9 +182,28 @@ router.get('/user-expressions', async (req, res) => {
     };
 
     try {
-       const data = await fetchAllExpressions(config);
+       const _data = await fetchAllExpressions(config);
        const total = await countAllUserExpressions(config);
+       /* Mapping on required object
+       *  */
+       const data = _data.map(item => {
+
+           const inRepeatState = item.repeat.state;
+           const repeatCount = +(item.correctAnswers + item.incorrectAnswers);
+           const effectivity = +((item.correctAnswers / repeatCount) * 100).toPrecision(2);
+
+           return {
+               _id: item._id,
+               expression: item.expression,
+               translations: item.translations,
+               inRepeatState,
+               repeatCount,
+               effectivity
+           };
+       });
+
        await res.json({data, total});
+
     } catch (e) {
         res.status(400);
         await res.json({error: true});

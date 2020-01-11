@@ -6,6 +6,18 @@
 
   &__item {
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item-left {
+
+  }
+
+  &__item-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   &--primary-style {
