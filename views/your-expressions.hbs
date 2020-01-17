@@ -55,7 +55,7 @@
                    <!-- Expressions list -->
                    <ul ng-if="expressions && expressions.length" class="list list--primary-style">
                        <!-- Single expression -->
-                       <li ng-repeat="expr in expressions" class="list__item">
+                       <li ng-repeat="expr in expressions" class="list__item expression">
                            <div class="list__item-left">
                                <div><strong>\{{expr.expression}}</strong></div>
                                <div>\{{expr.translations.join(', ')}}</div>
@@ -67,8 +67,10 @@
                                    <md-tooltip md-direction="top">Ta ikona oznacza, że wyrażenie jest w powtórkach</md-tooltip>
                                    <span class="fa fa-repeat"></span>
                                </md-button>
+                               <!-- the "new" label -->
+                               <div ng-if="expr.latest" class="label label--success">Niedawno dodane</div>
                                <!-- Progress -->
-                               <md-progress-circular md-mode="determinate"  md-diameter="15px" value="\{{expr.effectivity}}"></md-progress-circular>
+                               <md-progress-circular ng-if="expr.effectivity > 0" md-mode="determinate"  md-diameter="15px" value="\{{expr.effectivity}}"></md-progress-circular>
                            </div>
                        </li>
 

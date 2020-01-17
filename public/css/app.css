@@ -15968,6 +15968,10 @@ body {
   width: 50rem;
 }
 
+.app-your-expressions-page .expression .list__item-right > *:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
 .app-your-expressions-page .card__content {
   padding: 0;
   max-height: 40rem;
@@ -16209,6 +16213,17 @@ body {
 
 .paginator__meta {
   font-size: 0.7rem;
+}
+
+.label {
+  border-radius: 5px;
+  font-size: 0.65rem;
+  padding: 0.25rem;
+}
+
+.label--success {
+  background-color: #00e676;
+  color: white;
 }
 
 .learning {
