@@ -17,6 +17,8 @@ const {
     resetRepeatMode
 } = require('./expressionDAL');
 
+const moment = require('moment');
+
 // const fileFilter = (req, file, next) => {
 //     if (file.mimetype.split('/').includes('csv')) {
 //         return next(null, true);
@@ -191,6 +193,7 @@ router.get('/user-expressions', async (req, res) => {
            const inRepeatState = item.repeat.state;
            const repeatCount = +(item.correctAnswers + item.incorrectAnswers);
            const effectivity = +((item.correctAnswers / repeatCount) * 100).toPrecision(2);
+           const latest = new Date().getTime() < item.createdAt.getTime() + 1000 * 60 * 60 * 48;
 
            return {
                _id: item._id,
@@ -198,7 +201,8 @@ router.get('/user-expressions', async (req, res) => {
                translations: item.translations,
                inRepeatState,
                repeatCount,
-               effectivity
+               effectivity,
+               latest
            };
        });
 
