@@ -10,6 +10,12 @@
     width: 50rem;
   }
 
+  .expression .list__item-right > * {
+    &:not(:last-child) {
+      margin-right: .5rem;
+    }
+  }
+
   .card__content {
     padding: 0;
     max-height: 40rem;
