@@ -10,6 +10,7 @@ require('angular-chart.js');
 const ExpressionSrvFactory = require('./services/expression-service');
 // const CsvSrvFactory = require('./services/csv-service');
 const StatisticsSrvFactory = require('./services/statistics-service');
+const LocalStorageSrvFactory = require('./services/local-storage-service');
 
 /* Controllers */
 const LearningCtrlFactory = require('./controllers/learning-controller');
@@ -26,7 +27,7 @@ const ExpressionSentenceTogglerDirFactory = require('./directives/expression-sen
 const app = angular.module('appModule', ['ngMaterial', 'ngMessages', 'chart.js']);
 
 /* Controllers */
-app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialog', LearningCtrlFactory]);
+app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialog', 'localStorageSrv', LearningCtrlFactory]);
 // app.controller('ImportCsvCrl', ['$scope', 'csvSrv', ImportCsvCrlFactory]);
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
@@ -36,6 +37,7 @@ app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', YourExpression
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 // app.factory('csvSrv', ['$http', CsvSrvFactory]);
 app.factory('statisticsSrv', ['$http', StatisticsSrvFactory]);
+app.factory('localStorageSrv', [LocalStorageSrvFactory]);
 /* Directives */
 app.directive('expressionSentenceToggler', ExpressionSentenceTogglerDirFactory);
 

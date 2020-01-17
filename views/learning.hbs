@@ -29,7 +29,7 @@
                                     <div layou="row">
                                         <div class="repeat-counter" ng-if="repeatCount > 0">
                                             <span class="repeat-counter__text">Wyrażenia w powtórkach: \{{ repeatCount }}</span>
-                                            <md-switch ng-model="repeatState.state" class="md-warn repeat-counter__switch" ng-change="skipExpression($event)">
+                                            <md-switch ng-model="repeatState.state" class="md-warn repeat-counter__switch" ng-change="handleRepeatStateModeChange($event)">
                                                 Tryb powtórek
                                             </md-switch>
                                         </div>

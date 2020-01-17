@@ -110253,226 +110253,196 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-module.exports = function LearningCtrlFactory($scope, expressionSrv, $timeout, $mdDialog) {
-  $scope.currentExprs = [];
-  $scope.currentExpr = null;
-  $scope.answer = '';
-  $scope.answerSuccess = false;
-  $scope.answerWrong = false;
-  $scope.skipping = false;
-  $scope.repeatCount = 0;
-  $scope.repeatState = {
-    state: false
-  };
-  var inputElem = document.querySelector('.input');
-  inputElem && inputElem.focus();
-  /* Init  */
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  if (!('localStorage' in window)) {
-    throw new Error('local storage is not supported');
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+module.exports =
+/*#__PURE__*/
+function () {
+  function LearningCtrlFactory($scope, expressionSrv, $timeout, $mdDialog, localStorageSrv) {
+    _classCallCheck(this, LearningCtrlFactory);
+
+    this._$scope = $scope;
+    this._expressionSrv = expressionSrv;
+    this._$mdDialog = $mdDialog;
+    this._$timeout = $timeout;
+    this._localStorageSrv = localStorageSrv;
+
+    this._initState();
+
+    this._init();
+
+    this._assignTemplateFunctions();
   }
 
-  var onlyRepeats = localStorage.getItem('onlyRepeats');
-
-  if (onlyRepeats) {
-    $scope.repeatState = {
-      state: true
-    };
-  }
-
-  expressionSrv.fetchExpressions(!!onlyRepeats).then(function (_ref) {
-    var data = _ref.data.data;
-    $scope.currentExprs = data;
-
-    if (data && data.length) {
-      $scope.currentExpr = _objectSpread({}, data[0], {
-        refs: {
-          diki: "https://www.diki.pl/slownik-angielskiego?q=".concat(data[0].expression)
-        }
-      });
-    }
-  });
-  fetchRepeatCount();
-  /* ************************************************** */
-
-  $scope.handleKeyPress = function (_ref2) {
-    var keyCode = _ref2.keyCode;
-
-    if (keyCode === 13) {
-      if (inputElem) {
-        inputElem.disabled = true;
-      }
-
-      $scope.answer === $scope.currentExpr.expression ? handleCorrectAnswer() : handleIncorrectAnswer();
-    }
-  };
-
-  $scope.skipExpression = function () {
-    /* Save to ls */
-    if ($scope.repeatState.state) {
-      localStorage.setItem('onlyRepeats', $scope.repeatState.state);
-    } else {
-      localStorage.removeItem('onlyRepeats');
-    }
-
-    $scope.skipping = true;
-    fetchNextWord(function (err) {
-      if (err) {
-        /* Handle error */
-        return;
-      }
-
-      fetchRepeatCount();
-      $scope.answer = '';
-      $scope.answerSuccess = false;
-      $scope.skipping = false;
-
-      if (inputElem) {
-        inputElem.disabled = false;
-        inputElem.focus();
-      }
-    }, false, $scope.repeatState.state);
-  };
-
-  $scope.hasExampleSentences = function () {
-    return $scope.currentExpr && $scope.currentExpr.exampleSentences && $scope.currentExpr.exampleSentences.length;
-  };
-  /* Open menu */
-
-
-  $scope.openMenu = function ($mdMenu, event) {
-    $mdMenu.open(event);
-  };
-  /* Reset repeat mode */
-
-
-  $scope.handleResetRepeatMode = function () {
-    $scope.confirmResetRepeatMode().then(function () {
-      $scope.resetRepeatMode();
-    }, function () {// DO NOTHING;
-    });
-  };
-
-  $scope.resetRepeatMode = function () {
-    expressionSrv.resetRepeatMode().then(function () {
-      $scope.repeatState = {
+  _createClass(LearningCtrlFactory, [{
+    key: "_initState",
+    value: function _initState() {
+      this._$scope.currentExprs = [];
+      this._$scope.currentExpr = null;
+      this._$scope.answer = '';
+      this._$scope.answerSuccess = false;
+      this._$scope.answerWrong = false;
+      this._$scope.skipping = false;
+      this._$scope.repeatCount = 0;
+      this._$scope.repeatState = {
         state: false
       };
-      localStorage.removeItem('onlyRepeats');
-      fetchRepeatCount();
-      fetchNextWord(function (err) {
-        if (err) {
-          /* Handle error */
-          return;
-        }
+      this._answerInputElem = document.querySelector('.input');
+    }
+  }, {
+    key: "_init",
+    value: function _init() {
+      this._focusAnswerInput();
 
-        $scope.answer = '';
-        $scope.answerSuccess = false;
-        $scope.skipping = false;
+      this._checkRepeatState();
 
-        if (inputElem) {
-          inputElem.disabled = false;
-          inputElem.focus();
-        }
-      });
-    })["catch"](function (err) {
-      return console.log('resetRepeatMode error', err);
-    });
-  };
-  /* Show expressions in repeat mode */
+      this._fetchExpressions();
 
+      this._fetchRepeatCount();
+    }
+  }, {
+    key: "_assignTemplateFunctions",
+    value: function _assignTemplateFunctions() {
+      this._$scope.handleKeyPress = this._handleKeyPress.bind(this);
+      this._$scope.openMenu = this._openMenu.bind(this);
+      this._$scope.handleResetRepeatMode = this._handleResetRepeatMode.bind(this);
+      this._$scope.hasExampleSentences = this._hasExampleSentences.bind(this);
+      this._$scope.skipExpression = this._skipExpression.bind(this);
+      this._$scope.handleRepeatStateModeChange = this._handleRepeatStateModeChange.bind(this);
+    }
+  }, {
+    key: "_focusAnswerInput",
+    value: function _focusAnswerInput() {
+      this._answerInputElem && this._answerInputElem.focus();
+    }
+  }, {
+    key: "_checkRepeatState",
+    value: function _checkRepeatState() {
+      if (this._isRepeatState) {
+        this._$scope.repeatState = {
+          state: true
+        };
+      }
+    }
+  }, {
+    key: "_fetchExpressions",
+    value: function _fetchExpressions() {
+      var _this = this;
 
-  $scope.showExpressionsInRepeatMode = function (event) {
-    console.log('showExpressionsInRepeatMode');
-  };
+      this._expressionSrv.fetchExpressions(this._isRepeatState).then(function (_ref) {
+        var data = _ref.data.data;
+        _this._$scope.currentExprs = data;
 
-  $scope.confirmResetRepeatMode = function () {
-    var confirm = $mdDialog.confirm().title('Czy na pewno chcesz zresetować tryb powtórek?').textContent('Jeśli zresetujesz tryb powtórek, wszystkie wyrażenia z powtórek zostaną usunięte').targetEvent(event).ok('Tak, chcę zrestować powtórki').cancel('Anuluj');
-    return $mdDialog.show(confirm);
-  };
-
-  function handleCorrectAnswer() {
-    $scope.answerSuccess = true;
-    console.log('correct');
-    /* Remove expression from stack */
-
-    $scope.currentExprs = $scope.currentExprs.filter(function (expr) {
-      return expr._id !== $scope.currentExpr._id;
-    });
-    $timeout(function () {
-      if ($scope.currentExprs.length) {
-        expressionSrv.incrementAnswersCounter($scope.currentExpr._id, true).then(function () {
-          /* Update repeat counter */
-          fetchRepeatCount();
-          $scope.answer = '';
-          $scope.answerSuccess = false;
-          $scope.currentExpr = $scope.currentExprs[0];
-          $scope.currentExpr = $scope.currentExpr = _objectSpread({}, $scope.currentExprs[0], {
+        if (data && data.length) {
+          _this._$scope.currentExpr = _objectSpread({}, data[0], {
             refs: {
-              diki: "https://www.diki.pl/slownik-angielskiego?q=".concat($scope.currentExprs[0].expression)
+              diki: "https://www.diki.pl/slownik-angielskiego?q=".concat(data[0].expression)
             }
           });
+        }
+      });
+    }
+  }, {
+    key: "_fetchRepeatCount",
+    value: function _fetchRepeatCount() {
+      var _this2 = this;
 
-          if (inputElem) {
-            inputElem.disabled = false;
-            inputElem.focus();
-          }
+      this._expressionSrv.fetchRepeatCount().then(function (_ref2) {
+        var repeatCount = _ref2.data.repeatCount;
+        _this2._$scope.repeatCount = repeatCount;
+      })["catch"](function (err) {
+        _this2._$scope.repeatCount = 0;
+        console.log('something went wrong', err);
+      });
+    }
+  }, {
+    key: "_handleKeyPress",
+    value: function _handleKeyPress(_ref3) {
+      var keyCode = _ref3.keyCode;
+
+      if (keyCode === 13) {
+        this._disableAnswerInput();
+
+        this._$scope.answer.trim() === this._$scope.currentExpr.expression.trim() ? this._handleCorrectAnswer() : this._handleIncorrectAnswer();
+      }
+    }
+  }, {
+    key: "_handleCorrectAnswer",
+    value: function _handleCorrectAnswer() {
+      var _this3 = this;
+
+      this._$scope.answerSuccess = true;
+      /* Remove expression from stack */
+
+      this._$scope.currentExprs = this._$scope.currentExprs.filter(function (expr) {
+        return expr._id !== _this3._$scope.currentExpr._id;
+      });
+
+      this._$timeout(function () {
+        if (_this3._$scope.currentExprs.length) {
+          _this3._expressionSrv.incrementAnswersCounter(_this3._$scope.currentExpr._id, true).then(function () {
+            _this3._$scope.answer = '';
+            _this3._$scope.answerSuccess = false;
+            _this3._$scope.currentExpr = _this3._$scope.currentExprs[0];
+            _this3._$scope.currentExpr = _objectSpread({}, _this3._$scope.currentExprs[0], {
+              refs: {
+                diki: "https://www.diki.pl/slownik-angielskiego?q=".concat(_this3._$scope.currentExprs[0].expression)
+              }
+            });
+
+            _this3._fetchRepeatCount();
+
+            _this3._enableAnswerInputAndFocus();
+          })["catch"](function (err) {
+            return console.log('something went wrong', err);
+          });
+        } else {
+          /* Fetch next new word */
+          _this3._fetchNextExpression(_this3._handleFetchNextExpression.bind(_this3), true, _this3._$scope.repeatState.state);
+        }
+      }, 500);
+    }
+  }, {
+    key: "_handleIncorrectAnswer",
+    value: function _handleIncorrectAnswer() {
+      var _this4 = this;
+
+      this._$scope.answerWrong = true;
+
+      this._$timeout(function () {
+        _this4._expressionSrv.incrementAnswersCounter(_this4._$scope.currentExpr._id, false).then(function () {
+          _this4._$scope.answerWrong = false;
+          _this4._$scope.answer = '';
+
+          _this4._fetchRepeatCount();
+
+          _this4._enableAnswerInputAndFocus();
         })["catch"](function (err) {
           return console.log('something went wrong', err);
         });
-      } else {
-        /* Fetch next new word */
-        fetchNextWord(function (err) {
-          if (err) {
-            /* Handle error */
-            return;
-          }
+      }, 2000);
+    }
+  }, {
+    key: "_fetchNextExpression",
+    value: function _fetchNextExpression(next, correct, onlyRepeats) {
+      var _this5 = this;
 
-          $scope.answer = '';
-          $scope.answerSuccess = false;
+      next = next || function () {};
 
-          if (inputElem) {
-            inputElem.disabled = false;
-            inputElem.focus();
-          }
-        }, true, $scope.repeatState.state);
-      }
-    }, 2000);
-  } // $scope.toggleSentenceTranslationVisibility = function (sentenceId) {
-  //     console.log(sentenceId);
-  // };
-
-
-  function handleIncorrectAnswer() {
-    $scope.answerWrong = true;
-    $timeout(function () {
-      expressionSrv.incrementAnswersCounter($scope.currentExpr._id, false).then(function () {
-        /* Update repeat counter */
-        fetchRepeatCount();
-        $scope.answerWrong = false;
-        $scope.answer = '';
-
-        if (inputElem) {
-          inputElem.disabled = false;
-          inputElem.focus();
-        }
-      })["catch"](function (err) {
+      this._expressionSrv.incrementAnswersCounter(this._$scope.currentExpr._id, correct, onlyRepeats).then(function () {})["catch"](function (err) {
         return console.log('something went wrong', err);
       });
-    }, 2000);
-  }
 
-  function fetchNextWord() {
-    var next = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
-    var correct = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-    var onlyRepeats = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-    expressionSrv.incrementAnswersCounter($scope.currentExpr._id, correct, onlyRepeats).then(function () {
-      return expressionSrv.fetchExpressions(onlyRepeats).then(function (_ref3) {
-        var data = _ref3.data.data;
-        $scope.currentExprs = data;
+      this._expressionSrv.fetchExpressions(onlyRepeats).then(function (_ref4) {
+        var data = _ref4.data.data;
+        _this5._$scope.currentExprs = data;
 
         if (data && data.length) {
-          $scope.currentExpr = _objectSpread({}, data[0], {
+          _this5._$scope.currentExpr = _objectSpread({}, data[0], {
             refs: {
               diki: "https://www.diki.pl/slownik-angielskiego?q=".concat(data[0].expression)
             }
@@ -110480,22 +110450,106 @@ module.exports = function LearningCtrlFactory($scope, expressionSrv, $timeout, $
         }
 
         next(null);
+      })["catch"](function (err) {
+        return console.log('something went wrong', err);
       });
-    })["catch"](function (err) {
-      return console.log('something went wrong', err);
-    });
-  }
+    }
+  }, {
+    key: "_openMenu",
+    value: function _openMenu($mdMenu, event) {
+      $mdMenu.open(event);
+    }
+  }, {
+    key: "_handleResetRepeatMode",
+    value: function _handleResetRepeatMode(event) {
+      this._confirmResetRepeatMode(event).then(this._resetRepeatMode.bind(this), function () {});
+    }
+  }, {
+    key: "_resetRepeatMode",
+    value: function _resetRepeatMode() {
+      var _this6 = this;
 
-  function fetchRepeatCount() {
-    expressionSrv.fetchRepeatCount().then(function (_ref4) {
-      var repeatCount = _ref4.data.repeatCount;
-      $scope.repeatCount = repeatCount;
-    })["catch"](function (err) {
-      $scope.repeatCount = 0;
-      console.log('something went wrong', err);
-    });
-  }
-};
+      this._expressionSrv.resetRepeatMode().then(function () {
+        _this6._$scope.repeatState = {
+          state: false
+        };
+
+        _this6._localStorageSrv.clearRepeatState();
+
+        _this6._fetchNextExpression(_this6._handleFetchNextExpression.bind(_this6));
+      })["catch"](function (err) {
+        return console.log('resetRepeatMode error', err);
+      });
+    }
+  }, {
+    key: "_confirmResetRepeatMode",
+    value: function _confirmResetRepeatMode(event) {
+      var confirm = this._$mdDialog.confirm().title('Czy na pewno chcesz zresetować tryb powtórek?').textContent('Jeśli zresetujesz tryb powtórek, wszystkie wyrażenia z powtórek zostaną usunięte').targetEvent(event).ok('Tak, chcę zrestować powtórki').cancel('Anuluj');
+
+      return this._$mdDialog.show(confirm);
+    }
+  }, {
+    key: "_hasExampleSentences",
+    value: function _hasExampleSentences() {
+      return this._$scope.currentExpr && this._$scope.currentExpr.exampleSentences && this._$scope.currentExpr.exampleSentences.length;
+    }
+  }, {
+    key: "_skipExpression",
+    value: function _skipExpression() {
+      this._fetchNextExpression(this._handleFetchNextExpression.bind(this), false, this._$scope.repeatState.state);
+    }
+  }, {
+    key: "_disableAnswerInput",
+    value: function _disableAnswerInput() {
+      if (this._answerInputElem) {
+        this._answerInputElem.disabled = true;
+      }
+    }
+  }, {
+    key: "_enableAnswerInputAndFocus",
+    value: function _enableAnswerInputAndFocus() {
+      if (this._answerInputElem) {
+        this._answerInputElem.disabled = false;
+
+        this._answerInputElem.focus();
+      }
+    }
+  }, {
+    key: "_handleFetchNextExpression",
+    value: function _handleFetchNextExpression(err) {
+      if (err) {
+        /* Handle error */
+        return;
+      }
+
+      this._$scope.answer = '';
+      this._$scope.answerSuccess = false;
+      this._$scope.skipping = false;
+
+      this._fetchRepeatCount();
+
+      this._enableAnswerInputAndFocus();
+    }
+  }, {
+    key: "_handleRepeatStateModeChange",
+    value: function _handleRepeatStateModeChange() {
+      if (this._$scope.repeatState.state) {
+        this._localStorageSrv.repeatState = this._$scope.repeatState.state;
+      } else {
+        this._localStorageSrv.clearRepeatState();
+      }
+
+      this._fetchNextExpression(this._handleFetchNextExpression.bind(this), true, this._$scope.repeatState.state);
+    }
+  }, {
+    key: "_isRepeatState",
+    get: function get() {
+      return !!this._localStorageSrv.repeatState;
+    }
+  }]);
+
+  return LearningCtrlFactory;
+}();
 
 /***/ }),
 
@@ -110789,6 +110843,8 @@ var ExpressionSrvFactory = __webpack_require__(/*! ./services/expression-service
 
 
 var StatisticsSrvFactory = __webpack_require__(/*! ./services/statistics-service */ "./resources/js/services/statistics-service.js");
+
+var LocalStorageSrvFactory = __webpack_require__(/*! ./services/local-storage-service */ "./resources/js/services/local-storage-service.js");
 /* Controllers */
 
 
@@ -110812,7 +110868,7 @@ var ExpressionSentenceTogglerDirFactory = __webpack_require__(/*! ./directives/e
 var app = angular.module('appModule', ['ngMaterial', 'ngMessages', 'chart.js']);
 /* Controllers */
 
-app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialog', LearningCtrlFactory]); // app.controller('ImportCsvCrl', ['$scope', 'csvSrv', ImportCsvCrlFactory]);
+app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialog', 'localStorageSrv', LearningCtrlFactory]); // app.controller('ImportCsvCrl', ['$scope', 'csvSrv', ImportCsvCrlFactory]);
 
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
@@ -110823,6 +110879,7 @@ app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', YourExpression
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]); // app.factory('csvSrv', ['$http', CsvSrvFactory]);
 
 app.factory('statisticsSrv', ['$http', StatisticsSrvFactory]);
+app.factory('localStorageSrv', [LocalStorageSrvFactory]);
 /* Directives */
 
 app.directive('expressionSentenceToggler', ExpressionSentenceTogglerDirFactory);
@@ -110947,6 +111004,85 @@ function (_ServiceBase) {
 
 module.exports = function ExpressionSrvFactory($http) {
   return new ExpressionService($http);
+};
+
+/***/ }),
+
+/***/ "./resources/js/services/local-storage-service.js":
+/*!********************************************************!*\
+  !*** ./resources/js/services/local-storage-service.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var ServiceBase = __webpack_require__(/*! ./service-base */ "./resources/js/services/service-base.js");
+/* Statistics service */
+
+
+var LocalStorageService =
+/*#__PURE__*/
+function (_ServiceBase) {
+  _inherits(LocalStorageService, _ServiceBase);
+
+  function LocalStorageService() {
+    var _this;
+
+    _classCallCheck(this, LocalStorageService);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LocalStorageService).call(this));
+
+    _this._checkSupport();
+
+    return _this;
+  }
+
+  _createClass(LocalStorageService, [{
+    key: "_checkSupport",
+    value: function _checkSupport() {
+      if (!('localStorage' in window)) {
+        throw new Error('local storage is not supported');
+      }
+
+      this._ls = localStorage;
+    }
+  }, {
+    key: "clearRepeatState",
+    value: function clearRepeatState() {
+      this._ls.removeItem('onlyRepeats');
+    }
+  }, {
+    key: "repeatState",
+    get: function get() {
+      return this._ls.getItem('onlyRepeats');
+    },
+    set: function set(value) {
+      this._ls.setItem('onlyRepeats', value);
+    }
+  }]);
+
+  return LocalStorageService;
+}(ServiceBase);
+
+module.exports = function LocalStorageSrvFactory() {
+  return new LocalStorageService();
 };
 
 /***/ }),
