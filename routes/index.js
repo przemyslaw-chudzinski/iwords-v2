@@ -26,7 +26,14 @@ router.get('/import', (req, res) => res.render('import', {}));
 /* Dictionary */
 router.get('/dictionary', (req, res) => res.render('dictionary', {}));
 /* Statistics */
-router.get('/statistics', (req, res) => res.render('statistics'));
+router.get('/statistics', (req, res) => {
+    const viewData = {
+        name: 'app.statistics',
+        pageTitle: 'Statystyki'
+    };
+
+    res.render('statistics', viewData);
+});
 /* Your expressions */
 router.get('/your-expressions', async (req, res) => {
 
