@@ -110684,119 +110684,151 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-module.exports = function YourExpressionsCtrlFactory($scope, expressionSrv) {
-  $scope.pagination = {
-    page: 1,
-    limit: 30
-  };
-  $scope.expressions = [];
-  $scope.prevPageDisable = true;
-  $scope.nextPageDisable = false;
-  /* Show card overlay */
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  $scope.fetching = true;
-  /* Filter search */
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-  $scope.filterSearch = '';
-  expressionSrv.fetchUsersExpressions({
-    params: _objectSpread({}, $scope.pagination)
-  }).then(function (res) {
-    $scope.expressions = res.data.data;
-    /* Update pagination controls */
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-    var maxPageNumber = Math.ceil(res.data.total / $scope.pagination.limit);
-    $scope.prevPageDisable = $scope.pagination.page === 1;
-    $scope.nextPageDisable = $scope.pagination.page === maxPageNumber;
-    /* Hide card overlay */
+module.exports =
+/*#__PURE__*/
+function () {
+  function YourExpressionsCtrlFactory($scope, expressionSrv) {
+    _classCallCheck(this, YourExpressionsCtrlFactory);
 
-    $scope.fetching = false;
-  })["catch"](function (err) {
-    console.log('something went wrong');
-  });
-  /* Opens list menu options */
+    this._$scope = $scope;
+    this._expressionSrv = expressionSrv;
 
-  $scope.openMenu = function ($mdMenu, ev) {
-    $mdMenu.open(ev);
-  };
-  /* Next page */
+    this._initState();
 
+    this._init();
 
-  $scope.nextPage = function () {
-    $scope.pagination.page++;
-    expressionSrv.fetchUsersExpressions({
-      params: _objectSpread({}, $scope.pagination, {
-        search: $scope.filterSearch
-      })
-    }).then(function (res) {
-      $scope.expressions = res.data.data;
+    this._assignTemplateFunctions();
+  }
+
+  _createClass(YourExpressionsCtrlFactory, [{
+    key: "_initState",
+    value: function _initState() {
+      this._$scope.pagination = {
+        page: 1,
+        limit: 30
+      };
+      this._$scope.expressions = [];
+      this._$scope.prevPageDisable = true;
+      this._$scope.nextPageDisable = false;
+      this._$scope.fetching = true;
+      this._$scope.filterSearch = '';
+    }
+  }, {
+    key: "_init",
+    value: function _init() {
+      this._fetchUsersExpressions();
+    }
+  }, {
+    key: "_assignTemplateFunctions",
+    value: function _assignTemplateFunctions() {
+      this._$scope.nextPage = this._nextPage.bind(this);
+      this._$scope.prevPage = this._prevPage.bind(this);
+      this._$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
+    }
+  }, {
+    key: "_fetchUsersExpressions",
+    value: function _fetchUsersExpressions() {
+      var _this = this;
+
+      this._expressionSrv.fetchUsersExpressions({
+        params: {
+          pagination: this._$scope.pagination
+        }
+      }).then(function (res) {
+        _this._$scope.expressions = res.data.data;
+        /* Update pagination controls */
+
+        var maxPageNumber = Math.ceil(res.data.total / _this._$scope.pagination.limit);
+        _this._$scope.prevPageDisable = _this._$scope.pagination.page === 1;
+        _this._$scope.nextPageDisable = _this._$scope.pagination.page === maxPageNumber;
+        /* Hide card overlay */
+
+        _this._$scope.fetching = false;
+      })["catch"](function (err) {
+        console.log('something went wrong');
+      });
+    }
+  }, {
+    key: "_nextPage",
+    value: function _nextPage() {
+      this._$scope.pagination.page++;
+
+      this._expressionSrv.fetchUsersExpressions({
+        params: _objectSpread({}, this._$scope.pagination, {
+          search: this._$scope.filterSearch
+        })
+      }).then(this._handleFetchUsersExpressions.bind(this))["catch"](function (err) {
+        console.log('something went wrong');
+      });
+    }
+  }, {
+    key: "_prevPage",
+    value: function _prevPage() {
+      this._$scope.pagination.page--;
+
+      this._expressionSrv.fetchUsersExpressions({
+        params: _objectSpread({}, this._$scope.pagination, {
+          search: this._$scope.filterSearch
+        })
+      }).then(this._handleFetchUsersExpressions.bind(this))["catch"](function (err) {
+        console.log('something went wrong');
+      });
+    }
+  }, {
+    key: "_handleFetchUsersExpressions",
+    value: function _handleFetchUsersExpressions(res) {
+      this._$scope.expressions = res.data.data;
       var total = res.data.total;
       /* Update pagination controls */
 
-      var maxPageNumber = Math.ceil(res.data.total / $scope.pagination.limit);
-      $scope.prevPageDisable = $scope.pagination.page === 1 || $scope.fetching || total === 0;
-      $scope.nextPageDisable = $scope.pagination.page === maxPageNumber || $scope.fetching || total === 0;
+      var maxPageNumber = Math.ceil(res.data.total / this._$scope.pagination.limit);
+      this._$scope.prevPageDisable = this._$scope.pagination.page === 1 || this._$scope.fetching || total === 0;
+      this._$scope.nextPageDisable = this._$scope.pagination.page === maxPageNumber || this._$scope.fetching || total === 0;
       /* Hide card overlay */
 
-      $scope.fetching = false;
-    })["catch"](function (err) {
-      console.log('something went wrong');
-    });
-  };
-  /* Prev page */
+      this._$scope.fetching = false;
+    }
+  }, {
+    key: "_handleFilterInputChange",
+    value: function _handleFilterInputChange() {
+      var _this2 = this;
 
+      this._$scope.fetching = true;
+      /* Reset pagination */
 
-  $scope.prevPage = function () {
-    $scope.pagination.page--;
-    expressionSrv.fetchUsersExpressions({
-      params: _objectSpread({}, $scope.pagination, {
-        search: $scope.filterSearch
-      })
-    }).then(function (res) {
-      $scope.expressions = res.data.data;
-      var total = res.data.total;
-      /* Update pagination controls */
+      this._$scope.pagination = {
+        page: 1,
+        limit: 30
+      };
 
-      var maxPageNumber = Math.ceil(res.data.total / $scope.pagination.limit);
-      $scope.prevPageDisable = $scope.pagination.page === 1 || $scope.fetching || total === 0;
-      $scope.nextPageDisable = $scope.pagination.page === maxPageNumber || $scope.fetching || total === 0;
-      /* Hide card overlay */
+      this._expressionSrv.fetchUsersExpressions({
+        params: _objectSpread({}, this._$scope.pagination, {
+          search: this._$scope.filterSearch
+        })
+      }).then(function (res) {
+        _this2._$scope.expressions = res.data.data;
+        /* Hide card overlay */
 
-      $scope.fetching = false;
-    })["catch"](function (err) {
-      console.log('something went wrong');
-    });
-  };
-  /* Filter input change handler */
+        _this2._$scope.fetching = false;
+        /* Update pagination controls */
 
+        var maxPageNumber = Math.ceil(res.data.total / _this2._$scope.pagination.limit);
+        _this2._$scope.prevPageDisable = _this2._$scope.pagination.page === 1 || _this2._$scope.fetching;
+        _this2._$scope.nextPageDisable = _this2._$scope.pagination.page === maxPageNumber || _this2._$scope.fetching;
+      })["catch"](function (err) {
+        console.log('something went wrong');
+      });
+    }
+  }]);
 
-  $scope.handleFilterInputChange = function () {
-    // console.log($scope.filterSearch);
-    $scope.fetching = true;
-    /* Reset pagination */
-
-    $scope.pagination = {
-      page: 1,
-      limit: 30
-    };
-    expressionSrv.fetchUsersExpressions({
-      params: _objectSpread({}, $scope.pagination, {
-        search: $scope.filterSearch
-      })
-    }).then(function (res) {
-      $scope.expressions = res.data.data;
-      /* Hide card overlay */
-
-      $scope.fetching = false;
-      /* Update pagination controls */
-
-      var maxPageNumber = Math.ceil(res.data.total / $scope.pagination.limit);
-      $scope.prevPageDisable = $scope.pagination.page === 1 || $scope.fetching;
-      $scope.nextPageDisable = $scope.pagination.page === maxPageNumber || $scope.fetching;
-    })["catch"](function (err) {
-      console.log('something went wrong');
-    });
-  };
-};
+  return YourExpressionsCtrlFactory;
+}();
 
 /***/ }),
 
