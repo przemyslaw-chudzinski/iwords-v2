@@ -110693,11 +110693,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 module.exports =
 /*#__PURE__*/
 function () {
-  function YourExpressionsCtrlFactory($scope, expressionSrv) {
+  function YourExpressionsCtrlFactory($scope, expressionSrv, $mdDialog, notesSrv) {
     _classCallCheck(this, YourExpressionsCtrlFactory);
 
     this._$scope = $scope;
     this._expressionSrv = expressionSrv;
+    this._$mdDialog = $mdDialog;
+    this._notesSrv = notesSrv;
 
     this._initState();
 
@@ -110730,6 +110732,8 @@ function () {
       this._$scope.nextPage = this._nextPage.bind(this);
       this._$scope.prevPage = this._prevPage.bind(this);
       this._$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
+      this._$scope.openExprMenu = this._openExprMenu.bind(this);
+      this._$scope.handleAddNote = this._handleAddNote.bind(this);
     }
   }, {
     key: "_fetchUsersExpressions",
@@ -110823,6 +110827,51 @@ function () {
         _this2._$scope.nextPageDisable = _this2._$scope.pagination.page === maxPageNumber || _this2._$scope.fetching;
       })["catch"](function (err) {
         console.log('something went wrong');
+      });
+    }
+  }, {
+    key: "_openExprMenu",
+    value: function _openExprMenu($mdMenu, event) {
+      $mdMenu.open(event);
+    }
+  }, {
+    key: "_showAddNoteDialog",
+    value: function _showAddNoteDialog(expr, event) {
+      var confirm = this._$mdDialog.prompt().title('Nowy dokument').textContent("\n                Dodajesz notatk\u0119 dla wyra\u017Cenia ".concat(expr.expression, ".\n                Po utworzeniu zostaniesz przekierowany do edytora, gdzie b\u0119dziesz m\xF3g\u0142 edytowa\u0107 dokument\n            ")).placeholder('Nazwa dokumentu').targetEvent(event).required(true).ok('Utwórz').cancel('Anuluj');
+
+      return this._$mdDialog.show(confirm);
+    }
+  }, {
+    key: "_handleAddNote",
+    value: function _handleAddNote(expr, event) {
+      var _this3 = this;
+
+      this._showAddNoteDialog(expr, event).then(function (result) {
+        _this3._saveNote(expr._id, result, function (err) {
+          if (err) {
+            return;
+          } // TODO: Redirect to edit page
+
+        });
+      }, function () {});
+    }
+  }, {
+    key: "_saveNote",
+    value: function _saveNote(exprId, title, next) {
+      next = next || function () {};
+
+      var ctx = {
+        exprId: exprId,
+        payload: {
+          title: title
+        }
+      };
+
+      this._notesSrv.saveNote(ctx).then(function () {
+        return next(null);
+      })["catch"](function (err) {
+        console.log('something went wrong', err);
+        next(err);
       });
     }
   }]);
@@ -110930,6 +110979,8 @@ var ExpressionSrvFactory = __webpack_require__(/*! ./services/expression-service
 var StatisticsSrvFactory = __webpack_require__(/*! ./services/statistics-service */ "./resources/js/services/statistics-service.js");
 
 var LocalStorageSrvFactory = __webpack_require__(/*! ./services/local-storage-service */ "./resources/js/services/local-storage-service.js");
+
+var NotesSrvFactory = __webpack_require__(/*! ./services/notes-service */ "./resources/js/services/notes-service.js");
 /* Controllers */
 
 
@@ -110958,13 +111009,14 @@ app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialo
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
 app.controller('BodyCrl', ['$scope', BodyCrlFactory]);
-app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', YourExpressionsCtrlFactory]);
+app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', '$mdDialog', 'notesSrv', YourExpressionsCtrlFactory]);
 /* Services */
 
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]); // app.factory('csvSrv', ['$http', CsvSrvFactory]);
 
 app.factory('statisticsSrv', ['$http', StatisticsSrvFactory]);
 app.factory('localStorageSrv', [LocalStorageSrvFactory]);
+app.factory('notesSrv', ['$http', NotesSrvFactory]);
 /* Directives */
 
 app.directive('expressionSentenceToggler', ExpressionSentenceTogglerDirFactory);
@@ -111193,6 +111245,86 @@ function (_ServiceBase) {
 
 module.exports = function LocalStorageSrvFactory() {
   return new LocalStorageService();
+};
+
+/***/ }),
+
+/***/ "./resources/js/services/notes-service.js":
+/*!************************************************!*\
+  !*** ./resources/js/services/notes-service.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var ServiceBase = __webpack_require__(/*! ./service-base */ "./resources/js/services/service-base.js");
+/* Statistics service */
+
+
+var NotesService =
+/*#__PURE__*/
+function (_ServiceBase) {
+  _inherits(NotesService, _ServiceBase);
+
+  function NotesService(http) {
+    var _this;
+
+    _classCallCheck(this, NotesService);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NotesService).call(this));
+    _this.http = http;
+    _this.prefix = '/api/notes';
+    return _this;
+  }
+
+  _createClass(NotesService, [{
+    key: "saveNote",
+    value: function saveNote() {
+      var ctx = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+        exprId: null,
+        payload: {
+          title: null
+        }
+      };
+
+      var payload = _objectSpread({
+        title: null
+      }, ctx.payload, {
+        userId: this.userId
+      });
+
+      return this.http.post(this.prefix + "/".concat(ctx.exprId), payload);
+    }
+  }]);
+
+  return NotesService;
+}(ServiceBase);
+
+module.exports = function NotesSrvFactory($http) {
+  return new NotesService($http);
 };
 
 /***/ }),

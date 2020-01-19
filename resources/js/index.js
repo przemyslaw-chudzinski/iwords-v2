@@ -11,6 +11,7 @@ const ExpressionSrvFactory = require('./services/expression-service');
 // const CsvSrvFactory = require('./services/csv-service');
 const StatisticsSrvFactory = require('./services/statistics-service');
 const LocalStorageSrvFactory = require('./services/local-storage-service');
+const NotesSrvFactory = require('./services/notes-service');
 
 /* Controllers */
 const LearningCtrlFactory = require('./controllers/learning-controller');
@@ -32,12 +33,13 @@ app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialo
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
 app.controller('BodyCrl', ['$scope', BodyCrlFactory]);
-app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', YourExpressionsCtrlFactory]);
+app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', '$mdDialog', 'notesSrv', YourExpressionsCtrlFactory]);
 /* Services */
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 // app.factory('csvSrv', ['$http', CsvSrvFactory]);
 app.factory('statisticsSrv', ['$http', StatisticsSrvFactory]);
 app.factory('localStorageSrv', [LocalStorageSrvFactory]);
+app.factory('notesSrv', ['$http', NotesSrvFactory]);
 /* Directives */
 app.directive('expressionSentenceToggler', ExpressionSentenceTogglerDirFactory);
 

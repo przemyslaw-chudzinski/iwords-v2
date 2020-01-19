@@ -1,8 +1,10 @@
 module.exports = class YourExpressionsCtrlFactory {
 
-    constructor($scope, expressionSrv) {
+    constructor($scope, expressionSrv, $mdDialog, notesSrv) {
         this._$scope = $scope;
         this._expressionSrv = expressionSrv;
+        this._$mdDialog = $mdDialog;
+        this._notesSrv = notesSrv;
 
         this._initState();
         this._init();
@@ -29,6 +31,8 @@ module.exports = class YourExpressionsCtrlFactory {
         this._$scope.nextPage = this._nextPage.bind(this);
         this._$scope.prevPage = this._prevPage.bind(this);
         this._$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
+        this._$scope.openExprMenu = this._openExprMenu.bind(this);
+        this._$scope.handleAddNote = this._handleAddNote.bind(this);
     }
 
     _fetchUsersExpressions() {
@@ -98,4 +102,50 @@ module.exports = class YourExpressionsCtrlFactory {
             });
     }
 
-}
+    _openExprMenu($mdMenu, event) {
+        $mdMenu.open(event);
+    }
+
+    _showAddNoteDialog(expr, event) {
+        const confirm = this._$mdDialog.prompt()
+            .title('Nowy dokument')
+            .textContent(`
+                Dodajesz notatkę dla wyrażenia ${expr.expression}.
+                Po utworzeniu zostaniesz przekierowany do edytora, gdzie będziesz mógł edytować dokument
+            `)
+            .placeholder('Nazwa dokumentu')
+            .targetEvent(event)
+            .required(true)
+            .ok('Utwórz')
+            .cancel('Anuluj');
+
+        return this._$mdDialog.show(confirm)
+    }
+
+    _handleAddNote(expr, event) {
+        this._showAddNoteDialog(expr, event)
+            .then(result => {
+                this._saveNote(expr._id,result,err => {
+                    if (err) {
+                        return;
+                    }
+                    // TODO: Redirect to edit page
+                });
+            }, () => {});
+    }
+
+    _saveNote(exprId, title, next) {
+        next = next || function () {};
+        const ctx = {
+            exprId,
+            payload: {title}
+        };
+        this._notesSrv.saveNote(ctx)
+            .then(() => next(null))
+            .catch(err => {
+                console.log('something went wrong', err);
+                next(err);
+            });
+    }
+
+};
