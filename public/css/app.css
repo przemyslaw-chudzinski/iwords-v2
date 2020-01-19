@@ -16003,6 +16003,26 @@ body {
   padding: 2rem;
 }
 
+.app-edit-note-page .expression {
+  padding: 0 0 2rem 0;
+}
+
+.app-edit-note-page .expression__sentence {
+  margin-top: 1rem;
+}
+
+.app-edit-note-page .expression__sentence-item {
+  margin-left: 1rem;
+}
+
+.app-edit-note-page .expression__sentence-item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.app-edit-note-page .expression__sentence-item span {
+  font-size: 0.75rem;
+}
+
 .app-edit-note-page .editor {
   display: -webkit-box;
   display: flex;

@@ -21,6 +21,7 @@ module.exports = class YourExpressionsCtrlFactory {
         this._$scope.nextPageDisable = false;
         this._$scope.fetching = true;
         this._$scope.filterSearch = '';
+        this._$scope.exprId = null;
     }
 
     _init() {

@@ -13,12 +13,11 @@ module.exports = class EditNoteCtrlFactory {
     _initState() {
         this._$scope.noteId = null;
         this._$scope.exprId = null;
-        // this._$scope.content = null;
+        this._$scope.autosave = true;
     }
 
     _init() {
         this._editor = IWORDS.editors.editNoteEditor;
-        // console.log('content', this._$scope.content);
     }
 
     _assignTemplateFunctions() {

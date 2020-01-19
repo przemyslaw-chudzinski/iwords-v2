@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {countAllUserExpressions} = require('../core/expressions/expressionDAL');
+const {countAllUserExpressions, fetchExpressionById} = require('../core/expressions/expressionDAL');
 const {fetchNoteById} = require('../core/notes/noteDAL');
 
 /* Main page */
@@ -55,6 +55,40 @@ router.get('/your-expressions', async (req, res) => {
 
 });
 
+/* List of notes associated with given expression id */
+router.get('/notes/expression/:id', async (req, res) => {
+
+    const exprId = req.params.id;
+
+    const viewData = {
+        name: '',
+        pageTitle: '',
+
+        exprId,
+    };
+
+    try {
+
+        const expression = await fetchExpressionById(exprId);
+
+        if (!expression) {
+            res.render('404');
+            return;
+        }
+
+        viewData.pageTitle = 'Notatki dla wyrażenia: ' + expression.expression;
+        viewData.exprId = expression._id;
+
+        res.render('expression-notes', viewData);
+
+    } catch (e) {
+        console.log(e);
+        req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych');
+        res.render('error');
+    }
+
+});
+
 /* Edit note */
 router.get('/notes/:id/:exprId?', async (req, res) => {
 
@@ -70,9 +104,33 @@ router.get('/notes/:id/:exprId?', async (req, res) => {
         name: 'app.notes.edit',
         pageTitle: '',
         content: '',
+        expression: '',
+        translations: '',
+        sentences: null,
+        partOfSpeech: null,
         noteId,
-        exprId
+        exprId,
     };
+
+    if (exprId) {
+        try {
+            const expression = await fetchExpressionById(exprId);
+            if (!expression) {
+                res.render('404');
+                return;
+            }
+
+            viewData.expression = expression.expression;
+            viewData.translations = expression.translations.join(', ');
+            viewData.sentences = expression.exampleSentences;
+            viewData.partOfSpeech = expression.partOfSpeech;
+
+        } catch (e) {
+            console.log(e);
+            req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych');
+            res.render('error');
+        }
+    }
 
     try {
         const note = await fetchNoteById(noteId);

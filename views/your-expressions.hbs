@@ -5,7 +5,7 @@
 
        {{#if hasExpressions}}
            <!-- List -->
-           <div class="expressions-list card card--white card--with-shadow" ng-controller="YourExpressionsCtrl">
+           <div class="expressions-list card card--white card--with-shadow" ng-controller="YourExpressionsCtrl" ng-init="exprId='{{exprId}}'">
                <!-- Header -->
                <div class="card__header">
                    <!-- Filter input -->
@@ -47,7 +47,7 @@
                                    </md-button>
                                    <md-menu-content width="4">
                                        <md-menu-item>
-                                           <md-button>
+                                           <md-button ng-href="/app/notes/expression/\{{expr._id}}">
                                                <span class="fa fa-sticky-note-o"></span>
                                                Notatki
                                            </md-button>

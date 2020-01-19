@@ -77,8 +77,34 @@ function updateNote(config) {
 
 }
 
+function fetchNotesByExpressionId(config = {}) {
+
+    const _config = {
+        select: {},
+        exprId: null,
+        userId: null,
+        limit: null,
+        skip: 0,
+        search: '',
+        ...config
+    };
+
+    const note = new RegExp( _config.search, 'ig');
+
+    return Note
+        .find({
+            note
+        })
+        .where('userId', _config.userId)
+        .limit(_config.limit)
+        .skip(_config.skip)
+        .select(_config.select);
+
+}
+
 module.exports = {
     createNote,
     fetchNoteById,
-    updateNote
+    updateNote,
+    fetchNotesByExpressionId
 };

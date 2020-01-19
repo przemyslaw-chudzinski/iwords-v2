@@ -1,6 +1,26 @@
 .app-edit-note-page {
   padding: 2rem;
 
+  .expression {
+    padding: 0 0 2rem 0;
+
+    &__sentence {
+      margin-top: 1rem;
+    }
+
+    &__sentence-item {
+
+      margin-left: 1rem;
+
+      &:not(:last-child) {
+        margin-bottom: .5rem;
+      }
+
+      span {
+        font-size: .75rem;
+      }
+    }
+  }
 
   .editor {
     display: flex;
