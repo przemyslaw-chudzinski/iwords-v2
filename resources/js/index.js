@@ -5,6 +5,7 @@ require('angular-animate');
 require('angular-messages');
 require('angular-material');
 require('angular-chart.js');
+require('./editor');
 
 /* Services */
 const ExpressionSrvFactory = require('./services/expression-service');
@@ -20,6 +21,7 @@ const StatisticsCtrlFactory = require('./controllers/statistics-controller');
 const ToolbarUserMenuCtrlFactory = require('./controllers/toolbar-user-menu-controller');
 const BodyCrlFactory = require('./controllers/body-controller');
 const YourExpressionsCtrlFactory = require('./controllers/your-expressions-controller');
+const EditNoteCtrlFactory = require('./controllers/edit-note-controller');
 
 /* Directives */
 const ExpressionSentenceTogglerDirFactory = require('./directives/expression-sentence-toggler-directive');
@@ -34,6 +36,7 @@ app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFacto
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
 app.controller('BodyCrl', ['$scope', BodyCrlFactory]);
 app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', '$mdDialog', 'notesSrv', YourExpressionsCtrlFactory]);
+app.controller('EditNoteCtrl', ['$scope', 'notesSrv', '$mdToast', EditNoteCtrlFactory]);
 /* Services */
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 // app.factory('csvSrv', ['$http', CsvSrvFactory]);

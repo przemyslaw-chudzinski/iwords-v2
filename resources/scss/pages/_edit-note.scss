@@ -1,0 +1,20 @@
+.app-edit-note-page {
+  padding: 2rem;
+
+
+  .editor {
+    display: flex;
+
+    .card__content {
+      flex-grow: 1;
+    }
+
+    &__element {
+      .ce-block__content, .ce-toolbar__content {
+        width: 100%;
+      }
+    }
+
+  }
+
+}

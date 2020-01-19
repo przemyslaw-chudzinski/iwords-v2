@@ -9,13 +9,25 @@ class NotesService extends ServiceBase {
         this.prefix = '/api/notes';
     }
 
-    saveNote(ctx = {exprId: null, payload: {title: null}}) {
+    saveNote(ctx = {}) {
         const payload = {
             title: null,
+            ...ctx,
+            userId: this.userId
+        };
+        return this.http.post(this.prefix, payload);
+    }
+
+    updateNote(ctx = {noteId: null, payload: {}}) {
+
+        const payload = {
+            title: null,
+            content: null,
             ...ctx.payload,
             userId: this.userId
         };
-        return this.http.post(this.prefix + `/${ctx.exprId}`, payload);
+
+        return this.http.post(this.prefix + `/${ctx.noteId}`, payload);
     }
 }
 

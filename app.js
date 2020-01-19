@@ -69,6 +69,7 @@ app.use(passport.session());
 
 /* API Routes */
 app.use('/api/expressions', require('./core/expressions/expressionsAPI'));
+app.use('/api/notes', require('./core/notes/noteAPI'));
 
 /* API Iwords Chrome Extension */
 const corsOptions = {

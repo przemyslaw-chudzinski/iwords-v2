@@ -15999,6 +15999,25 @@ body {
   text-align: center;
 }
 
+.app-edit-note-page {
+  padding: 2rem;
+}
+
+.app-edit-note-page .editor {
+  display: -webkit-box;
+  display: flex;
+}
+
+.app-edit-note-page .editor .card__content {
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+}
+
+.app-edit-note-page .editor__element .ce-block__content,
+.app-edit-note-page .editor__element .ce-toolbar__content {
+  width: 100%;
+}
+
 .input {
   text-align: center;
   font-size: 3rem;

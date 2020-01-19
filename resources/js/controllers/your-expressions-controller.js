@@ -125,11 +125,11 @@ module.exports = class YourExpressionsCtrlFactory {
     _handleAddNote(expr, event) {
         this._showAddNoteDialog(expr, event)
             .then(result => {
-                this._saveNote(expr._id,result,err => {
+                this._saveNote(expr._id,result,(err, res) => {
                     if (err) {
                         return;
                     }
-                    // TODO: Redirect to edit page
+                    window.location.href = `/app/notes/${res.data.noteId}/${expr._id}`;
                 });
             }, () => {});
     }
@@ -138,10 +138,10 @@ module.exports = class YourExpressionsCtrlFactory {
         next = next || function () {};
         const ctx = {
             exprId,
-            payload: {title}
+            title
         };
         this._notesSrv.saveNote(ctx)
-            .then(() => next(null))
+            .then(res => next(null, res))
             .catch(err => {
                 console.log('something went wrong', err);
                 next(err);

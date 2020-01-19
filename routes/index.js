@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const {countAllUserExpressions} = require('../core/expressions/expressionDAL');
+const {fetchNoteById} = require('../core/notes/noteDAL');
 
 /* Main page */
 router.get('/', (req, res) => res.render('index', {name: 'app.dashboard'}));
@@ -50,6 +51,45 @@ router.get('/your-expressions', async (req, res) => {
     } catch (e) {
         req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych');
         res.render('your-expressions', viewData);
+    }
+
+});
+
+/* Edit note */
+router.get('/notes/:id/:exprId?', async (req, res) => {
+
+    const noteId = req.params.id;
+    const exprId = req.params.exprId;
+
+    if (!noteId) {
+        res.render('404');
+        return;
+    }
+
+    const viewData = {
+        name: 'app.notes.edit',
+        pageTitle: '',
+        content: '',
+        noteId,
+        exprId
+    };
+
+    try {
+        const note = await fetchNoteById(noteId);
+
+        if (!note) {
+            res.render('404');
+            return;
+        }
+
+        viewData.pageTitle = `Edytujesz notatkę - ${note.title}`;
+        viewData.content = note.content;
+        res.render('edit-note', viewData);
+
+    } catch (e) {
+        console.log(e);
+        req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych');
+        res.render('error');
     }
 
 });
