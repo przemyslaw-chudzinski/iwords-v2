@@ -15928,6 +15928,11 @@ body {
   height: 4rem;
 }
 
+.app-learning-page__expressions-in-repeat-mode {
+  width: 60%;
+  margin: 0 auto;
+}
+
 .app-login-page {
   display: -webkit-box;
   display: flex;
