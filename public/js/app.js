@@ -110291,6 +110291,7 @@ function () {
       this._$scope.repeatState = {
         state: false
       };
+      this._$scope.expressionsInRepeatMode = [];
       this._answerInputElem = document.querySelector('.input');
     }
   }, {
@@ -110313,6 +110314,8 @@ function () {
       this._$scope.hasExampleSentences = this._hasExampleSentences.bind(this);
       this._$scope.skipExpression = this._skipExpression.bind(this);
       this._$scope.handleRepeatStateModeChange = this._handleRepeatStateModeChange.bind(this);
+      this._$scope.handleSelectTab = this._handleSelectTab.bind(this);
+      this._$scope.handleRemoveExprFromRepeatMode = this._handleRemoveExprFromRepeatMode.bind(this);
     }
   }, {
     key: "_focusAnswerInput",
@@ -110476,6 +110479,8 @@ function () {
 
         _this6._localStorageSrv.clearRepeatState();
 
+        _this6._$scope.expressionsInRepeatMode = [];
+
         _this6._fetchNextExpression(_this6._handleFetchNextExpression.bind(_this6));
       })["catch"](function (err) {
         return console.log('resetRepeatMode error', err);
@@ -110540,6 +110545,54 @@ function () {
       }
 
       this._fetchNextExpression(this._handleFetchNextExpression.bind(this), true, this._$scope.repeatState.state);
+    }
+  }, {
+    key: "_fetchExpressionsInRepeatMode",
+    value: function _fetchExpressionsInRepeatMode() {
+      var _this7 = this;
+
+      return this._expressionSrv.fetchExpressionsInRepeatMode().then(function (res) {
+        _this7._$scope.expressionsInRepeatMode = res.data.data;
+      })["catch"]();
+    }
+  }, {
+    key: "_handleSelectTab",
+    value: function _handleSelectTab(key, event) {
+      switch (key) {
+        case 'learning':
+          break;
+
+        case 'repeats':
+          this._handleRepeatsTabSelection();
+
+          break;
+      }
+    }
+  }, {
+    key: "_handleRepeatsTabSelection",
+    value: function _handleRepeatsTabSelection() {
+      this._fetchExpressionsInRepeatMode();
+    }
+  }, {
+    key: "_handleRemoveExprFromRepeatMode",
+    value: function _handleRemoveExprFromRepeatMode(exprId, event) {
+      var _this8 = this;
+
+      var config = {
+        exprId: exprId
+      };
+
+      this._expressionSrv.removeExpressionFromRepeatMode(config).then(function () {
+        _this8._fetchRepeatCount();
+
+        _this8._$scope.expressionsInRepeatMode = _this8._$scope.expressionsInRepeatMode.filter(function (item) {
+          return item._id !== exprId;
+        });
+
+        _this8._fetchExpressions();
+      })["catch"](function (err) {
+        return console.log('something went wrong', e);
+      });
     }
   }, {
     key: "_isRepeatState",
@@ -110994,6 +111047,31 @@ function (_ServiceBase) {
     key: "resetRepeatMode",
     value: function resetRepeatMode() {
       return this.http.post(this.prefix + '/reset-repeat-mode', {
+        userId: this.userId
+      });
+    }
+  }, {
+    key: "fetchExpressionsInRepeatMode",
+    value: function fetchExpressionsInRepeatMode() {
+      var ctx = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+        params: {}
+      };
+
+      var queryParams = _objectSpread({
+        page: 1
+      }, ctx.params);
+
+      return this.http.get(this.prefix + '/repeat-mode', {
+        params: _objectSpread({
+          userId: this.userId
+        }, queryParams)
+      });
+    }
+  }, {
+    key: "removeExpressionFromRepeatMode",
+    value: function removeExpressionFromRepeatMode() {
+      var ctx = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      return this.http.post(this.prefix + "/".concat(ctx.exprId, "/remove-from-repeat-mode"), {
         userId: this.userId
       });
     }

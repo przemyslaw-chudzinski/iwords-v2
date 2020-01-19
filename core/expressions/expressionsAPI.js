@@ -14,7 +14,9 @@ const {
     fetchRepeatExpressions,
     fetchAllExpressions,
     countAllUserExpressions,
-    resetRepeatMode
+    resetRepeatMode,
+    countAllExpressionsInRepeatMode,
+    removeExpressionFromRepeatMode
 } = require('./expressionDAL');
 
 const moment = require('moment');
@@ -231,6 +233,78 @@ router.post('/reset-repeat-mode', async (req, res) => {
     } catch (e) {
         res.status(400);
         await res.json({error: true});
+    }
+
+});
+
+/* Get expressions which are in repeat mode */
+router.get('/repeat-mode', async (req, res) => {
+
+    const userId = req.query.userId;
+    const limit = +req.query.limit;
+    const page = +req.query.page || null;
+
+    const config = {
+        userId,
+        limit,
+        skip: (page - 1) * limit
+    };
+
+    try {
+        const _data = await fetchRepeatExpressions(config);
+        const total = await countAllExpressionsInRepeatMode(config);
+
+        const data = _data.map(item => {
+
+            const _id = item._id;
+            const expression = item.expression;
+            const translations = item.translations;
+
+            return {
+                _id,
+                expression,
+                translations
+            };
+
+        });
+
+        res.status(200);
+        await res.json({data, total});
+    } catch (e) {
+        console.log(e);
+        res.status(400);
+        await res.json({error: true});
+    }
+
+});
+
+/* Removes expression from repeat mode */
+router.post('/:id/remove-from-repeat-mode', async (req, res) => {
+
+    const exprId = req.params.id;
+    const userId = req.body.userId;
+
+    const config = {
+        userId,
+        exprId
+    };
+
+    try {
+        const expr = await removeExpressionFromRepeatMode(config);
+
+        if (!expr) {
+            res.status(404);
+            await res.json({});
+            return;
+        }
+
+        res.status(200);
+        await res.json({});
+
+    } catch (e) {
+        res.status(400);
+        await res.json({});
+        console.log(e);
     }
 
 });

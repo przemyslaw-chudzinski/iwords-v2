@@ -190,6 +190,7 @@ function fetchRepeatExpressions(config = {}) {
     const _config = {
         userId: null,
         limit: 5,
+        skip: 0,
         ...config
     };
 
@@ -214,6 +215,7 @@ function fetchRepeatExpressions(config = {}) {
         .where('userId', _config.userId)
         .sort(sort)
         .limit(_config.limit)
+        .skip(_config.skip)
         .select(select);
 }
 
@@ -232,6 +234,42 @@ function resetRepeatMode(config = {}) {
 
 }
 
+function countAllExpressionsInRepeatMode(config = {}) {
+    const _config = {
+        userId: null,
+        ...config
+    };
+
+    return Expression
+        .find({})
+        .where('repeat.state', 1)
+        .where('userId', _config.userId)
+        .countDocuments();
+}
+
+async function removeExpressionFromRepeatMode(config = {}) {
+    const _config = {
+        userId: null,
+        exprId: null,
+        ...config
+    };
+
+    try {
+        const expr = await Expression.findById(_config.exprId);
+        if (!expr) {
+            return null;
+        }
+        expr.repeat.state = false;
+        expr.repeat.correctAnswers = 0;
+        expr.repeat.incorrectAnswers = 0;
+        expr.save();
+        return expr;
+    } catch (e) {
+
+    }
+
+}
+
 module.exports = {
     fetchExpression,
     incrementExpressionCounters,
@@ -243,5 +281,7 @@ module.exports = {
     fetchRepeatExpressions,
     countAllUserExpressions,
     fetchAllExpressions,
-    resetRepeatMode
+    resetRepeatMode,
+    countAllExpressionsInRepeatMode,
+    removeExpressionFromRepeatMode
 };

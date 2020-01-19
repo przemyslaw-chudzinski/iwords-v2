@@ -23,6 +23,7 @@ module.exports = class LearningCtrlFactory {
         this._$scope.repeatState = {
             state: false
         };
+        this._$scope.expressionsInRepeatMode = [];
 
         this._answerInputElem = document.querySelector('.input');
     }
@@ -41,6 +42,8 @@ module.exports = class LearningCtrlFactory {
         this._$scope.hasExampleSentences = this._hasExampleSentences.bind(this);
         this._$scope.skipExpression = this._skipExpression.bind(this);
         this._$scope.handleRepeatStateModeChange = this._handleRepeatStateModeChange.bind(this);
+        this._$scope.handleSelectTab = this._handleSelectTab.bind(this);
+        this._$scope.handleRemoveExprFromRepeatMode = this._handleRemoveExprFromRepeatMode.bind(this);
     }
 
     _focusAnswerInput() {
@@ -184,6 +187,7 @@ module.exports = class LearningCtrlFactory {
                 };
 
                 this._localStorageSrv.clearRepeatState();
+                this._$scope.expressionsInRepeatMode = [];
                 this._fetchNextExpression(this._handleFetchNextExpression.bind(this));
             })
             .catch(err => console.log('resetRepeatMode error', err));
@@ -242,6 +246,38 @@ module.exports = class LearningCtrlFactory {
             this._localStorageSrv.clearRepeatState();
         }
         this._fetchNextExpression(this._handleFetchNextExpression.bind(this), true, this._$scope.repeatState.state);
+    }
+
+    _fetchExpressionsInRepeatMode() {
+        return this._expressionSrv.fetchExpressionsInRepeatMode()
+            .then(res => {
+                this._$scope.expressionsInRepeatMode = res.data.data;
+            })
+            .catch();
+    }
+
+    _handleSelectTab(key, event) {
+        switch (key) {
+            case 'learning': break;
+            case 'repeats': this._handleRepeatsTabSelection(); break;
+        }
+    }
+
+    _handleRepeatsTabSelection() {
+        this._fetchExpressionsInRepeatMode();
+    }
+
+    _handleRemoveExprFromRepeatMode(exprId, event) {
+        const config = {
+            exprId
+        };
+        this._expressionSrv.removeExpressionFromRepeatMode(config)
+            .then(() => {
+                this._fetchRepeatCount();
+                this._$scope.expressionsInRepeatMode = this._$scope.expressionsInRepeatMode.filter(item => item._id !== exprId);
+                this._fetchExpressions();
+            })
+            .catch(err => console.log('something went wrong', e));
     }
 
 };

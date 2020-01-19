@@ -1,0 +1,30 @@
+<md-button ng-if="expressionsInRepeatMode && expressionsInRepeatMode.length"
+           class="md-raised md-primary"
+           ng-click="handleResetRepeatMode()">Usuń wszystkie</md-button>
+
+<div class="card card--with-shadow">
+
+    <div class="card__content">
+
+        <ul ng-if="expressionsInRepeatMode && expressionsInRepeatMode.length" class="list list--primary-style">
+
+            <li class="list__item" ng-repeat="expr in expressionsInRepeatMode">
+
+                <div class="list__item-left">
+                    <div><strong>\{{expr.expression}}</strong></div>
+                    <div>\{{expr.translations.join(', ')}}</div>
+                </div>
+
+                <div class="list__item-right">
+                    <md-button ng-click="handleRemoveExprFromRepeatMode(expr._id, $event)">Usuń</md-button>
+                </div>
+
+            </li>
+
+        </ul>
+
+        <p ng-if="!expressionsInRepeatMode || !expressionsInRepeatMode.length">W tym momencie nie ma żadnych wyrażeń w powtórkach</p>
+
+    </div>
+
+</div>
