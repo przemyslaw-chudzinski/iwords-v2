@@ -5,7 +5,7 @@
 
        {{#if hasExpressions}}
            <!-- List -->
-           <div class="expressions-list card card--white card--with-shadow" ng-controller="YourExpressionsCtrl">
+           <div class="expressions-list card card--white card--with-shadow" ng-controller="YourExpressionsCtrl" ng-init="exprId='{{exprId}}'">
                <!-- Header -->
                <div class="card__header">
                    <!-- Filter input -->
@@ -16,37 +16,6 @@
                        </div>
                        <input class="filter-input__input" type="text" placeholder="Szukaj" ng-model="filterSearch" ng-change="handleFilterInputChange()">
                    </div>
-                   <!-- List options -->
-                   <md-menu>
-                       <!-- Menu trigger -->
-                       <md-button ng-click="openMenu($mdMenu, $event)" class="md-icon-button md-primary">
-                           <span md-menu-origin class="fa fa-ellipsis-v"></span>
-                       </md-button>
-
-                       <!-- Menu items -->
-                       <md-menu-content width="3">
-
-                           <md-menu-item>
-                               <md-button>
-                                   Exportuj do pdf
-                               </md-button>
-                           </md-menu-item>
-
-                           <md-menu-item>
-                               <md-button>
-                                   Exportuj do csv
-                               </md-button>
-                           </md-menu-item>
-
-                           <md-menu-item>
-                               <md-button>
-                                   Exportuj do tsv
-                               </md-button>
-                           </md-menu-item>
-
-                       </md-menu-content>
-                   </md-menu>
-
                </div>
 
                <!-- Card content -->
@@ -71,6 +40,27 @@
                                <div ng-if="expr.latest" class="label label--success">Niedawno dodane</div>
                                <!-- Progress -->
                                <md-progress-circular ng-if="expr.effectivity > 0" md-mode="determinate"  md-diameter="15px" value="\{{expr.effectivity}}"></md-progress-circular>
+                               <!-- Expression menu -->
+                               <md-menu>
+                                   <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openExprMenu($mdMenu, $event)">
+                                       <span class="fa fa-ellipsis-v"></span>
+                                   </md-button>
+                                   <md-menu-content width="4">
+                                       <md-menu-item>
+                                           <md-button ng-href="/app/notes/expression/\{{expr._id}}">
+                                               <span class="fa fa-sticky-note-o"></span>
+                                               Notatki
+                                           </md-button>
+                                       </md-menu-item>
+                                       <md-menu-divider></md-menu-divider>
+                                       <md-menu-item>
+                                           <md-button ng-click="handleAddNote(expr, $event)">
+                                               <span class="fa fa-plus"></span>
+                                               Dodaj nową notatkę
+                                           </md-button>
+                                       </md-menu-item>
+                                   </md-menu-content>
+                               </md-menu>
                            </div>
                        </li>
 

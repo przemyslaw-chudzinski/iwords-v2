@@ -270,6 +270,10 @@ async function removeExpressionFromRepeatMode(config = {}) {
 
 }
 
+function fetchExpressionById(exprId) {
+    return Expression.findById(exprId);
+}
+
 module.exports = {
     fetchExpression,
     incrementExpressionCounters,
@@ -283,5 +287,6 @@ module.exports = {
     fetchAllExpressions,
     resetRepeatMode,
     countAllExpressionsInRepeatMode,
-    removeExpressionFromRepeatMode
+    removeExpressionFromRepeatMode,
+    fetchExpressionById
 };

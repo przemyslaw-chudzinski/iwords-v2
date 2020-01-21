@@ -1,0 +1,29 @@
+.app-expression-notes-page {
+
+  .inner-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 4rem;
+  }
+
+  .card__content {
+    padding: 0;
+    max-height: 40rem;
+    overflow: auto;
+  }
+
+  .notes-list {
+    width: 50rem;
+  }
+
+  .no-filter-results {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .note .list__item-left {
+    display: flex;
+    align-items: center;
+  }
+
+}
