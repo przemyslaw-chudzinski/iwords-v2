@@ -1,97 +1,152 @@
-module.exports = function YourExpressionsCtrlFactory ($scope, expressionSrv) {
+module.exports = class YourExpressionsCtrlFactory {
 
-    $scope.pagination = {
-        page: 1,
-        limit: 30
-    };
-    $scope.expressions = [];
-    $scope.prevPageDisable = true;
-    $scope.nextPageDisable = false;
-    /* Show card overlay */
-    $scope.fetching = true;
-    /* Filter search */
-    $scope.filterSearch = '';
+    constructor($scope, expressionSrv, $mdDialog, notesSrv) {
+        this._$scope = $scope;
+        this._expressionSrv = expressionSrv;
+        this._$mdDialog = $mdDialog;
+        this._notesSrv = notesSrv;
 
-    expressionSrv.fetchUsersExpressions({params: {...$scope.pagination}})
-        .then(res => {
-            $scope.expressions = res.data.data;
-            /* Update pagination controls */
-            const maxPageNumber = Math.ceil(res.data.total / $scope.pagination.limit);
-            $scope.prevPageDisable = $scope.pagination.page === 1;
-            $scope.nextPageDisable = $scope.pagination.page === maxPageNumber;
-            /* Hide card overlay */
-            $scope.fetching = false;
-        })
-        .catch(err => {
-            console.log('something went wrong');
-        });
+        this._initState();
+        this._init();
+        this._assignTemplateFunctions();
+    }
 
-    /* Opens list menu options */
-    $scope.openMenu = function ($mdMenu, ev) {
-        $mdMenu.open(ev);
-    };
-
-    /* Next page */
-    $scope.nextPage = function () {
-        $scope.pagination.page++;
-        expressionSrv.fetchUsersExpressions({params: {...$scope.pagination, search: $scope.filterSearch}})
-            .then(res => {
-                $scope.expressions = res.data.data;
-                const total = res.data.total;
-                /* Update pagination controls */
-                const maxPageNumber = Math.ceil(res.data.total / $scope.pagination.limit);
-                $scope.prevPageDisable = $scope.pagination.page === 1 || $scope.fetching || total === 0;
-                $scope.nextPageDisable = $scope.pagination.page === maxPageNumber || $scope.fetching || total === 0;
-                /* Hide card overlay */
-                $scope.fetching = false;
-            })
-            .catch(err => {
-                console.log('something went wrong');
-            });
-    };
-
-    /* Prev page */
-    $scope.prevPage = function () {
-        $scope.pagination.page--;
-        expressionSrv.fetchUsersExpressions({params: {...$scope.pagination, search: $scope.filterSearch}})
-            .then(res => {
-                $scope.expressions = res.data.data;
-                const total = res.data.total;
-                /* Update pagination controls */
-                const maxPageNumber = Math.ceil(res.data.total / $scope.pagination.limit);
-                $scope.prevPageDisable = $scope.pagination.page === 1 || $scope.fetching || total === 0;
-                $scope.nextPageDisable = $scope.pagination.page === maxPageNumber || $scope.fetching || total === 0;
-                /* Hide card overlay */
-                $scope.fetching = false;
-            })
-            .catch(err => {
-                console.log('something went wrong');
-            });
-
-    };
-
-    /* Filter input change handler */
-    $scope.handleFilterInputChange = function () {
-        // console.log($scope.filterSearch);
-        $scope.fetching = true;
-        /* Reset pagination */
-        $scope.pagination = {
+    _initState() {
+        this._$scope.pagination = {
             page: 1,
             limit: 30
         };
-        expressionSrv.fetchUsersExpressions({params: {...$scope.pagination, search: $scope.filterSearch}})
+        this._$scope.expressions = [];
+        this._$scope.prevPageDisable = true;
+        this._$scope.nextPageDisable = false;
+        this._$scope.fetching = true;
+        this._$scope.filterSearch = '';
+        this._$scope.exprId = null;
+    }
+
+    _init() {
+        this._fetchUsersExpressions();
+    }
+
+    _assignTemplateFunctions() {
+        this._$scope.nextPage = this._nextPage.bind(this);
+        this._$scope.prevPage = this._prevPage.bind(this);
+        this._$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
+        this._$scope.openExprMenu = this._openExprMenu.bind(this);
+        this._$scope.handleAddNote = this._handleAddNote.bind(this);
+    }
+
+    _fetchUsersExpressions() {
+        this._expressionSrv.fetchUsersExpressions({params: {...this._$scope.pagination}})
             .then(res => {
-                $scope.expressions = res.data.data;
-                /* Hide card overlay */
-                $scope.fetching = false;
+                this._$scope.expressions = res.data.data;
                 /* Update pagination controls */
-                const maxPageNumber = Math.ceil(res.data.total / $scope.pagination.limit);
-                $scope.prevPageDisable = $scope.pagination.page === 1 || $scope.fetching;
-                $scope.nextPageDisable = $scope.pagination.page === maxPageNumber || $scope.fetching;
+                const maxPageNumber = Math.ceil(res.data.total / this._$scope.pagination.limit);
+                this._$scope.prevPageDisable = this._$scope.pagination.page === 1;
+                this._$scope.nextPageDisable = this._$scope.pagination.page === maxPageNumber;
+                /* Hide card overlay */
+                this._$scope.fetching = false;
             })
             .catch(err => {
                 console.log('something went wrong');
             });
-    };
+    }
+
+    _nextPage() {
+        this._$scope.pagination.page++;
+        this._expressionSrv.fetchUsersExpressions({params: {...this._$scope.pagination, search: this._$scope.filterSearch}})
+            .then(this._handleFetchUsersExpressions.bind(this))
+            .catch(err => {
+                console.log('something went wrong');
+            });
+    }
+
+    _prevPage() {
+        this._$scope.pagination.page--;
+        this._expressionSrv.fetchUsersExpressions({params: {...this._$scope.pagination, search: this._$scope.filterSearch}})
+            .then(this._handleFetchUsersExpressions.bind(this))
+            .catch(err => {
+                console.log('something went wrong');
+            });
+    }
+
+    _handleFetchUsersExpressions(res) {
+        this._$scope.expressions = res.data.data;
+        const total = res.data.total;
+        /* Update pagination controls */
+        const maxPageNumber = Math.ceil(res.data.total / this._$scope.pagination.limit);
+        this._$scope.prevPageDisable = this._$scope.pagination.page === 1 || this._$scope.fetching || total === 0;
+        this._$scope.nextPageDisable = this._$scope.pagination.page === maxPageNumber || this._$scope.fetching || total === 0;
+        /* Hide card overlay */
+        this._$scope.fetching = false;
+    }
+
+    _handleFilterInputChange() {
+        this._$scope.fetching = true;
+        /* Reset pagination */
+        this._$scope.pagination = {
+            page: 1,
+            limit: 30
+        };
+        this._expressionSrv.fetchUsersExpressions({params: {...this._$scope.pagination, search: this._$scope.filterSearch}})
+            .then(res => {
+                this._$scope.expressions = res.data.data;
+                /* Hide card overlay */
+                this._$scope.fetching = false;
+                /* Update pagination controls */
+                const maxPageNumber = Math.ceil(res.data.total / this._$scope.pagination.limit);
+                this._$scope.prevPageDisable = this._$scope.pagination.page === 1 || this._$scope.fetching;
+                this._$scope.nextPageDisable = this._$scope.pagination.page === maxPageNumber || this._$scope.fetching;
+            })
+            .catch(err => {
+                console.log('something went wrong');
+            });
+    }
+
+    _openExprMenu($mdMenu, event) {
+        $mdMenu.open(event);
+    }
+
+    _showAddNoteDialog(expr, event) {
+        const confirm = this._$mdDialog.prompt()
+            .title('Nowy dokument')
+            .textContent(`
+                Dodajesz notatkę dla wyrażenia ${expr.expression}.
+                Po utworzeniu zostaniesz przekierowany do edytora, gdzie będziesz mógł edytować dokument
+            `)
+            .placeholder('Nazwa dokumentu')
+            .targetEvent(event)
+            .required(true)
+            .ok('Utwórz')
+            .cancel('Anuluj');
+
+        return this._$mdDialog.show(confirm)
+    }
+
+    _handleAddNote(expr, event) {
+        this._showAddNoteDialog(expr, event)
+            .then(result => {
+                this._saveNote(expr._id,result,(err, res) => {
+                    if (err) {
+                        return;
+                    }
+                    window.location.href = `/app/notes/${res.data.noteId}/${expr._id}`;
+                });
+            }, () => {});
+    }
+
+    _saveNote(exprId, title, next) {
+        next = next || function () {};
+        const ctx = {
+            exprId,
+            title
+        };
+        this._notesSrv.saveNote(ctx)
+            .then(res => next(null, res))
+            .catch(err => {
+                console.log('something went wrong', err);
+                next(err);
+            });
+    }
 
 };

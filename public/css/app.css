@@ -15999,6 +15999,75 @@ body {
   text-align: center;
 }
 
+.app-edit-note-page {
+  padding: 2rem;
+}
+
+.app-edit-note-page .expression {
+  padding: 0 0 2rem 0;
+}
+
+.app-edit-note-page .expression__sentence {
+  margin-top: 1rem;
+}
+
+.app-edit-note-page .expression__sentence-item {
+  margin-left: 1rem;
+}
+
+.app-edit-note-page .expression__sentence-item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.app-edit-note-page .expression__sentence-item span {
+  font-size: 0.75rem;
+}
+
+.app-edit-note-page .editor {
+  display: -webkit-box;
+  display: flex;
+}
+
+.app-edit-note-page .editor .card__content {
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+}
+
+.app-edit-note-page .editor__element .ce-block__content,
+.app-edit-note-page .editor__element .ce-toolbar__content {
+  width: 100%;
+}
+
+.app-expression-notes-page .inner-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  padding-top: 4rem;
+}
+
+.app-expression-notes-page .card__content {
+  padding: 0;
+  max-height: 40rem;
+  overflow: auto;
+}
+
+.app-expression-notes-page .notes-list {
+  width: 50rem;
+}
+
+.app-expression-notes-page .no-filter-results {
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-expression-notes-page .note .list__item-left {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
 .input {
   text-align: center;
   font-size: 3rem;
