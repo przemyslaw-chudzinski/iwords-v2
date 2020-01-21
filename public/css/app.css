@@ -16068,6 +16068,10 @@ body {
           align-items: center;
 }
 
+.app-expression-notes-page .no-expressions-info .card__content {
+  padding: 2rem;
+}
+
 .input {
   text-align: center;
   font-size: 3rem;
