@@ -89,12 +89,13 @@ function fetchNotesByExpressionId(config = {}) {
         ...config
     };
 
-    const note = new RegExp( _config.search, 'ig');
+    const title = new RegExp( _config.search, 'ig');
 
     return Note
         .find({
-            note
+            title
         })
+        .where('expressionId', _config.exprId)
         .where('userId', _config.userId)
         .limit(_config.limit)
         .skip(_config.skip)
@@ -102,9 +103,27 @@ function fetchNotesByExpressionId(config = {}) {
 
 }
 
+function countAllExpressionNotes(config = {}) {
+
+    const _config = {
+        userId: null,
+        search: '',
+        exprId: null,
+        ...config
+    };
+
+    const title = new RegExp( _config.search, 'ig');
+
+    return Note
+        .find({title, expressionId: _config.exprId})
+        .where('userId', _config.userId)
+        .countDocuments();
+}
+
 module.exports = {
     createNote,
     fetchNoteById,
     updateNote,
-    fetchNotesByExpressionId
+    fetchNotesByExpressionId,
+    countAllExpressionNotes
 };

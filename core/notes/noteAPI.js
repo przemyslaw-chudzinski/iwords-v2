@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const {
     createNote,
-    updateNote
+    updateNote,
+    fetchNotesByExpressionId,
+    countAllExpressionNotes
 } = require('./noteDAL');
 
 /* Update single note */
@@ -53,6 +55,48 @@ router.post('/', async (req, res) => {
         await res.json({error: true});
     }
 
+
+});
+
+/* Gets notes associated with expression id */
+router.get('/:id', async (req, res) => {
+
+    const userId = req.query.userId;
+    const limit = +req.query.limit;
+    const page = +req.query.page || null;
+    const exprId = req.params.id || null;
+    const search = req.query.search || '';
+
+    const config = {
+        userId,
+        limit,
+        skip: (page - 1) * limit,
+        exprId,
+        search
+    };
+
+    try {
+        const _data = await fetchNotesByExpressionId(config);
+        const total = await countAllExpressionNotes(config);
+
+        const data = _data.map(item => {
+
+            const _id = item._id;
+            const title = item.title;
+
+            return {
+                _id,
+                title
+            };
+
+        });
+
+        res.status(200);
+        await res.json({data, total});
+    } catch (e) {
+        res.status(400);
+        await res.json({error: true});
+    }
 
 });
 

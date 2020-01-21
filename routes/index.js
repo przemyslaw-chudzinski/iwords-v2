@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {countAllUserExpressions, fetchExpressionById} = require('../core/expressions/expressionDAL');
-const {fetchNoteById} = require('../core/notes/noteDAL');
+const {fetchNoteById, countAllExpressionNotes} = require('../core/notes/noteDAL');
 
 /* Main page */
 router.get('/', (req, res) => res.render('index', {name: 'app.dashboard'}));
@@ -63,13 +63,14 @@ router.get('/notes/expression/:id', async (req, res) => {
     const viewData = {
         name: '',
         pageTitle: '',
-
         exprId,
+        hasNotes: false
     };
 
     try {
 
         const expression = await fetchExpressionById(exprId);
+        const notesCount = await countAllExpressionNotes({exprId, userId: req.user._id});
 
         if (!expression) {
             res.render('404');
@@ -77,7 +78,7 @@ router.get('/notes/expression/:id', async (req, res) => {
         }
 
         viewData.pageTitle = 'Notatki dla wyrażenia: ' + expression.expression;
-        viewData.exprId = expression._id;
+        viewData.hasNotes = notesCount > 0;
 
         res.render('expression-notes', viewData);
 

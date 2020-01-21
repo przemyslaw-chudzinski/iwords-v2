@@ -16038,6 +16038,36 @@ body {
   width: 100%;
 }
 
+.app-expression-notes-page .inner-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  padding-top: 4rem;
+}
+
+.app-expression-notes-page .card__content {
+  padding: 0;
+  max-height: 40rem;
+  overflow: auto;
+}
+
+.app-expression-notes-page .notes-list {
+  width: 50rem;
+}
+
+.app-expression-notes-page .no-filter-results {
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-expression-notes-page .note .list__item-left {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
 .input {
   text-align: center;
   font-size: 3rem;

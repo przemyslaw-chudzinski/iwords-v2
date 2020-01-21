@@ -37,7 +37,7 @@ module.exports = class YourExpressionsCtrlFactory {
     }
 
     _fetchUsersExpressions() {
-        this._expressionSrv.fetchUsersExpressions({params: {pagination: this._$scope.pagination}})
+        this._expressionSrv.fetchUsersExpressions({params: {...this._$scope.pagination}})
             .then(res => {
                 this._$scope.expressions = res.data.data;
                 /* Update pagination controls */
