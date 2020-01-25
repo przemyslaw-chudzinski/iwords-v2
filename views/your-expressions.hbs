@@ -36,6 +36,11 @@
                                    <md-tooltip md-direction="top">Ta ikona oznacza, że wyrażenie jest w powtórkach</md-tooltip>
                                    <span class="fa fa-repeat"></span>
                                </md-button>
+                               <!-- Have notes icon -->
+                               <md-button ng-if="expr.notesCount > 0" class="md-icon-button md-accent">
+                                   <md-tooltip md-direction="top">Ta ikona oznacza, że wyrażenie zawiera notaki</md-tooltip>
+                                   <span class="fa fa-files-o"></span>
+                               </md-button>
                                <!-- the "new" label -->
                                <div ng-if="expr.latest" class="label label--success">Niedawno dodane</div>
                                <!-- Progress -->
