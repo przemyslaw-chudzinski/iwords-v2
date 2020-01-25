@@ -30,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/148-user-can-see-which-expressions-have-notes" />
+        <entry key="$PROJECT_DIR$" value="feature/135-removing-single-note" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -531,10 +531,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1579980198556">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1579990854682">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1579980198556" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1579990854682" />
     <state x="795" y="212" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1577920340049" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1579648978754">
       <screen x="0" y="0" width="2560" height="1440" />
