@@ -86,6 +86,7 @@ function fetchNotesByExpressionId(config = {}) {
         limit: null,
         skip: 0,
         search: '',
+        sort: {},
         ...config
     };
 
@@ -99,6 +100,7 @@ function fetchNotesByExpressionId(config = {}) {
         .where('userId', _config.userId)
         .limit(_config.limit)
         .skip(_config.skip)
+        .sort(_config.sort)
         .select(_config.select);
 
 }

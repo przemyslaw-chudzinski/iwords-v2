@@ -175,11 +175,17 @@ router.get('/user-expressions', async (req, res) => {
     const search = req.query.search || '';
     const userId = req.query.userId;
     const limit = +req.query.limit;
+    const sortDate = req.query.sortDate || 'desc';
+
+    const sort = {
+        createdAt: sortDate
+    };
 
     const config = {
         userId,
         search,
         limit,
+        sort,
         skip: (page - 1) * limit
     };
 
