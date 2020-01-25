@@ -1,102 +1,94 @@
-module.exports = class YourExpressionsCtrlFactory {
+const BaseController = require('./base-controller');
+const {withAddingNote, withListPagination} = require("../decorators");
+
+class YourExpressionsCtrlFactory extends BaseController {
 
     constructor($scope, expressionSrv, $mdDialog, notesSrv) {
-        this._$scope = $scope;
-        this._expressionSrv = expressionSrv;
-        this._$mdDialog = $mdDialog;
-        this._notesSrv = notesSrv;
-
-        this._initState();
-        this._init();
-        this._assignTemplateFunctions();
+        super($scope);
+        this.expressionSrv = expressionSrv;
+        this.$mdDialog = $mdDialog;
+        this.notesSrv = notesSrv;
     }
 
-    _initState() {
-        this._$scope.pagination = {
-            page: 1,
-            limit: 30
-        };
-        this._$scope.expressions = [];
-        this._$scope.prevPageDisable = true;
-        this._$scope.nextPageDisable = false;
-        this._$scope.fetching = true;
-        this._$scope.filterSearch = '';
-        this._$scope.exprId = null;
+    initState() {
+        super.initState();
+        this.$scope.expressions = [];
+        this.$scope.fetching = true;
+        this.$scope.filterSearch = '';
+        this.$scope.exprId = null;
     }
 
-    _init() {
+    pageLoadedHook() {
         this._fetchUsersExpressions();
     }
 
-    _assignTemplateFunctions() {
-        this._$scope.nextPage = this._nextPage.bind(this);
-        this._$scope.prevPage = this._prevPage.bind(this);
-        this._$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
-        this._$scope.openExprMenu = this._openExprMenu.bind(this);
-        this._$scope.handleAddNote = this._handleAddNote.bind(this);
+    assignTemplateFunctions() {
+        this.$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
+        this.$scope.openExprMenu = this._openExprMenu.bind(this);
+        this.$scope.handleAddNote = this._handleAddNote.bind(this);
     }
 
     _fetchUsersExpressions() {
-        this._expressionSrv.fetchUsersExpressions({params: {...this._$scope.pagination}})
+        this.expressionSrv.fetchUsersExpressions({params: {...this.$scope.pagination}})
             .then(res => {
-                this._$scope.expressions = res.data.data;
+                this.$scope.expressions = res.data.data;
                 /* Update pagination controls */
-                const maxPageNumber = Math.ceil(res.data.total / this._$scope.pagination.limit);
-                this._$scope.prevPageDisable = this._$scope.pagination.page === 1;
-                this._$scope.nextPageDisable = this._$scope.pagination.page === maxPageNumber;
+                const maxPageNumber = this.calculateMaxPageNumber(res.data.total);
+                this.$scope.prevPageDisable = this.$scope.pagination.page === 1;
+                this.$scope.nextPageDisable = this.$scope.pagination.page === maxPageNumber;
                 /* Hide card overlay */
-                this._$scope.fetching = false;
+                this.$scope.fetching = false;
             })
             .catch(err => {
                 console.log('something went wrong');
             });
     }
 
-    _nextPage() {
-        this._$scope.pagination.page++;
-        this._expressionSrv.fetchUsersExpressions({params: {...this._$scope.pagination, search: this._$scope.filterSearch}})
+    /* List pagination */
+    onNextPage(pagination) {
+        this.expressionSrv.fetchUsersExpressions({params: {...pagination, search: this.$scope.filterSearch}})
             .then(this._handleFetchUsersExpressions.bind(this))
             .catch(err => {
                 console.log('something went wrong');
             });
     }
 
-    _prevPage() {
-        this._$scope.pagination.page--;
-        this._expressionSrv.fetchUsersExpressions({params: {...this._$scope.pagination, search: this._$scope.filterSearch}})
+    onPrevPage(pagination) {
+        this.expressionSrv.fetchUsersExpressions({params: {...pagination, search: this.$scope.filterSearch}})
             .then(this._handleFetchUsersExpressions.bind(this))
             .catch(err => {
                 console.log('something went wrong');
             });
     }
+    // ===========================================================================================
 
     _handleFetchUsersExpressions(res) {
-        this._$scope.expressions = res.data.data;
+        this.$scope.expressions = res.data.data;
         const total = res.data.total;
         /* Update pagination controls */
-        const maxPageNumber = Math.ceil(res.data.total / this._$scope.pagination.limit);
-        this._$scope.prevPageDisable = this._$scope.pagination.page === 1 || this._$scope.fetching || total === 0;
-        this._$scope.nextPageDisable = this._$scope.pagination.page === maxPageNumber || this._$scope.fetching || total === 0;
+        const maxPageNumber = this.calculateMaxPageNumber(res.data.total);
+        this.$scope.prevPageDisable = this.pagination.page === 1 || this.$scope.fetching || total === 0;
+        this.$scope.nextPageDisable = this.pagination.page === maxPageNumber || this.$scope.fetching || total === 0;
         /* Hide card overlay */
-        this._$scope.fetching = false;
+        this.$scope.fetching = false;
     }
 
     _handleFilterInputChange() {
-        this._$scope.fetching = true;
+        this.$scope.fetching = true;
         /* Reset pagination */
-        this._$scope.pagination = {
+        this.$scope.pagination = {
             page: 1,
             limit: 30
         };
-        this._expressionSrv.fetchUsersExpressions({params: {...this._$scope.pagination, search: this._$scope.filterSearch}})
+        this.expressionSrv.fetchUsersExpressions({params: {...this.$scope.pagination, search: this.$scope.filterSearch}})
             .then(res => {
-                this._$scope.expressions = res.data.data;
+                this.$scope.expressions = res.data.data;
                 /* Hide card overlay */
-                this._$scope.fetching = false;
+                this.$scope.fetching = false;
                 /* Update pagination controls */
-                const maxPageNumber = Math.ceil(res.data.total / this._$scope.pagination.limit);
-                this._$scope.prevPageDisable = this._$scope.pagination.page === 1 || this._$scope.fetching;
-                this._$scope.nextPageDisable = this._$scope.pagination.page === maxPageNumber || this._$scope.fetching;
+                const maxPageNumber = this.calculateMaxPageNumber(res.data.total);
+                this.$scope.prevPageDisable = this.pagination.page === 1 || this.$scope.fetching;
+                this.$scope.nextPageDisable = this.pagination.page === maxPageNumber || this.$scope.fetching;
             })
             .catch(err => {
                 console.log('something went wrong');
@@ -108,47 +100,16 @@ module.exports = class YourExpressionsCtrlFactory {
     }
 
     /* Add new note UI logic */
-    _showAddNoteDialog(expr, event) {
-        const confirm = this._$mdDialog.prompt()
-            .title('Nowy dokument')
-            .textContent(`
-                Dodajesz notatkę dla wyrażenia ${expr.expression}.
-                Po utworzeniu zostaniesz przekierowany do edytora, gdzie będziesz mógł edytować dokument
-            `)
-            .placeholder('Nazwa dokumentu')
-            .targetEvent(event)
-            .required(true)
-            .ok('Utwórz')
-            .cancel('Anuluj');
+    _handleAddNote(expression, event) {
+        const expr = {_id: expression._id, expression: expression.expression};
 
-        return this._$mdDialog.show(confirm)
-    }
-
-    _handleAddNote(expr, event) {
-        this._showAddNoteDialog(expr, event)
-            .then(result => {
-                this._saveNote(expr._id,result,(err, res) => {
-                    if (err) {
-                        return;
-                    }
-                    window.location.href = `/app/notes/${res.data.noteId}/${expr._id}`;
-                });
-            }, () => {});
-    }
-
-    _saveNote(exprId, title, next) {
-        next = next || function () {};
-        const ctx = {
-            exprId,
-            title
-        };
-        this._notesSrv.saveNote(ctx)
-            .then(res => next(null, res))
-            .catch(err => {
-                console.log('something went wrong', err);
-                next(err);
-            });
+        this.showAddNoteDialog(expr, event)
+            .then(result => this.saveNote(expr._id, result));
     }
     // ===========================================================================================
 
-};
+}
+
+module.exports = withAddingNote(
+    withListPagination(YourExpressionsCtrlFactory)
+);

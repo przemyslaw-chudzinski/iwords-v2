@@ -1,16 +1,12 @@
 const BaseController = require('./base-controller');
+const {withAddingNote} = require("../decorators");
 
-/* Notes http service */
-const _notesSrv = new WeakMap();
-const _$mdDialog = new WeakMap();
-
-module.exports = class ExpressionNotesCtrlFactory extends BaseController {
-
+class ExpressionNotesCtrlFactory extends BaseController {
 
     constructor($scope, notesSrv, $mdDialog) {
         super($scope);
-        _notesSrv.set(this, notesSrv);
-        _$mdDialog.set(this, $mdDialog);
+        this.notesSrv = notesSrv;
+        this.$mdDialog = $mdDialog;
     }
 
     initState() {
@@ -41,7 +37,7 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
     }
 
     _fetchNotes() {
-        _notesSrv.get(this).fetchExpressionNotes({params: {...this.$scope.pagination}, exprId: this.$scope.exprId})
+        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination}, exprId: this.$scope.exprId})
             .then(res => {
                 this.$scope.notes = res.data.data;
                 /* Update pagination controls */
@@ -58,7 +54,7 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
 
     _nextPage() {
         this.$scope.pagination.page++;
-        _notesSrv.get(this).fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
+        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
             .then(this._handleFetchNotesSuccess.bind(this))
             .catch(err => {
                 console.log('something went wrong');
@@ -67,7 +63,7 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
 
     _prevPage() {
         this.$scope.pagination.page--;
-        _notesSrv.get(this).fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
+        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
             .then(this._handleFetchNotesSuccess.bind(this))
             .catch(err => {
                 console.log('something went wrong');
@@ -92,7 +88,7 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
             page: 1,
             limit: 30
         };
-        _notesSrv.get(this).fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
+        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
             .then(res => {
                 this.$scope.notes = res.data.data;
                 /* Hide card overlay */
@@ -112,49 +108,15 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
     }
 
     /* Add new note UI logic */
-    _showAddNoteDialog(expr, event) {
-        const confirm = _$mdDialog.get(this).prompt()
-            .title('Nowy dokument')
-            .textContent(`
-                Dodajesz notatkę dla wyrażenia ${expr.expression}.
-                Po utworzeniu zostaniesz przekierowany do edytora, gdzie będziesz mógł edytować dokument
-            `)
-            .placeholder('Nazwa dokumentu')
-            .targetEvent(event)
-            .required(true)
-            .ok('Utwórz')
-            .cancel('Anuluj');
-
-        return _$mdDialog.get(this).show(confirm)
-    }
-
     _handleAddNote(event) {
         const expr = {_id: this.$scope.exprId, expression: this.$scope.expression};
-        this._showAddNoteDialog(expr, event)
-            .then(result => {
-                this._saveNote(expr._id,result,(err, res) => {
-                    if (err) {
-                        return;
-                    }
-                    window.location.href = `/app/notes/${res.data.noteId}/${expr._id}`;
-                });
-            }, () => {});
-    }
 
-    _saveNote(exprId, title, next) {
-        next = next || function () {};
-        const ctx = {
-            exprId,
-            title
-        };
-        _notesSrv.get(this).saveNote(ctx)
-            .then(res => next(null, res))
-            .catch(err => {
-                console.log('something went wrong', err);
-                next(err);
-            });
+        this.showAddNoteDialog(expr, event)
+            .then(result => this.saveNote(expr._id, result));
     }
     // ===========================================================================================
 
 
-};
+}
+
+module.exports = withAddingNote(ExpressionNotesCtrlFactory);

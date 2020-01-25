@@ -9,13 +9,20 @@
 
                 <!-- Header -->
                 <div class="card__header">
-                    <!-- Filter input -->
-                    <div class="filter-input">
-                        <!-- Icon -->
-                        <div class="filter-input__icon">
-                            <span class="fa fa-search"></span>
+                    <div class="card__header-slot-start">
+                        <!-- Filter input -->
+                        <div class="filter-input">
+                            <!-- Icon -->
+                            <div class="filter-input__icon">
+                                <span class="fa fa-search"></span>
+                            </div>
+                            <input class="filter-input__input" type="text" placeholder="Szukaj" ng-model="filterSearch" ng-change="handleFilterInputChange()">
                         </div>
-                        <input class="filter-input__input" type="text" placeholder="Szukaj" ng-model="filterSearch" ng-change="handleFilterInputChange()">
+                    </div>
+                    <div class="card__header-slot-end">
+                        <md-button class="md-fab md-mini md-primary" ng-click="handleAddNote($event)">
+                            <span class="fa fa-plus"></span>
+                        </md-button>
                     </div>
                 </div>
 
