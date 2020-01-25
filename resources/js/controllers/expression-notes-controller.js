@@ -1,5 +1,5 @@
 const BaseController = require('./base-controller');
-const {withAddingNote} = require("../decorators");
+const {withAddingNote, withListPagination} = require("../decorators");
 
 class ExpressionNotesCtrlFactory extends BaseController {
 
@@ -14,22 +14,15 @@ class ExpressionNotesCtrlFactory extends BaseController {
         this.$scope.exprId = null;
         this.$scope.expression = null;
         this.$scope.notes = [];
-        this.$scope.prevPageDisable = true;
-        this.$scope.nextPageDisable = false;
         this.$scope.fetching = true;
         this.$scope.filterSearch = '';
-        this.$scope.pagination = {
-            page: 1,
-            limit: 30
-        };
     }
 
     assignTemplateFunctions() {
-        this.$scope.nextPage = this._nextPage.bind(this);
-        this.$scope.prevPage = this._prevPage.bind(this);
         this.$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
         this.$scope.openNoteMenu = this._openNoteMenu.bind(this);
         this.$scope.handleAddNote = this._handleAddNote.bind(this);
+        this.$scope.handleRemove = this._handleRemove.bind(this);
     }
 
     pageLoadedHook() {
@@ -52,18 +45,16 @@ class ExpressionNotesCtrlFactory extends BaseController {
             });
     }
 
-    _nextPage() {
-        this.$scope.pagination.page++;
-        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
+    onNextPage(pagination) {
+        this.notesSrv.fetchExpressionNotes({params: {...pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
             .then(this._handleFetchNotesSuccess.bind(this))
             .catch(err => {
                 console.log('something went wrong');
             });
     }
 
-    _prevPage() {
-        this.$scope.pagination.page--;
-        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
+    onPrevPage(pagination) {
+        this.notesSrv.fetchExpressionNotes({params: {...pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
             .then(this._handleFetchNotesSuccess.bind(this))
             .catch(err => {
                 console.log('something went wrong');
@@ -74,7 +65,7 @@ class ExpressionNotesCtrlFactory extends BaseController {
         this.$scope.notes = res.data.data;
         const total = res.data.total;
         /* Update pagination controls */
-        const maxPageNumber = Math.ceil(res.data.total / this.$scope.pagination.limit);
+        const maxPageNumber = this.calculateMaxPageNumber(total);
         this.$scope.prevPageDisable = this.$scope.pagination.page === 1 || this.$scope.fetching || total === 0;
         this.$scope.nextPageDisable = this.$scope.pagination.page === maxPageNumber || this.$scope.fetching || total === 0;
         /* Hide card overlay */
@@ -84,17 +75,14 @@ class ExpressionNotesCtrlFactory extends BaseController {
     _handleFilterInputChange() {
         this.$scope.fetching = true;
         /* Reset pagination */
-        this.$scope.pagination = {
-            page: 1,
-            limit: 30
-        };
+        this.resetPagination();
         this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
             .then(res => {
                 this.$scope.notes = res.data.data;
                 /* Hide card overlay */
                 this.$scope.fetching = false;
                 /* Update pagination controls */
-                const maxPageNumber = Math.ceil(res.data.total / this.$scope.pagination.limit);
+                const maxPageNumber = this.calculateMaxPageNumber(red.data.total);
                 this.$scope.prevPageDisable = this.$scope.pagination.page === 1 || this.$scope.fetching;
                 this.$scope.nextPageDisable = this.$scope.pagination.page === maxPageNumber || this.$scope.fetching;
             })
@@ -116,7 +104,31 @@ class ExpressionNotesCtrlFactory extends BaseController {
     }
     // ===========================================================================================
 
+    /* Removing single note */
+    _handleRemove(noteId, event) {
+        this._showConfirmRemoveNoteDialog(event)
+            .then(() => this._removeNote(noteId));
+    }
+
+    _showConfirmRemoveNoteDialog(event) {
+        const confirm = this.$mdDialog.confirm()
+            .title('Czy na pewno chcesz usunąć notatę?')
+            .targetEvent(event)
+            .ok('Tak, usuń')
+            .cancel('Anuluj');
+
+        return this.$mdDialog.show(confirm);
+    }
+
+    _removeNote(noteId) {
+        this.notesSrv.removeNote({noteId})
+            .then(() => this._fetchNotes())
+            .catch(err => console.log('something went wrong', err))
+    }
+    // ===========================================================================================
 
 }
 
-module.exports = withAddingNote(ExpressionNotesCtrlFactory);
+module.exports = withAddingNote(
+    withListPagination(ExpressionNotesCtrlFactory)
+);
