@@ -1,8 +1,4 @@
 const router = require('express').Router();
-// const multer = require('multer');
-// const csvParser = require('csv-parser');
-const fs = require('fs');
-const path = require('path');
 const {
     fetchExpression,
     incrementExpressionCounters,
@@ -19,7 +15,9 @@ const {
     removeExpressionFromRepeatMode
 } = require('./expressionDAL');
 
-const moment = require('moment');
+const {countAllExpressionNotes} = require('../notes/noteDAL');
+
+const {map} = require('async');
 
 // const fileFilter = (req, file, next) => {
 //     if (file.mimetype.split('/').includes('csv')) {
@@ -186,29 +184,46 @@ router.get('/user-expressions', async (req, res) => {
     };
 
     try {
-       const _data = await fetchAllExpressions(config);
-       const total = await countAllUserExpressions(config);
-       /* Mapping on required object
-       *  */
-       const data = _data.map(item => {
+        const _data = await fetchAllExpressions(config);
+        const total = await countAllUserExpressions(config);
+        /* Mapping on required object */
+        const data = _data.map(item => {
 
-           const inRepeatState = item.repeat.state;
-           const repeatCount = +(item.correctAnswers + item.incorrectAnswers);
-           const effectivity = +((item.correctAnswers / repeatCount) * 100).toPrecision(2);
-           const latest = new Date().getTime() < item.createdAt.getTime() + 1000 * 60 * 60 * 48;
+            const inRepeatState = item.repeat.state;
+            const repeatCount = +(item.correctAnswers + item.incorrectAnswers);
+            const effectivity = +((item.correctAnswers / repeatCount) * 100).toPrecision(2);
+            const latest = new Date().getTime() < item.createdAt.getTime() + 1000 * 60 * 60 * 48;
+            // const notesCount = await countAllExpressionNotes({userId, search, exprId: item._id});
 
-           return {
-               _id: item._id,
-               expression: item.expression,
-               translations: item.translations,
-               inRepeatState,
-               repeatCount,
-               effectivity,
-               latest
-           };
-       });
+            return {
+                _id: item._id,
+                expression: item.expression,
+                translations: item.translations,
+                inRepeatState,
+                repeatCount,
+                effectivity,
+                latest,
+                notesCount: 0
+            };
 
-       await res.json({data, total});
+        });
+
+        map(data, function (expr, next) {
+
+            countAllExpressionNotes({userId, search, exprId: expr._id})
+                .then(notesCount => {
+                    expr.notesCount = notesCount;
+                    next(null, expr);
+                })
+                .catch();
+
+        }, function (err, data) {
+
+            res.json({data, total});
+
+        });
+
+        // await res.json({data, total});
 
     } catch (e) {
         res.status(400);

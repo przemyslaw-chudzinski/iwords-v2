@@ -10,7 +10,11 @@ const expressionSchema = new mongoose.Schema({
     exampleSentences: {type: [{sentence: String, translation: String}], required: false},
     createdAt: {type: Date, default: new Date().toISOString()},
     updatedAt: {type: Date, default: new Date().toISOString()},
-    userId: {type: mongoose.Schema.Types.ObjectID, required: true},
+    userId: {
+        type: mongoose.Schema.Types.ObjectID,
+        required: true,
+        ref: 'User'
+    },
     provider: {type: String, required: true},
     repeat: {
         state: {type: Boolean, default: false},
