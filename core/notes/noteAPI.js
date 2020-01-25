@@ -3,7 +3,8 @@ const {
     createNote,
     updateNote,
     fetchNotesByExpressionId,
-    countAllExpressionNotes
+    countAllExpressionNotes,
+    removeNote
 } = require('./noteDAL');
 
 /* Update single note */
@@ -93,6 +94,22 @@ router.get('/:id', async (req, res) => {
 
         res.status(200);
         await res.json({data, total});
+    } catch (e) {
+        res.status(400);
+        await res.json({error: true});
+    }
+
+});
+
+/* Remove single note */
+router.delete('/:id', async (req, res) => {
+    const userId = req.query.userId;
+    const noteId = req.params.id;
+
+    try {
+        await removeNote({userId, noteId});
+        res.status(200);
+        await res.json({});
     } catch (e) {
         res.status(400);
         await res.json({error: true});

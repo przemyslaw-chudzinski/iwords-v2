@@ -120,10 +120,25 @@ function countAllExpressionNotes(config = {}) {
         .countDocuments();
 }
 
+function removeNote(config = {}) {
+    const _config = {
+        userId: null,
+        noteId: null,
+        ...config
+    };
+
+    return Note
+        .findOneAndDelete({
+        userId: _config.userId,
+        _id: _config.noteId
+    });
+}
+
 module.exports = {
     createNote,
     fetchNoteById,
     updateNote,
     fetchNotesByExpressionId,
-    countAllExpressionNotes
+    countAllExpressionNotes,
+    removeNote
 };
