@@ -31,13 +31,20 @@ class NotesService extends ServiceBase {
     }
 
     fetchExpressionNotes(ctx = {params: {}, exprId: null}) {
-        console.log(ctx);
         const queryParams = {
             page: 1,
             search: '',
             ...ctx.params
         };
         return this.http.get(this.prefix + `/${ctx.exprId}`, {params: {userId: this.userId, ...queryParams}});
+    }
+
+    removeNote(ctx = {}) {
+        const _ctx = {
+            noteId: null,
+            ...ctx
+        };
+        return this.http.delete(this.prefix + `/${_ctx.noteId}`, {params: {userId: this.userId}});
     }
 
 

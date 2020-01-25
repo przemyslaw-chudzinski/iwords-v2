@@ -3,12 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="330f59ad-6b0e-4952-b5fb-c0f32e374e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/expressions/expression.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expression.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/notes/note.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/notes/note.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/your-expressions.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/your-expressions.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/notes/noteAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/notes/noteAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/notes/noteDAL.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/notes/noteDAL.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/expression-notes-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/expression-notes-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/services/notes-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/services/notes-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/expression-notes.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/expression-notes.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,27 +131,6 @@
       <workItem from="1579550628384" duration="851000" />
       <workItem from="1579636130479" duration="9501000" />
       <workItem from="1579941278958" duration="12405000" />
-    </task>
-    <task id="LOCAL-00020" summary="added page title for templates">
-      <created>1577029857654</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1577029857654</updated>
-    </task>
-    <task id="LOCAL-00021" summary="before checkout">
-      <created>1577030681236</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1577030681236</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
-      <created>1577524643584</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1577524643584</updated>
     </task>
     <task id="LOCAL-00023" summary="before checkout">
       <created>1577525170803</created>
@@ -475,7 +454,28 @@
       <option name="project" value="LOCAL" />
       <updated>1579943860995</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="mark which expression have notes">
+      <created>1579983327478</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1579983327478</updated>
+    </task>
+    <task id="LOCAL-00070" summary="before merge">
+      <created>1579983423605</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1579983423605</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
+      <created>1579983439167</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1579983439167</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,11 +516,11 @@
     <MESSAGE value="added expression notes list view" />
     <MESSAGE value="done" />
     <MESSAGE value="before pull" />
-    <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
     <MESSAGE value="deploy" />
     <MESSAGE value="implemented adding notes from expression notes view" />
     <MESSAGE value="merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge" />
+    <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579301681034">
@@ -531,10 +531,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1579980198556">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1579983439076">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1579980198556" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1579983439076" />
     <state x="795" y="212" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1577920340049" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1579648978754">
       <screen x="0" y="0" width="2560" height="1440" />
