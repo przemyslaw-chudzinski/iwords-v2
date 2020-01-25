@@ -64,7 +64,8 @@ router.get('/notes/expression/:id', async (req, res) => {
         name: '',
         pageTitle: '',
         exprId,
-        hasNotes: false
+        hasNotes: false,
+        expression: ''
     };
 
     try {
@@ -79,6 +80,7 @@ router.get('/notes/expression/:id', async (req, res) => {
 
         viewData.pageTitle = 'Notatki dla wyrażenia: ' + expression.expression;
         viewData.hasNotes = notesCount > 0;
+        viewData.expression = expression.expression;
 
         res.render('expression-notes', viewData);
 

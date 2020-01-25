@@ -16068,8 +16068,18 @@ body {
           align-items: center;
 }
 
-.app-expression-notes-page .no-expressions-info .card__content {
+.app-expression-notes-page .empty-list-info__desc {
   padding: 2rem;
+}
+
+.app-expression-notes-page .empty-list-info__actions {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  margin-top: 1rem;
 }
 
 .input {
@@ -16140,6 +16150,12 @@ body {
 .card__header {
   padding: 1rem;
   background-color: rgba(158, 158, 158, 0.3);
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
 }
 
 .card__footer {

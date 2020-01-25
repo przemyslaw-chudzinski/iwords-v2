@@ -26,9 +26,16 @@
     align-items: center;
   }
 
-  .no-expressions-info {
-    .card__content {
+  .empty-list-info {
+    &__desc {
       padding: 2rem;
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
     }
   }
 

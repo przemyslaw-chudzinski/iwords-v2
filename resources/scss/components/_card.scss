@@ -12,9 +12,16 @@
   &__header {
     padding: 1rem;
     background-color: get-color(secondaryGrey, .3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     //border-top-left-radius: 5px;
     //border-top-right-radius: 5px;
   }
+
+  &__header-slot-start {}
+
+  &__header-slot-end {}
 
   &__footer {
     padding: 1rem;

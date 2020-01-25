@@ -1,20 +1,18 @@
 const BaseController = require('./base-controller');
+const {withAddingNote} = require("../decorators");
 
-/* Notes http service */
-const _notesSrv = new WeakMap();
+class ExpressionNotesCtrlFactory extends BaseController {
 
-module.exports = class ExpressionNotesCtrlFactory extends BaseController {
-
-
-    constructor($scope, notesSrv) {
+    constructor($scope, notesSrv, $mdDialog) {
         super($scope);
-        // _notesSrv = _notesSrv;
-        _notesSrv.set(this, notesSrv);
+        this.notesSrv = notesSrv;
+        this.$mdDialog = $mdDialog;
     }
 
     initState() {
         super.initState();
         this.$scope.exprId = null;
+        this.$scope.expression = null;
         this.$scope.notes = [];
         this.$scope.prevPageDisable = true;
         this.$scope.nextPageDisable = false;
@@ -31,6 +29,7 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
         this.$scope.prevPage = this._prevPage.bind(this);
         this.$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
         this.$scope.openNoteMenu = this._openNoteMenu.bind(this);
+        this.$scope.handleAddNote = this._handleAddNote.bind(this);
     }
 
     pageLoadedHook() {
@@ -38,7 +37,7 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
     }
 
     _fetchNotes() {
-        _notesSrv.get(this).fetchExpressionNotes({params: {...this.$scope.pagination}, exprId: this.$scope.exprId})
+        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination}, exprId: this.$scope.exprId})
             .then(res => {
                 this.$scope.notes = res.data.data;
                 /* Update pagination controls */
@@ -55,7 +54,7 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
 
     _nextPage() {
         this.$scope.pagination.page++;
-        _notesSrv.get(this).fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
+        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
             .then(this._handleFetchNotesSuccess.bind(this))
             .catch(err => {
                 console.log('something went wrong');
@@ -64,7 +63,7 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
 
     _prevPage() {
         this.$scope.pagination.page--;
-        _notesSrv.get(this).fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
+        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
             .then(this._handleFetchNotesSuccess.bind(this))
             .catch(err => {
                 console.log('something went wrong');
@@ -89,7 +88,7 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
             page: 1,
             limit: 30
         };
-        _notesSrv.get(this).fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
+        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
             .then(res => {
                 this.$scope.notes = res.data.data;
                 /* Hide card overlay */
@@ -108,5 +107,16 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
         $mdMenu.open(event);
     }
 
+    /* Add new note UI logic */
+    _handleAddNote(event) {
+        const expr = {_id: this.$scope.exprId, expression: this.$scope.expression};
 
-};
+        this.showAddNoteDialog(expr, event)
+            .then(result => this.saveNote(expr._id, result));
+    }
+    // ===========================================================================================
+
+
+}
+
+module.exports = withAddingNote(ExpressionNotesCtrlFactory);
