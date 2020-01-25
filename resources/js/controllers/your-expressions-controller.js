@@ -107,6 +107,7 @@ module.exports = class YourExpressionsCtrlFactory {
         $mdMenu.open(event);
     }
 
+    /* Add new note UI logic */
     _showAddNoteDialog(expr, event) {
         const confirm = this._$mdDialog.prompt()
             .title('Nowy dokument')
@@ -148,5 +149,6 @@ module.exports = class YourExpressionsCtrlFactory {
                 next(err);
             });
     }
+    // ===========================================================================================
 
 };

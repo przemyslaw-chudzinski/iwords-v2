@@ -2,19 +2,21 @@ const BaseController = require('./base-controller');
 
 /* Notes http service */
 const _notesSrv = new WeakMap();
+const _$mdDialog = new WeakMap();
 
 module.exports = class ExpressionNotesCtrlFactory extends BaseController {
 
 
-    constructor($scope, notesSrv) {
+    constructor($scope, notesSrv, $mdDialog) {
         super($scope);
-        // _notesSrv = _notesSrv;
         _notesSrv.set(this, notesSrv);
+        _$mdDialog.set(this, $mdDialog);
     }
 
     initState() {
         super.initState();
         this.$scope.exprId = null;
+        this.$scope.expression = null;
         this.$scope.notes = [];
         this.$scope.prevPageDisable = true;
         this.$scope.nextPageDisable = false;
@@ -31,6 +33,7 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
         this.$scope.prevPage = this._prevPage.bind(this);
         this.$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
         this.$scope.openNoteMenu = this._openNoteMenu.bind(this);
+        this.$scope.handleAddNote = this._handleAddNote.bind(this);
     }
 
     pageLoadedHook() {
@@ -107,6 +110,51 @@ module.exports = class ExpressionNotesCtrlFactory extends BaseController {
     _openNoteMenu($mdMenu, event) {
         $mdMenu.open(event);
     }
+
+    /* Add new note UI logic */
+    _showAddNoteDialog(expr, event) {
+        const confirm = _$mdDialog.get(this).prompt()
+            .title('Nowy dokument')
+            .textContent(`
+                Dodajesz notatkę dla wyrażenia ${expr.expression}.
+                Po utworzeniu zostaniesz przekierowany do edytora, gdzie będziesz mógł edytować dokument
+            `)
+            .placeholder('Nazwa dokumentu')
+            .targetEvent(event)
+            .required(true)
+            .ok('Utwórz')
+            .cancel('Anuluj');
+
+        return _$mdDialog.get(this).show(confirm)
+    }
+
+    _handleAddNote(event) {
+        const expr = {_id: this.$scope.exprId, expression: this.$scope.expression};
+        this._showAddNoteDialog(expr, event)
+            .then(result => {
+                this._saveNote(expr._id,result,(err, res) => {
+                    if (err) {
+                        return;
+                    }
+                    window.location.href = `/app/notes/${res.data.noteId}/${expr._id}`;
+                });
+            }, () => {});
+    }
+
+    _saveNote(exprId, title, next) {
+        next = next || function () {};
+        const ctx = {
+            exprId,
+            title
+        };
+        _notesSrv.get(this).saveNote(ctx)
+            .then(res => next(null, res))
+            .catch(err => {
+                console.log('something went wrong', err);
+                next(err);
+            });
+    }
+    // ===========================================================================================
 
 
 };

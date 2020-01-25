@@ -1,4 +1,4 @@
-<div class="app-expression-notes-page" ng-cloak ng-controller="ExpressionNotesCtrl" ng-init="exprId='{{exprId}}'">
+<div class="app-expression-notes-page" ng-cloak ng-controller="ExpressionNotesCtrl" ng-init="exprId='{{exprId}}';expression='{{expression}}'">
 
 
     <div class="inner-container">
@@ -80,9 +80,12 @@
 
             </div>
         {{else}}
-            <div class="no-expressions-info expressions-list card card--white card--with-shadow">
-                <div class="card__content">
-                    Nie posiadasz jeszcze żadnych notatek. Kiedy dodasz jakąś będzie ona widoczne na liście
+            <div class="empty-list-info expressions-list card card--white card--with-shadow">
+                <div class="empty-list-info__desc card__content">
+                    <div>Nie posiadasz jeszcze żadnych notatek. Kiedy dodasz jakąś będzie ona widoczne na liście</div>
+                    <div class="empty-list-info__actions">
+                        <md-button class="md-raised md-primary" ng-click="handleAddNote($event)">Nowa notatka</md-button>
+                    </div>
                 </div>
             </div>
         {{/if}}
