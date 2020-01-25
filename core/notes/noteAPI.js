@@ -67,13 +67,19 @@ router.get('/:id', async (req, res) => {
     const page = +req.query.page || null;
     const exprId = req.params.id || null;
     const search = req.query.search || '';
+    const sortDate = req.query.sortDate || 'desc';
+
+    const sort = {
+        createdAt: sortDate
+    };
 
     const config = {
         userId,
         limit,
         skip: (page - 1) * limit,
         exprId,
-        search
+        search,
+        sort
     };
 
     try {
