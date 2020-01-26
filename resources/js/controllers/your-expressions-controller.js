@@ -3,11 +3,12 @@ const {withAddingNote, withListPagination} = require("../decorators");
 
 class YourExpressionsCtrlFactory extends BaseController {
 
-    constructor($scope, expressionSrv, $mdDialog, notesSrv) {
+    constructor($scope, expressionSrv, $mdDialog, notesSrv, $mdToast) {
         super($scope);
         this.expressionSrv = expressionSrv;
         this.$mdDialog = $mdDialog;
         this.notesSrv = notesSrv;
+        this.$mdToast = $mdToast;
     }
 
     initState() {
@@ -15,7 +16,7 @@ class YourExpressionsCtrlFactory extends BaseController {
         this.$scope.expressions = [];
         this.$scope.fetching = true;
         this.$scope.filterSearch = '';
-        this.$scope.exprId = null;
+        // this.$scope.exprId = null;
     }
 
     pageLoadedHook() {
@@ -26,6 +27,7 @@ class YourExpressionsCtrlFactory extends BaseController {
         this.$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
         this.$scope.openExprMenu = this._openExprMenu.bind(this);
         this.$scope.handleAddNote = this._handleAddNote.bind(this);
+        this.$scope.handleToggleExpressionRepeatMode = this._handleToggleExpressionRepeatMode.bind(this);
     }
 
     _fetchUsersExpressions() {
@@ -107,6 +109,34 @@ class YourExpressionsCtrlFactory extends BaseController {
             .then(result => this.saveNote(expr._id, result));
     }
     // ===========================================================================================
+
+    _toggleExpressionRepeatMode(expr) {
+        this.expressionSrv.toggleExpressionRepeatMode({exprId: expr._id})
+            .then(() => {
+
+                this.$scope.expressions = this.$scope.expressions.map(_expr => {
+                    if (_expr._id === expr._id) {
+                        expr.inRepeatState = !expr.inRepeatState;
+                    }
+                    return expr;
+                });
+
+                const textContent = expr.inRepeatState ? 'Wyrażenie zostało dodane do powtórek' : 'Wyrażenie zostało usunięte z powtórek';
+
+                this.$mdToast.show(
+                    this.$mdToast
+                        .simple()
+                        .textContent(textContent)
+                        .hideDelay(3000)
+                );
+
+            })
+            .catch(err => console.log('something went wrong', err));
+    }
+
+    _handleToggleExpressionRepeatMode(expr, event) {
+        this._toggleExpressionRepeatMode(expr);
+    }
 
 }
 

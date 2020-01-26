@@ -276,6 +276,31 @@ function fetchExpressionById(exprId) {
     return Expression.findById(exprId);
 }
 
+async function toggleExpressionRepeatMode(config = {}) {
+
+    const _config = {
+        userId: null,
+        exprId: null,
+        ...config
+    };
+
+    try {
+        const expr = await Expression.findById(_config.exprId);
+
+        if (!expr) {
+            return null;
+        }
+        expr.repeat.state = !expr.repeat.state;
+        expr.repeat.correctAnswers = 0;
+        expr.repeat.incorrectAnswers = 0;
+        expr.save();
+        return expr;
+    } catch (e) {
+
+    }
+
+}
+
 module.exports = {
     fetchExpression,
     incrementExpressionCounters,
@@ -290,5 +315,6 @@ module.exports = {
     resetRepeatMode,
     countAllExpressionsInRepeatMode,
     removeExpressionFromRepeatMode,
-    fetchExpressionById
+    fetchExpressionById,
+    toggleExpressionRepeatMode
 };

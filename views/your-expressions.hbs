@@ -57,6 +57,13 @@
                                                Notatki
                                            </md-button>
                                        </md-menu-item>
+                                       <md-menu-item>
+                                           <md-button ng-click="handleToggleExpressionRepeatMode(expr, $event)">
+                                               <span class="fa fa-repeat"></span>
+                                               <span ng-if="!expr.inRepeatState" >Dodaj do powtórek</span>
+                                               <span ng-if="expr.inRepeatState">Usuń z powtórek</span>
+                                           </md-button>
+                                       </md-menu-item>
                                        <md-menu-divider></md-menu-divider>
                                        <md-menu-item>
                                            <md-button ng-click="handleAddNote(expr, $event)">

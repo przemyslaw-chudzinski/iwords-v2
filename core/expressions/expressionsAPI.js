@@ -12,7 +12,8 @@ const {
     countAllUserExpressions,
     resetRepeatMode,
     countAllExpressionsInRepeatMode,
-    removeExpressionFromRepeatMode
+    removeExpressionFromRepeatMode,
+    toggleExpressionRepeatMode
 } = require('./expressionDAL');
 
 const {countAllExpressionNotes} = require('../notes/noteDAL');
@@ -300,6 +301,7 @@ router.get('/repeat-mode', async (req, res) => {
 });
 
 /* Removes expression from repeat mode */
+/* TODO: This route will be removed and replaced into toggle */
 router.post('/:id/remove-from-repeat-mode', async (req, res) => {
 
     const exprId = req.params.id;
@@ -326,6 +328,29 @@ router.post('/:id/remove-from-repeat-mode', async (req, res) => {
         res.status(400);
         await res.json({});
         console.log(e);
+    }
+
+});
+
+/* Toggle expression repeat mode */
+router.put('/:id', async (req, res) => {
+
+    const exprId = req.params.id;
+    const userId = req.body.userId;
+
+    const config = {
+        userId,
+        exprId
+    };
+
+    try {
+        await toggleExpressionRepeatMode(config);
+        res.status(200);
+        await res.json({});
+
+    } catch (e) {
+        res.status(400);
+        await res.json({});
     }
 
 });
