@@ -48,6 +48,14 @@ class ExpressionService extends ServiceBase {
     removeExpressionFromRepeatMode(ctx = {}) {
         return this.http.post(this.prefix + `/${ctx.exprId}/remove-from-repeat-mode`, {userId: this.userId});
     }
+
+    toggleExpressionRepeatMode(ctx = {}) {
+        const _ctx = {
+            exprId: null,
+            ...ctx
+        };
+        return this.http.put(this.prefix + `/${_ctx.exprId}`, {userId: this.userId});
+    }
 }
 
 module.exports = function ExpressionSrvFactory($http) {
