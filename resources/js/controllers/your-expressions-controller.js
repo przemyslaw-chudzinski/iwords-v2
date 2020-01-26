@@ -114,12 +114,11 @@ class YourExpressionsCtrlFactory extends BaseController {
         this.expressionSrv.toggleExpressionRepeatMode({exprId: expr._id})
             .then(() => {
 
-                this.$scope.expressions = this.$scope.expressions.map(_expr => {
-                    if (_expr._id === expr._id) {
-                        expr.inRepeatState = !expr.inRepeatState;
-                    }
-                    return expr;
-                });
+                const index = this.$scope.expressions.findIndex(item => item._id === expr._id);
+
+                if (index !== -1) {
+                    this.$scope.expressions[index].inRepeatState = !this.$scope.expressions[index].inRepeatState;
+                }
 
                 const textContent = expr.inRepeatState ? 'Wyrażenie zostało dodane do powtórek' : 'Wyrażenie zostało usunięte z powtórek';
 
