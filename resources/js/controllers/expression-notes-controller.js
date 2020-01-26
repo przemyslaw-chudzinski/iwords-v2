@@ -23,6 +23,7 @@ class ExpressionNotesCtrlFactory extends BaseController {
         this.$scope.openNoteMenu = this._openNoteMenu.bind(this);
         this.$scope.handleAddNote = this._handleAddNote.bind(this);
         this.$scope.handleRemove = this._handleRemove.bind(this);
+        this.$scope.goToPreview = this._goToPreview.bind(this);
     }
 
     pageLoadedHook() {
@@ -126,6 +127,10 @@ class ExpressionNotesCtrlFactory extends BaseController {
             .catch(err => console.log('something went wrong', err))
     }
     // ===========================================================================================
+
+    _goToPreview(noteId) {
+        window.location.href = '/app/notes/' + noteId;
+    }
 
 }
 

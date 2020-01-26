@@ -16082,6 +16082,14 @@ body {
   margin-top: 1rem;
 }
 
+.app-expression-notes-page .note {
+  cursor: pointer;
+}
+
+.app-note-preview-page {
+  margin: 2rem;
+}
+
 .input {
   text-align: center;
   font-size: 3rem;

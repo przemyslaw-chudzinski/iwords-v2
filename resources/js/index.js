@@ -23,6 +23,7 @@ const BodyCrlFactory = require('./controllers/body-controller');
 const YourExpressionsCtrlFactory = require('./controllers/your-expressions-controller');
 const EditNoteCtrlFactory = require('./controllers/edit-note-controller');
 const ExpressionNotesCtrlFactory = require('./controllers/expression-notes-controller');
+const NotePreviewCtrlFactory = require('./controllers/note-preview-controller');
 
 /* Directives */
 const ExpressionSentenceTogglerDirFactory = require('./directives/expression-sentence-toggler-directive');
@@ -39,6 +40,7 @@ app.controller('BodyCrl', ['$scope', BodyCrlFactory]);
 app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', '$mdDialog', 'notesSrv', '$mdToast', YourExpressionsCtrlFactory]);
 app.controller('EditNoteCtrl', ['$scope', 'notesSrv', '$mdToast', EditNoteCtrlFactory]);
 app.controller('ExpressionNotesCtrl', ['$scope', 'notesSrv', '$mdDialog', ExpressionNotesCtrlFactory]);
+app.controller('NotePreviewCtrl', ['$scope', NotePreviewCtrlFactory]);
 /* Services */
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 // app.factory('csvSrv', ['$http', CsvSrvFactory]);

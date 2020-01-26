@@ -33,7 +33,7 @@
                     <!-- Notes list -->
                     <ul ng-if="notes && notes.length" class="list list--primary-style">
                         <!-- Single expression -->
-                        <li ng-repeat="note in notes" class="list__item note">
+                        <li ng-repeat="note in notes" class="list__item note" ng-click="goToPreview(note._id)">
                             <div class="list__item-left">
                                 <div><strong>\{{note.title}}</strong></div>
                             </div>
@@ -44,7 +44,7 @@
                                     </md-button>
                                     <md-menu-content width="4">
                                         <md-menu-item>
-                                            <md-button ng-href="/app/notes/\{{note._id}}/\{{exprId}}">
+                                            <md-button ng-href="/app/notes/\{{note._id}}/\{{exprId}}/edit">
                                                 Edytuj
                                             </md-button>
                                         </md-menu-item>

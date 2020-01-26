@@ -33,7 +33,7 @@ module.exports = superclass => class extends superclass {
     }
 
     saveNoteSuccess(noteId, exprId) {
-        window.location.href = `/app/notes/${noteId}/${exprId}`;
+        window.location.href = `/app/notes/${noteId}/${exprId}/edit`;
     }
 
     saveNoteFailure(err, exprId) {

@@ -29,7 +29,7 @@ app.set('view engine', '.hbs');
 /* Global middleware */
 app.use(express.static(path.resolve(__dirname,'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '100mb'}));
 
 /* Express session */
 app.use(expressSession({

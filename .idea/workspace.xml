@@ -2,9 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="330f59ad-6b0e-4952-b5fb-c0f32e374e8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/controllers/note-preview-controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/scss/pages/_note-preview.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/note-preview.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/partials/rendered-note.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/handlebars.js" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/handlebars.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/expression-notes-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/expression-notes-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/decorators/add-note-decorator.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/decorators/add-note-decorator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_expression-notes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_expression-notes.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_pages.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_pages.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/expression-notes.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/expression-notes.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,7 +61,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/controllers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -59,8 +73,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/resources/js/controllers" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/resources/scss/pages" />
       <recent name="$PROJECT_DIR$/views" />
       <recent name="$PROJECT_DIR$/resources/js/services" />
@@ -127,13 +141,7 @@
       <workItem from="1579550628384" duration="851000" />
       <workItem from="1579636130479" duration="9501000" />
       <workItem from="1579941278958" duration="12405000" />
-    </task>
-    <task id="LOCAL-00024" summary="before checkout">
-      <created>1577525283609</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1577525283609</updated>
+      <workItem from="1580054846295" duration="3699000" />
     </task>
     <task id="LOCAL-00025" summary="before checkout">
       <created>1577526043103</created>
@@ -471,7 +479,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579992093847</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="fixed updating user's expression list after adding expression to the repeat mode">
+      <created>1580031418643</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1580031418643</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,10 +542,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1580029972186">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1580031483741">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1580029972186" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1580031483741" />
     <state x="795" y="212" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1577920340049" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1579992037793">
       <screen x="0" y="0" width="2560" height="1440" />
@@ -552,10 +567,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1578224666180" />
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1579941279274">
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1580054852320">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1579941279274" />
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1580054852320" />
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.23.2560.1353@0.23.2560.1353" timestamp="1577531754388" />
     <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1579991813585">
       <screen x="0" y="0" width="2560" height="1440" />
@@ -565,9 +580,9 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1042" y="341" key="refactoring.ChangeSignatureDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575154926966" />
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1579944719627">
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1580059486087">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1579944719627" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1580059486087" />
   </component>
 </project>

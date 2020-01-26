@@ -2,7 +2,7 @@ const Editor = require('@editorjs/editorjs');
 const Header = require('@editorjs/header');
 const List = require('@editorjs/list');
 const Paragraph = require('@editorjs/paragraph');
-const Table = require('@editorjs/table');
+// const Table = require('@editorjs/table');
 const Embed = require('@editorjs/embed');
 const SimpleImage = require('@editorjs/simple-image');
 // const ImageTool = require('@editorjs/image');
@@ -10,7 +10,7 @@ const SimpleImage = require('@editorjs/simple-image');
 const Checklist = require('@editorjs/checklist');
 const Quote = require('@editorjs/quote');
 const Marker = require('@editorjs/marker');
-const Warning = require('@editorjs/warning');
+// const Warning = require('@editorjs/warning');
 
 
 IWORDS.editors.editNoteEditor = (function () {
@@ -41,12 +41,13 @@ IWORDS.editors.editNoteEditor = (function () {
                         }
                     },
                     list: List,
-                    table: Table,
+                    // table: Table,
+                    // paragraph: Paragraph,
                     paragraph: Paragraph,
                     checklist: Checklist,
                     quote: Quote,
                     Marker,
-                    warning: Warning
+                    // warning: Warning
                 },
                 data: parseData(data)
             });
@@ -74,6 +75,7 @@ IWORDS.editors.editNoteEditor = (function () {
     const parseData = data => {
 
         try {
+            console.log(JSON.parse(data.replace(/&quot;/g,'"')));
             return JSON.parse(data.replace(/&quot;/g,'"'));
         } catch (e) {
             return {};

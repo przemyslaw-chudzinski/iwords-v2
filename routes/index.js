@@ -54,7 +54,6 @@ router.get('/your-expressions', async (req, res) => {
     }
 
 });
-
 /* List of notes associated with given expression id */
 router.get('/notes/expression/:id', async (req, res) => {
 
@@ -91,9 +90,8 @@ router.get('/notes/expression/:id', async (req, res) => {
     }
 
 });
-
 /* Edit note */
-router.get('/notes/:id/:exprId?', async (req, res) => {
+router.get('/notes/:id/:exprId?/edit', async (req, res) => {
 
     const noteId = req.params.id;
     const exprId = req.params.exprId;
@@ -152,6 +150,80 @@ router.get('/notes/:id/:exprId?', async (req, res) => {
         req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych');
         res.render('error');
     }
+
+});
+/* Note preview */
+router.get('/notes/:id/:exprId?', async (req ,res) => {
+
+
+    const noteId = req.params.id;
+    const exprId = req.params.exprId;
+
+    if (!noteId) {
+        res.render('404');
+        return;
+    }
+
+    const viewData = {
+        name: 'app.notes.preview',
+        pageTitle: '',
+        content: '',
+        expression: '',
+        translations: '',
+        sentences: null,
+        partOfSpeech: null,
+        blocks: null,
+        noteId,
+        exprId,
+    };
+
+    if (exprId) {
+        try {
+            const expression = await fetchExpressionById(exprId);
+            if (!expression) {
+                res.render('404');
+                return;
+            }
+
+            viewData.expression = expression.expression;
+            viewData.translations = expression.translations.join(', ');
+            viewData.sentences = expression.exampleSentences;
+            viewData.partOfSpeech = expression.partOfSpeech;
+
+        } catch (e) {
+            console.log(e);
+            req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych');
+            res.render('error');
+        }
+    }
+
+    try {
+        const note = await fetchNoteById(noteId);
+
+        if (!note) {
+            res.render('404');
+            return;
+        }
+
+        let parsedContent = null;
+
+        try {
+            parsedContent = JSON.parse(note.content.replace(/&quot;/g,'"'));
+        } catch (e) {
+
+        }
+
+        viewData.pageTitle = note.title;
+        viewData.content = note.content;
+        viewData.blocks = parsedContent.blocks || null;
+        res.render('note-preview', viewData);
+
+    } catch (e) {
+        console.log(e);
+        req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych');
+        res.render('error');
+    }
+
 
 });
 
