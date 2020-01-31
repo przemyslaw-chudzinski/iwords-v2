@@ -139,6 +139,4 @@ class YourExpressionsCtrlFactory extends BaseController {
 
 }
 
-module.exports = withAddingNote(
-    withListPagination(YourExpressionsCtrlFactory)
-);
+module.exports = withAddingNote(withListPagination(YourExpressionsCtrlFactory));
