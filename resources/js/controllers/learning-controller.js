@@ -1,49 +1,51 @@
-module.exports = class LearningCtrlFactory {
+const {withSpeech} = require('../decorators/index');
+const BaseController = require('./base-controller');
+
+class LearningCtrlFactory extends BaseController {
 
     constructor($scope, expressionSrv, $timeout, $mdDialog, localStorageSrv) {
-        this._$scope = $scope;
-        this._expressionSrv = expressionSrv;
-        this._$mdDialog = $mdDialog;
-        this._$timeout = $timeout;
-        this._localStorageSrv = localStorageSrv;
+        super($scope);
+        this.expressionSrv = expressionSrv;
+        this.$mdDialog = $mdDialog;
+        this.$timeout = $timeout;
+        this.localStorageSrv = localStorageSrv;
 
-        this._initState();
-        this._init();
-        this._assignTemplateFunctions();
     }
 
-    _initState() {
-        this._$scope.currentExprs = [];
-        this._$scope.currentExpr = null;
-        this._$scope.answer = '';
-        this._$scope.answerSuccess = false;
-        this._$scope.answerWrong = false;
-        this._$scope.skipping = false;
-        this._$scope.repeatCount = 0;
-        this._$scope.repeatState = {
+    initState() {
+        super.initState();
+        this.$scope.currentExprs = [];
+        this.$scope.currentExpr = null;
+        this.$scope.answer = '';
+        this.$scope.answerSuccess = false;
+        this.$scope.answerWrong = false;
+        this.$scope.skipping = false;
+        this.$scope.repeatCount = 0;
+        this.$scope.repeatState = {
             state: false
         };
-        this._$scope.expressionsInRepeatMode = [];
-
-        this._answerInputElem = document.querySelector('.input');
+        this.$scope.expressionsInRepeatMode = [];
     }
 
-    _init() {
+    pageLoadedHook() {
+        super.pageLoadedHook();
+        this._answerInputElem = document.querySelector('.input');
         this._focusAnswerInput();
         this._checkRepeatState();
         this._fetchExpressions();
         this._fetchRepeatCount();
     }
 
-    _assignTemplateFunctions() {
-        this._$scope.handleKeyPress = this._handleKeyPress.bind(this);
-        this._$scope.openMenu = this._openMenu.bind(this);
-        this._$scope.handleResetRepeatMode = this._handleResetRepeatMode.bind(this);
-        this._$scope.hasExampleSentences = this._hasExampleSentences.bind(this);
-        this._$scope.skipExpression = this._skipExpression.bind(this);
-        this._$scope.handleRepeatStateModeChange = this._handleRepeatStateModeChange.bind(this);
-        this._$scope.handleSelectTab = this._handleSelectTab.bind(this);
-        this._$scope.handleRemoveExprFromRepeatMode = this._handleRemoveExprFromRepeatMode.bind(this);
+    assignTemplateFunctions() {
+        super.assignTemplateFunctions();
+        this.$scope.handleKeyPress = this._handleKeyPress.bind(this);
+        this.$scope.openMenu = this._openMenu.bind(this);
+        this.$scope.handleResetRepeatMode = this._handleResetRepeatMode.bind(this);
+        this.$scope.hasExampleSentences = this._hasExampleSentences.bind(this);
+        this.$scope.skipExpression = this._skipExpression.bind(this);
+        this.$scope.handleRepeatStateModeChange = this._handleRepeatStateModeChange.bind(this);
+        this.$scope.handleSelectTab = this._handleSelectTab.bind(this);
+        this.$scope.handleRemoveExprFromRepeatMode = this._handleRemoveExprFromRepeatMode.bind(this);
     }
 
     _focusAnswerInput() {
@@ -52,20 +54,20 @@ module.exports = class LearningCtrlFactory {
 
     _checkRepeatState() {
         if (this._isRepeatState) {
-            this._$scope.repeatState = {state: true};
+            this.$scope.repeatState = {state: true};
         }
     }
 
     get _isRepeatState() {
-        return !!this._localStorageSrv.repeatState;
+        return !!this.localStorageSrv.repeatState;
     }
 
     _fetchExpressions() {
-        this._expressionSrv.fetchExpressions(this._isRepeatState)
+        this.expressionSrv.fetchExpressions(this._isRepeatState)
             .then(({data: {data}}) => {
-                this._$scope.currentExprs = data;
+                this.$scope.currentExprs = data;
                 if (data && data.length) {
-                    this._$scope.currentExpr = {
+                    this.$scope.currentExpr = {
                         ...data[0],
                         refs: {
                             diki: `https://www.diki.pl/slownik-angielskiego?q=${data[0].expression}`
@@ -76,12 +78,12 @@ module.exports = class LearningCtrlFactory {
     }
 
     _fetchRepeatCount() {
-        this._expressionSrv.fetchRepeatCount()
+        this.expressionSrv.fetchRepeatCount()
             .then(({data: {repeatCount}}) => {
-                this._$scope.repeatCount = repeatCount;
+                this.$scope.repeatCount = repeatCount;
             })
             .catch(err => {
-                this._$scope.repeatCount = 0;
+                this.$scope.repeatCount = 0;
                 console.log('something went wrong', err);
             });
     }
@@ -89,29 +91,31 @@ module.exports = class LearningCtrlFactory {
     _handleKeyPress({keyCode}) {
         if (keyCode === 13) {
             this._disableAnswerInput();
-            this._$scope.answer.trim() === this._$scope.currentExpr.expression.trim() ? this._handleCorrectAnswer() : this._handleIncorrectAnswer();
+            this.$scope.answer.trim() === this.$scope.currentExpr.expression.trim() ? this._handleCorrectAnswer() : this._handleIncorrectAnswer();
         }
     }
 
     _handleCorrectAnswer() {
-        this._$scope.answerSuccess = true;
+        this.$scope.answerSuccess = true;
+
+        this.speak(this.$scope.currentExpr.expression);
 
         /* Remove expression from stack */
-        this._$scope.currentExprs = this._$scope.currentExprs.filter(expr => expr._id !== this._$scope.currentExpr._id);
+        this.$scope.currentExprs = this.$scope.currentExprs.filter(expr => expr._id !== this.$scope.currentExpr._id);
 
-        this._$timeout(() => {
+        this.$timeout(() => {
 
-            if (this._$scope.currentExprs.length) {
+            if (this.$scope.currentExprs.length) {
 
-                this._expressionSrv.incrementAnswersCounter(this._$scope.currentExpr._id, true)
+                this.expressionSrv.incrementAnswersCounter(this.$scope.currentExpr._id, true)
                     .then(() => {
-                        this._$scope.answer = '';
-                        this._$scope.answerSuccess = false;
-                        this._$scope.currentExpr = this._$scope.currentExprs[0];
-                        this._$scope.currentExpr = {
-                            ...this._$scope.currentExprs[0],
+                        this.$scope.answer = '';
+                        this.$scope.answerSuccess = false;
+                        this.$scope.currentExpr = this.$scope.currentExprs[0];
+                        this.$scope.currentExpr = {
+                            ...this.$scope.currentExprs[0],
                             refs: {
-                                diki: `https://www.diki.pl/slownik-angielskiego?q=${this._$scope.currentExprs[0].expression}`
+                                diki: `https://www.diki.pl/slownik-angielskiego?q=${this.$scope.currentExprs[0].expression}`
                             }
                         };
 
@@ -123,21 +127,23 @@ module.exports = class LearningCtrlFactory {
 
             } else {
                 /* Fetch next new word */
-                this._fetchNextExpression(this._handleFetchNextExpression.bind(this), true, this._$scope.repeatState.state);
+                this._fetchNextExpression(this._handleFetchNextExpression.bind(this), true, this.$scope.repeatState.state);
             }
 
         }, 500);
     }
 
     _handleIncorrectAnswer() {
-        this._$scope.answerWrong = true;
+        this.$scope.answerWrong = true;
 
-        this._$timeout(() => {
+        this.speak(this.$scope.currentExpr.expression);
 
-            this._expressionSrv.incrementAnswersCounter(this._$scope.currentExpr._id, false)
+        this.$timeout(() => {
+
+            this.expressionSrv.incrementAnswersCounter(this.$scope.currentExpr._id, false)
                 .then(() => {
-                    this._$scope.answerWrong = false;
-                    this._$scope.answer = '';
+                    this.$scope.answerWrong = false;
+                    this.$scope.answer = '';
 
                     this._fetchRepeatCount();
                     this._enableAnswerInputAndFocus();
@@ -150,15 +156,15 @@ module.exports = class LearningCtrlFactory {
     _fetchNextExpression(next, correct, onlyRepeats) {
         next = next || function () {};
 
-        this._expressionSrv.incrementAnswersCounter(this._$scope.currentExpr._id, correct, onlyRepeats)
+        this.expressionSrv.incrementAnswersCounter(this.$scope.currentExpr._id, correct, onlyRepeats)
             .then(() => {})
             .catch(err => console.log('something went wrong', err));
 
-        this._expressionSrv.fetchExpressions(onlyRepeats)
+        this.expressionSrv.fetchExpressions(onlyRepeats)
             .then(({data: {data}}) => {
-                this._$scope.currentExprs = data;
+                this.$scope.currentExprs = data;
                 if (data && data.length) {
-                    this._$scope.currentExpr = {
+                    this.$scope.currentExpr = {
                         ...data[0],
                         refs: {
                             diki: `https://www.diki.pl/slownik-angielskiego?q=${data[0].expression}`
@@ -180,39 +186,40 @@ module.exports = class LearningCtrlFactory {
     }
 
     _resetRepeatMode() {
-        this._expressionSrv.resetRepeatMode()
+        this.expressionSrv.resetRepeatMode()
             .then(() => {
-                this._$scope.repeatState = {
+                this.$scope.repeatState = {
                     state: false
                 };
 
-                this._localStorageSrv.clearRepeatState();
-                this._$scope.expressionsInRepeatMode = [];
+                this.localStorageSrv.clearRepeatState();
+                this.$scope.expressionsInRepeatMode = [];
                 this._fetchNextExpression(this._handleFetchNextExpression.bind(this));
             })
             .catch(err => console.log('resetRepeatMode error', err));
     }
 
     _confirmResetRepeatMode(event) {
-            const confirm = this._$mdDialog.confirm()
+            const confirm = this.$mdDialog.confirm()
                 .title('Czy na pewno chcesz zresetować tryb powtórek?')
                 .textContent('Jeśli zresetujesz tryb powtórek, wszystkie wyrażenia z powtórek zostaną usunięte')
                 .targetEvent(event)
                 .ok('Tak, chcę zrestować powtórki')
                 .cancel('Anuluj');
 
-            return this._$mdDialog.show(confirm);
+            return this.$mdDialog.show(confirm);
     }
 
     _hasExampleSentences() {
-        return this._$scope.currentExpr && this._$scope.currentExpr.exampleSentences && this._$scope.currentExpr.exampleSentences.length;
+        return this.$scope.currentExpr && this.$scope.currentExpr.exampleSentences && this.$scope.currentExpr.exampleSentences.length;
     }
 
     _skipExpression() {
-        this._fetchNextExpression(this._handleFetchNextExpression.bind(this), false, this._$scope.repeatState.state);
+        this._fetchNextExpression(this._handleFetchNextExpression.bind(this), false, this.$scope.repeatState.state);
     }
 
     _disableAnswerInput() {
+        console.log('test');
         if (this._answerInputElem) {
             this._answerInputElem.disabled = true;
         }
@@ -231,27 +238,27 @@ module.exports = class LearningCtrlFactory {
             return;
         }
 
-        this._$scope.answer = '';
-        this._$scope.answerSuccess = false;
-        this._$scope.skipping = false;
+        this.$scope.answer = '';
+        this.$scope.answerSuccess = false;
+        this.$scope.skipping = false;
 
         this._fetchRepeatCount();
         this._enableAnswerInputAndFocus();
     }
 
     _handleRepeatStateModeChange() {
-        if (this._$scope.repeatState.state) {
-            this._localStorageSrv.repeatState = this._$scope.repeatState.state;
+        if (this.$scope.repeatState.state) {
+            this.localStorageSrv.repeatState = this.$scope.repeatState.state;
         } else {
-            this._localStorageSrv.clearRepeatState();
+            this.localStorageSrv.clearRepeatState();
         }
-        this._fetchNextExpression(this._handleFetchNextExpression.bind(this), true, this._$scope.repeatState.state);
+        this._fetchNextExpression(this._handleFetchNextExpression.bind(this), true, this.$scope.repeatState.state);
     }
 
     _fetchExpressionsInRepeatMode() {
-        return this._expressionSrv.fetchExpressionsInRepeatMode()
+        return this.expressionSrv.fetchExpressionsInRepeatMode()
             .then(res => {
-                this._$scope.expressionsInRepeatMode = res.data.data;
+                this.$scope.expressionsInRepeatMode = res.data.data;
             })
             .catch();
     }
@@ -271,13 +278,16 @@ module.exports = class LearningCtrlFactory {
         const config = {
             exprId
         };
-        this._expressionSrv.removeExpressionFromRepeatMode(config)
+        this.expressionSrv.removeExpressionFromRepeatMode(config)
             .then(() => {
                 this._fetchRepeatCount();
-                this._$scope.expressionsInRepeatMode = this._$scope.expressionsInRepeatMode.filter(item => item._id !== exprId);
+                this.$scope.expressionsInRepeatMode = this.$scope.expressionsInRepeatMode.filter(item => item._id !== exprId);
                 this._fetchExpressions();
             })
             .catch(err => console.log('something went wrong', e));
     }
 
-};
+}
+
+module.exports = withSpeech(LearningCtrlFactory);
+
