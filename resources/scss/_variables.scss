@@ -1,13 +1,20 @@
 $color-palette: (
-    success: #00E676,
-    danger: #ff1744,
-    primaryBlue: #03A9F4,
-    darkBlue: #0D47A1,
-    primaryWhite: #fff,
-    primaryGrey: #FAFAFA,
+    success:       #00E676,
+    danger:        #ff1744,
+    primaryBlue:   #03A9F4,
+    darkBlue:      #0D47A1,
+    primaryWhite:  #fff,
+    primaryGrey:   #FAFAFA,
     secondaryGrey: #9E9E9E,
     primaryOrange: #ff6600,
-    primaryBlack: #000
+    primaryBlack:  #000
+);
+
+$breakpoints: (
+  small:  576px,
+  medium: 768px,
+  large:  992px,
+  xLarge: 1200px
 );
 
 @function get-color($color, $opacity: 1) {
