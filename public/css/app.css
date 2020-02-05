@@ -16320,10 +16320,38 @@ body {
   color: white;
 }
 
+.progress-with-numbers {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.progress-with-numbers__value {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .learning {
-  width: 60rem;
-  max-width: 60rem;
+  width: 40rem;
+  max-width: 40rem;
   align-self: flex-start;
+}
+
+@media (min-width: 992px) {
+  .learning {
+    width: 55rem;
+    max-width: 55rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .learning {
+    width: 60rem;
+    max-width: 60rem;
+  }
 }
 
 .learning__data {

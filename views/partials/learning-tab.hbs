@@ -14,18 +14,25 @@
                             <div class="col">
                                 <!-- Repeat information -->
                                 <div ng-if="currentExpr.repeat && currentExpr.repeat.state" class="learning__repeat-info">
-                                    <span>Do zaliczenia powtórki pozostało: </span>
-                                    <strong>\{{ 10 - (currentExpr.repeat.correctAnswers || 0) }}</strong>
-                                    <span>wyrażeń</span>
+                                    <!-- Progress with number -->
+                                    <div class="progress-with-numbers">
+                                        <md-tooltip md-direction="top">Liczba poprawnych odpowiedzi potrzebna do zaliczenia powtórki</md-tooltip>
+                                        <md-progress-circular md-mode="determinate" value="\{{calcRepeatCountProgress()}}"></md-progress-circular>
+                                        <strong class="progress-with-numbers__value">\{{ 10 - (currentExpr.repeat.correctAnswers || 0) }}</strong>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Right side -->
                             <div class="col">
-                                <div layout="row" layout-align="space-between center">
+                                <div layout="row" layout-align="end center">
                                     <!-- repeat counter -->
                                     <div layou="row">
                                         <div class="repeat-counter" ng-if="repeatCount > 0">
-                                            <span class="repeat-counter__text">Wyrażenia w powtórkach: \{{ repeatCount }}</span>
+                                            <md-button class="md-icon-button md-warn">
+                                                <span class="fa fa-repeat"></span>
+                                                <md-tooltip md-direction="top">Ilośc wyrażeń w powtórkach</md-tooltip>
+                                                <strong>\{{repeatCount}}</strong>
+                                            </md-button>
                                             <md-switch ng-model="repeatState.state" class="md-warn repeat-counter__switch" ng-change="handleRepeatStateModeChange($event)">
                                                 Tryb powtórek
                                             </md-switch>
@@ -101,22 +108,22 @@
                 </div>
             </div>
             <!-- Extra data widget -->
-            <div class="app-learning-page__extra-data">
-                <!-- Sentences -->
-                <div class="expression-sentences">
-                    <h3 class="expression-sentences__heading">Przykładowe zdania</h3>
-                    <!-- sentences of expression -->
-                    <ul class="expression-sentences__list">
-                        <li ng-repeat="sentence in currentExpr.exampleSentences" class="expression-sentences__list-item" expression-sentence-toggler>
-                            \{{sentence.translation}} <span>zobacz</span>
-                            <!-- Original sentence -->
-                            <p class="expression-sentences__sentence">\{{sentence.sentence}}</p>
-                        </li>
-                    </ul>
-                    <!-- when there is not any expression -->
-                    <p ng-if="!hasExampleSentences()">Brak przykładowych zdań do wyświetlenia</p>
-                </div>
-            </div>
+<!--            <div class="app-learning-page__extra-data">-->
+<!--                &lt;!&ndash; Sentences &ndash;&gt;-->
+<!--                <div class="expression-sentences">-->
+<!--                    <h3 class="expression-sentences__heading">Przykładowe zdania</h3>-->
+<!--                    &lt;!&ndash; sentences of expression &ndash;&gt;-->
+<!--                    <ul class="expression-sentences__list">-->
+<!--                        <li ng-repeat="sentence in currentExpr.exampleSentences" class="expression-sentences__list-item" expression-sentence-toggler>-->
+<!--                            \{{sentence.translation}} <span>zobacz</span>-->
+<!--                            &lt;!&ndash; Original sentence &ndash;&gt;-->
+<!--                            <p class="expression-sentences__sentence">\{{sentence.sentence}}</p>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    &lt;!&ndash; when there is not any expression &ndash;&gt;-->
+<!--                    <p ng-if="!hasExampleSentences()">Brak przykładowych zdań do wyświetlenia</p>-->
+<!--                </div>-->
+<!--            </div>-->
         {{else}}
             <!-- Expressions dont exist -->
             <div class="learning__no-expressions card card--white card--with-shadow">
