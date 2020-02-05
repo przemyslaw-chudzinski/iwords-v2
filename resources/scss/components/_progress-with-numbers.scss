@@ -1,0 +1,10 @@
+.progress-with-numbers {
+  position: relative;
+  width: 50px;
+  height: 50px;
+
+  &__value {
+    @include centerElement;
+  }
+
+}
