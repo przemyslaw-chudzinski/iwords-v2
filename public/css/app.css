@@ -15901,7 +15901,7 @@ body {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
 }
 
 .app-learning-page {
@@ -16100,7 +16100,7 @@ body {
 }
 
 .logo {
-  background: #0d47a1;
+  background: #1b3a57;
   height: 60px;
   display: -webkit-box;
   display: flex;
@@ -16108,18 +16108,29 @@ body {
           align-items: center;
   -webkit-box-pack: center;
           justify-content: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: white;
 }
 
+.navigation__item--open .navigation-nested {
+  opacity: 1;
+  max-height: 100%;
+  visibility: visible;
+  overflow: hidden;
+}
+
+.navigation__item--active .navigation__link {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
 .navigation__item:not(:last-child) .navigation__link {
-  border-bottom: 1px solid rgba(23, 119, 242, 0.4);
+  border-bottom: 1px solid #1b3a57;
 }
 
 .navigation__link {
-  color: #0d47a1;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  padding: 1.5rem;
+  padding: 1.2rem;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -16127,16 +16138,42 @@ body {
   overflow: hidden;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+  font-size: 0.875rem;
 }
 
-.navigation__link:hover,
-.navigation__link--active {
-  color: white;
-  background: #1777f2;
+.navigation__link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .navigation__link-icon {
   margin-right: 1rem;
+}
+
+.navigation-nested {
+  opacity: 0;
+  max-height: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navigation-nested__link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 1.2rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.875rem;
+  padding: 1rem;
+}
+
+.navigation-nested__link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .card--white {
@@ -16417,7 +16454,7 @@ body {
 .aside {
   /* When aside is closed */
   width: 4rem;
-  background-color: white;
+  background-color: #041e33;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
   /* When aside is opened */
@@ -16432,7 +16469,7 @@ body {
 }
 
 .aside.opened {
-  width: 20rem;
+  width: 16rem;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
 }
@@ -16448,7 +16485,7 @@ body {
 
 .toolbar {
   height: 60px;
-  background: #1777f2;
+  background: white;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -16456,7 +16493,12 @@ body {
   -webkit-box-pack: justify;
           justify-content: space-between;
   padding: 0 1rem;
-  color: white;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  font-size: 0.875rem;
+}
+
+.toolbar__menu-trigger {
+  color: #0d47a1;
 }
 
 .toolbar__content {

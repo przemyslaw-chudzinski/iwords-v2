@@ -1,11 +1,18 @@
 .toolbar {
   height: 60px;
-  background: get-color(primaryBlue);
+  //background: get-color(primaryBlue);
+  background: get-color(primaryWhite);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  color: get-color(primaryWhite);
+  //color: get-color(primaryWhite);
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+  font-size: .875rem;
+
+  &__menu-trigger {
+    color: get-color(darkBlue);
+  }
 
   &__content {
     display: flex;

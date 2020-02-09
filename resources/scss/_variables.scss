@@ -2,12 +2,17 @@ $color-palette: (
     success:       #00E676,
     danger:        #ff1744,
     primaryBlue:   #1777F2,
+    secondaryBlue: #03A9F4,
     darkBlue:      #0D47A1,
     primaryWhite:  #fff,
     primaryGrey:   #FAFAFA,
     secondaryGrey: #9E9E9E,
     primaryOrange: #ff6600,
-    primaryBlack:  #000
+    primaryBlack:  #000,
+    primaryNavy:   #031525,
+    secondaryNavy: #041e33,
+    tertiaryNavy: #1b3a57,
+    //primaryNavy:   #2a4865,
 );
 
 $breakpoints: (
