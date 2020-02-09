@@ -5,20 +5,20 @@ const {fetchNoteById, countAllExpressionNotes} = require('../core/notes/noteDAL'
 /* Main page */
 router.get('/', (req, res) => res.render('index', {name: 'app.dashboard'}));
 /* Learning page */
-router.get('/learning', async (req, res) => {
+router.get('/learning/primary', async (req, res) => {
 
     const viewData = {
-        name: 'app.learning',
+        name: 'app.learning.primary',
         expressionsCount: 0,
         pageTitle: 'Tryb nauki'
     };
 
     try {
         viewData.expressionsCount = await countAllUserExpressions({userId: req.user._id});
-        res.render('learning', viewData);
+        res.render('learning-primary', viewData);
     } catch (e) {
         req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych do nauki');
-        res.render('learning', viewData);
+        res.render('learning-primary', viewData);
     }
 
 });

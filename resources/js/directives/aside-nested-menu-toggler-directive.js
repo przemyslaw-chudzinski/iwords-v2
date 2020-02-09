@@ -25,6 +25,9 @@ class AsideNestedMenuTogglerDirective {
     }
 
     _clickHandler(event) {
+        if (event.target.parentNode !== this._element[0]) {
+            return;
+        }
         this._isOpen = !this._isOpen;
         if (this._isOpen) {
             this._element.addClass(this._activeClassName);
