@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="330f59ad-6b0e-4952-b5fb-c0f32e374e8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/directives/aside-nested-menu-toggler-directive.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/_typography.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/_typography.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/components/_logo.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_logo.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/components/_navigation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_navigation.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_aside.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_aside.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_toolbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_toolbar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/aside.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/aside.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/directives/aside-nested-menu-toggler-directive.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/directives/aside-nested-menu-toggler-directive.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,14 +129,7 @@
       <workItem from="1580323373623" duration="3992000" />
       <workItem from="1580505382890" duration="2969000" />
       <workItem from="1581166689519" duration="257000" />
-      <workItem from="1581266051599" duration="9417000" />
-    </task>
-    <task id="LOCAL-00030" summary="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
-      <created>1577629855413</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1577629855413</updated>
+      <workItem from="1581266051599" duration="9515000" />
     </task>
     <task id="LOCAL-00031" summary="before checkout">
       <created>1577634310593</created>
@@ -484,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581267129282</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="improved aside navigation">
+      <created>1581277094054</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1581277094054</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,7 +494,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="finish" />
     <MESSAGE value="change" />
     <MESSAGE value="assets build" />
     <MESSAGE value="added ng-cloak directive into auth pages" />
@@ -529,7 +518,8 @@
     <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
     <MESSAGE value="deploy" />
     <MESSAGE value="changed main color" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed main color" />
+    <MESSAGE value="improved aside navigation" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved aside navigation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579301681034">
@@ -540,10 +530,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1581277070555">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1581277093655">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1581277070555" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1581277093655" />
     <state x="795" y="212" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1577920340049" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1580945071603">
       <screen x="0" y="0" width="2560" height="1440" />

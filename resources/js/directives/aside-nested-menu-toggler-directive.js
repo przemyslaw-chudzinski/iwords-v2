@@ -17,7 +17,6 @@ class AsideNestedMenuTogglerDirective {
             this._element.addClass(this._activeClassName);
         }
 
-        console.log(attrs, attrs.activeClass);
         this._assignListeners();
     }
 
