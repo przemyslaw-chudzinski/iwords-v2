@@ -16088,7 +16088,7 @@ body {
   padding: 1rem 0;
   width: 100%;
   outline: none;
-  border: 3px solid #03a9f4;
+  border: 3px solid #1777f2;
 }
 
 .input--success {
@@ -16113,7 +16113,7 @@ body {
 }
 
 .navigation__item:not(:last-child) .navigation__link {
-  border-bottom: 1px solid rgba(3, 169, 244, 0.4);
+  border-bottom: 1px solid rgba(23, 119, 242, 0.4);
 }
 
 .navigation__link {
@@ -16132,7 +16132,7 @@ body {
 .navigation__link:hover,
 .navigation__link--active {
   color: white;
-  background: #03a9f4;
+  background: #1777f2;
 }
 
 .navigation__link-icon {
@@ -16213,7 +16213,7 @@ body {
 }
 
 .message--info {
-  border-color: #03a9f4;
+  border-color: #1777f2;
 }
 
 .message--success {
@@ -16235,7 +16235,7 @@ body {
 }
 
 .top-message--info {
-  background-color: #03a9f4;
+  background-color: #1777f2;
 }
 
 .top-message--error {
@@ -16448,7 +16448,7 @@ body {
 
 .toolbar {
   height: 60px;
-  background: #03a9f4;
+  background: #1777f2;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
