@@ -15966,11 +15966,13 @@ body {
   display: flex;
   -webkit-box-pack: center;
           justify-content: center;
-  padding-top: 4rem;
+  padding-top: 2rem;
 }
 
 .app-your-expressions-page .expressions-list {
-  width: 50rem;
+  width: 100%;
+  max-width: 75rem;
+  margin: 2rem;
 }
 
 .app-your-expressions-page .expression__repeat-count {
@@ -15984,7 +15986,7 @@ body {
 
 .app-your-expressions-page .card__content {
   padding: 0;
-  max-height: 40rem;
+  max-height: 60vh;
   overflow: auto;
 }
 
