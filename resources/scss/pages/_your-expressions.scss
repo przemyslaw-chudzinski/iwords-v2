@@ -10,6 +10,15 @@
     width: 50rem;
   }
 
+  .expression {
+
+    &__repeat-count {
+      margin-top: .5rem;
+      display: inline-block;
+    }
+
+  }
+
   .expression .list__item-right > * {
     &:not(:last-child) {
       margin-right: .5rem;

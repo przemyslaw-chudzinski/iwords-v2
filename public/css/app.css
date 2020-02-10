@@ -15973,6 +15973,11 @@ body {
   width: 50rem;
 }
 
+.app-your-expressions-page .expression__repeat-count {
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+
 .app-your-expressions-page .expression .list__item-right > *:not(:last-child) {
   margin-right: 0.5rem;
 }
@@ -16139,6 +16144,7 @@ body {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .navigation__link:hover {
@@ -16157,6 +16163,11 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
+.navigation-nested__item--active .navigation-nested__link {
+  font-weight: 700;
+  color: white;
+}
+
 .navigation-nested__link {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
@@ -16169,6 +16180,7 @@ body {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   font-size: 0.875rem;
+  font-weight: 500;
   padding: 1rem;
 }
 
@@ -16186,7 +16198,7 @@ body {
 
 .card__header {
   padding: 1rem;
-  background-color: rgba(158, 158, 158, 0.3);
+  background-color: rgba(245, 245, 245, 0.3);
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -16197,7 +16209,7 @@ body {
 
 .card__footer {
   padding: 1rem;
-  background-color: rgba(158, 158, 158, 0.3);
+  background-color: rgba(245, 245, 245, 0.3);
 }
 
 .card__content {
@@ -16308,6 +16320,7 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
+  font-size: 0.875rem;
 }
 
 .list__item {

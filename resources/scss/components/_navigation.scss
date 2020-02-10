@@ -7,6 +7,7 @@
   overflow: hidden;
   transition: all .2s ease-in-out;
   font-size: 0.875rem;
+  font-weight: 500;
 }
 
 
@@ -41,6 +42,7 @@
 
   &__link {
     @include linkBase;
+
     &:hover {
       background-color: get-color(primaryWhite, .08);
     }
@@ -62,6 +64,14 @@
 
 
   &__item {
+
+    &--active {
+      .navigation-nested__link {
+        //background-color: get-color(primaryWhite, .08);
+        font-weight: 700;
+        color: get-color(primaryWhite);
+      }
+    }
 
   }
 
