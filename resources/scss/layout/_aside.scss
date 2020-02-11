@@ -1,8 +1,9 @@
 .aside {
   /* When aside is closed */
   width: 4rem;
+  min-width: 4rem;
   background-color: get-color(secondaryNavy);
-  transition: width .4s ease-in-out;
+  transition: all .4s ease-in-out;
 
   .navigation__link-text {
     display: none;
@@ -15,7 +16,8 @@
   /* When aside is opened */
   &.opened {
     width: 16rem;
-    transition: width .4s ease-in-out;
+    min-width: 16rem;
+    transition: all .4s ease-in-out;
 
     .navigation__link-text {
       display: block;

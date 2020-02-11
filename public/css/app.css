@@ -15904,31 +15904,31 @@ body {
   font-family: "Roboto", "Helvetica Neue", sans-serif;
 }
 
-.app-learning-page {
+.app-learning-primary-page {
   height: 100%;
 }
 
-.app-learning-page__learning-container {
+.app-learning-primary-page__learning-container {
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
           justify-content: center;
 }
 
-.app-learning-page__learning {
+.app-learning-primary-page__learning {
   align-self: flex-start;
 }
 
-.app-learning-page__extra-data {
+.app-learning-primary-page__extra-data {
   align-self: flex-start;
   padding: 1rem;
 }
 
-.app-learning-page__divider {
-  height: 4rem;
+.app-learning-primary-page__divider {
+  height: 2rem;
 }
 
-.app-learning-page__expressions-in-repeat-mode {
+.app-learning-primary-page__expressions-in-repeat-mode {
   width: 60%;
   margin: 0 auto;
 }
@@ -15972,7 +15972,7 @@ body {
 .app-your-expressions-page .expressions-list {
   width: 100%;
   max-width: 75rem;
-  margin: 2rem;
+  margin: 2rem 1rem;
 }
 
 .app-your-expressions-page .expression__repeat-count {
@@ -16387,23 +16387,9 @@ body {
 }
 
 .learning {
-  width: 40rem;
-  max-width: 40rem;
+  width: 100%;
+  max-width: 65rem;
   align-self: flex-start;
-}
-
-@media (min-width: 992px) {
-  .learning {
-    width: 55rem;
-    max-width: 55rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  .learning {
-    width: 60rem;
-    max-width: 60rem;
-  }
 }
 
 .learning__data {
@@ -16469,9 +16455,10 @@ body {
 .aside {
   /* When aside is closed */
   width: 4rem;
+  min-width: 4rem;
   background-color: #041e33;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   /* When aside is opened */
 }
 
@@ -16485,8 +16472,9 @@ body {
 
 .aside.opened {
   width: 16rem;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+  min-width: 16rem;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .aside.opened .navigation__link-text {
