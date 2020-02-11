@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="330f59ad-6b0e-4952-b5fb-c0f32e374e8b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/directives/aside-nested-menu-toggler-directive.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/directives/aside-nested-menu-toggler-directive.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/156-improvements-of-rwd-at-learning-view" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -127,97 +129,10 @@
       <workItem from="1579941278958" duration="12405000" />
       <workItem from="1580323373623" duration="3992000" />
       <workItem from="1580505382890" duration="2969000" />
-    </task>
-    <task id="LOCAL-00025" summary="before checkout">
-      <created>1577526043103</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1577526043103</updated>
-    </task>
-    <task id="LOCAL-00026" summary="before push">
-      <created>1577534364351</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1577534364351</updated>
-    </task>
-    <task id="LOCAL-00027" summary="implemented basic ui list">
-      <created>1577538614937</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1577538614937</updated>
-    </task>
-    <task id="LOCAL-00028" summary="implemented filtering logic">
-      <created>1577629780117</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1577629780117</updated>
-    </task>
-    <task id="LOCAL-00029" summary="before checkout">
-      <created>1577629839999</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1577629839999</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
-      <created>1577629855413</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1577629855413</updated>
-    </task>
-    <task id="LOCAL-00031" summary="before checkout">
-      <created>1577634310593</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1577634310593</updated>
-    </task>
-    <task id="LOCAL-00032" summary="working on">
-      <created>1577636184860</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1577636184860</updated>
-    </task>
-    <task id="LOCAL-00033" summary="working on">
-      <created>1577636197412</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1577636197412</updated>
-    </task>
-    <task id="LOCAL-00034" summary="improved package.json file">
-      <created>1577637178500</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1577637178500</updated>
-    </task>
-    <task id="LOCAL-00035" summary="fixed pagination errors">
-      <created>1577638039415</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1577638039415</updated>
-    </task>
-    <task id="LOCAL-00036" summary="before deploy">
-      <created>1577638596247</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1577638596247</updated>
-    </task>
-    <task id="LOCAL-00037" summary="preparing for deploy">
-      <created>1577638760601</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1577638760601</updated>
+      <workItem from="1581166689519" duration="257000" />
+      <workItem from="1581266051599" duration="11967000" />
+      <workItem from="1581356472766" duration="2538000" />
+      <workItem from="1581445061080" duration="2120000" />
     </task>
     <task id="LOCAL-00038" summary="preparing for deploy">
       <created>1577638801653</created>
@@ -471,7 +386,98 @@
       <option name="project" value="LOCAL" />
       <updated>1580068954586</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="improved learning view for tables">
+      <created>1580944957124</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1580944957124</updated>
+    </task>
+    <task id="LOCAL-00075" summary="before pull">
+      <created>1580945018821</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1580945018821</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
+      <created>1580945036019</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1580945036019</updated>
+    </task>
+    <task id="LOCAL-00077" summary="deploy">
+      <created>1580945313269</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1580945313269</updated>
+    </task>
+    <task id="LOCAL-00078" summary="changed main color">
+      <created>1581267129281</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1581267129282</updated>
+    </task>
+    <task id="LOCAL-00079" summary="improved aside navigation">
+      <created>1581277094054</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1581277094054</updated>
+    </task>
+    <task id="LOCAL-00080" summary="clean up">
+      <created>1581277144251</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1581277144251</updated>
+    </task>
+    <task id="LOCAL-00081" summary="prevent toggle by children elements">
+      <created>1581278343397</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1581278343398</updated>
+    </task>
+    <task id="LOCAL-00082" summary="removed unnecessary elements">
+      <created>1581278448569</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1581278448569</updated>
+    </task>
+    <task id="LOCAL-00083" summary="working on project">
+      <created>1581318211027</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1581318211027</updated>
+    </task>
+    <task id="LOCAL-00084" summary="improved user's expressions list">
+      <created>1581359252012</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1581359252012</updated>
+    </task>
+    <task id="LOCAL-00085" summary="renamed">
+      <created>1581359328404</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1581359328404</updated>
+    </task>
+    <task id="LOCAL-00086" summary="working on project">
+      <created>1581445297374</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1581445297374</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,14 +497,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed pagination errors" />
-    <MESSAGE value="preparing for deploy" />
-    <MESSAGE value="finish" />
-    <MESSAGE value="change" />
-    <MESSAGE value="assets build" />
-    <MESSAGE value="added ng-cloak directive into auth pages" />
-    <MESSAGE value="added ng-cloak directive into learning page" />
-    <MESSAGE value="added specific origin for cors of the chrome ext route" />
     <MESSAGE value="implemented resetting all expressions in the repeat mode" />
     <MESSAGE value="before merge" />
     <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;public/js/app.js" />
@@ -508,15 +506,23 @@
     <MESSAGE value="before checkout" />
     <MESSAGE value="refactoring of your-expressions-controller.js" />
     <MESSAGE value="added menu at user's expressions list" />
-    <MESSAGE value="working on project" />
     <MESSAGE value="added expression notes list view" />
     <MESSAGE value="done" />
-    <MESSAGE value="before pull" />
     <MESSAGE value="implemented adding notes from expression notes view" />
-    <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
     <MESSAGE value="merge" />
+    <MESSAGE value="improved learning view for tables" />
+    <MESSAGE value="before pull" />
+    <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
     <MESSAGE value="deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="deploy" />
+    <MESSAGE value="changed main color" />
+    <MESSAGE value="improved aside navigation" />
+    <MESSAGE value="clean up" />
+    <MESSAGE value="prevent toggle by children elements" />
+    <MESSAGE value="removed unnecessary elements" />
+    <MESSAGE value="improved user's expressions list" />
+    <MESSAGE value="renamed" />
+    <MESSAGE value="working on project" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on project" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579301681034">
@@ -527,15 +533,15 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1581447763477">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1581445297052">
+      <screen x="0" y="23" width="2560" height="1353" />
+    </state>
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1581359328215" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1581445297052" />
+    <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1580945071603">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1581447763477" />
-    <state x="795" y="212" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1577920340049" />
-    <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1579992037793">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="988" y="435" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1579992037793" />
+    <state x="988" y="435" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1580945071603" />
     <state x="938" y="353" key="RollbackChangesDialog" timestamp="1577633277504">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -552,10 +558,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1578224666180" />
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1580505383835">
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1581445061112">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1580505383835" />
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1581445061112" />
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.23.2560.1353@0.23.2560.1353" timestamp="1577531754388" />
     <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1579991813585">
       <screen x="0" y="0" width="2560" height="1440" />

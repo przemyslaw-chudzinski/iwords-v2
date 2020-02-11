@@ -26,6 +26,7 @@ const ExpressionNotesCtrlFactory = require('./controllers/expression-notes-contr
 
 /* Directives */
 const ExpressionSentenceTogglerDirFactory = require('./directives/expression-sentence-toggler-directive');
+const AsideNestedMenuTogglerDirFactory = require('./directives/aside-nested-menu-toggler-directive');
 
 /* Main Module */
 const app = angular.module('appModule', ['ngMaterial', 'ngMessages', 'chart.js']);
@@ -47,6 +48,7 @@ app.factory('localStorageSrv', [LocalStorageSrvFactory]);
 app.factory('notesSrv', ['$http', NotesSrvFactory]);
 /* Directives */
 app.directive('expressionSentenceToggler', ExpressionSentenceTogglerDirFactory);
+app.directive('asideNestedMenuToggler', AsideNestedMenuTogglerDirFactory);
 
 
 
