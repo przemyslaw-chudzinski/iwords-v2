@@ -3,11 +3,22 @@
   .inner-container {
     display: flex;
     justify-content: center;
-    padding-top: 4rem;
+    padding-top: 2rem;
   }
 
   .expressions-list {
-    width: 50rem;
+    width: 100%;
+    max-width: 75rem;
+    margin: 2rem 1rem;
+  }
+
+  .expression {
+
+    &__repeat-count {
+      margin-top: .5rem;
+      display: inline-block;
+    }
+
   }
 
   .expression .list__item-right > * {
@@ -18,7 +29,7 @@
 
   .card__content {
     padding: 0;
-    max-height: 40rem;
+    max-height: 60vh;
     overflow: auto;
   }
 

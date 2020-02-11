@@ -1,0 +1,41 @@
+class AsideNestedMenuTogglerDirective {
+
+    constructor() {
+        this._activeClassName = 'open';
+        this._isOpen = false;
+    }
+
+    link(scope, element, attrs) {
+        this._scope = scope;
+        this._element = element;
+        this._attrs = attrs;
+        if (attrs && attrs.activeClass) {
+            this._activeClassName = attrs.activeClass;
+        }
+        if (attrs && typeof attrs.open !== 'undefined') {
+            this._isOpen = true;
+            this._element.addClass(this._activeClassName);
+        }
+
+        this._assignListeners();
+    }
+
+    _assignListeners() {
+        const trigger = this._element[0].querySelector('a.navigation__link');
+        trigger && trigger.addEventListener('click', this._clickHandler.bind(this));
+    }
+
+    _clickHandler(event) {
+        this._isOpen = !this._isOpen;
+        if (this._isOpen) {
+            this._element.addClass(this._activeClassName);
+        } else {
+            this._element.removeClass(this._activeClassName);
+        }
+    }
+
+}
+
+module.exports = function AsideNestedMenuTogglerDirFactory () {
+    return new AsideNestedMenuTogglerDirective();
+};

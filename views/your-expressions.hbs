@@ -28,7 +28,10 @@
                            <div class="list__item-left">
                                <div><strong>\{{expr.expression}}</strong></div>
                                <div>\{{expr.translations.join(', ')}}</div>
-                               <div><span class="md-caption">Powtórzono: \{{expr.repeatCount || 0}} razy</span></div>
+                               <div class="expression__repeat-count">
+                                   <span class="md-caption">Powtórzono: \{{expr.repeatCount || 0}} razy</span>
+                                   <span class="md-caption">Skuteczność: \{{expr.effectivity}} %</span>
+                               </div>
                            </div>
                            <div class="list__item-right">
                                <!-- Information about is expression in repeat mode -->
@@ -37,14 +40,14 @@
                                    <span class="fa fa-repeat"></span>
                                </md-button>
                                <!-- Have notes icon -->
-                               <md-button ng-if="expr.notesCount > 0" class="md-icon-button md-accent">
+                               <md-button ng-if="expr.notesCount > 0" class="md-icon-button md-primary">
                                    <md-tooltip md-direction="top">Ta ikona oznacza, że wyrażenie zawiera notaki</md-tooltip>
                                    <span class="fa fa-files-o"></span>
                                </md-button>
                                <!-- the "new" label -->
                                <div ng-if="expr.latest" class="label label--success">Niedawno dodane</div>
                                <!-- Progress -->
-                               <md-progress-circular ng-if="expr.effectivity > 0" md-mode="determinate"  md-diameter="15px" value="\{{expr.effectivity}}"></md-progress-circular>
+<!--                               <md-progress-circular ng-if="expr.effectivity > 0" md-mode="determinate"  md-diameter="15px" value="\{{expr.effectivity}}"></md-progress-circular>-->
                                <!-- Expression menu -->
                                <md-menu>
                                    <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openExprMenu($mdMenu, $event)">

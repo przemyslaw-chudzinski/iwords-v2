@@ -1,0 +1,28 @@
+.app-learning-primary-page {
+  height: 100%;
+
+  &__learning-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__learning {
+    align-self: flex-start;
+  }
+
+  &__extra-data {
+    align-self: flex-start;
+    padding: 1rem;
+  }
+
+  &__divider {
+    height: 2rem;
+  }
+
+  &__expressions-in-repeat-mode {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+}
+

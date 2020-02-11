@@ -1,17 +1,21 @@
 .learning {
 
-  width: 40rem;
-  max-width: 40rem;
+  //width: 40rem;
+  //max-width: 40rem;
+  //
+  //@media (min-width: map_get($breakpoints, large)) {
+  //  width: 100%;
+  //  max-width: 55rem;
+  //  margin: 2rem;
+  //}
+  //
+  //@media (min-width: map_get($breakpoints, xLarge)) {
+  //  width: 60rem;
+  //  max-width: 60rem;
+  //}
 
-  @media (min-width: map_get($breakpoints, large)) {
-    width: 55rem;
-    max-width: 55rem;
-  }
-
-  @media (min-width: map_get($breakpoints, xLarge)) {
-    width: 60rem;
-    max-width: 60rem;
-  }
+  width: 100%;
+  max-width: 65rem;
 
 
   align-self: flex-start;

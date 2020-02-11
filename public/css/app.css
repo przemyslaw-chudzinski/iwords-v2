@@ -15901,34 +15901,34 @@ body {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
 }
 
-.app-learning-page {
+.app-learning-primary-page {
   height: 100%;
 }
 
-.app-learning-page__learning-container {
+.app-learning-primary-page__learning-container {
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
           justify-content: center;
 }
 
-.app-learning-page__learning {
+.app-learning-primary-page__learning {
   align-self: flex-start;
 }
 
-.app-learning-page__extra-data {
+.app-learning-primary-page__extra-data {
   align-self: flex-start;
   padding: 1rem;
 }
 
-.app-learning-page__divider {
-  height: 4rem;
+.app-learning-primary-page__divider {
+  height: 2rem;
 }
 
-.app-learning-page__expressions-in-repeat-mode {
+.app-learning-primary-page__expressions-in-repeat-mode {
   width: 60%;
   margin: 0 auto;
 }
@@ -15966,11 +15966,18 @@ body {
   display: flex;
   -webkit-box-pack: center;
           justify-content: center;
-  padding-top: 4rem;
+  padding-top: 2rem;
 }
 
 .app-your-expressions-page .expressions-list {
-  width: 50rem;
+  width: 100%;
+  max-width: 75rem;
+  margin: 2rem 1rem;
+}
+
+.app-your-expressions-page .expression__repeat-count {
+  margin-top: 0.5rem;
+  display: inline-block;
 }
 
 .app-your-expressions-page .expression .list__item-right > *:not(:last-child) {
@@ -15979,7 +15986,7 @@ body {
 
 .app-your-expressions-page .card__content {
   padding: 0;
-  max-height: 40rem;
+  max-height: 60vh;
   overflow: auto;
 }
 
@@ -16088,7 +16095,7 @@ body {
   padding: 1rem 0;
   width: 100%;
   outline: none;
-  border: 3px solid #03a9f4;
+  border: 3px solid #1777f2;
 }
 
 .input--success {
@@ -16100,7 +16107,7 @@ body {
 }
 
 .logo {
-  background: #0d47a1;
+  background: #1b3a57;
   height: 60px;
   display: -webkit-box;
   display: flex;
@@ -16108,18 +16115,29 @@ body {
           align-items: center;
   -webkit-box-pack: center;
           justify-content: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: white;
 }
 
+.navigation__item--open .navigation-nested {
+  opacity: 1;
+  max-height: 100%;
+  visibility: visible;
+  overflow: hidden;
+}
+
+.navigation__item--active .navigation__link {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
 .navigation__item:not(:last-child) .navigation__link {
-  border-bottom: 1px solid rgba(3, 169, 244, 0.4);
+  border-bottom: 1px solid #1b3a57;
 }
 
 .navigation__link {
-  color: #0d47a1;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  padding: 1.5rem;
+  padding: 1.2rem;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -16127,16 +16145,49 @@ body {
   overflow: hidden;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-.navigation__link:hover,
-.navigation__link--active {
-  color: white;
-  background: #03a9f4;
+.navigation__link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .navigation__link-icon {
   margin-right: 1rem;
+}
+
+.navigation-nested {
+  opacity: 0;
+  max-height: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navigation-nested__item--active .navigation-nested__link {
+  font-weight: 700;
+  color: white;
+}
+
+.navigation-nested__link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 1.2rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+.navigation-nested__link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .card--white {
@@ -16149,7 +16200,7 @@ body {
 
 .card__header {
   padding: 1rem;
-  background-color: rgba(158, 158, 158, 0.3);
+  background-color: rgba(245, 245, 245, 0.3);
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -16160,7 +16211,7 @@ body {
 
 .card__footer {
   padding: 1rem;
-  background-color: rgba(158, 158, 158, 0.3);
+  background-color: rgba(245, 245, 245, 0.3);
 }
 
 .card__content {
@@ -16213,7 +16264,7 @@ body {
 }
 
 .message--info {
-  border-color: #03a9f4;
+  border-color: #1777f2;
 }
 
 .message--success {
@@ -16235,7 +16286,7 @@ body {
 }
 
 .top-message--info {
-  background-color: #03a9f4;
+  background-color: #1777f2;
 }
 
 .top-message--error {
@@ -16271,6 +16322,7 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
+  font-size: 0.875rem;
 }
 
 .list__item {
@@ -16335,23 +16387,9 @@ body {
 }
 
 .learning {
-  width: 40rem;
-  max-width: 40rem;
+  width: 100%;
+  max-width: 65rem;
   align-self: flex-start;
-}
-
-@media (min-width: 992px) {
-  .learning {
-    width: 55rem;
-    max-width: 55rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  .learning {
-    width: 60rem;
-    max-width: 60rem;
-  }
 }
 
 .learning__data {
@@ -16417,9 +16455,10 @@ body {
 .aside {
   /* When aside is closed */
   width: 4rem;
-  background-color: white;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+  min-width: 4rem;
+  background-color: #041e33;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   /* When aside is opened */
 }
 
@@ -16432,9 +16471,10 @@ body {
 }
 
 .aside.opened {
-  width: 20rem;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+  width: 16rem;
+  min-width: 16rem;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .aside.opened .navigation__link-text {
@@ -16448,7 +16488,7 @@ body {
 
 .toolbar {
   height: 60px;
-  background: #03a9f4;
+  background: white;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -16456,7 +16496,12 @@ body {
   -webkit-box-pack: justify;
           justify-content: space-between;
   padding: 0 1rem;
-  color: white;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  font-size: 0.875rem;
+}
+
+.toolbar__menu-trigger {
+  color: #0d47a1;
 }
 
 .toolbar__content {
