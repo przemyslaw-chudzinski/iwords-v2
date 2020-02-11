@@ -21,13 +21,11 @@ class AsideNestedMenuTogglerDirective {
     }
 
     _assignListeners() {
-        this._element.on('click', this._clickHandler.bind(this));
+        const trigger = this._element[0].querySelector('a.navigation__link');
+        trigger && trigger.addEventListener('click', this._clickHandler.bind(this));
     }
 
     _clickHandler(event) {
-        if (event.target.parentNode !== this._element[0]) {
-            return;
-        }
         this._isOpen = !this._isOpen;
         if (this._isOpen) {
             this._element.addClass(this._activeClassName);
