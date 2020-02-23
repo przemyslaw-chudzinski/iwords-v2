@@ -6,14 +6,7 @@ module.exports = superclass => {
             super.assignTemplateFunctions();
         }
 
-        speak(txt, config = {}) {
-
-            const _config = {
-                volume: 1,
-                rate: 1,
-                pitch: 1,
-                ...config
-            };
+        speak(txt) {
 
             if (!('SpeechSynthesisUtterance' in window)) {
                 return;
@@ -25,7 +18,6 @@ module.exports = superclass => {
                     _speechSynthesisUtterance.voice = this._getENGVoice(voices)();
                     speechSynthesis.cancel();
                     _speechSynthesisUtterance.text = txt;
-                    // _speechSynthesisUtterance.onerror = this.onVoiceErrorHandler.bind(this);
                     speechSynthesis.speak(_speechSynthesisUtterance);
                 });
         }

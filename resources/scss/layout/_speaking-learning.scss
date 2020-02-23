@@ -1,0 +1,17 @@
+.learning-speaking {
+
+  width: 100%;
+  max-width: 65rem;
+
+  &__recording-btn {
+    @include centerFlexElement;
+    margin-top: 2rem;
+  }
+
+  &__user-transcript {
+    @include centerFlexElement;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+  }
+
+}

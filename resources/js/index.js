@@ -6,6 +6,7 @@ require('angular-messages');
 require('angular-material');
 require('angular-chart.js');
 require('./editor');
+require('./speech-recognation');
 
 /* Services */
 const ExpressionSrvFactory = require('./services/expression-service');
@@ -23,6 +24,7 @@ const BodyCrlFactory = require('./controllers/body-controller');
 const YourExpressionsCtrlFactory = require('./controllers/your-expressions-controller');
 const EditNoteCtrlFactory = require('./controllers/edit-note-controller');
 const ExpressionNotesCtrlFactory = require('./controllers/expression-notes-controller');
+const LearningSpeakingCtrlFactory = require('./controllers/learning-speaking-controller');
 
 /* Directives */
 const ExpressionSentenceTogglerDirFactory = require('./directives/expression-sentence-toggler-directive');
@@ -40,6 +42,7 @@ app.controller('BodyCrl', ['$scope', BodyCrlFactory]);
 app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', '$mdDialog', 'notesSrv', '$mdToast', YourExpressionsCtrlFactory]);
 app.controller('EditNoteCtrl', ['$scope', 'notesSrv', '$mdToast', EditNoteCtrlFactory]);
 app.controller('ExpressionNotesCtrl', ['$scope', 'notesSrv', '$mdDialog', ExpressionNotesCtrlFactory]);
+app.controller('LearningSpeakingCtrl', ['$scope', 'expressionSrv', '$timeout', LearningSpeakingCtrlFactory]);
 /* Services */
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 // app.factory('csvSrv', ['$http', CsvSrvFactory]);
