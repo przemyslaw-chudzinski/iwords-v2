@@ -16,7 +16,6 @@ class YourExpressionsCtrlFactory extends BaseController {
         this.$scope.expressions = [];
         this.$scope.fetching = true;
         this.$scope.filterSearch = '';
-        // this.$scope.exprId = null;
     }
 
     pageLoadedHook() {

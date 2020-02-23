@@ -22,6 +22,22 @@ router.get('/learning/primary', async (req, res) => {
     }
 
 });
+/* Speaking learning */
+router.get('/learning/speaking', async (req, res) => {
+    const viewData = {
+        name: 'app.learning.speaking',
+        expressionsCount: 0,
+        pageTitle: 'Trening wymowy'
+    };
+
+    try {
+        viewData.expressionsCount = await countAllUserExpressions({userId: req.user._id});
+        res.render('learning-speaking', viewData);
+    } catch (e) {
+        req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych do nauki');
+        res.render('learning-speaking', viewData);
+    }
+});
 /* Import page */
 router.get('/import', (req, res) => res.render('import', {}));
 /* Dictionary */

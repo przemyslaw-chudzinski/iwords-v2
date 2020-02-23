@@ -16089,6 +16089,21 @@ body {
   margin-top: 1rem;
 }
 
+.app-learning-speaking-page {
+  height: 100%;
+}
+
+.app-learning-speaking-page__learning-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.app-learning-speaking-page .learning-speaking {
+  margin-top: 2rem;
+}
+
 .input {
   text-align: center;
   font-size: 3rem;
@@ -16557,6 +16572,32 @@ body {
   height: 0;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+}
+
+.learning-speaking {
+  width: 100%;
+  max-width: 65rem;
+}
+
+.learning-speaking__recording-btn {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  margin-top: 2rem;
+}
+
+.learning-speaking__user-transcript {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
 }
 
 .body {
