@@ -47,6 +47,7 @@ class LearningCtrlFactory extends BaseController {
         this.$scope.handleSelectTab = this._handleSelectTab.bind(this);
         this.$scope.handleRemoveExprFromRepeatMode = this._handleRemoveExprFromRepeatMode.bind(this);
         this.$scope.calcRepeatCountProgress = this._calcRepeatCountProgress.bind(this);
+        this.$scope.pronounciation = this._pronounciation.bind(this);
     }
 
     _focusAnswerInput() {
@@ -290,6 +291,10 @@ class LearningCtrlFactory extends BaseController {
 
     _calcRepeatCountProgress() {
             return Math.round(+this.$scope.currentExpr.repeat.correctAnswers / 10 * 100);
+    }
+
+    _pronounciation() {
+        this.speak(this.$scope.currentExpr.expression);
     }
 
 }

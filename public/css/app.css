@@ -16427,6 +16427,8 @@ body {
   display: flex;
   -webkit-box-pack: end;
           justify-content: flex-end;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .learning__repeat-icon {
