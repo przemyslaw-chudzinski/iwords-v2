@@ -92,6 +92,11 @@
                     </div>
                     <!-- Small menu -->
                     <div class="learning__controls">
+                        <!-- Speech button -->
+                        <md-button class="md-icon-button" ng-click="pronounciation()">
+                            <md-tooltip md-direction="top">Usłysz wymowę</md-tooltip>
+                            <span class="fa fa-volume-up"></span>
+                        </md-button>
                         <!-- Helper links -->
                         <div>
                             <md-button class="md-primary" ng-href="\{{currentExpr.refs.diki}}" target="_blank">
