@@ -5,9 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/learning-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/learning-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_learning.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_learning.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/learning-tab.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/learning-tab.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/directives/aside-nested-menu-toggler-directive.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/directives/aside-nested-menu-toggler-directive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/components/_navigation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_navigation.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,13 +140,7 @@
       <workItem from="1582050017915" duration="147000" />
       <workItem from="1582475653527" duration="11334000" />
       <workItem from="1582528475293" duration="747000" />
-    </task>
-    <task id="LOCAL-00040" summary="working on project">
-      <created>1577881786633</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1577881786633</updated>
+      <workItem from="1582961037860" duration="1856000" />
     </task>
     <task id="LOCAL-00041" summary="finish">
       <created>1577882595554</created>
@@ -485,7 +478,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582489668719</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="deploy">
+      <created>1582529600498</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1582529600498</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,10 +541,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1582489668443">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1582529600140">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1582489668443" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1582529600140" />
     <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1581445297052" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1581447856425">
       <screen x="0" y="0" width="2560" height="1440" />
@@ -571,10 +571,10 @@
     </state>
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1581445061112" />
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.23.2560.1353@0.23.2560.1353" timestamp="1577531754388" />
-    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1582528488741">
+    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1582529686096">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1582528488741" />
+    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1582529686096" />
     <state x="1042" y="341" key="refactoring.ChangeSignatureDialog" timestamp="1575154926966">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

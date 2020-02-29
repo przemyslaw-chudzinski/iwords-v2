@@ -8,6 +8,7 @@
   transition: all .2s ease-in-out;
   font-size: 0.875rem;
   font-weight: 500;
+  position: relative;
 }
 
 
@@ -42,6 +43,13 @@
 
   &__link {
     @include linkBase;
+
+    &--collapse {
+      span.arrow-icon {
+        position: absolute;
+        right: 1.2rem;
+      }
+    }
 
     &:hover {
       background-color: get-color(primaryWhite, .08);
