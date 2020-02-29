@@ -16162,6 +16162,12 @@ body {
   transition: all 0.2s ease-in-out;
   font-size: 0.875rem;
   font-weight: 500;
+  position: relative;
+}
+
+.navigation__link--collapse span.arrow-icon {
+  position: absolute;
+  right: 1.2rem;
 }
 
 .navigation__link:hover {
@@ -16198,6 +16204,7 @@ body {
   transition: all 0.2s ease-in-out;
   font-size: 0.875rem;
   font-weight: 500;
+  position: relative;
   padding: 1rem;
 }
 
