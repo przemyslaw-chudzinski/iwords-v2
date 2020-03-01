@@ -1,5 +1,4 @@
 const BaseController = require('./base-controller');
-const {withAddingNote, withListPagination} = require("../decorators");
 const {PaginationList} = require('../classes');
 
 const defaultPagination = {
@@ -9,12 +8,11 @@ const defaultPagination = {
 
 class YourExpressionsController extends BaseController {
 
-    constructor($scope, expressionSrv, $mdDialog, notesSrv, $mdToast) {
+    constructor($scope, expressionSrv, notesSrv, $mdToast) {
         super($scope);
 
         // setup
         this.expressionSrv = expressionSrv;
-        this.$mdDialog = $mdDialog;
         this.notesSrv = notesSrv;
         this.$mdToast = $mdToast;
 
@@ -34,6 +32,7 @@ class YourExpressionsController extends BaseController {
 
         this.$scope.prevPage = () => this._pagination.prevPage(this.onPageChange.bind(this));
         this.$scope.nextPage = () => this._pagination.nextPage(this.onPageChange.bind(this));
+        // this.$scope.showAddNoteDialog = () => this.notesSrv.showAddNoteDialog()
     }
 
     pageLoadedHook() {
@@ -92,9 +91,7 @@ class YourExpressionsController extends BaseController {
     /* Add new note UI logic */
     _handleAddNote(expression, event) {
         const expr = {_id: expression._id, expression: expression.expression};
-
-        this.showAddNoteDialog(expr, event)
-            .then(result => this.saveNote(expr._id, result));
+        this.notesSrv.showAddNoteDialog(expr, event);
     }
     // ===========================================================================================
 
@@ -127,4 +124,4 @@ class YourExpressionsController extends BaseController {
 
 }
 
-module.exports = withAddingNote(YourExpressionsController);
+module.exports = YourExpressionsController;

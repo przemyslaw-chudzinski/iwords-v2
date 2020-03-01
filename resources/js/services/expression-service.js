@@ -4,24 +4,24 @@ const ServiceBase = require('./service-base');
 class ExpressionService extends ServiceBase {
     constructor(http) {
         super();
-        this.http = http;
-        this.prefix = '/api/expressions';
+        this._http = http;
+        this._prefix = '/api/expressions';
     }
 
     fetchExpression() {
-        return this.http.get(this.prefix + '/expression', {userId: this.userId});
+        return this._http.get(this._prefix + '/expression', {userId: this.userId});
     }
 
     fetchExpressions(onlyRepeats = false) {
-        return this.http.get(this.prefix + '/expressions', {params: {onlyRepeats, userId: this.userId}});
+        return this._http.get(this._prefix + '/expressions', {params: {onlyRepeats, userId: this.userId}});
     }
 
     incrementAnswersCounter(expressionId, correct = true) {
-        return this.http.post(this.prefix + '/expression/' + expressionId + '/increment-counter', {correct});
+        return this._http.post(this._prefix + '/expression/' + expressionId + '/increment-counter', {correct});
     }
 
     fetchRepeatCount() {
-        return this.http.get(this.prefix + '/repeat-count', {params: {userId: this.userId}});
+        return this._http.get(this._prefix + '/repeat-count', {params: {userId: this.userId}});
     }
 
     fetchUsersExpressions(ctx = {params: {}}) {
@@ -30,11 +30,11 @@ class ExpressionService extends ServiceBase {
             search: '',
             ...ctx.params
         };
-        return this.http.get(this.prefix + '/user-expressions', {params: {userId: this.userId, ...queryParams}});
+        return this._http.get(this._prefix + '/user-expressions', {params: {userId: this.userId, ...queryParams}});
     }
 
     resetRepeatMode() {
-        return this.http.post(this.prefix + '/reset-repeat-mode', {userId: this.userId});
+        return this._http.post(this._prefix + '/reset-repeat-mode', {userId: this.userId});
     }
 
     fetchExpressionsInRepeatMode(ctx = {params: {}}) {
@@ -42,11 +42,11 @@ class ExpressionService extends ServiceBase {
             page: 1,
             ...ctx.params
         };
-        return this.http.get(this.prefix + '/repeat-mode', {params: {userId: this.userId, ...queryParams}});
+        return this._http.get(this._prefix + '/repeat-mode', {params: {userId: this.userId, ...queryParams}});
     }
 
     removeExpressionFromRepeatMode(ctx = {}) {
-        return this.http.post(this.prefix + `/${ctx.exprId}/remove-from-repeat-mode`, {userId: this.userId});
+        return this._http.post(this._prefix + `/${ctx.exprId}/remove-from-repeat-mode`, {userId: this.userId});
     }
 
     toggleExpressionRepeatMode(ctx = {}) {
@@ -54,7 +54,7 @@ class ExpressionService extends ServiceBase {
             exprId: null,
             ...ctx
         };
-        return this.http.put(this.prefix + `/${_ctx.exprId}`, {userId: this.userId});
+        return this._http.put(this._prefix + `/${_ctx.exprId}`, {userId: this.userId});
     }
 }
 

@@ -3,12 +3,18 @@
   border-radius: 5px;
   font-size: 0.65rem;
   padding: .25rem;
+  color: get-color(primaryWhite);
 
   &--success {
     background-color: get-color(success);
-    color: get-color(primaryWhite);
   }
 
-  // More declarations
+  &--warning {
+    background-color: get-color(primaryOrange);
+  }
+
+  &--info {
+    background-color: get-color(primaryBlue);
+  }
 
 }

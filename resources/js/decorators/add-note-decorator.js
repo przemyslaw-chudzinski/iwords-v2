@@ -1,3 +1,8 @@
+/**
+ * @deprecated
+ * @param superclass
+ * @return {{new(): {showAddNoteDialog(*, *=): *, saveNoteSuccess(*, *): void, saveNoteFailure(*, *), saveNote(*=, *): *}, prototype: {showAddNoteDialog(*, *=): *, saveNoteSuccess(*, *): void, saveNoteFailure(*, *), saveNote(*=, *): *}}}
+ */
 module.exports = superclass => class extends superclass {
 
     showAddNoteDialog(expr, event) {
@@ -41,3 +46,14 @@ module.exports = superclass => class extends superclass {
     }
 
 };
+
+// module.exports = superclass =>  {
+//
+//
+//
+//
+//
+//
+//     return superclass;
+//
+// };

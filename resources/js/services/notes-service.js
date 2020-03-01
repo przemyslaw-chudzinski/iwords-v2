@@ -1,12 +1,13 @@
 const ServiceBase = require('./service-base');
 
-/* Statistics service */
 class NotesService extends ServiceBase {
 
-    constructor(http) {
+    constructor(http, $mdDialog) {
         super();
-        this.http = http;
-        this.prefix = '/api/notes';
+        this._http = http;
+        console.log('constructor', $mdDialog);
+        this._$mdDialog = $mdDialog;
+        this._prefix = '/api/notes';
     }
 
     saveNote(ctx = {}) {
@@ -15,7 +16,7 @@ class NotesService extends ServiceBase {
             ...ctx,
             userId: this.userId
         };
-        return this.http.post(this.prefix, payload);
+        return this._http.post(this._prefix, payload);
     }
 
     updateNote(ctx = {noteId: null, payload: {}}) {
@@ -27,7 +28,7 @@ class NotesService extends ServiceBase {
             userId: this.userId
         };
 
-        return this.http.post(this.prefix + `/${ctx.noteId}`, payload);
+        return this._http.post(this._prefix + `/${ctx.noteId}`, payload);
     }
 
     fetchExpressionNotes(ctx = {params: {}, exprId: null}) {
@@ -36,7 +37,7 @@ class NotesService extends ServiceBase {
             search: '',
             ...ctx.params
         };
-        return this.http.get(this.prefix + `/${ctx.exprId}`, {params: {userId: this.userId, ...queryParams}});
+        return this._http.get(this._prefix + `/${ctx.exprId}`, {params: {userId: this.userId, ...queryParams}});
     }
 
     removeNote(ctx = {}) {
@@ -44,12 +45,33 @@ class NotesService extends ServiceBase {
             noteId: null,
             ...ctx
         };
-        return this.http.delete(this.prefix + `/${_ctx.noteId}`, {params: {userId: this.userId}});
+        return this._http.delete(this._prefix + `/${_ctx.noteId}`, {params: {userId: this.userId}});
     }
 
+    showAddNoteDialog(expr, event, callback = () => {}) {
+        const confirm = this._$mdDialog.prompt()
+            .title('Nowy dokument')
+            .textContent(`
+                Dodajesz notatkę dla wyrażenia ${expr.expression}.
+                Po utworzeniu zostaniesz przekierowany do edytora, gdzie będziesz mógł edytować dokument
+            `)
+            .placeholder('Nazwa dokumentu')
+            .targetEvent(event)
+            .required(true)
+            .ok('Utwórz')
+            .cancel('Anuluj');
 
+        return this._$mdDialog.show(confirm)
+            .then(title => this.saveNote({exprId: expr._id, title}))
+            .then(res => this._saveNoteSuccess(res.data.noteId, expr._id))
+            .catch(err => callback(err));
+    }
+
+    _saveNoteSuccess(noteId, exprId) {
+        window.location.href = `/app/notes/${noteId}/${exprId}`;
+    }
 }
 
-module.exports = function NotesSrvFactory($http) {
-    return new NotesService($http);
+module.exports = function NotesSrvFactory($http, $mdDialog) {
+    return new NotesService($http, $mdDialog);
 };

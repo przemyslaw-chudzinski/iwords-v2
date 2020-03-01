@@ -39,7 +39,7 @@ app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialo
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
 app.controller('BodyCrl', ['$scope', 'localStorageSrv', BodyController]);
-app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', '$mdDialog', 'notesSrv', '$mdToast', YourExpressionsController]);
+app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', 'notesSrv', '$mdToast', YourExpressionsController]);
 app.controller('EditNoteCtrl', ['$scope', 'notesSrv', '$mdToast', EditNoteCtrlFactory]);
 app.controller('ExpressionNotesCtrl', ['$scope', 'notesSrv', '$mdDialog', ExpressionNotesCtrlFactory]);
 app.controller('LearningSpeakingCtrl', ['$scope', 'expressionSrv', '$timeout', LearningSpeakingCtrlFactory]);
@@ -48,7 +48,7 @@ app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 // app.factory('csvSrv', ['$http', CsvSrvFactory]);
 app.factory('statisticsSrv', ['$http', StatisticsSrvFactory]);
 app.factory('localStorageSrv', [LocalStorageSrvFactory]);
-app.factory('notesSrv', ['$http', NotesSrvFactory]);
+app.factory('notesSrv', ['$http', '$mdDialog', NotesSrvFactory]);
 /* Directives */
 app.directive('expressionSentenceToggler', ExpressionSentenceTogglerDirFactory);
 app.directive('asideNestedMenuToggler', AsideNestedMenuTogglerDirFactory);

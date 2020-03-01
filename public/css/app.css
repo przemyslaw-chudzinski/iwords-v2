@@ -16387,11 +16387,19 @@ body {
   border-radius: 5px;
   font-size: 0.65rem;
   padding: 0.25rem;
+  color: white;
 }
 
 .label--success {
   background-color: #00e676;
-  color: white;
+}
+
+.label--warning {
+  background-color: #ff6600;
+}
+
+.label--info {
+  background-color: #1777f2;
 }
 
 .progress-with-numbers {
