@@ -27,6 +27,18 @@ class LocalStorageService extends ServiceBase {
         this._ls.removeItem('onlyRepeats');
     }
 
+    asideOpened() {
+        this._ls.setItem('asideOpened', '1');
+    }
+
+    asideClosed() {
+        this._ls.removeItem('asideOpened');
+    }
+
+    asideIsOpened() {
+        return this._ls.getItem('asideOpened') === '1';
+    }
+
 }
 
 module.exports = function LocalStorageSrvFactory() {
