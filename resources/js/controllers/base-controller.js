@@ -16,12 +16,21 @@ module.exports = class BaseController {
     }
 
     /* Init $scope variables */
+    /**
+     * @deprecated
+     */
     initState() {}
 
     /* Init controller logic */
+    /**
+     * @deprecated
+     */
     init() {}
 
     /* Assign template functions */
+    /**
+     * @deprecated
+     */
     assignTemplateFunctions() {}
 
     /* Page Loaded Hook */
