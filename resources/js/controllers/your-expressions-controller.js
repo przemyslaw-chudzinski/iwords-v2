@@ -15,7 +15,6 @@ class YourExpressionsController extends BaseController {
         this.expressionSrv = expressionSrv;
         this.notesSrv = notesSrv;
         this.$mdToast = $mdToast;
-
         this._pagination = new PaginationList(defaultPagination);
 
         // init state
@@ -26,13 +25,12 @@ class YourExpressionsController extends BaseController {
 
         // assign template functions
         this.$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
-        this.$scope.openExprMenu = this._openExprMenu.bind(this);
+        this.$scope.openExprMenu = ($mdMenu, event) => $mdMenu.open(event);
         this.$scope.handleAddNote = this._handleAddNote.bind(this);
         this.$scope.handleToggleExpressionRepeatMode = this._handleToggleExpressionRepeatMode.bind(this);
 
         this.$scope.prevPage = () => this._pagination.prevPage(this.onPageChange.bind(this));
         this.$scope.nextPage = () => this._pagination.nextPage(this.onPageChange.bind(this));
-        // this.$scope.showAddNoteDialog = () => this.notesSrv.showAddNoteDialog()
     }
 
     pageLoadedHook() {
@@ -84,10 +82,6 @@ class YourExpressionsController extends BaseController {
             });
     }
 
-    _openExprMenu($mdMenu, event) {
-        $mdMenu.open(event);
-    }
-
     /* Add new note UI logic */
     _handleAddNote(expression, event) {
         const expr = {_id: expression._id, expression: expression.expression};
@@ -95,17 +89,15 @@ class YourExpressionsController extends BaseController {
     }
     // ===========================================================================================
 
-    _toggleExpressionRepeatMode(expr) {
+    _handleToggleExpressionRepeatMode(expr, event) {
         this.expressionSrv.toggleExpressionRepeatMode({exprId: expr._id})
             .then(() => {
-
                 const index = this.$scope.expressions.findIndex(item => item._id === expr._id);
+                const textContent = expr.inRepeatState ? 'Wyrażenie zostało dodane do powtórek' : 'Wyrażenie zostało usunięte z powtórek';
 
                 if (index !== -1) {
                     this.$scope.expressions[index].inRepeatState = !this.$scope.expressions[index].inRepeatState;
                 }
-
-                const textContent = expr.inRepeatState ? 'Wyrażenie zostało dodane do powtórek' : 'Wyrażenie zostało usunięte z powtórek';
 
                 this.$mdToast.show(
                     this.$mdToast
@@ -116,10 +108,6 @@ class YourExpressionsController extends BaseController {
 
             })
             .catch(err => console.log('something went wrong', err));
-    }
-
-    _handleToggleExpressionRepeatMode(expr, event) {
-        this._toggleExpressionRepeatMode(expr);
     }
 
 }

@@ -3,15 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="330f59ad-6b0e-4952-b5fb-c0f32e374e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/decorators/add-note-decorator.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/decorators/add-note-decorator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/services/expression-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/services/expression-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/services/notes-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/services/notes-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/components/_label.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_label.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/your-expressions.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/your-expressions.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,13 +139,6 @@
       <workItem from="1582475653527" duration="11334000" />
       <workItem from="1582528475293" duration="747000" />
       <workItem from="1582961037860" duration="1856000" />
-    </task>
-    <task id="LOCAL-00046" summary="added ng-cloak directive into auth pages">
-      <created>1577918425340</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1577918425340</updated>
     </task>
     <task id="LOCAL-00047" summary="added ng-cloak directive into learning page">
       <created>1577918794741</created>
@@ -490,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583066810593</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="your expression controller was refactored">
+      <created>1583085008353</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1583085008353</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +503,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="before deploy" />
     <MESSAGE value="before checkout" />
     <MESSAGE value="refactoring of your-expressions-controller.js" />
     <MESSAGE value="added menu at user's expressions list" />
@@ -535,7 +527,8 @@
     <MESSAGE value="refactor of your expressions controller" />
     <MESSAGE value="marked deprecated functions" />
     <MESSAGE value="your expression controller, pagination was refactored" />
-    <option name="LAST_COMMIT_MESSAGE" value="your expression controller, pagination was refactored" />
+    <MESSAGE value="your expression controller was refactored" />
+    <option name="LAST_COMMIT_MESSAGE" value="your expression controller was refactored" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579301681034">
@@ -546,10 +539,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1583066810228">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1583085007976">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1583066810228" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1583085007976" />
     <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1581445297052" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1581447856425">
       <screen x="0" y="0" width="2560" height="1440" />
