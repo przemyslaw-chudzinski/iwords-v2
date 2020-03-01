@@ -1,8 +1,11 @@
 const defaultPagination = {
     page: 1,
-    limit: 30
+    limit: 5
 };
-
+/**
+ * @depracated
+ * @param superclass
+ */
 module.exports = superclass => {
 
 

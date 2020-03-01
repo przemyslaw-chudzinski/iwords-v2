@@ -1,5 +1,11 @@
 const BaseController = require('./base-controller');
 const {withAddingNote, withListPagination} = require("../decorators");
+const {PaginationList} = require('../classes');
+
+const defaultPagination = {
+    page: 1,
+    limit: 5
+};
 
 class YourExpressionsController extends BaseController {
 
@@ -12,16 +18,22 @@ class YourExpressionsController extends BaseController {
         this.notesSrv = notesSrv;
         this.$mdToast = $mdToast;
 
+        this._pagination = new PaginationList(defaultPagination);
+
         // init state
-        $scope.expressions = [];
-        $scope.fetching = true;
-        $scope.filterSearch = '';
+        this.$scope.expressions = [];
+        this.$scope.fetching = true;
+        this.$scope.filterSearch = '';
+        this.$scope.currentPage = this._pagination.page;
 
         // assign template functions
-        $scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
-        $scope.openExprMenu = this._openExprMenu.bind(this);
-        $scope.handleAddNote = this._handleAddNote.bind(this);
-        $scope.handleToggleExpressionRepeatMode = this._handleToggleExpressionRepeatMode.bind(this);
+        this.$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
+        this.$scope.openExprMenu = this._openExprMenu.bind(this);
+        this.$scope.handleAddNote = this._handleAddNote.bind(this);
+        this.$scope.handleToggleExpressionRepeatMode = this._handleToggleExpressionRepeatMode.bind(this);
+
+        this.$scope.prevPage = () => this._pagination.prevPage(this.onPageChange.bind(this));
+        this.$scope.nextPage = () => this._pagination.nextPage(this.onPageChange.bind(this));
     }
 
     pageLoadedHook() {
@@ -29,67 +41,45 @@ class YourExpressionsController extends BaseController {
     }
 
     _fetchUsersExpressions() {
-        this.expressionSrv.fetchUsersExpressions({params: {...this.$scope.pagination}})
-            .then(res => {
-                this.$scope.expressions = res.data.data;
-                /* Update pagination controls */
-                const maxPageNumber = this.calculateMaxPageNumber(res.data.total);
-                this.$scope.prevPageDisable = this.$scope.pagination.page === 1;
-                this.$scope.nextPageDisable = this.$scope.pagination.page === maxPageNumber;
-                /* Hide card overlay */
-                this.$scope.fetching = false;
-            })
+        this.expressionSrv.fetchUsersExpressions({params: {page: this._pagination.page, limit: this._pagination.limit, search: this.$scope.filterSearch}})
+            .then(this._handleFetchExpressionSuccess.bind(this))
             .catch(err => {
                 console.log('something went wrong');
             });
     }
 
     /* List pagination */
-    onNextPage(pagination) {
-        this.expressionSrv.fetchUsersExpressions({params: {...pagination, search: this.$scope.filterSearch}})
-            .then(this._handleFetchUsersExpressions.bind(this))
-            .catch(err => {
-                console.log('something went wrong');
-            });
-    }
-
-    onPrevPage(pagination) {
-        this.expressionSrv.fetchUsersExpressions({params: {...pagination, search: this.$scope.filterSearch}})
-            .then(this._handleFetchUsersExpressions.bind(this))
+    onPageChange(page = 1, limit = 5) {
+        this.$scope.fetching = true;
+        this.expressionSrv.fetchUsersExpressions({params: {page, limit, search: this.$scope.filterSearch}})
+            .then(this._handleFetchExpressionSuccess.bind(this))
             .catch(err => {
                 console.log('something went wrong');
             });
     }
     // ===========================================================================================
 
-    _handleFetchUsersExpressions(res) {
+    _handleFetchExpressionSuccess(res) {
+        // When total has changed then update pagination total
+        if (res.data.total !== this._pagination.total) {
+            this._pagination.total = res.data.total;
+        }
         this.$scope.expressions = res.data.data;
-        const total = res.data.total;
-        /* Update pagination controls */
-        const maxPageNumber = this.calculateMaxPageNumber(res.data.total);
-        this.$scope.prevPageDisable = this.pagination.page === 1 || this.$scope.fetching || total === 0;
-        this.$scope.nextPageDisable = this.pagination.page === maxPageNumber || this.$scope.fetching || total === 0;
-        /* Hide card overlay */
         this.$scope.fetching = false;
+        this.$scope.prevPageDisable = this._pagination.page === 1 || this.$scope.fetching || this._pagination.total === 0;
+        this.$scope.nextPageDisable = this._pagination.page === this._pagination.pageNumbers || this.$scope.fetching || this._pagination.total === 0;
+        this.$scope.currentPage = this._pagination.page;
     }
 
     _handleFilterInputChange() {
         this.$scope.fetching = true;
+
         /* Reset pagination */
-        this.$scope.pagination = {
-            page: 1,
-            limit: 30
-        };
-        this.expressionSrv.fetchUsersExpressions({params: {...this.$scope.pagination, search: this.$scope.filterSearch}})
-            .then(res => {
-                this.$scope.expressions = res.data.data;
-                /* Hide card overlay */
-                this.$scope.fetching = false;
-                /* Update pagination controls */
-                const maxPageNumber = this.calculateMaxPageNumber(res.data.total);
-                this.$scope.prevPageDisable = this.pagination.page === 1 || this.$scope.fetching;
-                this.$scope.nextPageDisable = this.pagination.page === maxPageNumber || this.$scope.fetching;
-            })
+        this._pagination.page = defaultPagination.page;
+        this._pagination.limit = defaultPagination.limit;
+
+        this.expressionSrv.fetchUsersExpressions({params: {page: this._pagination.page, limit: this._pagination.limit, search: this.$scope.filterSearch}})
+            .then(this._handleFetchExpressionSuccess.bind(this))
             .catch(err => {
                 console.log('something went wrong');
             });
@@ -137,4 +127,4 @@ class YourExpressionsController extends BaseController {
 
 }
 
-module.exports = withAddingNote(withListPagination(YourExpressionsController));
+module.exports = withAddingNote(YourExpressionsController);
