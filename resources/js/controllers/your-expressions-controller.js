@@ -1,32 +1,31 @@
 const BaseController = require('./base-controller');
 const {withAddingNote, withListPagination} = require("../decorators");
 
-class YourExpressionsCtrlFactory extends BaseController {
+class YourExpressionsController extends BaseController {
 
     constructor($scope, expressionSrv, $mdDialog, notesSrv, $mdToast) {
         super($scope);
+
+        // setup
         this.expressionSrv = expressionSrv;
         this.$mdDialog = $mdDialog;
         this.notesSrv = notesSrv;
         this.$mdToast = $mdToast;
-    }
 
-    initState() {
-        super.initState();
-        this.$scope.expressions = [];
-        this.$scope.fetching = true;
-        this.$scope.filterSearch = '';
+        // init state
+        $scope.expressions = [];
+        $scope.fetching = true;
+        $scope.filterSearch = '';
+
+        // assign template functions
+        $scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
+        $scope.openExprMenu = this._openExprMenu.bind(this);
+        $scope.handleAddNote = this._handleAddNote.bind(this);
+        $scope.handleToggleExpressionRepeatMode = this._handleToggleExpressionRepeatMode.bind(this);
     }
 
     pageLoadedHook() {
         this._fetchUsersExpressions();
-    }
-
-    assignTemplateFunctions() {
-        this.$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
-        this.$scope.openExprMenu = this._openExprMenu.bind(this);
-        this.$scope.handleAddNote = this._handleAddNote.bind(this);
-        this.$scope.handleToggleExpressionRepeatMode = this._handleToggleExpressionRepeatMode.bind(this);
     }
 
     _fetchUsersExpressions() {
@@ -138,4 +137,4 @@ class YourExpressionsCtrlFactory extends BaseController {
 
 }
 
-module.exports = withAddingNote(withListPagination(YourExpressionsCtrlFactory));
+module.exports = withAddingNote(withListPagination(YourExpressionsController));

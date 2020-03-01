@@ -21,7 +21,7 @@ const LearningCtrlFactory = require('./controllers/learning-controller');
 const StatisticsCtrlFactory = require('./controllers/statistics-controller');
 const ToolbarUserMenuCtrlFactory = require('./controllers/toolbar-user-menu-controller');
 const BodyController = require('./controllers/body-controller');
-const YourExpressionsCtrlFactory = require('./controllers/your-expressions-controller');
+const YourExpressionsController = require('./controllers/your-expressions-controller');
 const EditNoteCtrlFactory = require('./controllers/edit-note-controller');
 const ExpressionNotesCtrlFactory = require('./controllers/expression-notes-controller');
 const LearningSpeakingCtrlFactory = require('./controllers/learning-speaking-controller');
@@ -39,7 +39,7 @@ app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialo
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
 app.controller('BodyCrl', ['$scope', 'localStorageSrv', BodyController]);
-app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', '$mdDialog', 'notesSrv', '$mdToast', YourExpressionsCtrlFactory]);
+app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', '$mdDialog', 'notesSrv', '$mdToast', YourExpressionsController]);
 app.controller('EditNoteCtrl', ['$scope', 'notesSrv', '$mdToast', EditNoteCtrlFactory]);
 app.controller('ExpressionNotesCtrl', ['$scope', 'notesSrv', '$mdDialog', ExpressionNotesCtrlFactory]);
 app.controller('LearningSpeakingCtrl', ['$scope', 'expressionSrv', '$timeout', LearningSpeakingCtrlFactory]);
