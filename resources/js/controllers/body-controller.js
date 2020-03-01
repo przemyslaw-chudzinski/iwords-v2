@@ -1,15 +1,29 @@
-/* Body controller */
-module.exports = function BodyCrlFactory($scope) {
+const BaseController = require('./base-controller');
 
-    initAside();
+/**
+ * Body Controller attached to the body tag
+ */
+class BodyController extends BaseController {
 
-    $scope.toggleAside = function () {
-        $scope.asideOpened = !$scope.asideOpened;
-        $scope.asideOpened ? localStorage.setItem('asideOpened', '1') : localStorage.removeItem('asideOpened');
-    };
+    constructor($scope, localStorageSrv) {
+        super($scope);
 
-    function initAside() {
-        $scope.asideOpened = localStorage.getItem('asideOpened') === '1';
+        // setup
+        this._localStorageSrv = localStorageSrv;
+
+        // init state
+        $scope.asideOpened = localStorageSrv.asideIsOpened();
+        $scope.asideOpened ? localStorageSrv.asideOpened() : localStorageSrv.asideClosed();
+
+        // assign template functions
+        $scope.toggleAside = this._toggleAside.bind(this);
     }
 
-};
+    _toggleAside() {
+        this.$scope.asideOpened = !this.$scope.asideOpened;
+        this.$scope.asideOpened ? this._localStorageSrv.asideOpened() : this._localStorageSrv.asideClosed();
+    }
+
+}
+
+module.exports = BodyController;
