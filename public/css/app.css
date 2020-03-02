@@ -16484,6 +16484,10 @@ body {
   font-weight: 700;
 }
 
+.learning .repeat-counter {
+  margin-right: 1rem;
+}
+
 .aside {
   /* When aside is closed */
   width: 4rem;

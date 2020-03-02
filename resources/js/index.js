@@ -16,7 +16,7 @@ const LocalStorageSrvFactory = require('./services/local-storage-service');
 const NotesSrvFactory = require('./services/notes-service');
 
 /* Controllers */
-const LearningCtrlFactory = require('./controllers/learning-controller');
+const LearningController = require('./controllers/learning-controller');
 // const ImportCsvCrlFactory = require('./controllers/import-csv-controller');
 const StatisticsCtrlFactory = require('./controllers/statistics-controller');
 const ToolbarUserMenuCtrlFactory = require('./controllers/toolbar-user-menu-controller');
@@ -34,7 +34,7 @@ const AsideNestedMenuTogglerDirFactory = require('./directives/aside-nested-menu
 const app = angular.module('appModule', ['ngMaterial', 'ngMessages', 'chart.js']);
 
 /* Controllers */
-app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialog', 'localStorageSrv', LearningCtrlFactory]);
+app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialog', 'localStorageSrv', LearningController]);
 // app.controller('ImportCsvCrl', ['$scope', 'csvSrv', ImportCsvCrlFactory]);
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);

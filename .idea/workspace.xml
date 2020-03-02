@@ -2,9 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="330f59ad-6b0e-4952-b5fb-c0f32e374e8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/classes/expression.class.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/classes/speech-class.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/classes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/classes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/learning-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/learning-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/decorators/speach-decorator.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/decorators/speach-decorator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/services/expression-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/services/expression-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/services/local-storage-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/services/local-storage-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_learning.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_learning.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/expression-example-sentences-tab.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/expression-example-sentences-tab.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/learning-expressions-in-repeat-mode-tab.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/learning-expressions-in-repeat-mode-tab.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/learning-tab.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/learning-tab.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,13 +152,7 @@
       <workItem from="1582475653527" duration="11334000" />
       <workItem from="1582528475293" duration="747000" />
       <workItem from="1582961037860" duration="1856000" />
-    </task>
-    <task id="LOCAL-00047" summary="added ng-cloak directive into learning page">
-      <created>1577918794741</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1577918794741</updated>
+      <workItem from="1583166577786" duration="7057000" />
     </task>
     <task id="LOCAL-00048" summary="before pull">
       <created>1577920292342</created>
@@ -483,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583085008353</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="your expression controller - clean up">
+      <created>1583085217542</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1583085217542</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,7 +517,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="before checkout" />
     <MESSAGE value="refactoring of your-expressions-controller.js" />
     <MESSAGE value="added menu at user's expressions list" />
     <MESSAGE value="added expression notes list view" />
@@ -528,7 +541,8 @@
     <MESSAGE value="marked deprecated functions" />
     <MESSAGE value="your expression controller, pagination was refactored" />
     <MESSAGE value="your expression controller was refactored" />
-    <option name="LAST_COMMIT_MESSAGE" value="your expression controller was refactored" />
+    <MESSAGE value="your expression controller - clean up" />
+    <option name="LAST_COMMIT_MESSAGE" value="your expression controller - clean up" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579301681034">
@@ -539,10 +553,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1583085007976">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1583085217191">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1583085007976" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1583085217191" />
     <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1581445297052" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1581447856425">
       <screen x="0" y="0" width="2560" height="1440" />
@@ -564,10 +578,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="99" y="99" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1578224666180" />
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1581445061112">
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1583166577864">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1581445061112" />
+    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1583166577864" />
     <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.23.2560.1353@0.23.2560.1353" timestamp="1577531754388" />
     <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1582529686096">
       <screen x="0" y="0" width="2560" height="1440" />

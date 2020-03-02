@@ -12,12 +12,26 @@ class ExpressionService extends ServiceBase {
         return this._http.get(this._prefix + '/expression', {userId: this.userId});
     }
 
-    fetchExpressions(onlyRepeats = false) {
-        return this._http.get(this._prefix + '/expressions', {params: {onlyRepeats, userId: this.userId}});
+    fetchExpressions(ctx = {}) {
+        const _ctx = {
+            onlyRepeats: false,
+            ...ctx
+        };
+        return this._http.get(this._prefix + '/expressions', {params: {onlyRepeats: _ctx.onlyRepeats, userId: this.userId}});
     }
 
-    incrementAnswersCounter(expressionId, correct = true) {
-        return this._http.post(this._prefix + '/expression/' + expressionId + '/increment-counter', {correct});
+    incrementAnswersCounter(ctx = {}) {
+        const _ctx = {
+            expressionId: null,
+            correct: true,
+            ...ctx
+        };
+
+        if (!_ctx.expressionId) {
+            throw new Error('Missing expressionId value');
+        }
+
+        return this._http.post(this._prefix + '/expression/' + _ctx.expressionId + '/increment-counter', {correct: _ctx.correct});
     }
 
     fetchRepeatCount() {

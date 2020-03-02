@@ -2,7 +2,6 @@ const router = require('express').Router();
 const {
     fetchExpression,
     incrementExpressionCounters,
-    saveExpressions,
     fetchRepeatExpression,
     fetchStatisticsData,
     randomExpression,
@@ -20,30 +19,9 @@ const {countAllExpressionNotes} = require('../notes/noteDAL');
 
 const {map} = require('async');
 
-// const fileFilter = (req, file, next) => {
-//     if (file.mimetype.split('/').includes('csv')) {
-//         return next(null, true);
-//     }
-//
-//     return next(new Error('Wrong mimeType'), false);
-// };
-
-// const storage = multer.diskStorage({
-//     destination(req, file, next) {
-//         next(null, './uploads/');
-//     },
-//     filename(req, file, next) {
-//         next(null, new Date().toISOString() + '_' + file.originalname);
-//     }
-// });
-
-// const upload = multer({storage, fileFilter});
-
 /* Routes */
 
 router.get('/expression', (req, res) => {
-
-    // const type = req.query.type || null; // new, repeat
 
     fetchExpression(req.query.userId)
         .then(record => {

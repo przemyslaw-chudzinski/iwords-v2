@@ -1,10 +1,15 @@
+/**
+ * @deprecated
+ * @param superclass
+ * @return {{new(): {_loadVoices(): Promise<unknown> | Promise | Promise, speak(*): (undefined), _getENGVoice(*=): function(): null}, prototype: {_loadVoices(): Promise<unknown> | Promise | Promise, speak(*): (undefined), _getENGVoice(*=): function(): null}}}
+ */
 module.exports = superclass => {
 
     return class extends superclass {
 
-        assignTemplateFunctions() {
-            super.assignTemplateFunctions();
-        }
+        // assignTemplateFunctions() {
+        //     super.assignTemplateFunctions();
+        // }
 
         speak(txt) {
 

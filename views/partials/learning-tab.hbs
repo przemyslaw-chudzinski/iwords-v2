@@ -9,55 +9,59 @@
                 <div class="card__content">
                     <!-- Data -->
                     <div class="learning__data">
-                        <div class="row learning__header-row">
+                        <div layout="row" layout-align="center center" class="learning__header-row">
                             <!-- Left side -->
-                            <div class="col">
+                            <div flex>
                                 <!-- Repeat information -->
-                                <div ng-if="currentExpr.repeat && currentExpr.repeat.state" class="learning__repeat-info">
+                                <div ng-if="currentExpr.isInRepeatState" class="learning__repeat-info">
                                     <!-- Progress with number -->
                                     <div class="progress-with-numbers">
                                         <md-tooltip md-direction="top">Liczba poprawnych odpowiedzi potrzebna do zaliczenia powtórki</md-tooltip>
-                                        <md-progress-circular md-mode="determinate" value="\{{calcRepeatCountProgress()}}"></md-progress-circular>
-                                        <strong class="progress-with-numbers__value">\{{ 10 - (currentExpr.repeat.correctAnswers || 0) }}</strong>
+                                        <md-progress-circular md-mode="determinate" value="\{{currentExpr.repeatCountProgress}}"></md-progress-circular>
+                                        <strong class="progress-with-numbers__value">\{{ 10 - (currentExpr.repeatCorrectAnswers) }}</strong>
                                     </div>
                                 </div>
                             </div>
                             <!-- Right side -->
-                            <div class="col">
+                            <div flex>
                                 <div layout="row" layout-align="end center">
-                                    <!-- repeat counter -->
-                                    <div layou="row">
-                                        <div class="repeat-counter" ng-if="repeatCount > 0">
-                                            <md-button class="md-icon-button md-warn">
-                                                <span class="fa fa-repeat"></span>
-                                                <md-tooltip md-direction="top">Ilośc wyrażeń w powtórkach</md-tooltip>
-                                                <strong>\{{repeatCount}}</strong>
-                                            </md-button>
-                                            <md-switch ng-model="repeatState.state" class="md-warn repeat-counter__switch" ng-change="handleRepeatStateModeChange($event)">
-                                                Tryb powtórek
-                                            </md-switch>
+                                    <div layout="row">
+                                        <!-- repeat counter -->
+                                        <div flex layout="row" layout-align="center center">
+                                            <div  class="repeat-counter" ng-if="repeatCount > 0">
+                                                <md-button class="md-icon-button md-warn">
+                                                    <span class="fa fa-repeat"></span>
+                                                    <md-tooltip md-direction="top">Ilośc wyrażeń w powtórkach</md-tooltip>
+                                                    <strong>\{{repeatCount}}</strong>
+                                                </md-button>
+                                                <!-- Repeat state toggle  -->
+                                                <md-switch ng-model="repeatState.state" class="md-warn repeat-counter__switch" ng-change="handleRepeatStateModeChange($event)">
+                                                    Tryb powtórek
+                                                </md-switch>
+                                            </div>
+                                            <!-- Speech state toggle -->
+                                            <div flex >
+                                                <md-switch ng-model="speechState.state" class="md-warn repeat-counter__switch" ng-change="handleSpeechStateChange($event)">
+                                                    Wymowa
+                                                </md-switch>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- Menu -->
-                                    <div layout="row" layout-align="end center">
-                                        <md-menu>
-                                            <md-button ng-click="openMenu($mdMenu, $event)" class="md-icon-button">
-                                                <span class="fa fa-ellipsis-v" md-menu-origin></span>
-                                            </md-button>
-                                            <md-menu-content>
-                                                <!-- Menu items -->
-                                                <md-menu-item>
-                                                    <md-button ng-click="handleResetRepeatMode()" ng-disabled="repeatCount === 0">
-                                                        Zresetuj powtórki
-                                                    </md-button>
-                                                </md-menu-item>
-<!--                                                <md-menu-item>-->
-<!--                                                    <md-button ng-click="showExpressionsInRepeatMode()">-->
-<!--                                                        Lista wyrażeń w powtórkach-->
-<!--                                                    </md-button>-->
-<!--                                                </md-menu-item>-->
-                                            </md-menu-content>
-                                        </md-menu>
+                                        <!-- Menu -->
+                                        <div>
+                                            <md-menu>
+                                                <md-button ng-click="openMenu($mdMenu, $event)" class="md-icon-button">
+                                                    <span class="fa fa-ellipsis-v" md-menu-origin></span>
+                                                </md-button>
+                                                <md-menu-content>
+                                                    <!-- Menu items -->
+                                                    <md-menu-item>
+                                                        <md-button ng-click="handleResetRepeatMode()" ng-disabled="repeatCount === 0">
+                                                            Zresetuj powtórki
+                                                        </md-button>
+                                                    </md-menu-item>
+                                                </md-menu-content>
+                                            </md-menu>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +73,7 @@
                                 <md-tooltip md-direction="top">Ta ikona oznacza, że aktualne wyrażenie jest w powtórkach</md-tooltip>
                                 <span class="fa fa-repeat"></span>
                             </md-button>
-                            \{{ currentExpr.translations.join(', ') }} <span class="learning__correct-answer" ng-if="answerWrong"> - \{{ currentExpr.expression }}</span>
+                            \{{ currentExpr.renderedTranslations }} <span class="learning__correct-answer" ng-if="answerWrong"> - \{{ currentExpr.expression }}</span>
                         </div>
                         <!-- Extra info -->
                         <div class="learning__extra">
@@ -93,42 +97,26 @@
                     <!-- Small menu -->
                     <div class="learning__controls">
                         <!-- Speech button -->
-                        <md-button class="md-icon-button" ng-click="pronounciation()">
-                            <md-tooltip md-direction="top">Usłysz wymowę</md-tooltip>
+                        <span class="md-caption" ng-if="!speechState.state">Lektor jest wyłączony</span>
+                        <md-button class="md-icon-button" ng-click="pronounciation()" ng-disabled="!speechState.state">
+                            <md-tooltip md-direction="top" ng-if="speechState.state">Usłysz wymowę</md-tooltip>
                             <span class="fa fa-volume-up"></span>
                         </md-button>
                         <!-- Helper links -->
                         <div>
-                            <md-button class="md-primary" ng-href="\{{currentExpr.refs.diki}}" target="_blank">
+                            <md-button class="md-primary" ng-href="\{{currentExpr.dikiUrl}}" target="_blank">
                                 <md-tooltip md-direction="top">Zobacz w diki</md-tooltip>
                                 <span>diki.pl</span>
                             </md-button>
                         </div>
                         <!-- Skip expression btn -->
                         <md-button ng-click="skipExpression()" class="md-icon-button" aria-label="More" ng-disabled="skipping">
-                            <md-tooltip md-direction="top">Następne wyrażenie. Obecne wyrażenie zostanie oznaczone jako niezaliczone</md-tooltip>
+                            <md-tooltip md-direction="top">Następne wyrażenie</md-tooltip>
                             <span class="fa fa-angle-right"></span>
                         </md-button>
                     </div>
                 </div>
             </div>
-            <!-- Extra data widget -->
-<!--            <div class="app-learning-page__extra-data">-->
-<!--                &lt;!&ndash; Sentences &ndash;&gt;-->
-<!--                <div class="expression-sentences">-->
-<!--                    <h3 class="expression-sentences__heading">Przykładowe zdania</h3>-->
-<!--                    &lt;!&ndash; sentences of expression &ndash;&gt;-->
-<!--                    <ul class="expression-sentences__list">-->
-<!--                        <li ng-repeat="sentence in currentExpr.exampleSentences" class="expression-sentences__list-item" expression-sentence-toggler>-->
-<!--                            \{{sentence.translation}} <span>zobacz</span>-->
-<!--                            &lt;!&ndash; Original sentence &ndash;&gt;-->
-<!--                            <p class="expression-sentences__sentence">\{{sentence.sentence}}</p>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                    &lt;!&ndash; when there is not any expression &ndash;&gt;-->
-<!--                    <p ng-if="!hasExampleSentences()">Brak przykładowych zdań do wyświetlenia</p>-->
-<!--                </div>-->
-<!--            </div>-->
         {{else}}
             <!-- Expressions dont exist -->
             <div class="learning__no-expressions card card--white card--with-shadow">

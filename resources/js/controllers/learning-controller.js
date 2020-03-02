@@ -1,19 +1,19 @@
-const {withSpeech} = require('../decorators/index');
 const BaseController = require('./base-controller');
+const {Speech, Expression} = require('../classes');
 
-class LearningCtrlFactory extends BaseController {
+class LearningController extends BaseController {
 
     constructor($scope, expressionSrv, $timeout, $mdDialog, localStorageSrv) {
         super($scope);
+
+        // setup
         this.expressionSrv = expressionSrv;
         this.$mdDialog = $mdDialog;
         this.$timeout = $timeout;
         this.localStorageSrv = localStorageSrv;
+        this._speech = new Speech();
 
-    }
-
-    initState() {
-        super.initState();
+        // init state
         this.$scope.currentExprs = [];
         this.$scope.currentExpr = null;
         this.$scope.answer = '';
@@ -22,63 +22,63 @@ class LearningCtrlFactory extends BaseController {
         this.$scope.skipping = false;
         this.$scope.repeatCount = 0;
         this.$scope.repeatState = {
-            state: false
+            state: this.localStorageSrv.hasRepeatState()
         };
         this.$scope.expressionsInRepeatMode = [];
+        this.$scope.speechState = {
+            state: this.localStorageSrv.speechStateIsOn()
+        };
+
+        // assign template functions
+        this.$scope.handleKeyPress = this._handleKeyPress.bind(this);
+        this.$scope.openMenu = ($mdMenu, event) => $mdMenu.open(event);
+        this.$scope.handleResetRepeatMode = event => this._confirmResetRepeatMode(event).then(this._resetRepeatMode.bind(this));
+        this.$scope.skipExpression = this._skipExpression.bind(this);
+        this.$scope.handleRepeatStateModeChange = this._handleRepeatStateModeChange.bind(this);
+        this.$scope.handleSelectTab = this._handleSelectTab.bind(this);
+        this.$scope.handleRemoveExprFromRepeatMode = this._handleRemoveExprFromRepeatMode.bind(this);
+        this.$scope.calcRepeatCountProgress = () => Math.round(+this.$scope.currentExpr.repeatCorrectAnswers / 10 * 100);
+        this.$scope.pronounciation = () => this._speech.speak(this.$scope.currentExpr.expression);
+        this.$scope.handleSpeechStateChange = this._handleSpeechStateChange.bind(this);
+
+        this._speech.canSpeak = this.$scope.speechState.state;
+
     }
 
     pageLoadedHook() {
         super.pageLoadedHook();
         this._answerInputElem = document.querySelector('.input');
         this._focusAnswerInput();
-        this._checkRepeatState();
         this._fetchExpressions();
         this._fetchRepeatCount();
     }
 
-    assignTemplateFunctions() {
-        super.assignTemplateFunctions();
-        this.$scope.handleKeyPress = this._handleKeyPress.bind(this);
-        this.$scope.openMenu = this._openMenu.bind(this);
-        this.$scope.handleResetRepeatMode = this._handleResetRepeatMode.bind(this);
-        this.$scope.hasExampleSentences = this._hasExampleSentences.bind(this);
-        this.$scope.skipExpression = this._skipExpression.bind(this);
-        this.$scope.handleRepeatStateModeChange = this._handleRepeatStateModeChange.bind(this);
-        this.$scope.handleSelectTab = this._handleSelectTab.bind(this);
-        this.$scope.handleRemoveExprFromRepeatMode = this._handleRemoveExprFromRepeatMode.bind(this);
-        this.$scope.calcRepeatCountProgress = this._calcRepeatCountProgress.bind(this);
-        this.$scope.pronounciation = this._pronounciation.bind(this);
-    }
-
+    /**
+     * @desc - it makes the answer input focused
+     * @private
+     */
     _focusAnswerInput() {
         this._answerInputElem && this._answerInputElem.focus();
     }
 
-    _checkRepeatState() {
-        if (this._isRepeatState) {
-            this.$scope.repeatState = {state: true};
-        }
-    }
-
-    get _isRepeatState() {
-        return !!this.localStorageSrv.repeatState;
-    }
-
+    /**
+     * @desc - It fetches expressions for learning
+     * @private
+     */
     _fetchExpressions() {
-        this.expressionSrv.fetchExpressions(this._isRepeatState)
+        return this.expressionSrv.fetchExpressions({onlyRepeats: this.$scope.repeatState.state})
             .then(({data: {data}}) => {
-                this.$scope.currentExprs = data;
                 if (data && data.length) {
-                    this.$scope.currentExpr = {
-                        ...data[0],
-                        refs: {
-                            diki: `https://www.diki.pl/slownik-angielskiego?q=${data[0].expression}`
-                        }
-                    };
+                    this.$scope.currentExprs = data.map(expression => new Expression(expression));
+                    this.$scope.currentExpr = this.$scope.currentExprs[0];
                 }
             });
     }
 
+    /**
+     * @desc - fetches how many expressions is in repeat state
+     * @private
+     */
     _fetchRepeatCount() {
         this.expressionSrv.fetchRepeatCount()
             .then(({data: {repeatCount}}) => {
@@ -90,117 +90,151 @@ class LearningCtrlFactory extends BaseController {
             });
     }
 
+    /**
+     * @desc - It handles keypress events
+     * @param keyCode
+     */
     _handleKeyPress({keyCode}) {
         if (keyCode === 13) {
             this._disableAnswerInput();
-            this.$scope.answer.trim().toLocaleLowerCase() === this.$scope.currentExpr.expression.trim().toLocaleLowerCase() ? this._handleCorrectAnswer() : this._handleIncorrectAnswer();
+            this._checkAnswer() ? this._handleCorrectAnswer() : this._handleIncorrectAnswer();
         }
     }
 
+    /**
+     * @desc - it checks if answer is correct
+     * @return {boolean}
+     * @private
+     */
+    _checkAnswer() {
+        return this.$scope.answer.trim().toLocaleLowerCase() ===
+            this.$scope.currentExpr.expression.trim().toLocaleLowerCase();
+    }
+
+    /**
+     * @desc - It handles when answer is correct
+     * @private
+     */
     _handleCorrectAnswer() {
+        // Speak current expression
+        this._speech.speak(this.$scope.currentExpr.expression);
+
+        // Make input green
         this.$scope.answerSuccess = true;
 
-        this.speak(this.$scope.currentExpr.expression);
+        // Mark that the current expression has been used
+        // Increment answer counter
+        this.$scope.currentExpr.handleCorrectAnswer();
 
-        /* Remove expression from stack */
-        this.$scope.currentExprs = this.$scope.currentExprs.filter(expr => expr._id !== this.$scope.currentExpr._id);
+        // Request - Increment answer counter
+        this.expressionSrv.incrementAnswersCounter({expressionId: this.$scope.currentExpr.id})
+            .then(() => this._fetchRepeatCount());
 
         this.$timeout(() => {
+            const nextExprIndex = this._getNextExpression();
 
-            if (this.$scope.currentExprs.length) {
-
-                this.expressionSrv.incrementAnswersCounter(this.$scope.currentExpr._id, true)
-                    .then(() => {
-                        this.$scope.answer = '';
-                        this.$scope.answerSuccess = false;
-                        this.$scope.currentExpr = this.$scope.currentExprs[0];
-                        this.$scope.currentExpr = {
-                            ...this.$scope.currentExprs[0],
-                            refs: {
-                                diki: `https://www.diki.pl/slownik-angielskiego?q=${this.$scope.currentExprs[0].expression}`
-                            }
-                        };
-
-                        this._fetchRepeatCount();
-                        this._enableAnswerInputAndFocus();
-
-                    })
-                    .catch(err => console.log('something went wrong', err));
-
-            } else {
-                /* Fetch next new word */
-                this._fetchNextExpression(this._handleFetchNextExpression.bind(this), true, this.$scope.repeatState.state);
+            if (nextExprIndex) {
+                this._resetInput();
+                this.$scope.currentExpr = this.$scope.currentExprs[nextExprIndex];
+                return;
             }
+
+            this._fetchExpressions()
+                .then(() => this._resetInput());
 
         }, 500);
     }
 
+    /**
+     * @desc - It handles when answer ins incorrect
+     * @private
+     */
     _handleIncorrectAnswer() {
+        // Speak current expression
+        this._speech.speak(this.$scope.currentExpr.expression);
+
+        // Make input read
         this.$scope.answerWrong = true;
 
-        this.speak(this.$scope.currentExpr.expression);
+        // Mark that the current expression has been used
+        // Increment answer counter
+        this.$scope.currentExpr.handleIncorrectAnswer();
+
+        // Increment repeatCount property
+        // this.$scope.repeatCount++;
+
+
+        // Request - Increment answer counter
+        this.expressionSrv.incrementAnswersCounter({expressionId: this.$scope.currentExpr.id, correct: false})
+            .then(() => this._fetchRepeatCount());
 
         this.$timeout(() => {
-
-            this.expressionSrv.incrementAnswersCounter(this.$scope.currentExpr._id, false)
-                .then(() => {
-                    this.$scope.answerWrong = false;
-                    this.$scope.answer = '';
-
-                    this._fetchRepeatCount();
-                    this._enableAnswerInputAndFocus();
-                })
-                .catch(err => console.log('something went wrong', err));
-
+            this._resetInput();
+            this._fetchExpressions()
+                .then(() => this._resetInput());
         }, 2000);
     }
 
-    _fetchNextExpression(next, correct, onlyRepeats) {
-        next = next || function () {};
-
-        this.expressionSrv.incrementAnswersCounter(this.$scope.currentExpr._id, correct, onlyRepeats)
-            .then(() => {})
-            .catch(err => console.log('something went wrong', err));
-
-        this.expressionSrv.fetchExpressions(onlyRepeats)
-            .then(({data: {data}}) => {
-                this.$scope.currentExprs = data;
-                if (data && data.length) {
-                    this.$scope.currentExpr = {
-                        ...data[0],
-                        refs: {
-                            diki: `https://www.diki.pl/slownik-angielskiego?q=${data[0].expression}`
-                        }
-                    };
-                }
-                next(null);
-            })
-            .catch(err => console.log('something went wrong', err));
+    /**
+     * @desc - it returns next expression index
+     * @private
+     * @return {null | number}
+     */
+    _getNextExpression() {
+        // Check if all expressions was used
+        // if not return first unused expression
+        // if all were used then fetch the next expressions
+        const usedExprIndexes = [];
+        const unusedExprIndexes = [];
+        if (this.$scope.currentExprs && this.$scope.currentExprs.length) {
+            this.$scope.currentExprs.forEach((expr, index) => {
+                expr.used ? usedExprIndexes.push(index) : unusedExprIndexes.push(index);
+            });
+        }
+        return unusedExprIndexes.length ? unusedExprIndexes[0] : null;
     }
 
-    _openMenu($mdMenu, event) {
-        $mdMenu.open(event);
+    /**
+     * @desc - It resets the answer input
+     * @private
+     */
+    _resetInput() {
+        this.$scope.answer = '';
+        this.$scope.answerSuccess = false;
+        this.$scope.answerWrong = false;
+        this._enableAnswerInputAndFocus();
     }
 
-    _handleResetRepeatMode(event) {
-        this._confirmResetRepeatMode(event)
-            .then(this._resetRepeatMode.bind(this), () => {});
-    }
-
+    /**
+     * @desc - Resets repeat mode
+     * @private
+     */
     _resetRepeatMode() {
         this.expressionSrv.resetRepeatMode()
             .then(() => {
-                this.$scope.repeatState = {
-                    state: false
-                };
-
+                this.$scope.repeatState = {state: false};
                 this.localStorageSrv.clearRepeatState();
                 this.$scope.expressionsInRepeatMode = [];
-                this._fetchNextExpression(this._handleFetchNextExpression.bind(this));
+                this.$scope.repeatCount = 0;
+                if (this.$scope.currentExprs.length) {
+                   const nextExprIndex = this._getNextExpression();
+                   if (nextExprIndex) {
+                       this._resetInput();
+                       this.$scope.currentExpr = this.$scope.currentExprs[nextExprIndex];
+                       return;
+                   }
+                   this._fetchExpressions();
+                }
             })
             .catch(err => console.log('resetRepeatMode error', err));
     }
 
+    /**
+     * @desc - Prepares and shows the confirm reset repeat state dialog
+     * @param event
+     * @return {*}
+     * @private
+     */
     _confirmResetRepeatMode(event) {
             const confirm = this.$mdDialog.confirm()
                 .title('Czy na pewno chcesz zresetować tryb powtórek?')
@@ -212,21 +246,34 @@ class LearningCtrlFactory extends BaseController {
             return this.$mdDialog.show(confirm);
     }
 
-    _hasExampleSentences() {
-        return this.$scope.currentExpr && this.$scope.currentExpr.exampleSentences && this.$scope.currentExpr.exampleSentences.length;
-    }
-
+    /**
+     * @desc - the skip expression handler
+     * @private
+     */
     _skipExpression() {
-        this._fetchNextExpression(this._handleFetchNextExpression.bind(this), false, this.$scope.repeatState.state);
+        this.$scope.currentExpr.markAsUsed();
+        const nextExprIndex = this._getNextExpression();
+        if (nextExprIndex) {
+            this.$scope.currentExpr = this.$scope.currentExprs[nextExprIndex];
+            return;
+        }
+        this._fetchExpressions()
     }
 
+    /**
+     * @desc - It makes the answer input disabled
+     * @private
+     */
     _disableAnswerInput() {
-        console.log('test');
         if (this._answerInputElem) {
             this._answerInputElem.disabled = true;
         }
     }
 
+    /**
+     * @desc - It makes the answer input enabled
+     * @private
+     */
     _enableAnswerInputAndFocus() {
         if (this._answerInputElem) {
             this._answerInputElem.disabled = false;
@@ -234,52 +281,50 @@ class LearningCtrlFactory extends BaseController {
         }
     }
 
-    _handleFetchNextExpression(err) {
-        if (err) {
-            /* Handle error */
-            return;
-        }
-
-        this.$scope.answer = '';
-        this.$scope.answerSuccess = false;
-        this.$scope.skipping = false;
-
-        this._fetchRepeatCount();
-        this._enableAnswerInputAndFocus();
-    }
-
+    /**
+     * @desc It handles repeat state change
+     * @private
+     */
     _handleRepeatStateModeChange() {
-        if (this.$scope.repeatState.state) {
-            this.localStorageSrv.repeatState = this.$scope.repeatState.state;
-        } else {
-            this.localStorageSrv.clearRepeatState();
-        }
-        this._fetchNextExpression(this._handleFetchNextExpression.bind(this), true, this.$scope.repeatState.state);
+        this.$scope.repeatState.state ? this.localStorageSrv.repeatStateOn() : this.localStorageSrv.repeatStateOff();
+        this._fetchExpressions();
     }
 
-    _fetchExpressionsInRepeatMode() {
-        return this.expressionSrv.fetchExpressionsInRepeatMode()
-            .then(res => {
-                this.$scope.expressionsInRepeatMode = res.data.data;
-            })
-            .catch();
-    }
-
+    /**
+     * @desc - TABS select tab handler
+     * @param key
+     * @param event
+     * @private
+     */
     _handleSelectTab(key, event) {
         switch (key) {
             case 'learning': break;
-            case 'repeats': this._handleRepeatsTabSelection(); break;
+            case 'repeats': this._fetchExpressionsInRepeatMode(); break;
         }
     }
 
-    _handleRepeatsTabSelection() {
-        this._fetchExpressionsInRepeatMode();
+    /**
+     * @desc - EXPRESSIONS IN REPEAT TAB - It fetches expressions in repeat mode
+     * @return {*}
+     * @private
+     */
+    _fetchExpressionsInRepeatMode() {
+        return this.expressionSrv.fetchExpressionsInRepeatMode()
+            .then(res => {
+                this.$scope.expressionsInRepeatMode = res.data.data.map(expr => new Expression(expr));
+            })
+            .catch(() => console.log('something went wrong'));
     }
 
+    /**
+     * @desc - EXPRESSIONS IN REPEAT TAB - It removes single expression from repeat state
+     * @param exprId
+     * @param event
+     * @private
+     */
     _handleRemoveExprFromRepeatMode(exprId, event) {
-        const config = {
-            exprId
-        };
+        const config = {exprId};
+
         this.expressionSrv.removeExpressionFromRepeatMode(config)
             .then(() => {
                 this._fetchRepeatCount();
@@ -289,15 +334,16 @@ class LearningCtrlFactory extends BaseController {
             .catch(err => console.log('something went wrong', e));
     }
 
-    _calcRepeatCountProgress() {
-            return Math.round(+this.$scope.currentExpr.repeat.correctAnswers / 10 * 100);
-    }
-
-    _pronounciation() {
-        this.speak(this.$scope.currentExpr.expression);
+    /**
+     * @desc - It handles when the speech state is changed
+     * @private
+     */
+    _handleSpeechStateChange() {
+        this._speech.canSpeak = this.$scope.speechState.state;
+        this.$scope.speechState.state ? this.localStorageSrv.speechStateOn() : this.localStorageSrv.speechStateOff();
     }
 
 }
 
-module.exports = withSpeech(LearningCtrlFactory);
+module.exports = LearningController;
 
