@@ -5,7 +5,6 @@ class NotesService extends ServiceBase {
     constructor(http, $mdDialog) {
         super();
         this._http = http;
-        console.log('constructor', $mdDialog);
         this._$mdDialog = $mdDialog;
         this._prefix = '/api/notes';
     }
