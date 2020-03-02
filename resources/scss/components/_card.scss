@@ -9,6 +9,14 @@
     box-shadow: 0 0 28px -11px rgba(0, 0, 0, 0.16);
   }
 
+  &--success {
+    background-color: get-color(success);
+  }
+
+  &--danger {
+    background-color: get-color(danger);
+  }
+
   &__header {
     padding: 1rem;
     background-color: get-color(secondaryGrey, .3);

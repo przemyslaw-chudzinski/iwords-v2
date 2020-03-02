@@ -16220,6 +16220,14 @@ body {
   box-shadow: 0 0 28px -11px rgba(0, 0, 0, 0.16);
 }
 
+.card--success {
+  background-color: #00e676;
+}
+
+.card--danger {
+  background-color: #ff1744;
+}
+
 .card__header {
   padding: 1rem;
   background-color: rgba(245, 245, 245, 0.3);

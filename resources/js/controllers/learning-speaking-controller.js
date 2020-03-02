@@ -1,172 +1,145 @@
 const BaseController = require('./base-controller');
-const {withSpeech} = require('../decorators/index');
+const {Expression, Speech, SpeechRecognition} = require('../classes');
 
-class LearningSpeakingCrlFactory extends BaseController {
+class LearningSpeakingController extends BaseController {
 
     constructor($scope, expressionSrv, $timeout) {
         super($scope);
+
+        // setup
         this.expressionSrv = expressionSrv;
         this.$timeout = $timeout;
-    }
+        this._speach = new Speech();
+        this._speachRecognition = new SpeechRecognition({
+            onResult: this._checkAnswer.bind(this)
+        });
 
-    initState() {
-        super.initState();
+        // init state
         this.$scope.currentExprs = [];
         this.$scope.currentExpr = null;
-        this.$scope.speechRecogantionSupport = false;
+        this.$scope.speechRecogantionSupport = this._speachRecognition.checkSupport();
         this.$scope.speechRecording = false;
         this.$scope.sRecognition = null;
         this.$scope.answer = '';
         this.$scope.answerSuccess = false;
         this.$scope.answerWrong = false;
+
+        // assign template functions
+        this.$scope.handleSpeaking = this._handleSpeaking.bind(this);
     }
 
     pageLoadedHook() {
         super.pageLoadedHook();
-        this._initSpeechRecognition();
         this._fetchExpressions();
     }
 
-    assignTemplateFunctions() {
-        super.assignTemplateFunctions();
-        this.$scope.handleSpeaking = this._handleSpeaking.bind(this);
-    }
-
+    /**
+     * @desc - It fetches the expressions for learning
+     * @private
+     */
     _fetchExpressions() {
-        this.expressionSrv.fetchExpressions(this._isRepeatState)
+        return this.expressionSrv.fetchExpressions()
             .then(({data: {data}}) => {
-                this.$scope.currentExprs = data;
                 if (data && data.length) {
-                    this.$scope.currentExpr = {
-                        ...data[0],
-                        refs: {
-                            diki: `https://www.diki.pl/slownik-angielskiego?q=${data[0].expression}`
-                        }
-                    };
+                    this.$scope.currentExprs = data.map(expr => new Expression(expr));
+                    this.$scope.currentExpr = this.$scope.currentExprs[0];
                 }
             });
     }
 
-    _initSpeechRecognition() {
-        this.$scope.speechRecogantionSupport = IWORDS.SpeechRecognation.checkSupport();
-
-        if (!this.$scope.speechRecogantionSupport) {
-            return;
-        }
-
-        const SpeechRecognition = IWORDS.SpeechRecognation.getClass();
-        this.$scope.sRecognition = new SpeechRecognition();
-        this.$scope.sRecognition.lang = 'en-US';
-
-        // Event listeners
-        this.$scope.sRecognition.addEventListener('result', this._handleSpeechRecognitionRes.bind(this));
-    }
-
+    /**
+     * @desc - Start speaking handler
+     * @private
+     */
     _handleSpeaking() {
-        this.$scope.sRecognition.start();
+        this._speachRecognition.start();
         this.$scope.speechRecording = true;
     }
 
-    _handleSpeechRecognitionRes(event) {
-        this.$scope.answer = event.results[0][0].transcript.trim().toLowerCase();
-        this.$scope.speechRecording = null;
-        this.$scope.speechRecording = false;
-
-        this.$scope.answer.trim().toLocaleLowerCase() === this.$scope.currentExpr.expression.trim().toLocaleLowerCase()
-            ? this._handleCorrectAnswer() : this._handleIncorrectAnswer();
+    /**
+     * @desc - Checks if the answer is correct
+     * @param answer {string}
+     * @private
+     */
+    _checkAnswer(answer) {
+        this.$scope.answer = answer;
+        this.$scope.currentExpr.expression.toLowerCase().trim() === answer ?
+            this._handleCorrectAnswer() : this._handleIncorrectAnswer();
     }
 
+    /**
+     * @desc - Correct answer handler
+     * @private
+     */
     _handleCorrectAnswer() {
-        this.$timeout(() => {
-            this.$scope.answerSuccess = true;
-        });
 
-        this.speak(this.$scope.currentExpr.expression);
+        this._speach.speak(this.$scope.currentExpr.expression);
 
-        /* Remove expression from stack */
-        this.$scope.currentExprs = this.$scope.currentExprs.filter(expr => expr._id !== this.$scope.currentExpr._id);
+        this.$timeout(() => {this.$scope.answerSuccess = true;});
+
+        this.$scope.currentExpr.handleCorrectAnswer();
 
         this.$timeout(() => {
+            const nextExprIndex = this._getNextExpression();
 
-            if (this.$scope.currentExprs.length) {
-
-                this.expressionSrv.incrementAnswersCounter(this.$scope.currentExpr._id, true)
-                    .then(() => {
-                        this.$scope.answer = '';
-                        this.$scope.answerSuccess = false;
-                        this.$scope.currentExpr = this.$scope.currentExprs[0];
-                        this.$scope.currentExpr = {
-                            ...this.$scope.currentExprs[0],
-                            refs: {
-                                diki: `https://www.diki.pl/slownik-angielskiego?q=${this.$scope.currentExprs[0].expression}`
-                            }
-                        };
-                    })
-                    .catch(err => console.log('something went wrong', err));
-
-            } else {
-                /* Fetch next new word */
-                this._fetchNextExpression(this._handleFetchNextExpression.bind(this), true, false);
+            if (nextExprIndex) {
+                this._reset();
+                this.$scope.currentExpr = this.$scope.currentExprs[nextExprIndex];
+                return;
             }
 
+            this._fetchExpressions()
+                .then(() => this._reset());
+
         }, 500);
+
     }
 
+    /**
+     * @desc - Incorrect answer handler
+     * @private
+     */
     _handleIncorrectAnswer() {
-        this.$timeout(() => {
-            this.$scope.answerWrong = true;
-        });
 
-        this.speak(this.$scope.currentExpr.expression);
+        this._speach.speak(this.$scope.currentExpr.expression);
 
-        this.$timeout(() => {
+        this.$timeout(() => {this.$scope.answerWrong = true;});
 
-            this.expressionSrv.incrementAnswersCounter(this.$scope.currentExpr._id, false)
-                .then(() => {
-                    this.$scope.answerWrong = false;
-                    this.$scope.answer = '';
-                })
-                .catch(err => console.log('something went wrong', err));
+        this.$scope.currentExpr.handleIncorrectAnswer();
 
-        }, 2000);
+        this.$timeout(() => this._reset(), 2000);
     }
 
-    _fetchNextExpression(next, correct, onlyRepeats) {
-        next = next || function () {};
-
-        this.expressionSrv.incrementAnswersCounter(this.$scope.currentExpr._id, correct, onlyRepeats)
-            .then(() => {})
-            .catch(err => console.log('something went wrong', err));
-
-        this.expressionSrv.fetchExpressions(onlyRepeats)
-            .then(({data: {data}}) => {
-                this.$scope.currentExprs = data;
-                if (data && data.length) {
-                    this.$scope.currentExpr = {
-                        ...data[0],
-                        refs: {
-                            diki: `https://www.diki.pl/slownik-angielskiego?q=${data[0].expression}`
-                        }
-                    };
-                }
-                next(null);
-            })
-            .catch(err => console.log('something went wrong', err));
-    }
-
-    _handleFetchNextExpression(err) {
-        if (err) {
-            /* Handle error */
-            return;
+    /**
+     * @desc - it returns next expression index
+     * @private
+     * @return {null | number}
+     */
+    _getNextExpression() {
+        // Check if all expressions was used
+        // if not return first unused expression
+        // if all were used then fetch the next expressions
+        const usedExprIndexes = [];
+        const unusedExprIndexes = [];
+        if (this.$scope.currentExprs && this.$scope.currentExprs.length) {
+            this.$scope.currentExprs.forEach((expr, index) => {
+                expr.used ? usedExprIndexes.push(index) : unusedExprIndexes.push(index);
+            });
         }
+        return unusedExprIndexes.length ? unusedExprIndexes[0] : null;
+    }
 
+    /**
+     * @desc - It resets the state
+     * @private
+     */
+    _reset() {
         this.$scope.answer = '';
         this.$scope.answerSuccess = false;
-        this.$scope.skipping = false;
+        this.$scope.answerWrong = false;
+        this.$scope.speechRecording = false;
     }
-
-
 
 }
 
-module.exports = withSpeech(LearningSpeakingCrlFactory);
+module.exports = LearningSpeakingController;

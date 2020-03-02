@@ -4,13 +4,13 @@
     {{#if expressionsCount}}
         <div class="app-learning-speaking-page__learning-container" ng-controller="LearningSpeakingCtrl" ng-cloak>
 
-            <div class="learning-speaking card card--white card--with-shadow">
+            <div class="learning-speaking card card--white card--with-shadow" ng-class="{'card--success': answerSuccess, 'card--danger': answerWrong}">
 
                 <div ng-if="speechRecogantionSupport" class="card__content">
 
                     <!-- Translations -->
                     <div class="learning__translations">
-                        \{{ currentExpr.translations.join(', ') }} <span class="learning__correct-answer" ng-if="answerWrong"> - \{{ currentExpr.expression }}</span>
+                        \{{ currentExpr.renderedTranslations }} <span class="learning__correct-answer" ng-if="answerWrong"> - \{{ currentExpr.expression }}</span>
                     </div>
                     <!-- Extra info -->
                     <div class="learning__extra">
