@@ -54,14 +54,6 @@ class LearningController extends BaseController {
     }
 
     /**
-     * @desc - it makes the answer input focused
-     * @private
-     */
-    _focusAnswerInput() {
-        this._answerInputElem && this._answerInputElem.focus();
-    }
-
-    /**
      * @desc - It fetches expressions for learning
      * @private
      */
@@ -258,6 +250,14 @@ class LearningController extends BaseController {
             return;
         }
         this._fetchExpressions()
+    }
+
+    /**
+     * @desc - it makes the answer input focused
+     * @private
+     */
+    _focusAnswerInput() {
+        this._answerInputElem && this._answerInputElem.focus();
     }
 
     /**
