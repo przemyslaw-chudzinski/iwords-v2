@@ -160,11 +160,7 @@ class LearningController extends BaseController {
         this.expressionSrv.incrementAnswersCounter({expressionId: this.$scope.currentExpr.id, correct: false})
             .then(() => this._fetchRepeatCount());
 
-        this.$timeout(() => {
-            this._resetInput();
-            this._fetchExpressions()
-                .then(() => this._resetInput());
-        }, 2000);
+        this.$timeout(() => this._resetInput(), 2000);
     }
 
     /**
