@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="330f59ad-6b0e-4952-b5fb-c0f32e374e8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/learning-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/learning-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="feature/175-bug-during-removing-expressions-from-repeat" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -503,7 +502,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="done" />
     <MESSAGE value="implemented adding notes from expression notes view" />
     <MESSAGE value="merge" />
     <MESSAGE value="improved learning view for tables" />
@@ -528,7 +526,8 @@
     <MESSAGE value="learning speaking was refactored" />
     <MESSAGE value="clean up" />
     <MESSAGE value="deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="deploy" />
+    <MESSAGE value="fixed bug during removing expression from repeat" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug during removing expression from repeat" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579301681034">
@@ -539,10 +538,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="968" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1575146264980" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1583180170373">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1583566581245">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1583180170373" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1583566581245" />
     <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1581445297052" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1581447856425">
       <screen x="0" y="0" width="2560" height="1440" />
