@@ -16,7 +16,10 @@
                 </div>
 
                 <div class="list__item-right">
-                    <md-button ng-click="handleRemoveExprFromRepeatMode(expr._id, $event)">Usuń</md-button>
+                    <md-button ng-click="handleRemoveExprFromRepeatMode(expr.id, $event)">Usuń</md-button>
+                    <md-button class="md-icon-button md-primary" ng-click="pronounciation(expr.expression, $event)">
+                        <span class="fa fa-volume-up"></span>
+                    </md-button>
                 </div>
 
             </li>

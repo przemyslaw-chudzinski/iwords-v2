@@ -38,7 +38,7 @@ class LearningController extends BaseController {
         this.$scope.handleSelectTab = this._handleSelectTab.bind(this);
         this.$scope.handleRemoveExprFromRepeatMode = this._handleRemoveExprFromRepeatMode.bind(this);
         this.$scope.calcRepeatCountProgress = () => Math.round(+this.$scope.currentExpr.repeatCorrectAnswers / 10 * 100);
-        this.$scope.pronounciation = () => this._speech.speak(this.$scope.currentExpr.expression);
+        this.$scope.pronounciation = (txt = null) => this._speech.speak(txt || this.$scope.currentExpr.expression);
         this.$scope.handleSpeechStateChange = this._handleSpeechStateChange.bind(this);
 
         this._speech.canSpeak = this.$scope.speechState.state;
@@ -63,6 +63,12 @@ class LearningController extends BaseController {
                 if (data && data.length) {
                     this.$scope.currentExprs = data.map(expression => new Expression(expression));
                     this.$scope.currentExpr = this.$scope.currentExprs[0];
+                    return;
+                }
+                if (this.$scope.repeatState.state) {
+                    this.$scope.repeatState = {state: false};
+                    this.localStorageSrv.repeatStateOff();
+                    this._fetchExpressions();
                 }
             });
     }
@@ -324,10 +330,10 @@ class LearningController extends BaseController {
         this.expressionSrv.removeExpressionFromRepeatMode(config)
             .then(() => {
                 this._fetchRepeatCount();
-                this.$scope.expressionsInRepeatMode = this.$scope.expressionsInRepeatMode.filter(item => item._id !== exprId);
+                this.$scope.expressionsInRepeatMode = this.$scope.expressionsInRepeatMode.filter(item => item.id !== exprId);
                 this._fetchExpressions();
             })
-            .catch(err => console.log('something went wrong', e));
+            .catch(err => console.log('something went wrong', err));
     }
 
     /**
