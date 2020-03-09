@@ -16553,6 +16553,8 @@ body {
   display: flex;
   -webkit-box-align: center;
           align-items: center;
+  -webkit-box-flex: 1;
+          flex-grow: 1;
 }
 
 .toolbar__content > *:not(:last-child) {
@@ -16564,6 +16566,11 @@ body {
   display: flex;
   -webkit-box-align: center;
           align-items: center;
+}
+
+.toolbar__dictionary-search {
+  margin-right: 2rem;
+  width: 25%;
 }
 
 .expression-sentences__heading {

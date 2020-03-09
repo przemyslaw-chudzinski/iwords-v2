@@ -10,6 +10,33 @@
         <!-- Toolbar heading - displays page title -->
         <div class="toolbar__heading"><h3>{{pageTitle}}</h3></div>
     </div>
+    <!-- Dictionary search -->
+    <div class="toolbar__dictionary-search" ng-controller="DictionarySearchCtrl" ng-cloak>
+            <md-autocomplete
+                    ng-disabled="isDisabled"
+                    md-no-cache="noCache"
+                    md-selected-item="selectedItem"
+                    md-search-text-change="searchTextChange(searchText)"
+                    md-search-text="searchText"
+                    md-selected-item-change="selectedItemChange(item)"
+                    md-items="item in querySearch(searchText)"
+                    md-min-length="3"
+                    md-escape-options="clear"
+                    placeholder="Szukaj wyrażeń w języku angielskim">
+
+            <!-- Single result item -->
+<!--            <md-item-template>-->
+<!--                <span md-highlight-text="searchText" md-highlight-flags="^i">\{{item.expression}}</span>-->
+<!--            </md-item-template>-->
+
+            <!-- Not found message -->
+            <md-not-found>
+                No states matching "\{{searchText}}" were found.
+<!--                <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>-->
+            </md-not-found>
+
+        </md-autocomplete>
+    </div>
     <!-- Actions -->
     <div class="toolbar__actions">
         <span>{{user.name}}</span>

@@ -13,6 +13,7 @@ const ExpressionSrvFactory = require('./services/expression-service');
 const StatisticsSrvFactory = require('./services/statistics-service');
 const LocalStorageSrvFactory = require('./services/local-storage-service');
 const NotesSrvFactory = require('./services/notes-service');
+const DictionarySrvFactory = require('./services/dictionary-service');
 
 /* Controllers */
 const LearningController = require('./controllers/learning-controller');
@@ -24,6 +25,7 @@ const YourExpressionsController = require('./controllers/your-expressions-contro
 const EditNoteCtrlFactory = require('./controllers/edit-note-controller');
 const ExpressionNotesCtrlFactory = require('./controllers/expression-notes-controller');
 const LearningSpeakingController = require('./controllers/learning-speaking-controller');
+const DictionarySearchController = require('./controllers/dictionary-search-controller');
 
 /* Directives */
 const ExpressionSentenceTogglerDirFactory = require('./directives/expression-sentence-toggler-directive');
@@ -42,12 +44,14 @@ app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', 'notesSrv', '$
 app.controller('EditNoteCtrl', ['$scope', 'notesSrv', '$mdToast', EditNoteCtrlFactory]);
 app.controller('ExpressionNotesCtrl', ['$scope', 'notesSrv', '$mdDialog', ExpressionNotesCtrlFactory]);
 app.controller('LearningSpeakingCtrl', ['$scope', 'expressionSrv', '$timeout', LearningSpeakingController]);
+app.controller('DictionarySearchCtrl', ['$scope', 'dictionarySrv', DictionarySearchController]);
 /* Services */
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 // app.factory('csvSrv', ['$http', CsvSrvFactory]);
 app.factory('statisticsSrv', ['$http', StatisticsSrvFactory]);
 app.factory('localStorageSrv', [LocalStorageSrvFactory]);
 app.factory('notesSrv', ['$http', '$mdDialog', NotesSrvFactory]);
+app.factory('dictionarySrv', ['$http', DictionarySrvFactory]);
 /* Directives */
 app.directive('expressionSentenceToggler', ExpressionSentenceTogglerDirFactory);
 app.directive('asideNestedMenuToggler', AsideNestedMenuTogglerDirFactory);
