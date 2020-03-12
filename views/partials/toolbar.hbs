@@ -11,7 +11,7 @@
         <div class="toolbar__heading"><h3>{{pageTitle}}</h3></div>
     </div>
     <!-- Dictionary search -->
-    <div class="toolbar__dictionary-search" ng-controller="DictionarySearchCtrl" ng-cloak>
+    <div class="toolbar__dictionary-search" ng-class="{'toolbar__dictionary-search--has-w-100': dictionaryAutocompleteFocused}" ng-controller="DictionarySearchCtrl" ng-cloak>
             <md-autocomplete
                     ng-disabled="isDisabled"
                     md-no-cache="noCache"
@@ -22,17 +22,26 @@
                     md-items="item in querySearch(searchText)"
                     md-min-length="3"
                     md-escape-options="clear"
+                    ng-focus="dictionaryAutocompleteFocus()"
+                    ng-blur="dictionaryAutocompleteBlur()"
                     placeholder="Szukaj wyrażeń w języku angielskim">
 
             <!-- Single result item -->
-<!--            <md-item-template>-->
-<!--                <span md-highlight-text="searchText" md-highlight-flags="^i">\{{item.expression}}</span>-->
-<!--            </md-item-template>-->
+            <md-item-template>
+                <div class="dic-search-result">
+                    <span class="dic-search-result__title">
+                        <strong>\{{item.expression}}</strong>
+                    </span>
+                    <span class="dic-search-result__meta">
+                        <span class="md-caption dic-search-result__meta-translations">\{{item.renderedTranslations}}</span>
+                        <span class="md-caption dic-search-result__meta-part-of-speech">\{{item.partOfSpeech}}</span>
+                    </span>
+                </div>
+            </md-item-template>
 
             <!-- Not found message -->
             <md-not-found>
                 No states matching "\{{searchText}}" were found.
-<!--                <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>-->
             </md-not-found>
 
         </md-autocomplete>

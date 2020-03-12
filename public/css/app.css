@@ -16571,6 +16571,12 @@ body {
 .toolbar__dictionary-search {
   margin-right: 2rem;
   width: 25%;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+}
+
+.toolbar__dictionary-search--has-w-100 {
+  width: 100%;
 }
 
 .expression-sentences__heading {

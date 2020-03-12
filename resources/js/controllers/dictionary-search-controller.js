@@ -1,4 +1,5 @@
 const BaseController = require('./base-controller');
+const {Expression} = require('../classes');
 
 class DictionarySearchController extends BaseController {
     constructor($scope, dictionarySrv) {
@@ -29,8 +30,9 @@ class DictionarySearchController extends BaseController {
     }
 
     _querySearch(searchText) {
-        // return new Promise(resolve => resolve([]));
-        return this.dictionarySrv.searchExpressions({searchText});
+        return this.dictionarySrv.searchExpressions({searchText})
+            .then(res => res.data || [])
+            .then(data => data.map(item => new Expression(item)));
     }
 }
 
