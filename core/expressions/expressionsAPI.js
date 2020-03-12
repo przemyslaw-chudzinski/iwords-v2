@@ -1,3 +1,5 @@
+const {Message, severity} = require("../message");
+const {validateContentProvider} = require("./content-providers");
 const router = require('express').Router();
 const {
     fetchExpression,
@@ -18,6 +20,8 @@ const {
 const {countAllExpressionNotes} = require('../notes/noteDAL');
 
 const {map} = require('async');
+
+const Expression = require('./expression');
 
 /* Routes */
 
@@ -329,6 +333,36 @@ router.put('/:id', async (req, res) => {
     } catch (e) {
         res.status(400);
         await res.json({});
+    }
+
+});
+
+/* Add new expression to the iwords */
+router.post('/expressions', async (req, res) => {
+
+    const {expression, translations, exampleSentences, partOfSpeech, provider} = req.body;
+
+    if (!validateContentProvider(provider)) {
+        res.status(500);
+        return res.json({error: true, message: new Message('Unknown content provider', severity.error)});
+    }
+
+    const exprModel = new Expression();
+
+    exprModel.expression = expression;
+    exprModel.translations = translations;
+    exprModel.exampleSentences = exampleSentences;
+    exprModel.partOfSpeech = partOfSpeech;
+    exprModel.userId = req.user._id;
+    exprModel.provider = provider;
+
+    try {
+        const newExpr = await exprModel.save();
+        res.status(200);
+        await res.json({_id: newExpr._id});
+    } catch (e) {
+        res.status(400);
+        await res.json({error: true});
     }
 
 });

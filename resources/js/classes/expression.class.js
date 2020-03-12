@@ -54,6 +54,10 @@ class Expression {
         return this.hasExampleSentences ? this._expression.exampleSentences : [];
     }
 
+    get originalExpressionObject() {
+        return this._expression;
+    }
+
     markAsUsed() {
         this._used = true;
     }

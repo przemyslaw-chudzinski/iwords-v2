@@ -17,6 +17,7 @@
   &__content {
     display: flex;
     align-items: center;
+    flex-grow: 1;
     > * {
       &:not(:last-child) {
         margin-right: 1rem;
@@ -30,5 +31,16 @@
   }
 
   &__heading {}
+
+  &__dictionary-search {
+    margin-right: 2rem;
+    width: 25%;
+    transition: width .2s ease-in-out;
+
+    &--has-w-100 {
+      width: 100%;
+    }
+
+  }
 
 }

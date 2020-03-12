@@ -70,6 +70,10 @@ class ExpressionService extends ServiceBase {
         };
         return this._http.put(this._prefix + `/${_ctx.exprId}`, {userId: this.userId});
     }
+
+    addExpression(ctx = {}) {
+        return this._http.post(this._prefix + `/expressions`, {userId: this.userId, ...ctx });
+    }
 }
 
 module.exports = function ExpressionSrvFactory($http) {

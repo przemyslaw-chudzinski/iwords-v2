@@ -16424,6 +16424,17 @@ body {
           transform: translate(-50%, -50%);
 }
 
+.dictionary-search-menu li {
+  min-height: 48px;
+  height: auto;
+  line-height: 1.6;
+}
+
+.dic-search-result__title,
+.dic-search-result__meta {
+  display: block;
+}
+
 .learning {
   width: 100%;
   max-width: 65rem;
@@ -16553,6 +16564,8 @@ body {
   display: flex;
   -webkit-box-align: center;
           align-items: center;
+  -webkit-box-flex: 1;
+          flex-grow: 1;
 }
 
 .toolbar__content > *:not(:last-child) {
@@ -16564,6 +16577,17 @@ body {
   display: flex;
   -webkit-box-align: center;
           align-items: center;
+}
+
+.toolbar__dictionary-search {
+  margin-right: 2rem;
+  width: 25%;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+}
+
+.toolbar__dictionary-search--has-w-100 {
+  width: 100%;
 }
 
 .expression-sentences__heading {
