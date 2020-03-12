@@ -1,0 +1,15 @@
+.dictionary-search-menu {
+
+  li {
+    min-height: 48px;
+    height: auto;
+    line-height: 1.6;
+  }
+
+}
+
+.dic-search-result {
+  &__title, &__meta {
+    display: block;
+  }
+}

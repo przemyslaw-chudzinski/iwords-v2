@@ -43,7 +43,6 @@ class DikiIntegration {
 
         mainEntities.length && mainEntities.each((index, entity) => {
             const res = this._extractDataFromSingleEntityEnIntoPl(entity).reduce((acc, item) => acc.concat(item));
-            console.log('single result', index);
             results.push(res);
         });
 
@@ -75,6 +74,7 @@ class DikiIntegration {
                     .map(item => {
                         item.expression = expression;
                         item.partOfSpeech = partOfSpeech;
+                        item.provider = 'diki';
                         return item;
                     });
 

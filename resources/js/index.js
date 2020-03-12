@@ -44,7 +44,7 @@ app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', 'notesSrv', '$
 app.controller('EditNoteCtrl', ['$scope', 'notesSrv', '$mdToast', EditNoteCtrlFactory]);
 app.controller('ExpressionNotesCtrl', ['$scope', 'notesSrv', '$mdDialog', ExpressionNotesCtrlFactory]);
 app.controller('LearningSpeakingCtrl', ['$scope', 'expressionSrv', '$timeout', LearningSpeakingController]);
-app.controller('DictionarySearchCtrl', ['$scope', 'dictionarySrv', DictionarySearchController]);
+app.controller('DictionarySearchCtrl', ['$scope', 'dictionarySrv', 'expressionSrv', '$mdToast', DictionarySearchController]);
 /* Services */
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 // app.factory('csvSrv', ['$http', CsvSrvFactory]);

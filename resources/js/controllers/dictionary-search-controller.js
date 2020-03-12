@@ -2,11 +2,13 @@ const BaseController = require('./base-controller');
 const {Expression} = require('../classes');
 
 class DictionarySearchController extends BaseController {
-    constructor($scope, dictionarySrv) {
+    constructor($scope, dictionarySrv, expressionSrv, $mdToast) {
         super($scope);
 
         // setup
         this.dictionarySrv = dictionarySrv;
+        this.expressionSrv = expressionSrv;
+        this.$mdToast = $mdToast;
 
         // init state
         this.$scope.searchText = '';
@@ -17,6 +19,7 @@ class DictionarySearchController extends BaseController {
         // assign template functions
         this.$scope.searchTextChange = this._searchTextChange.bind(this);
         this.$scope.querySearch = this._querySearch.bind(this);
+        this.$scope.handleAddToIwords = this._handleAddToIwords.bind(this);
 
     }
 
@@ -26,13 +29,33 @@ class DictionarySearchController extends BaseController {
      * @private
      */
     _searchTextChange(searchText) {
-        console.log(searchText);
+
     }
 
     _querySearch(searchText) {
         return this.dictionarySrv.searchExpressions({searchText})
             .then(res => res.data || [])
             .then(data => data.map(item => new Expression(item)));
+    }
+
+    _handleAddToIwords(item, $event) {
+        $event.stopPropagation();
+        console.log(item, $event);
+        $event.target.disabled = true;
+        this.expressionSrv.addExpression(item.originalExpressionObject)
+            .then(res => this._handleAddToIwordsSuccess(res))
+            .catch(err => {
+                $event.target.disabled = false;
+            });
+    }
+
+    _handleAddToIwordsSuccess(res) {
+        this.$mdToast.show(
+            this.$mdToast.simple()
+                .textContent('Simple Toast!')
+                .hideDelay(3000)
+                .position('bottom left')
+        );
     }
 }
 

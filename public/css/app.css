@@ -16424,6 +16424,17 @@ body {
           transform: translate(-50%, -50%);
 }
 
+.dictionary-search-menu li {
+  min-height: 48px;
+  height: auto;
+  line-height: 1.6;
+}
+
+.dic-search-result__title,
+.dic-search-result__meta {
+  display: block;
+}
+
 .learning {
   width: 100%;
   max-width: 65rem;

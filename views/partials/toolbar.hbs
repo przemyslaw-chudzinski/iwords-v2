@@ -22,20 +22,26 @@
                     md-items="item in querySearch(searchText)"
                     md-min-length="3"
                     md-escape-options="clear"
+                    md-menu-class="dictionary-search-menu"
                     ng-focus="dictionaryAutocompleteFocus()"
                     ng-blur="dictionaryAutocompleteBlur()"
                     placeholder="Szukaj wyrażeń w języku angielskim">
 
             <!-- Single result item -->
             <md-item-template>
-                <div class="dic-search-result">
-                    <span class="dic-search-result__title">
-                        <strong>\{{item.expression}}</strong>
-                    </span>
-                    <span class="dic-search-result__meta">
-                        <span class="md-caption dic-search-result__meta-translations">\{{item.renderedTranslations}}</span>
-                        <span class="md-caption dic-search-result__meta-part-of-speech">\{{item.partOfSpeech}}</span>
-                    </span>
+                <div class="dic-search-result" layout>
+                    <div>
+                        <span class="dic-search-result__title">
+                            <strong>\{{item.expression}}</strong>
+                            <span class="md-caption dic-search-result__part-of-speech">- \{{item.partOfSpeech}}</span>
+                        </span>
+                            <span class="dic-search-result__meta">
+                            <span class="md-caption dic-search-result__meta-translations">\{{item.renderedTranslations}}</span>
+                        </span>
+                    </div>
+                    <div flex layout layout-align="end center">
+                        <md-button class="md-primary md-raised" ng-click="handleAddToIwords(item, $event)">Dodaj do iwords</md-button>
+                    </div>
                 </div>
             </md-item-template>
 
