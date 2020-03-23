@@ -207,7 +207,7 @@ class LearningController extends BaseController {
         this.expressionSrv.resetRepeatMode()
             .then(() => {
                 this.$scope.repeatState = {state: false};
-                this.localStorageSrv.clearRepeatState();
+                this.localStorageSrv.repeatStateOff();
                 this.$scope.expressionsInRepeatMode = [];
                 this.$scope.repeatCount = 0;
                 if (this.$scope.currentExprs.length) {

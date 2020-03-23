@@ -3,7 +3,7 @@ const {PaginationList} = require('../classes');
 
 const defaultPagination = {
     page: 1,
-    limit: 5
+    limit: 30
 };
 
 class YourExpressionsController extends BaseController {
