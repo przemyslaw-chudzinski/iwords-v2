@@ -69,11 +69,17 @@
                                                <span ng-if="expr.inRepeatState">Usuń z powtórek</span>
                                            </md-button>
                                        </md-menu-item>
-                                       <md-menu-divider></md-menu-divider>
                                        <md-menu-item>
                                            <md-button ng-click="handleAddNote(expr, $event)">
                                                <span class="fa fa-plus"></span>
                                                Dodaj nową notatkę
+                                           </md-button>
+                                       </md-menu-item>
+                                       <md-menu-divider></md-menu-divider>
+                                       <md-menu-item>
+                                           <md-button ng-click="handleRemoveExpression(expr, $event)">
+                                               <span class="fa fa-trash"></span>
+                                               Usuń wyrażenie
                                            </md-button>
                                        </md-menu-item>
                                    </md-menu-content>
