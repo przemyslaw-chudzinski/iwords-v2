@@ -40,7 +40,7 @@ app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialo
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
 app.controller('BodyCrl', ['$scope', 'localStorageSrv', BodyController]);
-app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', 'notesSrv', '$mdToast', YourExpressionsController]);
+app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', 'notesSrv', '$mdToast', '$mdDialog', YourExpressionsController]);
 app.controller('EditNoteCtrl', ['$scope', 'notesSrv', '$mdToast', EditNoteCtrlFactory]);
 app.controller('ExpressionNotesCtrl', ['$scope', 'notesSrv', '$mdDialog', ExpressionNotesCtrlFactory]);
 app.controller('LearningSpeakingCtrl', ['$scope', 'expressionSrv', '$timeout', LearningSpeakingController]);

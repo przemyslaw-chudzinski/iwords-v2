@@ -8,13 +8,14 @@ const defaultPagination = {
 
 class YourExpressionsController extends BaseController {
 
-    constructor($scope, expressionSrv, notesSrv, $mdToast) {
+    constructor($scope, expressionSrv, notesSrv, $mdToast, $mdDialog) {
         super($scope);
 
         // setup
         this.expressionSrv = expressionSrv;
         this.notesSrv = notesSrv;
         this.$mdToast = $mdToast;
+        this.$mdDialog = $mdDialog;
         this._pagination = new PaginationList(defaultPagination);
 
         // init state
@@ -28,9 +29,9 @@ class YourExpressionsController extends BaseController {
         this.$scope.openExprMenu = ($mdMenu, event) => $mdMenu.open(event);
         this.$scope.handleAddNote = this._handleAddNote.bind(this);
         this.$scope.handleToggleExpressionRepeatMode = this._handleToggleExpressionRepeatMode.bind(this);
-
         this.$scope.prevPage = () => this._pagination.prevPage(this.onPageChange.bind(this));
         this.$scope.nextPage = () => this._pagination.nextPage(this.onPageChange.bind(this));
+        this.$scope.handleRemoveExpression = this._handleRemoveExpression.bind(this);
     }
 
     pageLoadedHook() {
@@ -108,6 +109,22 @@ class YourExpressionsController extends BaseController {
 
             })
             .catch(err => console.log('something went wrong', err));
+    }
+
+    _handleRemoveExpression(expression, event) {
+        const confirmDialog = this.$mdDialog.confirm()
+            .title('Czy na pewno chcesz usunąć to wyrażenie?')
+            .textContent('Ta operacja usunie wyrażenie oraz wszystkie powiązane z nią materiały, notatki itp')
+            .targetEvent(event)
+            .ok('Tak, usuń wyrażenie')
+            .cancel('Anuluj');
+
+        this.$mdDialog.show(confirmDialog)
+            .then(() => this.expressionSrv.removeExpression({exprId: expression._id}))
+            .then(() => {
+                this.$scope.expressions = this.$scope.expressions.filter(expr => expr._id !== expression._id);
+            })
+            .catch(() => {});
     }
 
 }

@@ -74,6 +74,14 @@ class ExpressionService extends ServiceBase {
     addExpression(ctx = {}) {
         return this._http.post(this._prefix + `/expressions`, {userId: this.userId, ...ctx });
     }
+
+    removeExpression(ctx = {}) {
+        const _ctx = {
+            exprId: null,
+            ...ctx
+        };
+        return this._http.delete(this._prefix + '/' + _ctx.exprId, {userId: this.userId});
+    }
 }
 
 module.exports = function ExpressionSrvFactory($http) {

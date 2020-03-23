@@ -14,10 +14,11 @@ const {
     resetRepeatMode,
     countAllExpressionsInRepeatMode,
     removeExpressionFromRepeatMode,
-    toggleExpressionRepeatMode
+    toggleExpressionRepeatMode,
+    removeExpressionById
 } = require('./expressionDAL');
 
-const {countAllExpressionNotes} = require('../notes/noteDAL');
+const {countAllExpressionNotes, removeNotesAssociatedToExpr} = require('../notes/noteDAL');
 
 const {map} = require('async');
 
@@ -333,6 +334,30 @@ router.put('/:id', async (req, res) => {
     } catch (e) {
         res.status(400);
         await res.json({});
+    }
+
+});
+
+/* Removes single expression and associated with it things */
+router.delete('/:id', async (req, res) => {
+
+    const exprId = req.params.id;
+
+    if (!exprId) {
+        res.status(400);
+        return await res.json({error: true});
+    }
+
+    try {
+        await removeNotesAssociatedToExpr({exprId});
+        await removeExpressionById({exprId});
+
+        res.status(200);
+        await res.json({});
+
+    } catch (e) {
+        res.status(400);
+        return await res.json({error: true});
     }
 
 });
