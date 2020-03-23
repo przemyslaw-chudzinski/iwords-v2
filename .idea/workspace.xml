@@ -35,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="feature/179-improvements-of-reseting-repeat-mode" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -547,10 +547,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1579301681034" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1584036311863">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1584988223204">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1584036311863" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1584988223204" />
     <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1581445297052" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1581447856425">
       <screen x="0" y="0" width="2560" height="1440" />
