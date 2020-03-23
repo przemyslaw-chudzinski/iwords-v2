@@ -136,11 +136,25 @@ function removeNote(config = {}) {
     });
 }
 
+function removeNotesAssociatedToExpr(config = {}) {
+    const _config = {
+        exprId: null,
+        ...config
+    };
+    
+    if (!_config.exprId) {
+        return;
+    }
+
+    return Note.deleteMany({expressionId: _config.exprId});
+}
+
 module.exports = {
     createNote,
     fetchNoteById,
     updateNote,
     fetchNotesByExpressionId,
     countAllExpressionNotes,
-    removeNote
+    removeNote,
+    removeNotesAssociatedToExpr
 };
