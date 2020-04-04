@@ -32,6 +32,7 @@ class YourExpressionsController extends BaseController {
         this.$scope.prevPage = () => this._pagination.prevPage(this.onPageChange.bind(this));
         this.$scope.nextPage = () => this._pagination.nextPage(this.onPageChange.bind(this));
         this.$scope.handleRemoveExpression = this._handleRemoveExpression.bind(this);
+        this.$scope.goToNotes = expr => window.location.href = `/app/notes/expression/${expr._id}`;
     }
 
     pageLoadedHook() {

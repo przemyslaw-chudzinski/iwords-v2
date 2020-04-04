@@ -46,7 +46,7 @@
                                    <span class="fa fa-repeat"></span>
                                </md-button>
                                <!-- Have notes icon -->
-                               <md-button ng-if="expr.notesCount > 0" class="md-icon-button md-primary">
+                               <md-button ng-if="expr.notesCount > 0" class="md-icon-button md-primary" ng-click="goToNotes(expr)">
                                    <md-tooltip md-direction="top">Ta ikona oznacza, że wyrażenie zawiera notaki</md-tooltip>
                                    <span class="fa fa-files-o"></span>
                                </md-button>

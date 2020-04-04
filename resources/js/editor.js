@@ -55,7 +55,6 @@ IWORDS.editors.editNoteEditor = (function () {
 
     };
 
-
     const getEditor = () => editor;
 
     const toJSON = () => new Promise((resolve, reject) => {
@@ -86,8 +85,5 @@ IWORDS.editors.editNoteEditor = (function () {
         getEditor,
         toJSON
     }
-
-
-
 
 })();
