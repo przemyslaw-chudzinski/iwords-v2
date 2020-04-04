@@ -15,7 +15,8 @@ const {
     countAllExpressionsInRepeatMode,
     removeExpressionFromRepeatMode,
     toggleExpressionRepeatMode,
-    removeExpressionById
+    removeExpressionById,
+    fetchExpressionsByExpression
 } = require('./expressionDAL');
 
 const {countAllExpressionNotes, removeNotesAssociatedToExpr} = require('../notes/noteDAL');
@@ -389,6 +390,30 @@ router.post('/expressions', async (req, res) => {
         res.status(400);
         await res.json({error: true});
     }
+
+});
+
+/* Checks if expression has already existed */
+router.post('/expression/check-if-exists', async (req, res) => {
+
+    const expression = req.body.expression;
+
+    try {
+        const results = await fetchExpressionsByExpression({expression});
+
+        if (results && results.length) {
+            res.status(200);
+            return await res.json({exists: true, results});
+        }
+
+        res.status(200);
+        await res.json({exists: false, results: []});
+
+    } catch (e) {
+        res.status(400);
+        await res.json({error: true});
+    }
+
 
 });
 

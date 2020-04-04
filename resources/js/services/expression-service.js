@@ -82,6 +82,19 @@ class ExpressionService extends ServiceBase {
         };
         return this._http.delete(this._prefix + '/' + _ctx.exprId, {userId: this.userId});
     }
+
+    checkIfExpressionExists(ctx = {}) {
+        const _ctx = {
+            expression: null,
+            ...ctx
+        };
+
+        if (!_ctx.expression) {
+            return;
+        }
+
+        return this._http.post(this._prefix + '/expression/check-if-exists', {expression: _ctx.expression});
+    }
 }
 
 module.exports = function ExpressionSrvFactory($http) {
