@@ -16653,6 +16653,16 @@ body {
   font-size: 1.2rem;
 }
 
+.expr-exists-dialog-container md-dialog {
+  width: 700px;
+  max-width: 700px;
+}
+
+.expr-exists-dialog-container__list-res-container {
+  max-height: 350px;
+  overflow: auto;
+}
+
 .body {
   display: -webkit-box;
   display: flex;

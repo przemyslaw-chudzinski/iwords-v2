@@ -1,0 +1,68 @@
+<div class="expr-exists-dialog-container">
+    <md-dialog>
+
+        <!-- Header -->
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Uwaga! Szukane wyrażenie już istnieje.</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeSelf()">
+                    <span class="fa fa-times"></span>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <!-- Content -->
+        <md-dialog-content>
+
+            <div class="md-dialog-content">
+
+                <!-- Expression what user wants to add -->
+                <md-list>
+                    <!-- Subheader -->
+                    <md-subheader class="md-no-sticky"><span>Wyrażenie, które chcesz dodać:</span></md-subheader>
+
+                    <md-list-item class="md-3-line md-" ng-click="null">
+                        <div class="md-list-item-text">
+                            <h3 ng-bind="chosenExpression.expression"></h3>
+                            <h4 ng-bind="chosenExpression.renderedTranslations"></h4>
+                            <p ng-bind="chosenExpression.partOfSpeech"></p>
+                        </div>
+                        <md-divider></md-divider>
+                    </md-list-item>
+
+                </md-list>
+
+                <!-- List of returns results -->
+                <md-list class="expr-exists-dialog-container__list">
+
+                    <!-- Subheader -->
+                    <md-subheader class="md-no-sticky"><span>Poniżej widzisz listę istniejących wyrażeń:</span></md-subheader>
+
+                    <!-- Single results -->
+                    <div class="expr-exists-dialog-container__list-res-container" >
+                        <md-list-item class="md-3-line md-" ng-repeat="expr in existingExpressions" ng-click="null">
+                            <div class="md-list-item-text">
+                                <h3 ng-bind="expr.expression"></h3>
+                                <h4 ng-bind="expr.renderedTranslations"></h4>
+                                <p ng-bind="expr.partOfSpeech"></p>
+                            </div>
+                            <md-divider></md-divider>
+                        </md-list-item>
+                    </div>
+
+                </md-list>
+
+            </div>
+
+        </md-dialog-content>
+
+        <!-- Actions -->
+        <md-dialog-actions >
+            <md-button ng-click="closeSelf()">Anuluj</md-button>
+            <md-button ng-click="confirm()" class="md-primary">Ok, dodaj wyrażenie do bazy</md-button>
+        </md-dialog-actions>
+
+
+    </md-dialog>
+</div>

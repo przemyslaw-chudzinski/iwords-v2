@@ -314,6 +314,21 @@ function removeExpressionById(config = {}) {
     return Expression.findByIdAndDelete(_config.exprId);
 }
 
+function fetchExpressionsByExpression(config = {}) {
+    const _config = {
+        expression: null,
+        ...config
+    };
+
+    if (!_config.expression) {
+        return;
+    }
+
+    return Expression.
+        where('expression', _config.expression);
+
+}
+
 module.exports = {
     fetchExpression,
     incrementExpressionCounters,
@@ -330,5 +345,6 @@ module.exports = {
     removeExpressionFromRepeatMode,
     fetchExpressionById,
     toggleExpressionRepeatMode,
-    removeExpressionById
+    removeExpressionById,
+    fetchExpressionsByExpression
 };
