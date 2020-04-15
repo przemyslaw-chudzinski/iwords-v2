@@ -66,12 +66,12 @@ class DictionarySearchController extends BaseController {
         $event.stopPropagation();
         $event.target.disabled = true;
 
-
         this.expressionSrv.checkIfExpressionExists({expression: item.expression})
             .then(res => res.data)
             .then(res => {
                 if (!res.exists) return this.expressionSrv.addExpression(item.originalExpressionObject)
                     .then(res => {
+
                         this.$mdToast.show(
                             this.$mdToast.simple()
                                 .textContent('Wyrażenie zostało dodane')

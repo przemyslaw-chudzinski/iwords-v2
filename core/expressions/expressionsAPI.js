@@ -71,6 +71,24 @@ router.get('/expressions', async (req, res) => {
 
 });
 
+/* Returns number of all user's expressions */
+router.get('/count', async (req, res) => {
+
+    const userId = req.query.userId;
+
+    try {
+        const quantity = await countAllUserExpressions({userId});
+
+        res.status(200);
+        await res.json({quantity});
+
+    } catch (e) {
+        res.status(400);
+        await res.json({error: true});
+    }
+
+});
+
 /* Increment answers counter */
 router.post('/expression/:id/increment-counter', (req, res) => {
 
@@ -136,6 +154,35 @@ router.get('/statistics', (req, res) => {
             res.status(400);
             res.json({error: true});
         });
+});
+
+/* Returns basic statistics */
+router.get('/statistics/basic', async (req, res) => {
+
+    try {
+        let correctAnswers = 0;
+        let incorrectAnswers = 0;
+
+        const inRepeatMode = await countAllExpressionsInRepeatMode({userId: req.query.userId});
+        const allUserExpressions = await fetchAllExpressions({userId: req.query.userId});
+
+        allUserExpressions.forEach(expr => {
+            correctAnswers += expr.correctAnswers;
+            incorrectAnswers += expr.incorrectAnswers;
+        });
+
+        res.status(200);
+        await res.json({
+            correctAnswers,
+            incorrectAnswers,
+            inRepeatMode
+        });
+
+    } catch (e) {
+        res.status(400);
+        await res.json({error: true});
+    }
+
 });
 
 /* Repeat count */

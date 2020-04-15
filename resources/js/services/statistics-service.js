@@ -11,6 +11,10 @@ class StatisticsService extends ServiceBase {
     fetchExprStatistics() {
         return this.http.get('/api/expressions/statistics', {params: {userId: this.userId}});
     }
+
+    fetchBasicStatistics() {
+        return this.http.get('/api/expressions/statistics/basic', {params: {userId: this.userId}});
+    }
 }
 
 module.exports = function StatisticsSrvFactory($http) {

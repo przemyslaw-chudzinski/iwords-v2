@@ -3,7 +3,7 @@ const {countAllUserExpressions, fetchExpressionById} = require('../core/expressi
 const {fetchNoteById, countAllExpressionNotes} = require('../core/notes/noteDAL');
 
 /* Main page */
-router.get('/', (req, res) => res.render('index', {name: 'app.dashboard'}));
+router.get('/', (req, res) => res.render('index', {name: 'app.dashboard', user: req.user}));
 /* Learning page */
 router.get('/learning/primary', async (req, res) => {
 

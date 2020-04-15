@@ -1,0 +1,46 @@
+<div class="wgt learning-summary-wgt" ng-controller="LearningSummaryWgtCtrl">
+
+    <div class="card card--with-shadow card--white">
+
+        <!-- Widget content -->
+        <div class="card__content">
+
+            <!-- Widget content -->
+            <div ng-if="!fetching">
+                <!-- Wgt header -->
+                <h2>Liczba wyrażeń w systemie: <span class="expressions-count-value" ng-bind="allExprCount">0</span></h2>
+
+                <!-- Wgt meta -->
+                <div class="wgt-meta-container">
+
+                    <div class="wgt-meta wgt-meta--green md-caption">
+                        <span class="fa fa-check"></span>
+                        <span ng-bind="basicStats.correctAnswers"></span>
+                        <span>poprawnych powtórzeń</span>
+                    </div>
+
+                    <div class="wgt-meta wgt-meta--red md-caption">
+                        <span class="fa fa-times"></span>
+                        <span ng-bind="basicStats.incorrectAnswers"></span>
+                        <span>błędnie powtórzonych wyrażeń</span>
+                    </div>
+
+                    <div class="wgt-meta wgt-meta--orange md-caption">
+                        <span class="fa fa-repeat"></span>
+                        <span ng-bind="basicStats.inRepeatMode"></span>
+                        <span>w trybie powtórek</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Widget loader -->
+        <div class="card__loader" ng-if="fetching">
+            <md-progress-circular md-mode="indeterminate" md-diameter="35px"></md-progress-circular>
+        </div>
+
+    </div>
+
+</div>
