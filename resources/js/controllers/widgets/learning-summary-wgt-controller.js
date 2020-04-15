@@ -28,13 +28,10 @@ class LearningSummaryWgtController extends BaseController {
             this.expressionSrv.fetchExpressionsCount()
         ])
             .then(([basicStatsRes, exprCountRes]) => {
-                console.log(basicStatsRes)
                 this.$scope.basicStats = basicStatsRes.data;
                 this.$scope.allExprCount = exprCountRes.data.quantity;
             })
-            .catch(err => {
-                console.log('error occured')
-            })
+            .catch(err => {})
             .finally(() => {
                 this.$timeout(() => {
                     this.$scope.fetching = false;
