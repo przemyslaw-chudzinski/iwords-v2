@@ -95,6 +95,10 @@ class ExpressionService extends ServiceBase {
 
         return this._http.post(this._prefix + '/expression/check-if-exists', {expression: _ctx.expression});
     }
+
+    fetchExpressionsCount() {
+        return this._http.get(this._prefix + '/count', {params: {userId: this.userId}});
+    }
 }
 
 module.exports = function ExpressionSrvFactory($http) {

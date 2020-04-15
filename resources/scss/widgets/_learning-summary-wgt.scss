@@ -1,0 +1,28 @@
+.learning-summary-wgt {
+
+  .wgt-meta-container {
+    margin-top: 1rem;
+  }
+
+  .wgt-meta {
+    margin-top: .5rem;
+
+    &--green {
+      color: get-color(success);
+    }
+
+    &--red {
+      color: get-color(danger);
+    }
+
+    &--orange {
+      color: get-color(primaryOrange);
+    }
+
+  }
+
+  .expressions-count-value {
+    color: get-color(primaryBlue);
+  }
+
+}

@@ -1,4 +1,4 @@
-<div class="app-edit-note-page" ng-controller="EditNoteCtrl" ng-init="noteId='{{noteId}}'; exprId='{{exprId}}';">
+<div class="app-edit-note-page" ng-controller="EditNoteCtrl" ng-init="noteId='{{noteId}}'; exprId='{{exprId}}'; content='{{content}}';">
 
     {{#if expression}}
         <div class="expression">
@@ -17,28 +17,8 @@
         </div>
     {{/if}}
 
-    <!-- Header -->
-    <div class="card__header">
-        <md-button ng-click="handleSaveNote($event)" class="md-raised md-primary">Zapisz</md-button>
-    </div>
+    <md-button ng-click="handleSaveNote($event)" ng-disabled="saving" class="md-raised md-primary">Zapisz</md-button>
 
-    <!-- Content -->
-    <div class="editor card card--with-shadow">
-
-        <div class="card__content">
-
-            <div class="editor__element" id="editorjs"></div>
-
-        </div>
-
-    </div>
+    <div class="editor" id="editorjs" style="border: 1px solid #e2e2e2; padding: .5rem"></div>
 
 </div>
-
-<script>
-
-    window.addEventListener('load', () => {
-        IWORDS.editors.editNoteEditor.init('{{content}}');
-    });
-
-</script>

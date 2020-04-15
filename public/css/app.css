@@ -16212,6 +16212,10 @@ body {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
+.card {
+  position: relative;
+}
+
 .card--white {
   background-color: white;
 }
@@ -16263,6 +16267,20 @@ body {
 .card__content-overlay.active {
   opacity: 0.8;
   visibility: visible;
+}
+
+.card__loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 /* Icon button */
@@ -16686,5 +16704,29 @@ body {
 
 .col {
   width: 100%;
+}
+
+.learning-summary-wgt .wgt-meta-container {
+  margin-top: 1rem;
+}
+
+.learning-summary-wgt .wgt-meta {
+  margin-top: 0.5rem;
+}
+
+.learning-summary-wgt .wgt-meta--green {
+  color: #00e676;
+}
+
+.learning-summary-wgt .wgt-meta--red {
+  color: #ff1744;
+}
+
+.learning-summary-wgt .wgt-meta--orange {
+  color: #ff6600;
+}
+
+.learning-summary-wgt .expressions-count-value {
+  color: #1777f2;
 }
 

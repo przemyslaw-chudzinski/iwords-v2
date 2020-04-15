@@ -26,6 +26,7 @@ const EditNoteCtrlFactory = require('./controllers/edit-note-controller');
 const ExpressionNotesCtrlFactory = require('./controllers/expression-notes-controller');
 const LearningSpeakingController = require('./controllers/learning-speaking-controller');
 const DictionarySearchController = require('./controllers/dictionary-search-controller');
+const LearningSummaryWgtController = require('./controllers/widgets/learning-summary-wgt-controller');
 
 /* Directives */
 const ExpressionSentenceTogglerDirFactory = require('./directives/expression-sentence-toggler-directive');
@@ -45,6 +46,7 @@ app.controller('EditNoteCtrl', ['$scope', 'notesSrv', '$mdToast', EditNoteCtrlFa
 app.controller('ExpressionNotesCtrl', ['$scope', 'notesSrv', '$mdDialog', ExpressionNotesCtrlFactory]);
 app.controller('LearningSpeakingCtrl', ['$scope', 'expressionSrv', '$timeout', LearningSpeakingController]);
 app.controller('DictionarySearchCtrl', ['$scope', 'dictionarySrv', 'expressionSrv', '$mdToast', '$mdDialog', DictionarySearchController]);
+app.controller('LearningSummaryWgtCtrl', ['$scope', 'statisticsSrv', 'expressionSrv', '$timeout', LearningSummaryWgtController]);
 /* Services */
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 // app.factory('csvSrv', ['$http', CsvSrvFactory]);

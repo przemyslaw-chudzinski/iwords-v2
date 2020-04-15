@@ -1,5 +1,6 @@
 .card {
   //padding: 2rem;
+  position: relative;
 
   &--white {
     background-color: get-color(primaryWhite);
@@ -57,6 +58,19 @@
       opacity: .8;
       visibility: visible;
     }
+
+  }
+
+  &__loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
   }
 
