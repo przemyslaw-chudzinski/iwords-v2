@@ -104,7 +104,7 @@ class DictionarySearchController extends BaseController {
         };
 
         this.$mdDialog.show({
-            controller: DialogExpressionIsNotUniqueFactory(data),
+            controller: ['$scope', '$mdDialog', DialogExpressionIsNotUniqueFactory(data)],
             templateUrl: '/templates/expr-exists-dialog-tpl.html',
             clickOutsideToClose:true,
             parent: angular.element(document.body)
@@ -117,7 +117,8 @@ class DictionarySearchController extends BaseController {
                             .hideDelay(3000)
                             .position('top right')
                     );
-                }));
+                }))
+            .catch(err => {});
     }
 }
 
