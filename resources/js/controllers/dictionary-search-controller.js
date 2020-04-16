@@ -58,10 +58,6 @@ class DictionarySearchController extends BaseController {
 
     _querySearch(searchText) {
         return this.dictionarySrv.searchExpressions({searchText})
-            .then(res => {
-                console.log('test', res.data)
-                return res;
-            })
             .then(res => res.data || [])
             .then(data => data.map(item => new Expression(item)));
     }
