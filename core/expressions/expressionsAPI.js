@@ -24,6 +24,7 @@ const {countAllExpressionNotes, removeNotesAssociatedToExpr} = require('../notes
 const {map} = require('async');
 
 const Expression = require('./expression');
+const {contentProviders} = require("./content-providers");
 
 /* Routes */
 

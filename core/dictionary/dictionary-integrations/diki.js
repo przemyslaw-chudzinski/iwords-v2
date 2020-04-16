@@ -90,6 +90,7 @@ class DikiIntegration {
                 .map(item => {
                     item.expression = expression;
                     item.partOfSpeech = null;
+                    item.provider = 'diki';
                     return item;
                 });
 
