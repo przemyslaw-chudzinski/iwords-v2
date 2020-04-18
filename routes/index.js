@@ -3,7 +3,7 @@ const {countAllUserExpressions, fetchExpressionById} = require('../core/expressi
 const {fetchNoteById, countAllExpressionNotes} = require('../core/notes/noteDAL');
 
 /* Main page */
-router.get('/', (req, res) => res.render('index', {name: 'app.dashboard', user: req.user}));
+router.get('/', (req, res) => res.render('pages/dashboard', {name: 'app.dashboard', user: req.user}));
 /* Learning page */
 router.get('/learning/primary', async (req, res) => {
 
@@ -63,10 +63,10 @@ router.get('/your-expressions', async (req, res) => {
     try {
         const total = await countAllUserExpressions({userId: req.user._id});
         viewData.hasExpressions = total > 0;
-        res.render('your-expressions', viewData);
+        res.render('pages/your-expressions', viewData);
     } catch (e) {
         req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych');
-        res.render('your-expressions', viewData);
+        res.render('pages/your-expressions', viewData);
     }
 
 });
