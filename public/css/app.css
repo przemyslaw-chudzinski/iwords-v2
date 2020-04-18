@@ -15933,6 +15933,23 @@ body {
   margin: 0 auto;
 }
 
+.app-learning-primary-page md-tab-item {
+  display: -webkit-box;
+  display: flex;
+  cursor: pointer;
+}
+
+.app-learning-primary-page md-tab-item .tab-badge {
+  background: #ff6600;
+  color: white;
+  display: block;
+  border-radius: 50%;
+  width: 1.3rem;
+  height: 1.3rem;
+  font-size: 0.6rem;
+  margin-left: 0.5rem;
+}
+
 .app-login-page {
   display: -webkit-box;
   display: flex;

@@ -10,7 +10,8 @@
             </md-content>
         </md-tab>
         <!-- Repeats -->
-        <md-tab label="Powtórki" ng-click="handleSelectTab('repeats', $event)">
+        <md-tab ng-click="handleSelectTab('repeats', $event)">
+            <md-tab-label>Powtórki <span class="tab-badge" ng-if="repeatCount > 0" ng-bind="repeatCount"></span></md-tab-label>
             <md-content class="md-padding">
                 <div class="app-learning-primary-page__expressions-in-repeat-mode">
                     {{> learning-expressions-in-repeat-mode-tab}}
@@ -18,7 +19,7 @@
             </md-content>
         </md-tab>
         <!-- Example sentences -->
-        <md-tab label="Przykładowe zdania">
+        <md-tab label="Przykładowe zdania" ng-disabled="!currentExpr.hasExampleSentences">
             <md-content class="md-padding">
                 {{> expression-example-sentences-tab}}
             </md-content>

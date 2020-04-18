@@ -24,5 +24,22 @@
     margin: 0 auto;
   }
 
+  md-tab-item {
+    display: flex;
+    cursor: pointer;
+
+    .tab-badge {
+      background: get-color(primaryOrange);
+      color: get-color(primaryWhite);
+      display: block;
+      border-radius: 50%;
+      width: 1.3rem;
+      height: 1.3rem;
+      font-size: .6rem;
+      margin-left: .5rem;
+    }
+
+  }
+
 }
 

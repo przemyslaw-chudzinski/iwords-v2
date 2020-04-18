@@ -37,7 +37,7 @@ const AsideNestedMenuTogglerDirFactory = require('./directives/aside-nested-menu
 const app = angular.module('appModule', ['ngMaterial', 'ngMessages', 'chart.js']);
 
 /* Controllers */
-app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialog', 'localStorageSrv', LearningController]);
+app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialog', 'localStorageSrv', '$mdToast', LearningController]);
 // app.controller('ImportCsvCrl', ['$scope', 'csvSrv', ImportCsvCrlFactory]);
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
