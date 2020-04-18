@@ -18,13 +18,9 @@ const {
     removeExpressionById,
     fetchExpressionsByExpression
 } = require('./expressionDAL');
-
 const {countAllExpressionNotes, removeNotesAssociatedToExpr} = require('../notes/noteDAL');
-
 const {map} = require('async');
-
 const Expression = require('./expression');
-const {contentProviders} = require("./content-providers");
 
 /* Routes */
 
@@ -40,7 +36,6 @@ router.get('/expression', (req, res) => {
             res.json({error: true});
         });
 });
-
 
 /* Returns a bunch of expressions to learn in one set */
 router.get('/expressions', async (req, res) => {
