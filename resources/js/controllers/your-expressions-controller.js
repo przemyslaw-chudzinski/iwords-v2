@@ -142,13 +142,7 @@ class YourExpressionsController extends BaseController {
                     .setSeverity('success')
                     .show();
             })
-            .catch(err => {
-                toastBuilder
-                    .addMessage(`Wystąpił błąd podczas usuwania wyrażenia ${expression.expression}`)
-                    .addCloseButton()
-                    .setSeverity('error')
-                    .show();
-            });
+            .catch(() => {});
     }
 
     _handleFetchingExpressionsError(error) {
