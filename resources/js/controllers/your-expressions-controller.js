@@ -84,8 +84,17 @@ class YourExpressionsController extends BaseController {
 
     /* Add new note UI logic */
     _handleAddNote(expression, event) {
+        const toastBuilder = new ToastBuilder(this.$mdToast);
         const expr = {_id: expression._id, expression: expression.expression};
-        this.notesSrv.showAddNoteDialog(expr, event);
+        this.notesSrv.showAddNoteDialog(expr, event, err => {
+            if (err) {
+                toastBuilder
+                    .setSeverity('error')
+                    .addCloseButton()
+                    .addMessage('Wystąpił błąd. Notatka nie została utworzona')
+                    .show();
+            }
+        });
     }
     // ===========================================================================================
 

@@ -1,5 +1,5 @@
 const BaseController = require('./base-controller');
-const {Expression} = require('../classes');
+const {Expression, ToastBuilder} = require('../classes');
 
 class DialogExpressionIsNotUniqueController extends BaseController {
     constructor($scope, $mdDialog, data) {
@@ -49,7 +49,7 @@ class DictionarySearchController extends BaseController {
 
     /**
      * @desc It handle when search text is changed
-     * @param event
+     * @param searchText
      * @private
      */
     _searchTextChange(searchText) {
@@ -64,7 +64,6 @@ class DictionarySearchController extends BaseController {
 
     _handleAddToIwords(item, $event) {
         $event.stopPropagation();
-        $event.target.disabled = true;
 
         this.expressionSrv.checkIfExpressionExists({expression: item.expression})
             .then(res => res.data)
@@ -72,22 +71,23 @@ class DictionarySearchController extends BaseController {
                 if (!res.exists) return this.expressionSrv.addExpression(item.originalExpressionObject)
                     .then(res => {
 
-                        this.$mdToast.show(
-                            this.$mdToast.simple()
-                                .textContent('Wyrażenie zostało dodane')
-                                .hideDelay(3000)
-                                .position('top right')
-                        );
+                        const toastBuilder = new ToastBuilder(this.$mdToast);
+                        toastBuilder
+                            .setSeverity('success')
+                            .addMessage('Wyrażenie zostało dodane')
+                            .addCloseButton()
+                            .show();
+
                     })
                     .catch(err => {
                         $event.target.disabled = false;
 
-                        this.$mdToast.show(
-                            this.$mdToast.simple()
-                                .textContent('Wyrażenie nie zostało dodane')
-                                .hideDelay(3000)
-                                .position('top right')
-                        );
+                        const toastBuilder = new ToastBuilder(this.$mdToast);
+                        toastBuilder
+                            .setSeverity('error')
+                            .addMessage('Wyrażenie nie zostało dodane')
+                            .addCloseButton()
+                            .show();
 
                     });
 
@@ -106,17 +106,17 @@ class DictionarySearchController extends BaseController {
         this.$mdDialog.show({
             controller: ['$scope', '$mdDialog', DialogExpressionIsNotUniqueFactory(data)],
             templateUrl: '/templates/expr-exists-dialog-tpl.html',
-            clickOutsideToClose:true,
+            clickOutsideToClose: true,
             parent: angular.element(document.body)
         })
             .then(({canceled}) =>
                 !canceled && this.expressionSrv.addExpression(chosenExpression.originalExpressionObject).then(() => {
-                    this.$mdToast.show(
-                        this.$mdToast.simple()
-                            .textContent('Wyrażenie zostało dodane')
-                            .hideDelay(3000)
-                            .position('top right')
-                    );
+                    const toastBuilder = new ToastBuilder(this.$mdToast);
+                    toastBuilder
+                        .setSeverity('success')
+                        .addMessage('Wyrażenie zostało dodane')
+                        .addCloseButton()
+                        .show();
                 }))
             .catch(err => {});
     }
