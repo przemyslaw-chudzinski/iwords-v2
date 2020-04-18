@@ -13,8 +13,10 @@ class LearningSummaryWgtController extends BaseController {
         this.$scope.fetching = true;
         this.$scope.allExprCount = 0;
         this.$scope.basicStats = null;
+        this.$scope.fetchingError = false;
 
         // assign template functions
+        this.$scope.refresh = () => this._fetchData();
 
     }
 
@@ -23,6 +25,10 @@ class LearningSummaryWgtController extends BaseController {
     }
 
     _fetchData() {
+
+        this.$scope.fetching = true;
+        this.$scope.fetchingError = false;
+
         Promise.all([
             this.statisticsSrv.fetchBasicStatistics(),
             this.expressionSrv.fetchExpressionsCount()
@@ -31,12 +37,16 @@ class LearningSummaryWgtController extends BaseController {
                 this.$scope.basicStats = basicStatsRes.data;
                 this.$scope.allExprCount = exprCountRes.data.quantity;
             })
-            .catch(err => {})
+            .catch(this._handleFetchingDataError.bind(this))
             .finally(() => {
                 this.$timeout(() => {
                     this.$scope.fetching = false;
                 });
             });
+    }
+
+    _handleFetchingDataError(error) {
+        this.$scope.fetchingError = true;
     }
 }
 

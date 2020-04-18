@@ -15933,6 +15933,23 @@ body {
   margin: 0 auto;
 }
 
+.app-learning-primary-page md-tab-item {
+  display: -webkit-box;
+  display: flex;
+  cursor: pointer;
+}
+
+.app-learning-primary-page md-tab-item .tab-badge {
+  background: #ff6600;
+  color: white;
+  display: block;
+  border-radius: 50%;
+  width: 1.3rem;
+  height: 1.3rem;
+  font-size: 0.6rem;
+  margin-left: 0.5rem;
+}
+
 .app-login-page {
   display: -webkit-box;
   display: flex;
@@ -15955,10 +15972,6 @@ body {
 
 .app-login-page button {
   margin: 0;
-}
-
-.app-statistics-page {
-  padding: 2rem;
 }
 
 .app-your-expressions-page .inner-container {
@@ -16269,6 +16282,15 @@ body {
   visibility: visible;
 }
 
+.card__content-overlay--centered {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
 .card__loader {
   position: absolute;
   top: 0;
@@ -16451,6 +16473,24 @@ body {
 .dic-search-result__title,
 .dic-search-result__meta {
   display: block;
+}
+
+.basic-toast .severity-icon {
+  -webkit-box-flex: 0;
+          flex-grow: 0;
+  margin-right: 2rem;
+}
+
+.basic-toast--success .severity-icon {
+  color: #00e676;
+}
+
+.basic-toast--warning .severity-icon {
+  color: #ff6600;
+}
+
+.basic-toast--error .severity-icon {
+  color: #ff1744;
 }
 
 .learning {
@@ -16706,7 +16746,7 @@ body {
   width: 100%;
 }
 
-.learning-summary-wgt .wgt-meta-container {
+.wgt .wgt-meta-container {
   margin-top: 1rem;
 }
 

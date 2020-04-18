@@ -3,7 +3,7 @@ const {countAllUserExpressions, fetchExpressionById} = require('../core/expressi
 const {fetchNoteById, countAllExpressionNotes} = require('../core/notes/noteDAL');
 
 /* Main page */
-router.get('/', (req, res) => res.render('index', {name: 'app.dashboard', user: req.user}));
+router.get('/', (req, res) => res.render('pages/dashboard', {name: 'app.dashboard', user: req.user}));
 /* Learning page */
 router.get('/learning/primary', async (req, res) => {
 
@@ -42,15 +42,6 @@ router.get('/learning/speaking', async (req, res) => {
 router.get('/import', (req, res) => res.render('import', {}));
 /* Dictionary */
 router.get('/dictionary', (req, res) => res.render('dictionary', {}));
-/* Statistics */
-router.get('/statistics', (req, res) => {
-    const viewData = {
-        name: 'app.statistics',
-        pageTitle: 'Statystyki'
-    };
-
-    res.render('statistics', viewData);
-});
 /* Your expressions */
 router.get('/your-expressions', async (req, res) => {
 
@@ -63,10 +54,10 @@ router.get('/your-expressions', async (req, res) => {
     try {
         const total = await countAllUserExpressions({userId: req.user._id});
         viewData.hasExpressions = total > 0;
-        res.render('your-expressions', viewData);
+        res.render('pages/your-expressions', viewData);
     } catch (e) {
         req.flash('error_top_msg', 'Wystąpił nieoczekiwany błąd serwera. Nie możemy wczytać danych');
-        res.render('your-expressions', viewData);
+        res.render('pages/your-expressions', viewData);
     }
 
 });
@@ -98,7 +89,7 @@ router.get('/notes/expression/:id', async (req, res) => {
         viewData.hasNotes = notesCount > 0;
         viewData.expression = expression.expression;
 
-        res.render('expression-notes', viewData);
+        res.render('pages/expression-notes', viewData);
 
     } catch (e) {
         console.log(e);
@@ -161,7 +152,7 @@ router.get('/notes/:id/:exprId?', async (req, res) => {
 
         viewData.pageTitle = `Edytujesz notatkę - ${note.title}`;
         viewData.content = note.content;
-        res.render('edit-note', viewData);
+        res.render('pages/edit-note', viewData);
 
     } catch (e) {
         console.log(e);

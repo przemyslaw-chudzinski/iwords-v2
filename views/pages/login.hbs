@@ -1,0 +1,68 @@
+<!-- Auth page -->
+<div class="app-login-page">
+
+    <form method="post" action="/controllers/auth/login" ng-cloak>
+
+        <md-card md-theme-watch>
+
+            {{#if login_credentials_error}}
+
+                <md-card-title>
+
+                    <div class="message message--error">{{login_credentials_error}}</div>
+
+                </md-card-title>
+
+            {{/if}}
+
+            <md-card-title>
+
+                <md-card-title-text class="heading">
+
+                    <span class="md-headline">iWords</span>
+
+                </md-card-title-text>
+
+            </md-card-title>
+
+            <md-card-content layout="column">
+
+                <md-input-container>
+
+                    <label>Email</label>
+
+                    <input name="email" type="email">
+
+                </md-input-container>
+
+                <md-input-container>
+
+                    <label>Hasło</label>
+
+                    <input name="password" type="password">
+
+                </md-input-container>
+
+                <div layout>
+
+                    <div flex="50">
+                        <md-checkbox>Zapamiętaj mnie</md-checkbox>
+                    </div>
+
+                    <div flex="50" style="text-align: right;">
+                        <a href="/auth/register">Załóż konto</a>
+                    </div>
+
+                </div>
+
+                <div>
+                    <md-button type="submit" class="md-raised md-primary">Zaloguj</md-button>
+                </div>
+
+            </md-card-content>
+
+        </md-card>
+
+    </form>
+
+</div>

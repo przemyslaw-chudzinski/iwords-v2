@@ -1,0 +1,24 @@
+<div class="app-edit-note-page" ng-controller="EditNoteCtrl" ng-init="noteId='{{noteId}}'; exprId='{{exprId}}'; content='{{content}}';">
+
+    {{#if expression}}
+        <div class="expression">
+            <h2>{{expression}}</h2>
+            <p>{{translations}}</p>
+            {{#if sentences.length}}
+                <ul class="expression__sentence">
+                    {{#each sentences}}
+                        <li class="expression__sentence-item">
+                            <div><strong>{{this.sentence}}</strong></div>
+                            <div><span>{{this.translation}}</span></div>
+                        </li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+        </div>
+    {{/if}}
+
+    <md-button ng-click="handleSaveNote($event)" ng-disabled="saving" class="md-raised md-primary">Zapisz</md-button>
+
+    <div class="editor" id="editorjs" style="border: 1px solid #e2e2e2; padding: .5rem"></div>
+
+</div>

@@ -56,7 +56,6 @@ router.post('/', async (req, res) => {
         await res.json({error: true});
     }
 
-
 });
 
 /* Gets notes associated with expression id */

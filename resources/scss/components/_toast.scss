@@ -1,0 +1,26 @@
+.basic-toast {
+
+  .severity-icon {
+    flex-grow: 0;
+    margin-right: 2rem;
+  }
+
+  &--success {
+    .severity-icon {
+      color: get-color(success);
+    }
+  }
+
+  &--warning {
+    .severity-icon {
+      color: get-color(primaryOrange);
+    }
+  }
+
+  &--error {
+    .severity-icon {
+      color: get-color(danger);
+    }
+  }
+
+}

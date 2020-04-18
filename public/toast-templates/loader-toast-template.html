@@ -1,0 +1,13 @@
+<md-toast role="alert" aria-relevant="all">
+
+    <md-progress-circular md-mode="indeterminate" class="md-accent" md-diameter="30" style="margin-right: .5rem;"></md-progress-circular>
+
+    <!-- Message -->
+    <span class="md-toast-text">{{ctrl.message}}</span>
+
+    <!-- Buttons -->
+    <div>
+        <md-button ng-if="ctrl.closeButton.visible" class="md-accent" ng-click="closeSelf()">{{ctrl.closeButton.label}}</md-button>
+    </div>
+
+</md-toast>

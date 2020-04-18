@@ -1,4 +1,4 @@
-<div class="wgt learning-summary-wgt" ng-controller="LearningSummaryWgtCtrl">
+<div class="wgt learning-summary-wgt" ng-controller="LearningSummaryWgtCtrl" ng-cloak>
 
     <div class="card card--with-shadow card--white">
 
@@ -6,7 +6,7 @@
         <div class="card__content">
 
             <!-- Widget content -->
-            <div ng-if="!fetching">
+            <div ng-if="!fetching && !fetchingError">
                 <!-- Wgt header -->
                 <h2>Liczba wyrażeń w systemie: <span class="expressions-count-value" ng-bind="allExprCount">0</span></h2>
 
@@ -32,6 +32,15 @@
                     </div>
 
                 </div>
+            </div>
+
+            <!-- When error occurred -->
+            <div ng-if="fetchingError">
+                Wystąpił błąd podczas pobierania danych :(
+                <md-button class="md-icon-button md-primary" ng-click="refresh()">
+                    <md-tooltip md-direction="top">Załaduj dane jeszcze raz</md-tooltip>
+                    <span class="fa fa-refresh"></span>
+                </md-button>
             </div>
 
         </div>

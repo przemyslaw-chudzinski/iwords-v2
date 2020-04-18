@@ -1,9 +1,9 @@
 const BaseController = require('./base-controller');
-const {Speech, Expression} = require('../classes');
+const {Speech, Expression, LoaderToastBuilder, ToastBuilder} = require('../classes');
 
 class LearningController extends BaseController {
 
-    constructor($scope, expressionSrv, $timeout, $mdDialog, localStorageSrv) {
+    constructor($scope, expressionSrv, $timeout, $mdDialog, localStorageSrv, $mdToast) {
         super($scope);
 
         // setup
@@ -11,6 +11,7 @@ class LearningController extends BaseController {
         this.$mdDialog = $mdDialog;
         this.$timeout = $timeout;
         this.localStorageSrv = localStorageSrv;
+        this.$mdToast = $mdToast;
         this._speech = new Speech();
 
         // init state
@@ -58,10 +59,20 @@ class LearningController extends BaseController {
      * @private
      */
     _fetchExpressions() {
+
+        const loaderToastBuilder = new LoaderToastBuilder(this.$mdToast);
+        loaderToastBuilder.show();
+
         return this.expressionSrv.fetchExpressions({onlyRepeats: this.$scope.repeatState.state})
             .then(({data: {data}}) => {
+
+                this.$mdToast.hide();
+
                 if (data && data.length) {
                     this.$scope.currentExprs = data.map(expression => new Expression(expression));
+                    // this.$timeout(() => {
+                    //     this.$scope.currentExpr = this.$scope.currentExprs[0];
+                    // });
                     this.$scope.currentExpr = this.$scope.currentExprs[0];
                     return;
                 }
@@ -70,6 +81,18 @@ class LearningController extends BaseController {
                     this.localStorageSrv.repeatStateOff();
                     this._fetchExpressions();
                 }
+            })
+            .catch(err => {
+                this.$mdToast.hide();
+
+                const toastBuilder = new ToastBuilder(this.$mdToast);
+                toastBuilder
+                    .setSeverity('error')
+                    .addMessage('Wystąpił problem z pobraniem wyrażeń')
+                    .neverHide()
+                    .addCloseButton('PONÓW')
+                    .show()
+                    .then(() => this._fetchExpressions());
             });
     }
 
@@ -78,13 +101,23 @@ class LearningController extends BaseController {
      * @private
      */
     _fetchRepeatCount() {
+
         this.expressionSrv.fetchRepeatCount()
             .then(({data: {repeatCount}}) => {
                 this.$scope.repeatCount = repeatCount;
             })
             .catch(err => {
                 this.$scope.repeatCount = 0;
-                console.log('something went wrong', err);
+
+                const toastBuilder = new ToastBuilder(this.$mdToast);
+                toastBuilder
+                    .setSeverity('error')
+                    .addMessage('Wystąpił problem z liczy powtórek')
+                    .neverHide()
+                    .addCloseButton('PONÓW')
+                    .show()
+                    .then(() => this._fetchRepeatCount());
+
             });
     }
 
@@ -126,7 +159,16 @@ class LearningController extends BaseController {
 
         // Request - Increment answer counter
         this.expressionSrv.incrementAnswersCounter({expressionId: this.$scope.currentExpr.id})
-            .then(() => this._fetchRepeatCount());
+            .then(() => this._fetchRepeatCount())
+            .catch(() => {
+                const toastBuilder = new ToastBuilder(this.$mdToast);
+                toastBuilder
+                    .setSeverity('error')
+                    .addMessage('Wystąpił błąd. Wyrażenie nie zostało z aktualizowane poprawnie')
+                    .neverHide()
+                    .addCloseButton()
+                    .show();
+            });
 
         this.$timeout(() => {
             const nextExprIndex = this._getNextExpression();

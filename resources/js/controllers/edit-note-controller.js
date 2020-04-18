@@ -1,4 +1,5 @@
 const BaseController = require('./base-controller');
+const {ToastBuilder} = require('../classes');
 
 class EditNoteController extends BaseController {
 
@@ -37,24 +38,28 @@ class EditNoteController extends BaseController {
             noteId
         };
 
+        const toastBuilder = new ToastBuilder(this.$mdToast);
+
         this.notesSrv.updateNote(config)
             .then(() => {
-                console.log('here');
                 this.$scope.saving = false;
-                this._showSuccessToast();
+
+                toastBuilder
+                    .setSeverity('success')
+                    .addMessage('Notatka została zapisana')
+                    .addCloseButton()
+                    .setHideDelay(2000)
+                    .show();
+
             })
-            .catch(err => console.log('something went wrong', err));
-    }
-
-    _showSuccessToast() {
-        const toast = this.$mdToast.show(
-            this.$mdToast.simple()
-                .textContent('Notatka została zapisana')
-                .action('Zamknij')
-                .position('top right')
-                .hideDelay(3000));
-
-        return toast;
+            .catch(err => {
+                toastBuilder
+                    .setSeverity('error')
+                    .addMessage('Wystąpił błąd podczas zapisu notatki')
+                    .addCloseButton()
+                    .neverHide()
+                    .show();
+            });
     }
 
 }

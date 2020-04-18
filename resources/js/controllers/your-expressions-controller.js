@@ -1,5 +1,5 @@
 const BaseController = require('./base-controller');
-const {PaginationList} = require('../classes');
+const {PaginationList, ToastBuilder, Speech} = require('../classes');
 
 const defaultPagination = {
     page: 1,
@@ -17,12 +17,14 @@ class YourExpressionsController extends BaseController {
         this.$mdToast = $mdToast;
         this.$mdDialog = $mdDialog;
         this._pagination = new PaginationList(defaultPagination);
+        this._speech = new Speech();
 
         // init state
         this.$scope.expressions = [];
         this.$scope.fetching = true;
         this.$scope.filterSearch = '';
         this.$scope.currentPage = this._pagination.page;
+        this.$scope.canSpeakExpression = this._speech.checkSupport();
 
         // assign template functions
         this.$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
@@ -33,6 +35,7 @@ class YourExpressionsController extends BaseController {
         this.$scope.nextPage = () => this._pagination.nextPage(this.onPageChange.bind(this));
         this.$scope.handleRemoveExpression = this._handleRemoveExpression.bind(this);
         this.$scope.goToNotes = expr => window.location.href = `/app/notes/expression/${expr._id}`;
+        this.$scope.speak = expr => this._speech.speak(expr.expression);
     }
 
     pageLoadedHook() {
@@ -40,11 +43,10 @@ class YourExpressionsController extends BaseController {
     }
 
     _fetchUsersExpressions() {
+        this.$scope.fetching = true;
         this.expressionSrv.fetchUsersExpressions({params: {page: this._pagination.page, limit: this._pagination.limit, search: this.$scope.filterSearch}})
             .then(this._handleFetchExpressionSuccess.bind(this))
-            .catch(err => {
-                console.log('something went wrong');
-            });
+            .catch(this._handleFetchingExpressionsError.bind(this));
     }
 
     /* List pagination */
@@ -52,9 +54,7 @@ class YourExpressionsController extends BaseController {
         this.$scope.fetching = true;
         this.expressionSrv.fetchUsersExpressions({params: {page, limit, search: this.$scope.filterSearch}})
             .then(this._handleFetchExpressionSuccess.bind(this))
-            .catch(err => {
-                console.log('something went wrong');
-            });
+            .catch(this._handleFetchingExpressionsError.bind(this));
     }
     // ===========================================================================================
 
@@ -79,37 +79,56 @@ class YourExpressionsController extends BaseController {
 
         this.expressionSrv.fetchUsersExpressions({params: {page: this._pagination.page, limit: this._pagination.limit, search: this.$scope.filterSearch}})
             .then(this._handleFetchExpressionSuccess.bind(this))
-            .catch(err => {
-                console.log('something went wrong');
-            });
+            .catch(this._handleFetchingExpressionsError.bind(this));
     }
 
     /* Add new note UI logic */
     _handleAddNote(expression, event) {
+        const toastBuilder = new ToastBuilder(this.$mdToast);
         const expr = {_id: expression._id, expression: expression.expression};
-        this.notesSrv.showAddNoteDialog(expr, event);
+        this.notesSrv.showAddNoteDialog(expr, event, err => {
+            if (err) {
+                toastBuilder
+                    .setSeverity('error')
+                    .addCloseButton()
+                    .addMessage('Wystąpił błąd. Notatka nie została utworzona')
+                    .show();
+            }
+        });
     }
     // ===========================================================================================
 
     _handleToggleExpressionRepeatMode(expr, event) {
+
+        const toastBuilder = new ToastBuilder(this.$mdToast);
+
         this.expressionSrv.toggleExpressionRepeatMode({exprId: expr._id})
             .then(() => {
                 const index = this.$scope.expressions.findIndex(item => item._id === expr._id);
-                const textContent = expr.inRepeatState ? 'Wyrażenie zostało dodane do powtórek' : 'Wyrażenie zostało usunięte z powtórek';
+                const textContent = expr.inRepeatState
+                    ? `Wyrażenie ${expr.expression} zostało usunięte z powtórek` :
+                    `Wyrażenie ${expr.expression} zostało dodane do powtórek`;
 
                 if (index !== -1) {
                     this.$scope.expressions[index].inRepeatState = !this.$scope.expressions[index].inRepeatState;
                 }
 
-                this.$mdToast.show(
-                    this.$mdToast
-                        .simple()
-                        .textContent(textContent)
-                        .hideDelay(3000)
-                );
+                toastBuilder
+                    .setSeverity('success')
+                    .addMessage(textContent)
+                    .addCloseButton()
+                    .neverHide()
+                    .show();
+
 
             })
-            .catch(err => console.log('something went wrong', err));
+            .catch(err => {
+                toastBuilder
+                    .setSeverity('error')
+                    .addMessage('Wystąpił błąd podczas zmiany statusu wyrażenia')
+                    .addCloseButton()
+                    .show();
+            });
     }
 
     _handleRemoveExpression(expression, event) {
@@ -120,12 +139,31 @@ class YourExpressionsController extends BaseController {
             .ok('Tak, usuń wyrażenie')
             .cancel('Anuluj');
 
+        const toastBuilder = new ToastBuilder(this.$mdToast);
+
         this.$mdDialog.show(confirmDialog)
             .then(() => this.expressionSrv.removeExpression({exprId: expression._id}))
             .then(() => {
                 this.$scope.expressions = this.$scope.expressions.filter(expr => expr._id !== expression._id);
+                toastBuilder
+                    .addMessage(`Wyrażenie ${expression.expression} zostało usunięte poprawnie`)
+                    .addCloseButton()
+                    .setSeverity('success')
+                    .show();
             })
             .catch(() => {});
+    }
+
+    _handleFetchingExpressionsError(error) {
+        this.$scope.fetching = false;
+        const toastBuilder = new ToastBuilder(this.$mdToast);
+        toastBuilder
+            .addCloseButton('ODŚWIERZ')
+            .addMessage('Wystąpił nieoczekiwany problem z probraniem wyrażeń')
+            .setSeverity('error')
+            .neverHide()
+            .show()
+            .then(() => this._fetchUsersExpressions())
     }
 
 }

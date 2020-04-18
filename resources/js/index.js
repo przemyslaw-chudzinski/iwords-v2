@@ -27,6 +27,7 @@ const ExpressionNotesCtrlFactory = require('./controllers/expression-notes-contr
 const LearningSpeakingController = require('./controllers/learning-speaking-controller');
 const DictionarySearchController = require('./controllers/dictionary-search-controller');
 const LearningSummaryWgtController = require('./controllers/widgets/learning-summary-wgt-controller');
+const ChartSummaryWgtController = require('./controllers/widgets/chart-summary-wgt-controller');
 
 /* Directives */
 const ExpressionSentenceTogglerDirFactory = require('./directives/expression-sentence-toggler-directive');
@@ -36,7 +37,7 @@ const AsideNestedMenuTogglerDirFactory = require('./directives/aside-nested-menu
 const app = angular.module('appModule', ['ngMaterial', 'ngMessages', 'chart.js']);
 
 /* Controllers */
-app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialog', 'localStorageSrv', LearningController]);
+app.controller('LearningCtrl', ['$scope', 'expressionSrv', '$timeout', '$mdDialog', 'localStorageSrv', '$mdToast', LearningController]);
 // app.controller('ImportCsvCrl', ['$scope', 'csvSrv', ImportCsvCrlFactory]);
 app.controller('StatisticsCtrl', ['$scope', 'statisticsSrv', StatisticsCtrlFactory]);
 app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
@@ -47,6 +48,7 @@ app.controller('ExpressionNotesCtrl', ['$scope', 'notesSrv', '$mdDialog', Expres
 app.controller('LearningSpeakingCtrl', ['$scope', 'expressionSrv', '$timeout', LearningSpeakingController]);
 app.controller('DictionarySearchCtrl', ['$scope', 'dictionarySrv', 'expressionSrv', '$mdToast', '$mdDialog', DictionarySearchController]);
 app.controller('LearningSummaryWgtCtrl', ['$scope', 'statisticsSrv', 'expressionSrv', '$timeout', LearningSummaryWgtController]);
+app.controller('ChartSummaryWgtCtrl', ['$scope', 'statisticsSrv', '$timeout', ChartSummaryWgtController]);
 /* Services */
 app.factory('expressionSrv', ['$http', ExpressionSrvFactory]);
 // app.factory('csvSrv', ['$http', CsvSrvFactory]);
