@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="117e6571-d450-48e0-8bfb-d19890fc3ef0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/toast-templates/toast-template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/classes/toast-builder.class.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/components/_toast.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/classes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/classes/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/components/_card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_card.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/components/_components.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_components.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/pages/your-expressions.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/your-expressions.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,14 +144,7 @@
       <workItem from="1587055978960" duration="1610000" />
       <workItem from="1587058749604" duration="230000" />
       <workItem from="1587186965073" duration="4328000" />
-      <workItem from="1587196907028" duration="5842000" />
-    </task>
-    <task id="LOCAL-00069" summary="mark which expression have notes">
-      <created>1579983327478</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1579983327478</updated>
+      <workItem from="1587196907028" duration="6658000" />
     </task>
     <task id="LOCAL-00070" summary="before merge">
       <created>1579983423605</created>
@@ -497,7 +482,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587189182855</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="improved error handling">
+      <created>1587204261842</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1587204261842</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,7 +508,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="removed unnecessary elements" />
     <MESSAGE value="improved user's expressions list" />
     <MESSAGE value="renamed" />
     <MESSAGE value="added new method for asside" />
@@ -541,17 +532,18 @@
     <MESSAGE value="removed unnecessary widget" />
     <MESSAGE value="views refactor" />
     <MESSAGE value="implemented error handling for summary dashboard widget" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented error handling for summary dashboard widget" />
+    <MESSAGE value="improved error handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved error handling" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579301681034">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1579301681034" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1587189182475">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1587204261408">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1587189182475" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1587204261408" />
     <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1587058069271" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1581447856425">
       <screen x="0" y="0" width="2560" height="1440" />

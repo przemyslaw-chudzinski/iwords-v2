@@ -1,5 +1,5 @@
 const BaseController = require('./base-controller');
-const {PaginationList, ToastBuilder} = require('../classes');
+const {PaginationList, ToastBuilder, Speech} = require('../classes');
 
 const defaultPagination = {
     page: 1,
@@ -17,12 +17,14 @@ class YourExpressionsController extends BaseController {
         this.$mdToast = $mdToast;
         this.$mdDialog = $mdDialog;
         this._pagination = new PaginationList(defaultPagination);
+        this._speech = new Speech();
 
         // init state
         this.$scope.expressions = [];
         this.$scope.fetching = true;
         this.$scope.filterSearch = '';
         this.$scope.currentPage = this._pagination.page;
+        this.$scope.canSpeakExpression = this._speech.checkSupport();
 
         // assign template functions
         this.$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
@@ -33,6 +35,7 @@ class YourExpressionsController extends BaseController {
         this.$scope.nextPage = () => this._pagination.nextPage(this.onPageChange.bind(this));
         this.$scope.handleRemoveExpression = this._handleRemoveExpression.bind(this);
         this.$scope.goToNotes = expr => window.location.href = `/app/notes/expression/${expr._id}`;
+        this.$scope.speak = expr => this._speech.speak(expr.expression);
     }
 
     pageLoadedHook() {
