@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="117e6571-d450-48e0-8bfb-d19890fc3ef0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/toast-templates/toast-template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/classes/toast-builder.class.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/scss/components/_toast.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/expressions/expressionsAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/widgets/learning-summary-wgt-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/widgets/learning-summary-wgt-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/widgets/learning-summary-wgt.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/widgets/learning-summary-wgt.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/classes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/classes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/components/_card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_card.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/components/_components.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_components.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/your-expressions.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/your-expressions.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,14 +151,8 @@
       <workItem from="1586923974392" duration="1390000" />
       <workItem from="1587055978960" duration="1610000" />
       <workItem from="1587058749604" duration="230000" />
-      <workItem from="1587186965073" duration="1865000" />
-    </task>
-    <task id="LOCAL-00068" summary="implemented adding notes from expression notes view">
-      <created>1579943860995</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1579943860995</updated>
+      <workItem from="1587186965073" duration="4328000" />
+      <workItem from="1587196907028" duration="5842000" />
     </task>
     <task id="LOCAL-00069" summary="mark which expression have notes">
       <created>1579983327478</created>
@@ -489,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587187933635</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="implemented error handling for summary dashboard widget">
+      <created>1587189182854</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1587189182855</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -508,7 +516,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="prevent toggle by children elements" />
     <MESSAGE value="removed unnecessary elements" />
     <MESSAGE value="improved user's expressions list" />
     <MESSAGE value="renamed" />
@@ -533,17 +540,18 @@
     <MESSAGE value="deploy" />
     <MESSAGE value="removed unnecessary widget" />
     <MESSAGE value="views refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="views refactor" />
+    <MESSAGE value="implemented error handling for summary dashboard widget" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented error handling for summary dashboard widget" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579301681034">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1579301681034" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1587187933529">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1587189182475">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1587187933529" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1587189182475" />
     <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1587058069271" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1581447856425">
       <screen x="0" y="0" width="2560" height="1440" />
@@ -561,9 +569,13 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1583181805607" />
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1587057086477">
+    <state x="945" y="345" key="run.anything.popup" timestamp="1587200447929">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1587057086477" />
+    <state x="945" y="345" key="run.anything.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1587200447929" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1587203786880">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1587203786880" />
   </component>
 </project>

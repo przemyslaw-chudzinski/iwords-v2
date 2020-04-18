@@ -16269,6 +16269,15 @@ body {
   visibility: visible;
 }
 
+.card__content-overlay--centered {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
 .card__loader {
   position: absolute;
   top: 0;
@@ -16451,6 +16460,24 @@ body {
 .dic-search-result__title,
 .dic-search-result__meta {
   display: block;
+}
+
+.basic-toast .severity-icon {
+  -webkit-box-flex: 0;
+          flex-grow: 0;
+  margin-right: 2rem;
+}
+
+.basic-toast--success .severity-icon {
+  color: #00e676;
+}
+
+.basic-toast--warning .severity-icon {
+  color: #ff6600;
+}
+
+.basic-toast--error .severity-icon {
+  color: #ff1744;
 }
 
 .learning {

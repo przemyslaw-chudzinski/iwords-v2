@@ -253,6 +253,7 @@ router.get('/user-expressions', async (req, res) => {
 
         }, function (err, data) {
 
+            res.status(200);
             res.json({data, total});
 
         });
