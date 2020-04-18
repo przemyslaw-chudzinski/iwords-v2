@@ -15957,10 +15957,6 @@ body {
   margin: 0;
 }
 
-.app-statistics-page {
-  padding: 2rem;
-}
-
 .app-your-expressions-page .inner-container {
   display: -webkit-box;
   display: flex;
@@ -16733,7 +16729,7 @@ body {
   width: 100%;
 }
 
-.learning-summary-wgt .wgt-meta-container {
+.wgt .wgt-meta-container {
   margin-top: 1rem;
 }
 

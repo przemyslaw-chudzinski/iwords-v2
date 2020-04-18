@@ -1,0 +1,40 @@
+<div class="wgt chart-summary-wgt" ng-controller="ChartSummaryWgtCtrl" ng-cloak>
+
+    <div class="card card--with-shadow card--white">
+
+        <!-- Widget content -->
+        <div class="card__content">
+
+            <!-- Widget content -->
+            <div ng-if="!fetching && !fetchingError">
+                <!-- Wgt header -->
+                <h2>Postępy</h2>
+
+                <div class="wgt-meta-container">
+                    <canvas id="line" class="chart chart-line" chart-data="data"
+                            chart-labels="labels" chart-series="series" chart-options="options"
+                            chart-dataset-override="datasetOverride" chart-click="onClick">
+                    </canvas>
+                </div>
+
+            </div>
+
+            <!-- When error occurred -->
+            <div ng-if="fetchingError">
+                Wystąpił błąd podczas pobierania danych :(
+                <md-button class="md-icon-button md-primary" ng-click="refresh()">
+                    <md-tooltip md-direction="top">Załaduj dane jeszcze raz</md-tooltip>
+                    <span class="fa fa-refresh"></span>
+                </md-button>
+            </div>
+
+        </div>
+
+        <!-- Widget loader -->
+        <div class="card__loader" ng-if="fetching">
+            <md-progress-circular md-mode="indeterminate" md-diameter="35px"></md-progress-circular>
+        </div>
+
+    </div>
+
+</div>

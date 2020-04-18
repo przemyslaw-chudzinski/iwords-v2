@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="117e6571-d450-48e0-8bfb-d19890fc3ef0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/controllers/widgets/chart-summary-wgt-controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/partials/widgets/chart-summary-wgt.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/notes/noteAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/notes/noteAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/edit-note-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/edit-note-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_pages.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_pages.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_statistics.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/widgets/_learning-summary-wgt.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/widgets/_learning-summary-wgt.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/widgets/_widgets.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/widgets/_widgets.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/edit-note.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/edit-note.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/expression-notes.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/expression-notes.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/dashboard.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/dashboard.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/aside.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/aside.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/statistics.hbs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +58,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/controllers/widgets" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -63,10 +70,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/views/pages" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/resources/js/controllers/widgets" />
       <recent name="$PROJECT_DIR$/views/partials/widgets" />
+      <recent name="$PROJECT_DIR$/views/pages" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/resources/scss/widgets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -147,14 +154,7 @@
       <workItem from="1587055978960" duration="1610000" />
       <workItem from="1587058749604" duration="230000" />
       <workItem from="1587186965073" duration="4328000" />
-      <workItem from="1587196907028" duration="9234000" />
-    </task>
-    <task id="LOCAL-00073" summary="deploy">
-      <created>1580068954586</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1580068954586</updated>
+      <workItem from="1587196907028" duration="10577000" />
     </task>
     <task id="LOCAL-00074" summary="improved learning view for tables">
       <created>1580944957124</created>
@@ -492,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587230968663</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="done">
+      <created>1587232346080</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1587232346080</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -511,7 +518,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added new method for asside" />
     <MESSAGE value="refactor of body controller" />
     <MESSAGE value="refactor of your expressions controller" />
     <MESSAGE value="marked deprecated functions" />
@@ -536,17 +542,18 @@
     <MESSAGE value="working on project" />
     <MESSAGE value="fixed bug" />
     <MESSAGE value="added error handling to the creating new note in user's expressions list" />
-    <option name="LAST_COMMIT_MESSAGE" value="added error handling to the creating new note in user's expressions list" />
+    <MESSAGE value="done" />
+    <option name="LAST_COMMIT_MESSAGE" value="done" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579301681034">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1579301681034" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1587230968297">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1587232345686">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1587230968297" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1587232345686" />
     <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1587058069271" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1581447856425">
       <screen x="0" y="0" width="2560" height="1440" />
