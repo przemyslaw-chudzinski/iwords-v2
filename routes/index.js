@@ -98,7 +98,7 @@ router.get('/notes/expression/:id', async (req, res) => {
         viewData.hasNotes = notesCount > 0;
         viewData.expression = expression.expression;
 
-        res.render('expression-notes', viewData);
+        res.render('pages/expression-notes', viewData);
 
     } catch (e) {
         console.log(e);
@@ -161,7 +161,7 @@ router.get('/notes/:id/:exprId?', async (req, res) => {
 
         viewData.pageTitle = `Edytujesz notatkę - ${note.title}`;
         viewData.content = note.content;
-        res.render('edit-note', viewData);
+        res.render('pages/edit-note', viewData);
 
     } catch (e) {
         console.log(e);

@@ -5,8 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/notes/noteAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/notes/noteAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/dictionary-search-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/dictionary-search-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/your-expressions-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/edit-note-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/edit-note-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/edit-note.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/edit-note.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/expression-notes.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/expression-notes.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,15 +62,15 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/views/pages" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/views/pages" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/resources/js/controllers/widgets" />
       <recent name="$PROJECT_DIR$/views/partials/widgets" />
       <recent name="$PROJECT_DIR$/resources/scss/widgets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/pages" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -145,14 +147,7 @@
       <workItem from="1587055978960" duration="1610000" />
       <workItem from="1587058749604" duration="230000" />
       <workItem from="1587186965073" duration="4328000" />
-      <workItem from="1587196907028" duration="8331000" />
-    </task>
-    <task id="LOCAL-00072" summary="deploy">
-      <created>1579992093847</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1579992093847</updated>
+      <workItem from="1587196907028" duration="9234000" />
     </task>
     <task id="LOCAL-00073" summary="deploy">
       <created>1580068954586</created>
@@ -490,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587229013666</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="added error handling to the creating new note in user's expressions list">
+      <created>1587230968663</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1587230968663</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,7 +511,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="renamed" />
     <MESSAGE value="added new method for asside" />
     <MESSAGE value="refactor of body controller" />
     <MESSAGE value="refactor of your expressions controller" />
@@ -534,17 +535,18 @@
     <MESSAGE value="improved error handling" />
     <MESSAGE value="working on project" />
     <MESSAGE value="fixed bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bug" />
+    <MESSAGE value="added error handling to the creating new note in user's expressions list" />
+    <option name="LAST_COMMIT_MESSAGE" value="added error handling to the creating new note in user's expressions list" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579301681034">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1579301681034" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1587229012907">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1587230968297">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1587229012907" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1587230968297" />
     <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1587058069271" />
     <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1581447856425">
       <screen x="0" y="0" width="2560" height="1440" />

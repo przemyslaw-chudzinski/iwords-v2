@@ -47,20 +47,14 @@ router.post('/', async (req, res) => {
         userId
     };
 
-    // try {
-    //     const note = await createNote(config);
-    //     res.status(200);
-    //     await res.json({noteId: note._id});
-    // } catch (e) {
-    //     res.status(400);
-    //     await res.json({error: true});
-    // }
-
-    setTimeout(async () => {
+    try {
+        const note = await createNote(config);
+        res.status(200);
+        await res.json({noteId: note._id});
+    } catch (e) {
         res.status(400);
         await res.json({error: true});
-    }, 2000);
-
+    }
 
 });
 
