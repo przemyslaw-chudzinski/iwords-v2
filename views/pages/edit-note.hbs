@@ -1,14 +1,28 @@
-<div class="app-edit-note-page" ng-controller="EditNoteCtrl" ng-init="noteId='{{noteId}}'; exprId='{{exprId}}'; content='{{content}}';">
+<div class="app-edit-note-page" ng-controller="EditNoteCtrl" ng-init="noteId='{{noteId}}'; exprId='{{exprId}}'; content='{{content}}'; expressionTxt='{{expression}}'">
 
     {{#if expression}}
         <div class="expression">
-            <h2>{{expression}}</h2>
+            <!-- Back button -->
+            <a class="back-link" href="/app/notes/expression/\{{exprId}}">
+                <span class="back-link__icon fa fa-chevron-left"></span>
+                <span class="back-link__label">Powrót</span>
+            </a>
+            <div layout layout-align="start center">
+                <h2>{{expression}}</h2>
+                <md-button class="md-icon-button md-primary" ng-disabled="!canSpeak" ng-click="speak()">
+                    <md-tooltip md-direction="top" ng-if="!canSpeak">Twoja przeglądarka nie wspiera wymowy</md-tooltip>
+                    <md-tooltip md-direction="top" ng-if="canSpeak">Usłysz wymowę</md-tooltip>
+                    <span class="fa fa-volume-up"></span>
+                </md-button>
+            </div>
             <p>{{translations}}</p>
             {{#if sentences.length}}
                 <ul class="expression__sentence">
                     {{#each sentences}}
                         <li class="expression__sentence-item">
-                            <div><strong>{{this.sentence}}</strong></div>
+                            <div>
+                                <strong>{{this.sentence}}</strong>
+                            </div>
                             <div><span>{{this.translation}}</span></div>
                         </li>
                     {{/each}}

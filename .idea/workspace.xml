@@ -5,8 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/classes/loader-toast-builder.class.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/classes/loader-toast-builder.class.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/classes/toast-builder.class.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/classes/toast-builder.class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/edit-note-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/edit-note-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/components/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_buttons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_edit-note.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_edit-note.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/edit-note.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/edit-note.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,14 +62,14 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/pages" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/public/toast-templates" />
       <recent name="$PROJECT_DIR$/resources/js/controllers/widgets" />
       <recent name="$PROJECT_DIR$/views/partials/widgets" />
-      <recent name="$PROJECT_DIR$/views/pages" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/views/pages" />
     </key>
   </component>
@@ -146,6 +148,7 @@
       <workItem from="1587058749604" duration="230000" />
       <workItem from="1587186965073" duration="4328000" />
       <workItem from="1587196907028" duration="14538000" />
+      <workItem from="1587317348214" duration="1638000" />
     </task>
     <task id="LOCAL-00075" summary="before pull">
       <created>1580945018821</created>
@@ -570,9 +573,9 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="945" y="345" key="run.anything.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1587200447929" />
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1587237509588">
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1587319145176">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1587237509588" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1587319145176" />
   </component>
 </project>

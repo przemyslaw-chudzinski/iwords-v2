@@ -1,5 +1,5 @@
 const BaseController = require('./base-controller');
-const {ToastBuilder} = require('../classes');
+const {ToastBuilder, Speech} = require('../classes');
 
 class EditNoteController extends BaseController {
 
@@ -9,15 +9,19 @@ class EditNoteController extends BaseController {
         // setup
         this.notesSrv = notesSrv;
         this.$mdToast = $mdToast;
+        this._speech = new Speech();
 
         // init state
         this.$scope.noteId = null;
         this.$scope.exprId = null;
         this.$scope.content = null;
         this.$scope.saving = false;
+        this.$scope.canSpeak = this._speech.checkSupport();
+        this.$scope.expressionTxt = null
 
         // assign template functions
         this.$scope.handleSaveNote = this._handleSaveNote.bind(this);
+        this.$scope.speak = () => this.$scope.expressionTxt && this._speech.speak(this.$scope.expressionTxt);
     }
 
     pageLoadedHook() {
