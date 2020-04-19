@@ -63,7 +63,9 @@
                     <div ng-if="!notes || !notes.length" class="no-filter-results">Brak wyników wyszukiwania</div>
 
                     <!-- Content overlay -->
-                    <div class="card__content-overlay" ng-class="{active: fetching}"></div>
+                    <div class="card__content-overlay card__content-overlay--centered" ng-class="{active: fetching}">
+                        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                    </div>
 
                 </div>
 
@@ -85,7 +87,7 @@
                         </div>
                         <!-- Pagination meta -->
                         <div class="paginator__meta">
-                            <span>Strona \{{pagination.page}}</span>
+                            <span>Strona \{{currentPage}}</span>
                         </div>
                     </div>
                 </div>
