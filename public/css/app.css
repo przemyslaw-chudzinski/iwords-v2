@@ -16043,6 +16043,10 @@ body {
   font-size: 0.75rem;
 }
 
+.app-edit-note-page .back-link {
+  margin-bottom: 2rem;
+}
+
 .app-edit-note-page .editor {
   display: -webkit-box;
   display: flex;
@@ -16305,7 +16309,11 @@ body {
           align-items: center;
 }
 
-/* Icon button */
+.back-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #1777f2;
+}
 
 .repeat-counter {
   display: -webkit-box;

@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="117e6571-d450-48e0-8bfb-d19890fc3ef0" name="Default Changelist" comment="">
+    <list default="true" id="117e6571-d450-48e0-8bfb-d19890fc3ef0" name="Default Changelist" comment="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Conflicts:&#10;#&#9;public/css/app.css&#10;#&#9;public/js/app.js">
+      <change afterPath="$PROJECT_DIR$/resources/js/classes/add-note-manager.class.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/classes/loader-toast-builder.class.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/classes/loader-toast-builder.class.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/classes/toast-builder.class.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/classes/toast-builder.class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/classes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/classes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/edit-note-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/edit-note-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/controllers/expression-notes-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/expression-notes-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/components/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_buttons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_edit-note.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_edit-note.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/edit-note.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/edit-note.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/expression-notes.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/expression-notes.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="feature/193-improvements-of-notes-views-and-behaviours" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,14 +67,14 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/pages" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/public/toast-templates" />
       <recent name="$PROJECT_DIR$/resources/js/controllers/widgets" />
       <recent name="$PROJECT_DIR$/views/partials/widgets" />
-      <recent name="$PROJECT_DIR$/views/pages" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/views/pages" />
     </key>
   </component>
@@ -146,13 +153,7 @@
       <workItem from="1587058749604" duration="230000" />
       <workItem from="1587186965073" duration="4328000" />
       <workItem from="1587196907028" duration="14538000" />
-    </task>
-    <task id="LOCAL-00075" summary="before pull">
-      <created>1580945018821</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1580945018821</updated>
+      <workItem from="1587317348214" duration="3883000" />
     </task>
     <task id="LOCAL-00076" summary="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
       <created>1580945036019</created>
@@ -490,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587233761081</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="improved edit note view">
+      <created>1587320927973</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1587320927973</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,8 +517,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor of your expressions controller" />
-    <MESSAGE value="marked deprecated functions" />
     <MESSAGE value="your expression controller, pagination was refactored" />
     <MESSAGE value="your expression controller was refactored" />
     <MESSAGE value="your expression controller - clean up" />
@@ -534,22 +540,24 @@
     <MESSAGE value="added error handling to the creating new note in user's expressions list" />
     <MESSAGE value="done" />
     <MESSAGE value="removed statistics route and views" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed statistics route and views" />
+    <MESSAGE value="improved edit note view" />
+    <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Conflicts:&#10;#&#9;public/css/app.css&#10;#&#9;public/js/app.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Conflicts:&#10;#&#9;public/css/app.css&#10;#&#9;public/js/app.js" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587234618423">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1587234618423" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1587233760681">
+    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1587323418313">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1587233760681" />
+    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1587323418313" />
     <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1587058069271" />
-    <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1581447856425">
+    <state x="988" y="435" width="922" height="383" key="MultipleFileMergeDialog" timestamp="1587323371459">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="988" y="435" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1581447856425" />
+    <state x="988" y="435" width="922" height="383" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1587323371459" />
     <state x="796" y="369" key="SettingsEditor" timestamp="1579449967565">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -570,9 +578,9 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="945" y="345" key="run.anything.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1587200447929" />
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1587237509588">
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1587319145176">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1587237509588" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1587319145176" />
   </component>
 </project>

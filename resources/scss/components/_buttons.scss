@@ -1,23 +1,6 @@
-/* Icon button */
-//.button-icon {
-//
-//  width: 2rem;
-//  height: 2rem;
-//  border-radius: 50%;
-//  cursor: pointer;
-//  background: get-color(primaryWhite, .5);
-//  font-size: 1rem;
-//  border: none;
-//
-//  &--primary {
-//    &:hover {
-//      color: get-color(primaryWhite);
-//      background: get-color(primaryBlue);
-//    }
-//
-//  }
-//
-//  &__icon {
-//  }
-//
-//}
+.back-link {
+  display: inline-block;
+  text-decoration: none;
+  color: get-color(primaryBlue);
+}
+
