@@ -45,7 +45,7 @@ class ToastBuilder {
             },
             hideDelay: 4000,
             position: 'top right',
-            controller: SimpleToastController,
+            controller: ['$scope', '$mdToast', SimpleToastController],
             controllerAs: 'ctrl',
             bindToController: true,
         };

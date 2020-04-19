@@ -20,7 +20,7 @@ class LoaderToastBuilder {
             },
             hideDelay: 0,
             position: 'bottom left',
-            controller: LoaderToastController,
+            controller: ['$scope', '$mdToast', LoaderToastController],
             controllerAs: 'ctrl',
             bindToController: true,
         };
