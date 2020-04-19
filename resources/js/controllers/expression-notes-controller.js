@@ -1,28 +1,38 @@
 const BaseController = require('./base-controller');
-const {withAddingNote, withListPagination} = require("../decorators");
+const {PaginationList, ToastBuilder, AddNoteManager} = require('../classes');
 
-class ExpressionNotesCtrlFactory extends BaseController {
+const defaultPagination = {
+    page: 1,
+    limit: 30
+};
 
-    constructor($scope, notesSrv, $mdDialog) {
+class ExpressionNotesController extends BaseController {
+
+    constructor($scope, notesSrv, $mdDialog, $mdToast) {
         super($scope);
+
+        // setup
         this.notesSrv = notesSrv;
         this.$mdDialog = $mdDialog;
-    }
+        this.$mdToast = $mdToast;
+        this._pagination = new PaginationList(defaultPagination);
+        this._addNoteManager = new AddNoteManager(this.$mdDialog, this.notesSrv);
 
-    initState() {
-        super.initState();
+        // init state
         this.$scope.exprId = null;
         this.$scope.expression = null;
         this.$scope.notes = [];
         this.$scope.fetching = true;
         this.$scope.filterSearch = '';
-    }
+        this.$scope.currentPage = this._pagination.page;
 
-    assignTemplateFunctions() {
+        // assign template functions
         this.$scope.handleFilterInputChange = this._handleFilterInputChange.bind(this);
         this.$scope.openNoteMenu = this._openNoteMenu.bind(this);
         this.$scope.handleAddNote = this._handleAddNote.bind(this);
         this.$scope.handleRemove = this._handleRemove.bind(this);
+        this.$scope.prevPage = () => this._pagination.prevPage(this.onPageChange.bind(this));
+        this.$scope.nextPage = () => this._pagination.nextPage(this.onPageChange.bind(this));
     }
 
     pageLoadedHook() {
@@ -30,65 +40,52 @@ class ExpressionNotesCtrlFactory extends BaseController {
     }
 
     _fetchNotes() {
-        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination}, exprId: this.$scope.exprId})
-            .then(res => {
-                this.$scope.notes = res.data.data;
-                /* Update pagination controls */
-                const maxPageNumber = Math.ceil(res.data.total / this.$scope.pagination.limit);
-                this.$scope.prevPageDisable = this.$scope.pagination.page === 1;
-                this.$scope.nextPageDisable = this.$scope.pagination.page === maxPageNumber;
-                /* Hide card overlay */
-                this.$scope.fetching = false;
-            })
-            .catch(err => {
-                console.log('something went wrong');
-            });
+        this.notesSrv.fetchExpressionNotes({params: {page: this._pagination.page, limit: this._pagination.limit, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
+            .then(this._handleFetchNotesSuccess.bind(this))
+            .catch(this._handleFetchNotesError.bind(this));
     }
 
-    onNextPage(pagination) {
-        this.notesSrv.fetchExpressionNotes({params: {...pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
+    onPageChange(page = 1, limit = 5) {
+        this.$scope.fetching = true;
+        this.notesSrv.fetchExpressionNotes({params: {page, limit, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
             .then(this._handleFetchNotesSuccess.bind(this))
-            .catch(err => {
-                console.log('something went wrong');
-            });
-    }
-
-    onPrevPage(pagination) {
-        this.notesSrv.fetchExpressionNotes({params: {...pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
-            .then(this._handleFetchNotesSuccess.bind(this))
-            .catch(err => {
-                console.log('something went wrong');
-            });
+            .catch(this._handleFetchNotesError.bind(this));
     }
 
     _handleFetchNotesSuccess(res) {
+        if (res.data.total !== this._pagination.total) {
+            this._pagination.total = res.data.total;
+        }
+
         this.$scope.notes = res.data.data;
-        const total = res.data.total;
-        /* Update pagination controls */
-        const maxPageNumber = this.calculateMaxPageNumber(total);
-        this.$scope.prevPageDisable = this.$scope.pagination.page === 1 || this.$scope.fetching || total === 0;
-        this.$scope.nextPageDisable = this.$scope.pagination.page === maxPageNumber || this.$scope.fetching || total === 0;
-        /* Hide card overlay */
         this.$scope.fetching = false;
+        this.$scope.prevPageDisable = this._pagination.page === 1 || this.$scope.fetching || this._pagination.total === 0;
+        this.$scope.nextPageDisable = this._pagination.page === this._pagination.pageNumbers || this.$scope.fetching || this._pagination.total === 0;
+        this.$scope.currentPage = this._pagination.page;
+    }
+
+    _handleFetchNotesError(error) {
+        this.$scope.fetching = false;
+        const toastBuilder = new ToastBuilder(this.$mdToast);
+        toastBuilder
+            .addMessage('Wystąpił problem z pobraniem notatek')
+            .setSeverity('error')
+            .addCloseButton('PONÓW')
+            .neverHide()
+            .show()
+            .then(() => this._fetchNotes());
     }
 
     _handleFilterInputChange() {
         this.$scope.fetching = true;
+
         /* Reset pagination */
-        this.resetPagination();
-        this.notesSrv.fetchExpressionNotes({params: {...this.$scope.pagination, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
-            .then(res => {
-                this.$scope.notes = res.data.data;
-                /* Hide card overlay */
-                this.$scope.fetching = false;
-                /* Update pagination controls */
-                const maxPageNumber = this.calculateMaxPageNumber(red.data.total);
-                this.$scope.prevPageDisable = this.$scope.pagination.page === 1 || this.$scope.fetching;
-                this.$scope.nextPageDisable = this.$scope.pagination.page === maxPageNumber || this.$scope.fetching;
-            })
-            .catch(err => {
-                console.log('something went wrong');
-            });
+        this._pagination.page = defaultPagination.page;
+        this._pagination.limit = defaultPagination.limit;
+
+        this.notesSrv.fetchExpressionNotes({params: {page: this._pagination.page, limit: this._pagination.limit, search: this.$scope.filterSearch}, exprId: this.$scope.exprId})
+            .then(this._handleFetchNotesSuccess.bind(this))
+            .catch(this._handleFetchNotesError.bind(this));
     }
 
     _openNoteMenu($mdMenu, event) {
@@ -99,8 +96,8 @@ class ExpressionNotesCtrlFactory extends BaseController {
     _handleAddNote(event) {
         const expr = {_id: this.$scope.exprId, expression: this.$scope.expression};
 
-        this.showAddNoteDialog(expr, event)
-            .then(result => this.saveNote(expr._id, result));
+        this._addNoteManager.showAddNoteDialog(expr, event)
+            .then(result => this._addNoteManager.saveNote(expr._id, result));
     }
     // ===========================================================================================
 
@@ -121,14 +118,28 @@ class ExpressionNotesCtrlFactory extends BaseController {
     }
 
     _removeNote(noteId) {
+        const toastBuilder = new ToastBuilder(this.$mdToast);
         this.notesSrv.removeNote({noteId})
-            .then(() => this._fetchNotes())
-            .catch(err => console.log('something went wrong', err))
+            .then(() => {
+                toastBuilder
+                    .setSeverity('success')
+                    .addCloseButton()
+                    .addMessage('Notatka została usunięta poprawnie')
+                    .show();
+
+                this._fetchNotes();
+            })
+            .catch(err => {
+                toastBuilder
+                    .addMessage('Wystąpił błąd. Notatka nie została usunięta poprawnie')
+                    .addCloseButton()
+                    .neverHide()
+                    .setSeverity('error')
+                    .show();
+            });
     }
     // ===========================================================================================
 
 }
 
-module.exports = withAddingNote(
-    withListPagination(ExpressionNotesCtrlFactory)
-);
+module.exports = ExpressionNotesController;

@@ -23,7 +23,7 @@ const ToolbarUserMenuCtrlFactory = require('./controllers/toolbar-user-menu-cont
 const BodyController = require('./controllers/body-controller');
 const YourExpressionsController = require('./controllers/your-expressions-controller');
 const EditNoteCtrlFactory = require('./controllers/edit-note-controller');
-const ExpressionNotesCtrlFactory = require('./controllers/expression-notes-controller');
+const ExpressionNotesController = require('./controllers/expression-notes-controller');
 const LearningSpeakingController = require('./controllers/learning-speaking-controller');
 const DictionarySearchController = require('./controllers/dictionary-search-controller');
 const LearningSummaryWgtController = require('./controllers/widgets/learning-summary-wgt-controller');
@@ -44,7 +44,7 @@ app.controller('ToolbarUserMenuCtrl', ['$scope', ToolbarUserMenuCtrlFactory]);
 app.controller('BodyCrl', ['$scope', 'localStorageSrv', BodyController]);
 app.controller('YourExpressionsCtrl', ['$scope', 'expressionSrv', 'notesSrv', '$mdToast', '$mdDialog', YourExpressionsController]);
 app.controller('EditNoteCtrl', ['$scope', 'notesSrv', '$mdToast', EditNoteCtrlFactory]);
-app.controller('ExpressionNotesCtrl', ['$scope', 'notesSrv', '$mdDialog', ExpressionNotesCtrlFactory]);
+app.controller('ExpressionNotesCtrl', ['$scope', 'notesSrv', '$mdDialog', '$mdToast', ExpressionNotesController]);
 app.controller('LearningSpeakingCtrl', ['$scope', 'expressionSrv', '$timeout', LearningSpeakingController]);
 app.controller('DictionarySearchCtrl', ['$scope', 'dictionarySrv', 'expressionSrv', '$mdToast', '$mdDialog', DictionarySearchController]);
 app.controller('LearningSummaryWgtCtrl', ['$scope', 'statisticsSrv', 'expressionSrv', '$timeout', LearningSummaryWgtController]);
