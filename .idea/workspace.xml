@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="117e6571-d450-48e0-8bfb-d19890fc3ef0" name="Default Changelist" comment="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Conflicts:&#10;#&#9;public/css/app.css&#10;#&#9;public/js/app.js">
-      <change afterPath="$PROJECT_DIR$/resources/js/classes/add-note-manager.class.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/classes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/classes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/edit-note-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/edit-note-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/expression-notes-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/expression-notes-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/components/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/components/_buttons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/pages/_edit-note.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/pages/_edit-note.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/edit-note.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/edit-note.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/expression-notes.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/expression-notes.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,14 +57,14 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/views/pages" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/public/toast-templates" />
       <recent name="$PROJECT_DIR$/resources/js/controllers/widgets" />
       <recent name="$PROJECT_DIR$/views/partials/widgets" />
+      <recent name="$PROJECT_DIR$/views/pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/views/pages" />
     </key>
   </component>
