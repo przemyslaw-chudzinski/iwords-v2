@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="117e6571-d450-48e0-8bfb-d19890fc3ef0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/classes/add-note-manager.class.js" afterDir="false" />
+    <list default="true" id="117e6571-d450-48e0-8bfb-d19890fc3ef0" name="Default Changelist" comment="nothing">
+      <change afterPath="$PROJECT_DIR$/resources/landing-page/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/landing-page/scss/main.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/classes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/classes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/expression-notes-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/controllers/expression-notes-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/expression-notes.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/expression-notes.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="feature/193-improvements-of-notes-views-and-behaviours" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,7 +51,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.16.3" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.12.64" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -60,11 +62,9 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/views/pages" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/public/toast-templates" />
@@ -72,7 +72,11 @@
       <recent name="$PROJECT_DIR$/views/partials/widgets" />
       <recent name="$PROJECT_DIR$/views/pages" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/pages" />
+    </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -149,13 +153,8 @@
       <workItem from="1587186965073" duration="4328000" />
       <workItem from="1587196907028" duration="14538000" />
       <workItem from="1587317348214" duration="3883000" />
-    </task>
-    <task id="LOCAL-00076" summary="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
-      <created>1580945036019</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1580945036019</updated>
+      <workItem from="1590493947873" duration="385000" />
+      <workItem from="1602179962862" duration="400000" />
     </task>
     <task id="LOCAL-00077" summary="deploy">
       <created>1580945313269</created>
@@ -493,11 +492,18 @@
       <option name="project" value="LOCAL" />
       <updated>1587320927973</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="nothing">
+      <created>1588624283833</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1588624283833</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -512,8 +518,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="marked deprecated functions" />
-    <MESSAGE value="your expression controller, pagination was refactored" />
     <MESSAGE value="your expression controller was refactored" />
     <MESSAGE value="your expression controller - clean up" />
     <MESSAGE value="learning controller was refactored" />
@@ -537,45 +541,18 @@
     <MESSAGE value="done" />
     <MESSAGE value="removed statistics route and views" />
     <MESSAGE value="improved edit note view" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved edit note view" />
+    <MESSAGE value="Merge branch 'develop' of https://github.com/przemyslaw-chudzinski/iwords-v2 into develop&#10;&#10;# Conflicts:&#10;#&#9;public/css/app.css&#10;#&#9;public/js/app.js" />
+    <MESSAGE value="nothing" />
+    <option name="LAST_COMMIT_MESSAGE" value="nothing" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587234618423">
+    <state x="680" y="112" key="CommitChangelistDialog2" timestamp="1602180491295">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="1018" y="520" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1587234618423" />
-    <state x="795" y="231" key="CommitChangelistDialog2" timestamp="1587320927629">
+    <state x="680" y="112" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1602180491295" />
+    <state x="256" y="133" key="DiffContextDialog" timestamp="1602180482446">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="795" y="231" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1587320927629" />
-    <state x="795" y="231" key="CommitChangelistDialog2/0.23.2560.1353@0.23.2560.1353" timestamp="1587058069271" />
-    <state x="988" y="435" key="MultipleFileMergeDialog" timestamp="1581447856425">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="988" y="435" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1581447856425" />
-    <state x="796" y="369" key="SettingsEditor" timestamp="1579449967565">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="796" y="369" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1579449967565" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1587234963117">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.2560.1440@0.0.2560.1440" timestamp="1587234963117" />
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog" timestamp="1586923975243">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="954" y="551" key="com.intellij.ide.util.TipDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1586923975243" />
-    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog" timestamp="1583181805607">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="960" y="358" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1583181805607" />
-    <state x="945" y="345" key="run.anything.popup" timestamp="1587200447929">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="945" y="345" key="run.anything.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1587200447929" />
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1587319145176">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1587319145176" />
+    <state x="256" y="133" key="DiffContextDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1602180482446" />
   </component>
 </project>
