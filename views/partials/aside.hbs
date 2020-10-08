@@ -32,10 +32,18 @@
             <!-- Nested -->
             <ul class="navigation-nested">
                 <li class="navigation-nested__item {{activatedRoute name 'app.learning.primary' 'navigation-nested__item--active'}}">
-                    <a class="navigation-nested__link" href="/app/learning/primary">Tłumaczenia</a>
+                    <a class="navigation-nested__link" href="/app/learning/primary">
+                        <span class="fa fa-pencil-square-o navigation__link-icon"></span>
+                        <span ng-if="asideOpened">Tłumaczenia</span>
+                        <md-tooltip ng-if="!asideOpened" md-direction="right">Tłumaczenia</md-tooltip>
+                    </a>
                 </li>
                 <li class="navigation-nested__item {{activatedRoute name 'app.learning.speaking' 'navigation-nested__item--active'}}">
-                    <a class="navigation-nested__link" href="/app/learning/speaking">Trening wymowy</a>
+                    <a class="navigation-nested__link" href="/app/learning/speaking">
+                        <span class="fa fa-microphone navigation__link-icon"></span>
+                        <span ng-if="asideOpened">Trening wymowy</span>
+                        <md-tooltip ng-if="!asideOpened" md-direction="right">Trening wymowy</md-tooltip>
+                    </a>
                 </li>
 <!--                <li class="navigation-nested__item">-->
 <!--                    <a class="navigation-nested__link" href="">Nowe tryby w krótce</a>-->
