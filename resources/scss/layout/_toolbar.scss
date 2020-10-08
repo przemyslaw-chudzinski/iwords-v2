@@ -30,7 +30,13 @@
     align-items: center;
   }
 
-  &__heading {}
+  &__actions-user-name {
+    white-space: pre;
+  }
+
+  &__heading {
+    white-space: pre;
+  }
 
   &__dictionary-search {
     margin-right: 2rem;
