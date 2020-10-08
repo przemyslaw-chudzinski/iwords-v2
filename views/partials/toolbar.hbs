@@ -8,7 +8,7 @@
             </md-button>
         </div>
         <!-- Toolbar heading - displays page title -->
-        <div class="toolbar__heading"><h3>{{pageTitle}}</h3></div>
+        <div ng-if="!dictionaryAutocompleteFocused" class="toolbar__heading"><h3>{{pageTitle}}</h3></div>
     </div>
     <!-- Dictionary search -->
     <div class="toolbar__dictionary-search" ng-class="{'toolbar__dictionary-search--has-w-100': dictionaryAutocompleteFocused}" ng-controller="DictionarySearchCtrl" ng-cloak>
@@ -54,7 +54,7 @@
     </div>
     <!-- Actions -->
     <div class="toolbar__actions">
-        <span>{{user.name}}</span>
+        <span class="toolbar__actions-user-name">{{user.name}}</span>
         {{>toolbar-user-menu}}
     </div>
 </div>

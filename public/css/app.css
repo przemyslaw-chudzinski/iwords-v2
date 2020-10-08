@@ -16645,6 +16645,14 @@ body {
           align-items: center;
 }
 
+.toolbar__actions-user-name {
+  white-space: pre;
+}
+
+.toolbar__heading {
+  white-space: pre;
+}
+
 .toolbar__dictionary-search {
   margin-right: 2rem;
   width: 25%;
